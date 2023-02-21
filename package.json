@@ -41,6 +41,9 @@
     ]
   },
   "devDependencies": {
-    "prettier": "^2.8.4"
+    "prettier": "^2.8.4",
+    "stylelint": "^15.2.0",
+    "stylelint-config-clean-order": "^5.0.0",
+    "stylelint-config-standard": "^30.0.1"
   }
 }
