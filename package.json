@@ -67,6 +67,9 @@
     "babel-plugin-named-exports-order": "^0.0.2",
     "prop-types": "^15.8.1",
     "webpack": "^5.75.0",
-    "prettier": "^2.8.4"
+    "prettier": "^2.8.4",
+    "stylelint": "^15.2.0",
+    "stylelint-config-clean-order": "^5.0.0",
+    "stylelint-config-standard": "^30.0.1"
   }
 }
