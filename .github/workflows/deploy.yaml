@@ -1,9 +1,7 @@
-name: CI
+name: Deploy
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
     branches: [ main ]
 
 permissions:
@@ -39,9 +37,21 @@ jobs:
         run: npm ci
       - name: Run tests
         run: npm run test
+      - name: 
       - name: Project Build
         id: build
         run: |
           export NODE_OPTIONS="--max_old_space_size=4096"
           npm run build --if-present
         working-directory: ${{ env.BUILD_PATH }}
+
+  deploy:
+    environment:
+        name: github-pages
+        url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
