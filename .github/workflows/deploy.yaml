@@ -48,5 +48,5 @@ jobs:
         working-directory: ${{ env.BUILD_PATH }}
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v3
         publish_dir: ${{ env.BUILD_PATH }}/build
