@@ -25,6 +25,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Setup environment
         run: npm ci
+      - name: Run linters 
+        run: npm run lint
       - name: Run tests
         run: npm run test
       - name: Project Build
