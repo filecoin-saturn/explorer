@@ -18,35 +18,36 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    environment: github-pages
+    if: github.event.pull_request.merged == true
+      runs-on: ubuntu-latest
+      environment: github-pages
 
-    strategy:
-      matrix:
-        node-version: [19.x]
+      strategy:
+        matrix:
+          node-version: [19.x]
 
-    steps:
-      - name: Fix node space-size
-        run: export NODE_OPTIONS="--max_old_space_size=4096"
-      - uses: actions/checkout@v3
-      - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: Setup environment
-        run: npm ci
-      - name: Project Build
-        id: build
-        run: npm run build --if-present
-        working-directory: ${{ env.BUILD_PATH }}
-      
-  deploy:
-    environment:
-        name: github-pages
-        url: ${{ steps.deployment.outputs.page_url }}
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
+      steps:
+        - name: Fix node space-size
+          run: export NODE_OPTIONS="--max_old_space_size=4096"
+        - uses: actions/checkout@v3
+        - name: Setup Node.js ${{ matrix.node-version }}
+          uses: actions/setup-node@v3
+          with:
+            node-version: ${{ matrix.node-version }}
+        - name: Setup environment
+          run: npm ci
+        - name: Project Build
+          id: build
+          run: npm run build --if-present
+          working-directory: ${{ env.BUILD_PATH }}
+        
+    deploy:
+      environment:
+          name: github-pages
+          url: ${{ steps.deployment.outputs.page_url }}
+      needs: build
+      runs-on: ubuntu-latest
+      steps:
+        - name: Deploy to GitHub Pages
+          id: deployment
+          uses: actions/deploy-pages@v1
