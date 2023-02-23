@@ -13,7 +13,17 @@ type Countries = Country[];
 export const useCountries = () => {
   const [countries, setCountries] = useState<Countries>([]);
 
-  return { countries, setCountries };
+  const getCountryById = (queryCountryId: string) => {
+    return countries.filter((country) => country.id === queryCountryId);
+  };
+
+  const getCountryByContinentId = (queryContinentId: string) => {
+    return countries.filter(
+      (country) => country.continentId === queryContinentId
+    );
+  };
+
+  return { countries, setCountries, getCountryById, getCountryByContinentId };
 };
 
 export default useCountries;
