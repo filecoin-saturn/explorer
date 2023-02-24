@@ -156,7 +156,35 @@ type Nodes = Node[];
 export const useNodes = () => {
   const [nodes, setNodes] = useState<Nodes>([]);
 
-  return { nodes, setNodes };
+  const getByID = (queryNodeId: string) => {
+    return nodes.filter((node) => node.id === queryNodeId)
+  }
+
+  const getByLocationId = (queryLocationId: string) => {
+    return nodes.filter((node) => node.locationId === queryLocationId)
+  }
+  
+  const getByCountryId = (queryCountryId: string) => {
+    return nodes.filter((node) => node.countryId === queryCountryId)
+  }
+
+  const getByContinentId = (queryContinentId: string) => {
+    return nodes.filter((node) => node.continentId === queryContinentId)
+  }
+
+  const getByActivityState = (activityState: NodeState) => {
+    return nodes.filter((node) => node.data.state === activityState)
+  }
+
+  return { 
+    nodes,
+    setNodes,
+    getByID,
+    getByLocationId,
+    getByCountryId,
+    getByContinentId,
+    getByActivityState
+  };
 };
 
 export default useNodes;
