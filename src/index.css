@@ -6,6 +6,7 @@ h3,
 h4,
 p,
 body {
+  height: 100vh;
   margin: 0;
 }
 
@@ -16,4 +17,8 @@ body {
 
 html {
   font-family: var(--font-family);
+}
+
+#root {
+  height: 100%;
 }
