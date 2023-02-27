@@ -1,6 +1,12 @@
 import styles from "./index.module.css";
 
-export const Body = (children: any) => {
+import { ReactNode } from "react";
+
+type BodyProps = {
+  children?: ReactNode;
+};
+
+export const Body = ({ children }: BodyProps) => {
   return <p className={styles.body}>{children}</p>;
 };
 
