@@ -1,7 +1,7 @@
-.body {
+.subtitle {
   font-family: var(--font-family);
-  font-size: var(--size-sm);
+  font-size: var(--size-md);
   font-weight: 400;
-  line-height: var(--size-sm);
+  line-height: var(--size-md);
   color: var(--color-white);
 }

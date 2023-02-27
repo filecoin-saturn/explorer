@@ -1,8 +1,10 @@
-import { Body } from "./index";
+import { Body as BodyComponent } from "./index";
 
 export default {
-  title: "Typography|Body",
-  component: Body,
+  title: "Typography",
+  component: BodyComponent,
 };
 
-export const Default = () => <Body>Hello world</Body>;
+export const Body = () => (
+  <BodyComponent>This is a body component.</BodyComponent>
+);

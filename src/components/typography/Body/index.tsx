@@ -7,7 +7,7 @@ type BodyProps = {
 };
 
 export const Body = ({ children }: BodyProps) => {
-  return <p className={styles.body}>{children}</p>;
+  return <p className={`${styles.body}`}>{children}</p>;
 };
 
 export default Body;
