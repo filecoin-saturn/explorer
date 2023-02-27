@@ -1,0 +1,2090 @@
+[
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "AF",
+    "idAlpha3": "AFG",
+    "name": "Afghanistan, Islamic Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "AX",
+    "idAlpha3": "ALA",
+    "name": "Åland Islands"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "AL",
+    "idAlpha3": "ALB",
+    "name": "Albania, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "DZ",
+    "idAlpha3": "DZA",
+    "name": "Algeria, People's Democratic Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "OC",
+    "id": "AS",
+    "idAlpha3": "ASM",
+    "name": "American Samoa"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "AD",
+    "idAlpha3": "AND",
+    "name": "Andorra, Principality of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "AO",
+    "idAlpha3": "AGO",
+    "name": "Angola, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "AI",
+    "idAlpha3": "AIA",
+    "name": "Anguilla"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AN",
+    "id": "AQ",
+    "idAlpha3": "ATA",
+    "name": "Antarctica (the territory South of 60 deg S)"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "AG",
+    "idAlpha3": "ATG",
+    "name": "Antigua and Barbuda"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "SA",
+    "id": "AR",
+    "idAlpha3": "ARG",
+    "name": "Argentina, Argentine Republic"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "AM",
+    "idAlpha3": "ARM",
+    "name": "Armenia, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "AM",
+    "idAlpha3": "ARM",
+    "name": "Armenia, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "AW",
+    "idAlpha3": "ABW",
+    "name": "Aruba"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "OC",
+    "id": "AU",
+    "idAlpha3": "AUS",
+    "name": "Australia, Commonwealth of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "AT",
+    "idAlpha3": "AUT",
+    "name": "Austria, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "AZ",
+    "idAlpha3": "AZE",
+    "name": "Azerbaijan, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "AZ",
+    "idAlpha3": "AZE",
+    "name": "Azerbaijan, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "BS",
+    "idAlpha3": "BHS",
+    "name": "Bahamas, Commonwealth of the"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "BH",
+    "idAlpha3": "BHR",
+    "name": "Bahrain, Kingdom of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "BD",
+    "idAlpha3": "BGD",
+    "name": "Bangladesh, People's Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "BB",
+    "idAlpha3": "BRB",
+    "name": "Barbados"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "BY",
+    "idAlpha3": "BLR",
+    "name": "Belarus, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "BE",
+    "idAlpha3": "BEL",
+    "name": "Belgium, Kingdom of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "BZ",
+    "idAlpha3": "BLZ",
+    "name": "Belize"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "BJ",
+    "idAlpha3": "BEN",
+    "name": "Benin, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "BM",
+    "idAlpha3": "BMU",
+    "name": "Bermuda"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "BT",
+    "idAlpha3": "BTN",
+    "name": "Bhutan, Kingdom of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "SA",
+    "id": "BO",
+    "idAlpha3": "BOL",
+    "name": "Bolivia, Plurinational State of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "BQ",
+    "idAlpha3": "BES",
+    "name": "Bonaire, Sint Eustatius and Saba"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "BA",
+    "idAlpha3": "BIH",
+    "name": "Bosnia and Herzegovina"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "BW",
+    "idAlpha3": "BWA",
+    "name": "Botswana, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AN",
+    "id": "BV",
+    "idAlpha3": "BVT",
+    "name": "Bouvet Island (Bouvetoya)"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "SA",
+    "id": "BR",
+    "idAlpha3": "BRA",
+    "name": "Brazil, Federative Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "IO",
+    "idAlpha3": "IOT",
+    "name": "British Indian Ocean Territory"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "VG",
+    "idAlpha3": "VGB",
+    "name": "British Virgin Islands"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "BN",
+    "idAlpha3": "BRN",
+    "name": "Brunei, Nation of, the Abode of Peace"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "BG",
+    "idAlpha3": "BGR",
+    "name": "Bulgaria, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "BF",
+    "idAlpha3": "BFA",
+    "name": "Burkina Faso"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "BI",
+    "idAlpha3": "BDI",
+    "name": "Burundi, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "KH",
+    "idAlpha3": "KHM",
+    "name": "Cambodia, Kingdom of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "CM",
+    "idAlpha3": "CMR",
+    "name": "Cameroon, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "CA",
+    "idAlpha3": "CAN",
+    "name": "Canada"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "CV",
+    "idAlpha3": "CPV",
+    "name": "Cape Verde, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "KY",
+    "idAlpha3": "CYM",
+    "name": "Cayman Islands"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "CF",
+    "idAlpha3": "CAF",
+    "name": "Central African Republic"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "TD",
+    "idAlpha3": "TCD",
+    "name": "Chad, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "SA",
+    "id": "CL",
+    "idAlpha3": "CHL",
+    "name": "Chile, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "CN",
+    "idAlpha3": "CHN",
+    "name": "China, People's Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "CX",
+    "idAlpha3": "CXR",
+    "name": "Christmas Island"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "CC",
+    "idAlpha3": "CCK",
+    "name": "Cocos (Keeling) Islands"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "SA",
+    "id": "CO",
+    "idAlpha3": "COL",
+    "name": "Colombia, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "KM",
+    "idAlpha3": "COM",
+    "name": "Comoros, Union of the"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "CD",
+    "idAlpha3": "COD",
+    "name": "Congo, Democratic Republic of the"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "CG",
+    "idAlpha3": "COG",
+    "name": "Congo, Republic of the"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "OC",
+    "id": "CK",
+    "idAlpha3": "COK",
+    "name": "Cook Islands"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "CR",
+    "idAlpha3": "CRI",
+    "name": "Costa Rica, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "CI",
+    "idAlpha3": "CIV",
+    "name": "Côte d'Ivoire, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "HR",
+    "idAlpha3": "HRV",
+    "name": "Croatia, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "CU",
+    "idAlpha3": "CUB",
+    "name": "Cuba, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "CW",
+    "idAlpha3": "CUW",
+    "name": "Curaçao"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "CY",
+    "idAlpha3": "CYP",
+    "name": "Cyprus, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "CY",
+    "idAlpha3": "CYP",
+    "name": "Cyprus, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "CZ",
+    "idAlpha3": "CZE",
+    "name": "Czech Republic"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "DK",
+    "idAlpha3": "DNK",
+    "name": "Denmark, Kingdom of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "OC",
+    "id": "XX",
+    "idAlpha3": "null",
+    "name": "Disputed Territory"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "DJ",
+    "idAlpha3": "DJI",
+    "name": "Djibouti, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "DM",
+    "idAlpha3": "DMA",
+    "name": "Dominica, Commonwealth of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "DO",
+    "idAlpha3": "DOM",
+    "name": "Dominican Republic"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "SA",
+    "id": "EC",
+    "idAlpha3": "ECU",
+    "name": "Ecuador, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "EG",
+    "idAlpha3": "EGY",
+    "name": "Egypt, Arab Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "EG",
+    "idAlpha3": "EGY",
+    "name": "Egypt, Arab Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "SV",
+    "idAlpha3": "SLV",
+    "name": "El Salvador, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "GQ",
+    "idAlpha3": "GNQ",
+    "name": "Equatorial Guinea, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "ER",
+    "idAlpha3": "ERI",
+    "name": "Eritrea, State of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "EE",
+    "idAlpha3": "EST",
+    "name": "Estonia, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "SZ",
+    "idAlpha3": "SWZ",
+    "name": "Eswatini, Kingdom of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "SA",
+    "id": "FK",
+    "idAlpha3": "FLK",
+    "name": "Falkland Islands (Malvinas)"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "FO",
+    "idAlpha3": "FRO",
+    "name": "Faroe Islands"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "OC",
+    "id": "FJ",
+    "idAlpha3": "FJI",
+    "name": "Fiji, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "FI",
+    "idAlpha3": "FIN",
+    "name": "Finland, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "FR",
+    "idAlpha3": "FRA",
+    "name": "France, French Republic"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "SA",
+    "id": "GF",
+    "idAlpha3": "GUF",
+    "name": "French Guiana"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "OC",
+    "id": "PF",
+    "idAlpha3": "PYF",
+    "name": "French Polynesia"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "TF",
+    "idAlpha3": "ATF",
+    "name": "French Southern Territories"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "GA",
+    "idAlpha3": "GAB",
+    "name": "Gabon, Gabonese Republic"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "GM",
+    "idAlpha3": "GMB",
+    "name": "Gambia, Republic of the"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "GE",
+    "idAlpha3": "GEO",
+    "name": "Georgia"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "GE",
+    "idAlpha3": "GEO",
+    "name": "Georgia"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "DE",
+    "idAlpha3": "DEU",
+    "name": "Germany, Federal Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "GH",
+    "idAlpha3": "GHA",
+    "name": "Ghana, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "GI",
+    "idAlpha3": "GIB",
+    "name": "Gibraltar"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "GR",
+    "idAlpha3": "GRC",
+    "name": "Greece, Hellenic Republic"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "GL",
+    "idAlpha3": "GRL",
+    "name": "Greenland"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "GD",
+    "idAlpha3": "GRD",
+    "name": "Grenada"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "GP",
+    "idAlpha3": "GLP",
+    "name": "Guadeloupe"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "OC",
+    "id": "GU",
+    "idAlpha3": "GUM",
+    "name": "Guam"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "GT",
+    "idAlpha3": "GTM",
+    "name": "Guatemala, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "GG",
+    "idAlpha3": "GGY",
+    "name": "Guernsey, Bailiwick of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "GW",
+    "idAlpha3": "GNB",
+    "name": "Guinea-Bissau, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "GN",
+    "idAlpha3": "GIN",
+    "name": "Guinea, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "SA",
+    "id": "GY",
+    "idAlpha3": "GUY",
+    "name": "Guyana, Co-operative Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "HT",
+    "idAlpha3": "HTI",
+    "name": "Haiti, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AN",
+    "id": "HM",
+    "idAlpha3": "HMD",
+    "name": "Heard Island and McDonald Islands"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "VA",
+    "idAlpha3": "VAT",
+    "name": "Holy See (Vatican City State)"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "HN",
+    "idAlpha3": "HND",
+    "name": "Honduras, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "HK",
+    "idAlpha3": "HKG",
+    "name": "Hong Kong, Special Administrative Region of China"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "HU",
+    "idAlpha3": "HUN",
+    "name": "Hungary, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "IS",
+    "idAlpha3": "ISL",
+    "name": "Iceland, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "IN",
+    "idAlpha3": "IND",
+    "name": "India, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "ID",
+    "idAlpha3": "IDN",
+    "name": "Indonesia, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "IR",
+    "idAlpha3": "IRN",
+    "name": "Iran, Islamic Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "IQ",
+    "idAlpha3": "IRQ",
+    "name": "Iraq, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "IE",
+    "idAlpha3": "IRL",
+    "name": "Ireland"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "IM",
+    "idAlpha3": "IMN",
+    "name": "Isle of Man"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "IL",
+    "idAlpha3": "ISR",
+    "name": "Israel, State of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "IT",
+    "idAlpha3": "ITA",
+    "name": "Italy, Italian Republic"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "JM",
+    "idAlpha3": "JAM",
+    "name": "Jamaica"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "JP",
+    "idAlpha3": "JPN",
+    "name": "Japan"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "JE",
+    "idAlpha3": "JEY",
+    "name": "Jersey, Bailiwick of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "JO",
+    "idAlpha3": "JOR",
+    "name": "Jordan, Hashemite Kingdom of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "KZ",
+    "idAlpha3": "KAZ",
+    "name": "Kazakhstan, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "KZ",
+    "idAlpha3": "KAZ",
+    "name": "Kazakhstan, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "KE",
+    "idAlpha3": "KEN",
+    "name": "Kenya, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "OC",
+    "id": "KI",
+    "idAlpha3": "KIR",
+    "name": "Kiribati, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "KP",
+    "idAlpha3": "PRK",
+    "name": "Korea, Democratic People's Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "KR",
+    "idAlpha3": "KOR",
+    "name": "Korea, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "XK",
+    "idAlpha3": "XKX",
+    "name": "vo, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "KW",
+    "idAlpha3": "KWT",
+    "name": "Kuwait, State of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "KG",
+    "idAlpha3": "KGZ",
+    "name": "Kyrgyz Republic"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "LA",
+    "idAlpha3": "LAO",
+    "name": "Lao People's Democratic Republic"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "LV",
+    "idAlpha3": "LVA",
+    "name": "Latvia, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "LB",
+    "idAlpha3": "LBN",
+    "name": "Lebanon, Lebanese Republic"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "LS",
+    "idAlpha3": "LSO",
+    "name": "Lesotho, Kingdom of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "LR",
+    "idAlpha3": "LBR",
+    "name": "Liberia, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "LY",
+    "idAlpha3": "LBY",
+    "name": "Libya, State of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "LI",
+    "idAlpha3": "LIE",
+    "name": "Liechtenstein, Principality of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "LT",
+    "idAlpha3": "LTU",
+    "name": "Lithuania, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "LU",
+    "idAlpha3": "LUX",
+    "name": "Luxembourg, Grand Duchy of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "MO",
+    "idAlpha3": "MAC",
+    "name": "Macao, Special Administrative Region of China"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "MG",
+    "idAlpha3": "MDG",
+    "name": "Madagascar, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "MW",
+    "idAlpha3": "MWI",
+    "name": "Malawi, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "MY",
+    "idAlpha3": "MYS",
+    "name": "Malaysia"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "MV",
+    "idAlpha3": "MDV",
+    "name": "Maldives, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "ML",
+    "idAlpha3": "MLI",
+    "name": "Mali, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "MT",
+    "idAlpha3": "MLT",
+    "name": "Malta, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "OC",
+    "id": "MH",
+    "idAlpha3": "MHL",
+    "name": "Marshall Islands, Republic of the"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "MQ",
+    "idAlpha3": "MTQ",
+    "name": "Martinique"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "MR",
+    "idAlpha3": "MRT",
+    "name": "Mauritania, Islamic Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "MU",
+    "idAlpha3": "MUS",
+    "name": "Mauritius, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "YT",
+    "idAlpha3": "MYT",
+    "name": "Mayotte, Department of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "MX",
+    "idAlpha3": "MEX",
+    "name": "Mexico, United Mexican States"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "OC",
+    "id": "FM",
+    "idAlpha3": "FSM",
+    "name": "Micronesia, Federated States of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "MD",
+    "idAlpha3": "MDA",
+    "name": "Moldova, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "MC",
+    "idAlpha3": "MCO",
+    "name": "Monaco, Principality of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "MN",
+    "idAlpha3": "MNG",
+    "name": "Mongolia"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "ME",
+    "idAlpha3": "MNE",
+    "name": "Montenegro"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "MS",
+    "idAlpha3": "MSR",
+    "name": "Montserrat"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "MA",
+    "idAlpha3": "MAR",
+    "name": "Morocco, Kingdom of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "MZ",
+    "idAlpha3": "MOZ",
+    "name": "Mozambique, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "MM",
+    "idAlpha3": "MMR",
+    "name": "Myanmar, Union of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "NA",
+    "idAlpha3": "NAM",
+    "name": "Namibia, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "OC",
+    "id": "NR",
+    "idAlpha3": "NRU",
+    "name": "Nauru, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "NP",
+    "idAlpha3": "NPL",
+    "name": "Nepal, Federal Democratic Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "NL",
+    "idAlpha3": "NLD",
+    "name": "Netherlands, Kingdom of the"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "OC",
+    "id": "NC",
+    "idAlpha3": "NCL",
+    "name": "New Caledonia"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "OC",
+    "id": "NZ",
+    "idAlpha3": "NZL",
+    "name": "New Zealand"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "NI",
+    "idAlpha3": "NIC",
+    "name": "Nicaragua, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "NE",
+    "idAlpha3": "NER",
+    "name": "Niger, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "NG",
+    "idAlpha3": "NGA",
+    "name": "Nigeria, Federal Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "OC",
+    "id": "NU",
+    "idAlpha3": "NIU",
+    "name": "Niue"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "OC",
+    "id": "NF",
+    "idAlpha3": "NFK",
+    "name": "Norfolk Island"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "MK",
+    "idAlpha3": "MKD",
+    "name": "North Macedonia, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "OC",
+    "id": "MP",
+    "idAlpha3": "MNP",
+    "name": "Northern Mariana Islands, Commonwealth of the"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "NO",
+    "idAlpha3": "NOR",
+    "name": "Norway, Kingdom of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "OM",
+    "idAlpha3": "OMN",
+    "name": "Oman, Sultanate of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "PK",
+    "idAlpha3": "PAK",
+    "name": "Pakistan, Islamic Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "OC",
+    "id": "PW",
+    "idAlpha3": "PLW",
+    "name": "Palau, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "PS",
+    "idAlpha3": "PSE",
+    "name": "Palestine, State of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "PA",
+    "idAlpha3": "PAN",
+    "name": "Panama, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "OC",
+    "id": "PG",
+    "idAlpha3": "PNG",
+    "name": "Papua New Guinea, Independent State of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "SA",
+    "id": "PY",
+    "idAlpha3": "PRY",
+    "name": "Paraguay, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "SA",
+    "id": "PE",
+    "idAlpha3": "PER",
+    "name": "Peru, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "PH",
+    "idAlpha3": "PHL",
+    "name": "Philippines, Republic of the"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "OC",
+    "id": "PN",
+    "idAlpha3": "PCN",
+    "name": "Pitcairn Islands"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "PL",
+    "idAlpha3": "POL",
+    "name": "Poland, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "PT",
+    "idAlpha3": "PRT",
+    "name": "Portugal, Portuguese Republic"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "PR",
+    "idAlpha3": "PRI",
+    "name": "Puerto Rico, Commonwealth of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "QA",
+    "idAlpha3": "QAT",
+    "name": "Qatar, State of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "RE",
+    "idAlpha3": "REU",
+    "name": "Reunion"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "RO",
+    "idAlpha3": "ROU",
+    "name": "Romania"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "RU",
+    "idAlpha3": "RUS",
+    "name": "Russian Federation"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "RU",
+    "idAlpha3": "RUS",
+    "name": "Russian Federation"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "RW",
+    "idAlpha3": "RWA",
+    "name": "Rwanda, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "EH",
+    "idAlpha3": "ESH",
+    "name": "Sahrawi Arab Democratic Republic"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "BL",
+    "idAlpha3": "BLM",
+    "name": "Saint Barthelemy"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "SH",
+    "idAlpha3": "SHN",
+    "name": "Saint Helena"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "KN",
+    "idAlpha3": "KNA",
+    "name": "Saint Kitts and Nevis, Federation of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "LC",
+    "idAlpha3": "LCA",
+    "name": "Saint Lucia"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "MF",
+    "idAlpha3": "MAF",
+    "name": "Saint Martin"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "PM",
+    "idAlpha3": "SPM",
+    "name": "Saint Pierre and Miquelon"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "VC",
+    "idAlpha3": "VCT",
+    "name": "Saint Vincent and the Grenadines"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "OC",
+    "id": "WS",
+    "idAlpha3": "WSM",
+    "name": "Samoa, Independent State of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "SM",
+    "idAlpha3": "SMR",
+    "name": "San Marino, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "ST",
+    "idAlpha3": "STP",
+    "name": "São Tomé and Príncipe, Democratic Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "SA",
+    "idAlpha3": "SAU",
+    "name": "Saudi Arabia, Kingdom of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "SN",
+    "idAlpha3": "SEN",
+    "name": "Senegal, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "RS",
+    "idAlpha3": "SRB",
+    "name": "Serbia, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "SC",
+    "idAlpha3": "SYC",
+    "name": "Seychelles, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "SL",
+    "idAlpha3": "SLE",
+    "name": "Sierra Leone, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "SG",
+    "idAlpha3": "SGP",
+    "name": "Singapore, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "SX",
+    "idAlpha3": "SXM",
+    "name": "Sint Maarten (Netherlands)"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "SK",
+    "idAlpha3": "SVK",
+    "name": "Slovakia (Slovak Republic)"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "SI",
+    "idAlpha3": "SVN",
+    "name": "Slovenia, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "OC",
+    "id": "SB",
+    "idAlpha3": "SLB",
+    "name": "Solomon Islands"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "SO",
+    "idAlpha3": "SOM",
+    "name": "Somalia, Federal Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "ZA",
+    "idAlpha3": "ZAF",
+    "name": "South Africa, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AN",
+    "id": "GS",
+    "idAlpha3": "SGS",
+    "name": "South Georgia and the South Sandwich Islands"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "SS",
+    "idAlpha3": "SSD",
+    "name": "South Sudan, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "ES",
+    "idAlpha3": "ESP",
+    "name": "Spain, Kingdom of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "XS",
+    "idAlpha3": "null",
+    "name": "Spratly Islands"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "LK",
+    "idAlpha3": "LKA",
+    "name": "Sri Lanka, Democratic Socialist Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "SD",
+    "idAlpha3": "SDN",
+    "name": "Sudan, Republic of the"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "SA",
+    "id": "SR",
+    "idAlpha3": "SUR",
+    "name": "Suriname, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "SJ",
+    "idAlpha3": "SJM",
+    "name": "Svalbard & Jan Mayen Islands"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "SE",
+    "idAlpha3": "SWE",
+    "name": "Sweden, Kingdom of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "CH",
+    "idAlpha3": "CHE",
+    "name": "Switzerland, Swiss Confederation"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "SY",
+    "idAlpha3": "SYR",
+    "name": "Syrian Arab Republic"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "TW",
+    "idAlpha3": "TWN",
+    "name": "Taiwan"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "TJ",
+    "idAlpha3": "TJK",
+    "name": "Tajikistan, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "TZ",
+    "idAlpha3": "TZA",
+    "name": "Tanzania, United Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "TH",
+    "idAlpha3": "THA",
+    "name": "Thailand, Kingdom of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "TL",
+    "idAlpha3": "TLS",
+    "name": "Timor-Leste, Democratic Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "TG",
+    "idAlpha3": "TGO",
+    "name": "Togo, Togolese Republic"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "OC",
+    "id": "TK",
+    "idAlpha3": "TKL",
+    "name": "Tokelau"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "OC",
+    "id": "TO",
+    "idAlpha3": "TON",
+    "name": "Tonga, Kingdom of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "TT",
+    "idAlpha3": "TTO",
+    "name": "Trinidad and Tobago, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "TN",
+    "idAlpha3": "TUN",
+    "name": "Tunisia, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "TR",
+    "idAlpha3": "TUR",
+    "name": "Turkey, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "TR",
+    "idAlpha3": "TUR",
+    "name": "Turkey, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "TM",
+    "idAlpha3": "TKM",
+    "name": "Turkmenistan"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "TC",
+    "idAlpha3": "TCA",
+    "name": "Turks and Caicos Islands"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "OC",
+    "id": "TV",
+    "idAlpha3": "TUV",
+    "name": "Tuvalu"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "UG",
+    "idAlpha3": "UGA",
+    "name": "Uganda, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "UA",
+    "idAlpha3": "UKR",
+    "name": "Ukraine"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "AE",
+    "idAlpha3": "ARE",
+    "name": "United Arab Emirates"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "EU",
+    "id": "GB",
+    "idAlpha3": "GBR",
+    "name": "United Kingdom of Great Britain & Northern Ireland"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "XD",
+    "idAlpha3": "null",
+    "name": "United Nations Neutral Zone"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "UM",
+    "idAlpha3": "UMI",
+    "name": "United States Minor Outlying Islands"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "OC",
+    "id": "UM",
+    "idAlpha3": "UMI",
+    "name": "United States Minor Outlying Islands"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "US",
+    "idAlpha3": "USA",
+    "name": "United States of America"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "NA",
+    "id": "VI",
+    "idAlpha3": "VIR",
+    "name": "United States Virgin Islands"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "SA",
+    "id": "UY",
+    "idAlpha3": "URY",
+    "name": "Uruguay, Oriental Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "UZ",
+    "idAlpha3": "UZB",
+    "name": "Uzbekistan, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "OC",
+    "id": "VU",
+    "idAlpha3": "VUT",
+    "name": "Vanuatu, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "SA",
+    "id": "VE",
+    "idAlpha3": "VEN",
+    "name": "Venezuela, Bolivarian Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "VN",
+    "idAlpha3": "VNM",
+    "name": "Vietnam, Socialist Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "OC",
+    "id": "WF",
+    "idAlpha3": "WLF",
+    "name": "Wallis and Futuna"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AS",
+    "id": "YE",
+    "idAlpha3": "YEM",
+    "name": "Yemen"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "ZM",
+    "idAlpha3": "ZMB",
+    "name": "Zambia, Republic of"
+  },
+  {
+    "shape": [],
+    "center": [],
+    "continentId": "AF",
+    "id": "ZW",
+    "idAlpha3": "ZWE",
+    "name": "Zimbabwe, Republic of"
+  }
+]
