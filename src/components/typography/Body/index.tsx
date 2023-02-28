@@ -4,10 +4,16 @@ import { ReactNode } from "react";
 
 type BodyProps = {
   children?: ReactNode;
+  opacity?: number;
+  color?: string;
 };
 
-export const Body = ({ children }: BodyProps) => {
-  return <p className={`${styles.body}`}>{children}</p>;
+export const Body = ({ children, opacity, color }: BodyProps) => {
+  return (
+    <p className={`${styles.body}`} style={{ opacity: opacity, color: color }}>
+      {children}
+    </p>
+  );
 };
 
 export default Body;
