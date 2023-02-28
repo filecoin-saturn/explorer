@@ -1,34 +1,44 @@
-import { createContext, useState } from 'react';
+import { createContext, ReactElement, ReactNode, useState } from 'react';
 import { Continent } from '../hooks/useContinents';
 import { Country } from '../hooks/useCountries';
 import { Location } from '../hooks/useLocations';
 
+export type NavBarEntity = Continent | Country | Location | undefined
+export type HoverEntity = Continent | Country | undefined
+
+export enum ViewMode {
+  Cluster = "cluster",
+  Heatmap = "heatmap",
+  Density = "density"
+}
+
+
 type AppContextType = {
-  navbarEntity: Continent | Country | Location | undefined, 
-  hoverEntity: Continent | Country | undefined,
-  viewMode: 'cluster' | 'heatmap' | undefined,
-  setNavbarEntity: (entity: Continent | Country | Location | undefined) => void,
-  setHoverEntity: (entity: Continent | Country | undefined) => void,
-  setViewMode: (mode: 'cluster' | 'heatmap' | undefined) => void,
+  navbarEntity: NavBarEntity,
+  hoverEntity: HoverEntity,
+  viewMode: ViewMode | undefined,
+  setNavbarEntity: (entity: NavBarEntity) => void,
+  setHoverEntity: (entity: HoverEntity) => void,
+  setViewMode: (mode: ViewMode | undefined) => void,
 }
 
 const initialValues = {
   navbarEntity: undefined,
   hoverEntity: undefined,
-  viewMode: undefined,
-  setNavbarEntity: () => {},
-  setHoverEntity: () => {},
-  setViewMode: () => {}
+  viewMode: ViewMode.Density,
+  setNavbarEntity: () => { },
+  setHoverEntity: () => { },
+  setViewMode: () => { }
 }
 
-const AppContext = createContext<AppContextType | undefined>(initialValues);
+const AppContext = createContext<AppContextType>(initialValues);
 
-export const AppContextProvider = ({ children }: { children: JSX.Element }): JSX.Element => {
+export const AppContextProvider = ({ children }: { children: ReactNode }): ReactElement => {
 
-  const [currentNavbarEntity, setCurrentNavbarEntity] = useState<AppContextType['navbarEntity']>(undefined)
-  const [currentHoverEntity, setCurrentHoverEntity] = useState<AppContextType['hoverEntity']>(undefined)
-  const [currentViewMode, setCurrentViewMode] = useState<AppContextType['viewMode']>(undefined)
-
+  const [currentNavbarEntity, setCurrentNavbarEntity] = useState<NavBarEntity>(undefined)
+  const [currentHoverEntity, setCurrentHoverEntity] = useState<HoverEntity>(undefined)
+  const [currentViewMode, setCurrentViewMode] = useState<ViewMode | undefined>(undefined)
+  
   const value = {
     navbarEntity: currentNavbarEntity,
     hoverEntity: currentHoverEntity,
@@ -37,7 +47,7 @@ export const AppContextProvider = ({ children }: { children: JSX.Element }): JSX
     setHoverEntity: setCurrentHoverEntity,
     setViewMode: setCurrentViewMode
   }
-  
+
   return (
     <AppContext.Provider value={value}>
       {children}
