@@ -11,7 +11,7 @@ type ParagraphProps = {
 export const Paragraph = ({ children, opacity, color }: ParagraphProps) => {
   return (
     <p
-      className={`${styles.paragraph}`}
+      className={`${styles.Paragraph}`}
       style={{ opacity: opacity, color: color }}
     >
       {children}
