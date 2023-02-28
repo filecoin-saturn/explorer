@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-type Continent = {
+export type Continent = {
   id: string;
   name: string;
   shape: any;

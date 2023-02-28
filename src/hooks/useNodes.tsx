@@ -143,7 +143,7 @@ export type NodeData = {
   HealthCheckFailures: NodeHealthCheckFailure[];
 };
 
-type Node = {
+export type Node = {
   id: string;
   countryId: string;
   locationId: string;
@@ -151,7 +151,7 @@ type Node = {
   data: NodeData;
 };
 
-type Nodes = Node[];
+export type Nodes = Node[];
 
 export const useNodes = () => {
   const [nodes, setNodes] = useState<Nodes>([]);

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-type Location = {
+export type Location = {
   id: string;
   countryId: string;
   continentId: string;
