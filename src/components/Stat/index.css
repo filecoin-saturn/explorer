@@ -1,0 +1,46 @@
+.Stat-value {
+  font-family: var(--font-family);
+  font-size: var(--size-base);
+  font-weight: 400;
+  color: var(--color-white);
+}
+
+.Stat-valueWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.Stat-units {
+  display: inline;
+  font-size: var(--size-sm);
+}
+
+.Stat-label {
+  font-family: var(--font-family);
+  font-size: var(--size-xs);
+  color: var(--color-white);
+
+  opacity: 0.6;
+}
+
+.Stat.small .Stat-value {
+  font-size: var(--size-sm);
+}
+
+.Stat.small .Stat-units {
+  font-size: var(--size-xs);
+}
+
+.Stat.small .Stat-label {
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .Stat-value {
+    font-size: var(--size-md);
+  }
+
+  .Stat-label {
+    font-size: var(--size-sm);
+  }
+}
