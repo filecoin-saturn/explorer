@@ -77,7 +77,7 @@ See the create-react-app section about [running tests](https://facebook.github.i
 
 ## Deployment
 
-Deployments are automated using Github actions, check the [build page](build-page) for availble actions.
+Deployments are automated using Github actions, check the [build page][build-page] for availble actions.
 
 You can create a build manually by running
 
