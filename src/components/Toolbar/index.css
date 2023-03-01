@@ -9,7 +9,7 @@
   gap: 2px;
 }
 
-.Toolbar-buttons {
+.Toolbar-buttonsGroup {
   gap: 1px;
 }
 
@@ -22,9 +22,13 @@
     gap: 20px
   }
 
-  .Toolbar-buttons {
+  .Toolbar-buttonsGroup {
     display: flex;
     flex-direction: row;
     gap: 10px
+  }
+
+  .Toolbar-button:first-child{
+    visibility: hidden;
   }
 }

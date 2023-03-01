@@ -1,8 +1,7 @@
-import Toolbar from ".";
+import {Toolbar as ToolbarComponent} from ".";
 
 export default {
-  title: "Toolbar",
-  component: Toolbar,
+  component: ToolbarComponent,
 };
 
-export const Scale = () => <Toolbar />;
+export const Toolbar = () => <ToolbarComponent />;

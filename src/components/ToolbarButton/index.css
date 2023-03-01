@@ -92,6 +92,7 @@
   }
 
   .ToolbarButton-subtitle {
+    text-transform: capitalize;
     font-size: var(--size-sm);
     color: var(--color-white);
     opacity: 0.5;
