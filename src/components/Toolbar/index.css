@@ -1,0 +1,30 @@
+.Toolbar {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 1;
+  top: 4px;
+  right: 4px;
+  height: 80px;
+  gap: 2px;
+}
+
+.Toolbar-buttons {
+  gap: 1px;
+}
+
+@media (min-width: 1024px) {
+  .Toolbar {
+    flex-direction: row;
+    top: 32px;
+    right: 32px;
+    height: 48px;
+    gap: 20px
+  }
+
+  .Toolbar-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 10px
+  }
+}
