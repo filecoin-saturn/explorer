@@ -1,13 +1,11 @@
 .Stat-value {
+  display: flex;
+  align-items: center;
+
   font-family: var(--font-family);
   font-size: var(--size-base);
   font-weight: 400;
   color: var(--color-white);
-}
-
-.Stat-valueWrapper {
-  display: flex;
-  align-items: center;
 }
 
 .Stat-units {
@@ -19,7 +17,6 @@
   font-family: var(--font-family);
   font-size: var(--size-xs);
   color: var(--color-white);
-
   opacity: 0.6;
 }
 

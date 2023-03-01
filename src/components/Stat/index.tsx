@@ -1,12 +1,10 @@
 import "./index.css";
 
-import { ReactNode } from "react";
-
 type StatProps = {
-  value?: ReactNode;
-  units?: ReactNode;
-  label?: ReactNode;
-  small?: ReactNode;
+  value?: string | number;
+  units?: string;
+  label?: string;
+  small?: boolean;
 };
 
 export const Stat = ({ value, units, label, small }: StatProps) => {
@@ -14,12 +12,10 @@ export const Stat = ({ value, units, label, small }: StatProps) => {
 
   return (
     <div className={className}>
-      <div className="Stat-valueWrapper">
-        <p className="Stat-value">
-          {value}
-          {units && <span className="Stat-units">{units}</span>}
-        </p>
-      </div>
+      <p className="Stat-value">
+        {value}
+        {units && <span className="Stat-units">{units}</span>}
+      </p>
 
       {label && <p className="Stat-label">{label}</p>}
     </div>

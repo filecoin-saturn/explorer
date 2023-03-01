@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 
 type BreadcrumbProps = {
   children?: ReactNode;
-  active?: ReactNode;
+  active?: boolean;
 };
 
 export const Breadcrumb = ({ children, active }: BreadcrumbProps) => {
