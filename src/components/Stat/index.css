@@ -1,3 +1,14 @@
+.Stat-valueWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.Stat-icon {
+  width: var(--size-sm);
+  height: var(--size-sm);
+  margin-right: var(--size-xs);
+}
+
 .Stat-value {
   display: flex;
   align-items: center;
@@ -14,9 +25,12 @@
 }
 
 .Stat-label {
+  margin-left: var(--size-md);
+
   font-family: var(--font-family);
   font-size: var(--size-xs);
   color: var(--color-white);
+
   opacity: 0.6;
 }
 

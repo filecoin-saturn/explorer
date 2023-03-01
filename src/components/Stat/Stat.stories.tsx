@@ -6,9 +6,9 @@ export default {
 };
 
 export const Default = () => (
-  <StatComponent value="1,234" units="GB" label="Bandwidth" />
+  <StatComponent value="1,234" units="GB" label="Bandwidth" icon="load" />
 );
 
 export const Small = () => (
-  <StatComponent value="1,234" units="GB" label="Bandwidth" small />
+  <StatComponent value="1,234" units="GB" label="Bandwidth" icon="load" small />
 );
