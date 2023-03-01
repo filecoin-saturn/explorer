@@ -1,13 +1,15 @@
 import { ReactSVG } from "react-svg";
 
-export const Icon = ({ name, className} : {name: string, className: string}) => {
+type IconProps = { name: string, className: string }
+
+export const Icon = ({ name, className }: IconProps) => {
   return (
-     <ReactSVG
-        src={`assets/icons/${name}.svg`}
-        beforeInjection={(svg: any) => {
-          svg.classList.add(className);
-        }}
-      />
+    <ReactSVG
+      src={`assets/icons/${name}.svg`}
+      beforeInjection={(svg: any) => {
+        svg.classList.add(className);
+      }}
+    />
   )
 }
 

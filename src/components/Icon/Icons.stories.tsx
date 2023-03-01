@@ -7,3 +7,7 @@ export default {
 
 const Template = (args: any) => <IconComponent {...args} />
 export const Icon = Template.bind({});
+Icon.args = {
+  name: "fil",
+  className: 'Stats-icon',
+};
