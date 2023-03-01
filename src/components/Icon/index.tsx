@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { ReactSVG } from "react-svg";
-import './index.module.tsx'
 
 interface IIcon {
   iconName: string,
