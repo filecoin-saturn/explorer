@@ -1,6 +1,6 @@
 import { ReactSVG } from "react-svg";
 
-type IconProps = { name: string, className: string }
+export type IconProps = { name: string, className: string }
 
 export const Icon = ({ name, className }: IconProps) => {
   return (
