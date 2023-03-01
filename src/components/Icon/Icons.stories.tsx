@@ -5,11 +5,5 @@ export default {
   component: IconComponent,
 };
 
-const Template = (args: JSX.IntrinsicAttributes & { name: string; className: string; }) => <IconComponent {...args} />
-
-// export const IconStory = () => <IconComponent name={'fil'} className={'demo'} />;
+const Template = (args: { name: string; className: string; }) => <IconComponent {...args} />
 export const Icon = Template.bind({});
-// Icon.args = {
-//   name: "nodes",
-//   className: "Breadcrumb-icon"
-// }
