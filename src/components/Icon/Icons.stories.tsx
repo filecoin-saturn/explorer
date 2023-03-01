@@ -5,5 +5,5 @@ export default {
   component: IconComponent,
 };
 
-const Template = (args: { name: string; className: string; }) => <IconComponent {...args} />
+const Template = (args: any) => <IconComponent {...args} />
 export const Icon = Template.bind({});
