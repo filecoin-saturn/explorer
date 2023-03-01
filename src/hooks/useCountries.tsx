@@ -4,7 +4,7 @@ import countriesList from "./countries.json";
 
 export type Country = {
   id: string;
-  continentId: string;
+  continentId: string[];
   name: string;
   shape: any;
   center: any;
@@ -20,8 +20,8 @@ export const useCountries = () => {
   };
 
   const getCountriesByContinentId = (queryContinentId: string) => {
-    return countries.filter(
-      (country) => country.continentId === queryContinentId
+    return countries.filter((country) =>
+      country.continentId.some((id) => id === queryContinentId)
     );
   };
 
