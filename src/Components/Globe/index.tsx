@@ -1,32 +1,28 @@
 import "mapbox-gl/dist/mapbox-gl.css";
 
-import { Map, Source } from "react-map-gl";
+import mapboxgl from "mapbox-gl";
+import { Map } from "react-map-gl";
 
 const viewState = {
+  zoom: 1,
   longitude: -8.629105,
   latitude: 4.157944,
-  zoom: 1,
 };
+
+const projection = "globe";
+
+const mapStyle = "mapbox://styles/joaoferreira18/cldirckg4002w01rn7xzlzjf7";
 
 const Globe = () => {
   return (
     <Map
       id="map"
-      // onLoad={onMapLoad}
+      mapLib={mapboxgl}
+      mapStyle={mapStyle}
+      projection={projection}
       initialViewState={viewState}
-      mapboxAccessToken="pk.eyJ1Ijoiam9hb2ZlcnJlaXJhMTgiLCJhIjoiY2xkaXJhb3J4MWd4ZjNucGlrMTBxOXJoZyJ9.Hf3N8ndtLrE1R2bg6w92Dw"
-      mapStyle="mapbox://styles/joaoferreira18/cldirckg4002w01rn7xzlzjf7"
-      projection={"globe"}
-    >
-      <Source
-        type="vector"
-        id="boundaries"
-        name="boundaries"
-        url="mapbox://mapbox.country-boundaries-v1"
-      >
-        {/* <Boundaries /> */}
-      </Source>
-    </Map>
+      mapboxAccessToken={process.env.REACT_APP_MAP_BOX_ACCESS_TOKEN}
+    ></Map>
   );
 };
 
