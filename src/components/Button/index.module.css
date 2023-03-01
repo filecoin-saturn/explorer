@@ -1,0 +1,60 @@
+.Button {
+  display: flex;
+  justify-items: flex-end;
+  align-items: center;
+  padding: 4px;
+  cursor: pointer;
+
+  background: linear-gradient(
+    296.29deg,
+    rgba(0, 102, 255, 0.216) 2.96%,
+    rgba(0, 133, 255, 0.1896) 50.03%,
+    rgba(0, 163, 255, 0.2064) 93.31%
+  );
+  backdrop-filter: blur(16px);
+
+  border-width: 1px;
+  border-style: solid;
+  border-image: linear-gradient(
+      to right,
+      rgba(157, 226, 255, 0.64),
+      rgba(217, 255, 248, 0)
+    )
+    1;
+}
+
+.Button.active {
+  background: linear-gradient(
+    296.29deg,
+    rgba(0, 102, 255, 0.576) 2.96%,
+    rgba(0, 133, 255, 0.5056) 50.03%,
+    rgba(0, 163, 255, 0.5504) 93.31%
+  );
+}
+
+.Button-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.Button-title {
+  font-size: 16px;
+  color: #fff;
+  text-transform: capitalize;
+}
+
+.Button-subtitle {
+  font-size: 12px;
+  color: #fff;
+  opacity: 0.5;
+  text-transform: capitalize;
+}
+
+.Button.active .Button-subtitle {
+  color: #10ffd4;
+  opacity: 1;
+}
+
+/*
+mobilde: 
+*/
