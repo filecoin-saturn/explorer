@@ -1,0 +1,12 @@
+.Breadcrumb {
+  font-family: var(--font-family);
+  font-size: var(--size-sm);
+  font-weight: 400;
+  color: var(--color-white);
+
+  opacity: 0.6;
+}
+
+.Breadcrumb.active {
+  opacity: 1;
+}
