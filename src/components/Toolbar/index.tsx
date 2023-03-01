@@ -1,28 +1,29 @@
+import './index.module.css'
 import { useContext } from 'react'
-import AppContext from '../../contexts/AppContext'
-import './index.css'
+
 import Search from './Search'
-import ViewModeButton from './ViewMode'
-import { ViewMode } from '../../contexts/AppContext'
+import ViewModeButton from './ViewModeButton'
+import AppContext, { ViewMode } from '../../contexts/AppContext'
+
 
 
 const Toolbar = () => {
   const { viewMode, setViewMode } = useContext(AppContext)
 
   return (
-    <nav>
+    <nav className="Toolbar">
       <Search />
       <ViewModeButton
         isActive={viewMode === ViewMode.Cluster}
         onClick={() => setViewMode(ViewMode.Cluster)}
         iconPath={''}
-        title={ViewMode.Cluster}
+        title={'Nodes'}
         description={ViewMode.Cluster} />
       <ViewModeButton
         isActive={viewMode === ViewMode.Heatmap}
         onClick={() => setViewMode(ViewMode.Heatmap)}
         iconPath={''}
-        title={ViewMode.Heatmap}
+        title={'Load'}
         description={ViewMode.Heatmap} />
     </nav>
   )
