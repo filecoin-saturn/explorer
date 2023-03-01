@@ -1,17 +1,11 @@
-import { FC } from "react";
 import { ReactSVG } from "react-svg";
 
-interface IIcon {
-  iconName: string,
-  iconClass: string
-}
-
-const Icon: FC<IIcon> = ({ iconName, iconClass}) => {
+export const Icon = ({ name, className} : {name: string, className: string}) => {
   return (
      <ReactSVG
-        src={`assets/${iconName}.svg`}
+        src={`assets/icons/${name}.svg`}
         beforeInjection={(svg: any) => {
-          svg.classList.add(iconClass);
+          svg.classList.add(className);
         }}
       />
   )
