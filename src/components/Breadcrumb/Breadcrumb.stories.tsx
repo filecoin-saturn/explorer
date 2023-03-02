@@ -5,8 +5,22 @@ export default {
   component: BreadcrumbComponent,
 };
 
-export const Default = () => <BreadcrumbComponent>World</BreadcrumbComponent>;
+export const Default = () => (
+  <BreadcrumbComponent
+    continent=""
+    code=""
+    city=""
+    name="World"
+    onClick={() => alert("Clicked")}
+  />
+);
 
 export const Active = () => (
-  <BreadcrumbComponent active>World</BreadcrumbComponent>
+  <BreadcrumbComponent
+    continent="Europe"
+    code="PT"
+    city=""
+    name="Portugal"
+    active
+  />
 );
