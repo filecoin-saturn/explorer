@@ -1,17 +1,21 @@
-import {ToolbarButton as ToolbarButtonComponent, ToolbarButtonProps} from "./index";
-import {Meta, Story} from '@storybook/react'
+import {
+  ToolbarButton as ToolbarButtonComponent,
+  ToolbarButtonProps,
+} from "./index";
+import { Meta, Story } from "@storybook/react";
 
 export default {
-  component: ToolbarButtonComponent
+  component: ToolbarButtonComponent,
 } as Meta;
 
-const Template: Story<ToolbarButtonProps> = (args) => <ToolbarButtonComponent {...args} />
+const Template: Story<ToolbarButtonProps> = (args) => (
+  <ToolbarButtonComponent {...args} />
+);
 export const ToolbarButton = Template.bind({});
 ToolbarButton.args = {
   isActive: false,
-  title: 'Nodes',
-  subtitle: 'Cluster',
+  title: "Nodes",
+  subtitle: "Cluster",
   onClick: () => {},
-  iconName: 'Nodes'
+  iconName: "Nodes",
 };
-
