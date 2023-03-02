@@ -1,11 +1,11 @@
 import { ReactSVG } from "react-svg";
 
-export type IconProps = { name: string, className: string }
+export type IconProps = { iconPath: string, className: string }
 
-export const Icon = ({ name, className }: IconProps) => {
+export const Icon = ({ iconPath, className }: IconProps) => {
   return (
     <ReactSVG
-      src={`assets/icons/${name}.svg`}
+      src={`/assets/${iconPath}.svg`}
       beforeInjection={(svg: any) => {
         svg.classList.add(className);
       }}
