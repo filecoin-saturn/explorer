@@ -1,8 +1,10 @@
 import { useState } from "react";
 
+import countriesList from "./countries.json";
+
 export type Country = {
   id: string;
-  continentId: string;
+  continentId: string[];
   name: string;
   shape: any;
   center: any;
@@ -11,19 +13,19 @@ export type Country = {
 type Countries = Country[];
 
 export const useCountries = () => {
-  const [countries, setCountries] = useState<Countries>([]);
+  const [countries, setCountries] = useState<Countries>(countriesList);
 
   const getCountryById = (queryCountryId: string) => {
-    return countries.filter((country) => country.id === queryCountryId);
+    return countries.find((country) => country.id === queryCountryId);
   };
 
-  const getCountryByContinentId = (queryContinentId: string) => {
-    return countries.filter(
-      (country) => country.continentId === queryContinentId
+  const getCountriesByContinentId = (queryContinentId: string) => {
+    return countries.filter((country) =>
+      country.continentId.some((id) => id === queryContinentId)
     );
   };
 
-  return { countries, setCountries, getCountryById, getCountryByContinentId };
+  return { countries, setCountries, getCountryById, getCountriesByContinentId };
 };
 
 export default useCountries;

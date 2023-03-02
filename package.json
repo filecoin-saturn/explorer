@@ -11,9 +11,12 @@
     "@types/node": "^16.18.12",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
+    "mapbox-gl": "^2.13.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-map-gl": "^7.0.21",
     "react-scripts": "5.0.1",
+    "react-svg": "^16.1.4",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
@@ -70,11 +73,11 @@
     "@storybook/testing-library": "^0.0.13",
     "@testing-library/dom": "^9.0.0",
     "babel-plugin-named-exports-order": "^0.0.2",
-    "prop-types": "^15.8.1",
-    "webpack": "^5.75.0",
     "prettier": "^2.8.4",
+    "prop-types": "^15.8.1",
     "stylelint": "^15.2.0",
     "stylelint-config-clean-order": "^5.0.0",
-    "stylelint-config-standard": "^30.0.1"
+    "stylelint-config-standard": "^30.0.1",
+    "webpack": "^5.75.0"
   }
 }
