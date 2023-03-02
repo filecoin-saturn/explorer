@@ -6,7 +6,6 @@ import Toolbar from "./components/Toolbar";
 function App() {
   return (
     <div className="App">
-      <Toolbar />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
