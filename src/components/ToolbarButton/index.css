@@ -2,36 +2,43 @@
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  padding: var(--size-xxs);
-  
   justify-content: center;
   align-items: center;
-
-  background: linear-gradient(296.29deg,
-      rgba(0, 102, 255, 0.216) 2.96%,
-      rgba(0, 133, 255, 0.1896) 50.03%,
-      rgba(0, 163, 255, 0.2064) 93.31%);
+  width: fit-content;
+  height: fit-content;
+  background: linear-gradient(
+    296.29deg,
+    rgba(0, 102, 255, 0.216) 2.96%,
+    rgba(0, 133, 255, 0.1896) 50.03%,
+    rgba(0, 163, 255, 0.2064) 93.31%
+  );
   backdrop-filter: blur(16px);
 
   border-width: 1px;
   border-style: solid;
-  border-image: linear-gradient(to right,
+  border-image: linear-gradient(
+      to right,
       rgba(157, 226, 255, 0.64),
-      rgba(217, 255, 248, 0)) 1;
+      rgba(217, 255, 248, 0)
+    )
+    1;
 }
 
 .ToolbarButton-icon {
+  display: flex;
   width: 24px;
   height: 24px;
-  margin: 8px 24px 12px 24px;
+  margin: var(--size-sm) var(--size-lg);
+  margin-bottom: var(--size-xs);
   opacity: 0.5;
 }
 
 .ToolbarButton-description {
-  display: grid;
-  grid-template-columns: repeat(1, 2fr);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-items: center;
-  width: 100%;
+  padding: var(--size-xxs);
 }
 
 .ToolbarButton-title {
@@ -51,10 +58,12 @@
 }
 
 .ToolbarButton.active {
-  background: linear-gradient(296.29deg,
-      rgba(0, 102, 255, 0.576) 2.96%,
-      rgba(0, 133, 255, 0.5056) 50.03%,
-      rgba(0, 163, 255, 0.5504) 93.31%);
+  background: linear-gradient(
+    296.29deg,
+    rgba(0, 102, 255, 0.576) 2.96%,
+    rgba(0, 133, 255, 0.5056) 50.03%,
+    rgba(0, 163, 255, 0.5504) 93.31%
+  );
 }
 
 .ToolbarButton.active .ToolbarButton-icon {
@@ -64,22 +73,21 @@
 @media screen and (min-width: 1024px) {
   .ToolbarButton {
     flex-direction: row;
-    padding: 4px 12px;
-    width: 167px;
-    height: 48px;
     justify-content: flex-start;
-
     align-items: center;
+    width: 167px;
   }
 
   .ToolbarButton-icon {
-    margin: 8px;
-    margin-right: 12px;
+    margin: var(--size-sm);
+    margin-right: var(--size-xs);
     opacity: 0.5;
   }
 
-  .ToolbarButton-description {
+  .ToolbarButton-description {    
     justify-items: flex-start;
+    align-items: flex-start;
+    padding: 
   }
 
   .ToolbarButton-title {
