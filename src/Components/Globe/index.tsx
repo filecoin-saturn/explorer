@@ -13,7 +13,7 @@ const projection = "globe";
 
 const mapStyle = "mapbox://styles/joaoferreira18/cldirckg4002w01rn7xzlzjf7";
 
-const Globe = () => {
+export const Globe = () => {
   return (
     <Map
       id="map"

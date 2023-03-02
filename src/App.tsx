@@ -1,6 +1,6 @@
 import "./App.css";
 
-import Globe from "./Components/Globe";
+import Globe from "./components/Globe";
 
 function App() {
   return (
