@@ -1,7 +1,6 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import Toolbar from "./components/Toolbar";
 
 function App() {
   return (
