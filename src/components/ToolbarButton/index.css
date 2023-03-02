@@ -2,11 +2,8 @@
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  padding: 4px;
-
-  width: 80px;
-  height: 80px;
-
+  padding: var(--size-xxs);
+  
   justify-content: center;
   align-items: center;
 
