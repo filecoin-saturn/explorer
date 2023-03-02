@@ -31,7 +31,7 @@ export const Breadcrumb = ({
   return (
     <button onClick={onClick} className={className}>
       <Icon name={`../regions/${icon}`} className="Breadcrumb-icon" />
-      {name}
+      <div className="Breadcrumb-name">{name}</div>
     </button>
   );
 };
