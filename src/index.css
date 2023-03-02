@@ -1,24 +1,53 @@
-@import "styles/globals.css";
+html {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
 
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+blockquote,
+dl,
+dd,
 h1,
 h2,
 h3,
 h4,
+h5,
+h6,
+figure,
 p,
-body {
-  height: 100vh;
+pre {
   margin: 0;
 }
 
-html,
-body {
-  height: 100%;
+button {
+  padding: 0;
+  background: transparent;
+  border: 0;
 }
 
-html {
-  font-family: var(--font-family);
+button:focus {
+  outline: 1px dotted;
+  outline: 5px auto -webkit-focus-ring-color;
 }
 
-#root {
-  height: 100%;
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+iframe {
+  border: 0;
+}
+
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
