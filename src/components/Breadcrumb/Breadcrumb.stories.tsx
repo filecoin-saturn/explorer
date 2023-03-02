@@ -6,13 +6,7 @@ export default {
 };
 
 export const Default = () => (
-  <BreadcrumbComponent
-    continent=""
-    code=""
-    city=""
-    name="World"
-    onClick={() => alert("Clicked")}
-  />
+  <BreadcrumbComponent continent="" code="" city="" name="World" />
 );
 
 export const Active = () => (
