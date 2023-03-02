@@ -1,4 +1,4 @@
-.Stat-valueWrapper {
+.Stat-content {
   display: flex;
   align-items: center;
 }
@@ -10,9 +10,6 @@
 }
 
 .Stat-value {
-  display: flex;
-  align-items: center;
-
   font-family: var(--font-family);
   font-size: var(--size-base);
   font-weight: 400;

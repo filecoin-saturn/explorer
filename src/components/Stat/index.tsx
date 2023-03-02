@@ -1,4 +1,3 @@
-import { ReactNode } from "react";
 import Icon from "../Icon";
 import "./index.css";
 
@@ -7,7 +6,7 @@ type StatProps = {
   units?: string;
   label?: string;
   small?: boolean;
-  icon?: ReactNode;
+  icon?: string;
 };
 
 export const Stat = ({ value, units, label, small, icon }: StatProps) => {
@@ -15,7 +14,7 @@ export const Stat = ({ value, units, label, small, icon }: StatProps) => {
 
   return (
     <div className={className}>
-      <div className="Stat-valueWrapper">
+      <div className="Stat-content">
         <Icon name={`${icon}`} className="Stat-icon" />
         <p className="Stat-value">
           {value}
