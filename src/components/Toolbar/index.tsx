@@ -5,6 +5,12 @@ import Search from "./Search";
 import ToolbarButton from "../ToolbarButton";
 import AppContext, { ViewMode } from "../../contexts/AppContext";
 
+const toolbarOptions = [
+  { viewMode: ViewMode.Density, iconName: "Nodes", title: "Density" },
+  { viewMode: ViewMode.Cluster, iconName: "Nodes", title: "Cluster" },
+  { viewMode: ViewMode.Heatmap, iconName: "Load", title: "Load" },
+];
+
 type ViewModeButtonsProps = {
   viewMode: ViewMode | undefined;
   setViewMode: (viewMode: ViewMode | undefined) => void;
@@ -16,16 +22,10 @@ const ViewModeButtonsMobile = ({
 }: ViewModeButtonsProps) => {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(true);
 
-  const toolbarOptions = [
-    { viewMode: ViewMode.Density, iconName: "Nodes", title: "Density" },
-    { viewMode: ViewMode.Cluster, iconName: "Nodes", title: "Cluster" },
-    { viewMode: ViewMode.Heatmap, iconName: "Load", title: "Load" },
-  ];
-
   const enabledViewMode = toolbarOptions.find((e) => e.viewMode === viewMode);
-  const disabledViewModes = toolbarOptions.filter((opt) => opt !== enabledViewMode);
-
-  console.log(viewMode, enabledViewMode)
+  const disabledViewModes = toolbarOptions.filter(
+    (opt) => opt !== enabledViewMode
+  );
 
   const handleClick = (mode: ViewMode) => {
     if (mode === viewMode && isCollapsed) {
@@ -81,24 +81,21 @@ const ViewModeButtonsWeb = ({
 
   return (
     <div className="Toolbar-buttonsGroup">
-      <div className="Toolbar-button">
-        <ToolbarButton
-          isActive={viewMode === ViewMode.Cluster}
-          onClick={() => handleClick(ViewMode.Cluster)}
-          iconName={"Nodes"}
-          title={"Nodes"}
-          subtitle={ViewMode.Cluster}
-        />
-      </div>
-      <div className="Toolbar-button">
-        <ToolbarButton
-          isActive={viewMode === ViewMode.Heatmap}
-          onClick={() => handleClick(ViewMode.Heatmap)}
-          iconName={"Load"}
-          title={"Load"}
-          subtitle={ViewMode.Heatmap}
-        />
-      </div>
+      {toolbarOptions.map((option) => {
+        if (option.viewMode !== ViewMode.Density) {
+          return (
+            <div key={option.viewMode} className={"Toolbar-button"}>
+              <ToolbarButton
+                isActive={viewMode === option.viewMode}
+                onClick={() => handleClick(option.viewMode)}
+                iconName={option.iconName}
+                title={option.title}
+                subtitle={option.viewMode}
+              />
+            </div>
+          );
+        }
+      })}
     </div>
   );
 };
