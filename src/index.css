@@ -51,3 +51,17 @@ ul {
   padding: 0;
   list-style: none;
 }
+
+input,
+input:active,
+input:focus,
+input::placeholder {
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+  outline: none;
+  width: auto;
+}
