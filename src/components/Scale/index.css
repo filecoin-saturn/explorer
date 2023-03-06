@@ -1,0 +1,61 @@
+.Scale-wrapper {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  right: 32px;
+  transform: translateY(-50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+
+  padding: 0 10px;
+
+  background: linear-gradient(
+    296.29deg,
+    rgba(0, 102, 255, 0.144) 2.96%,
+    rgba(0, 133, 255, 0.1264) 50.03%,
+    rgba(0, 163, 255, 0.1376) 93.31%
+  );
+  backdrop-filter: blur(16px);
+  border-style: solid;
+  border-width: 1px;
+  border-image: linear-gradient(
+      to right,
+      rgba(157, 226, 255, 0.64),
+      rgba(217, 255, 248, 0)
+    )
+    1;
+}
+
+.Scale-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin: 0;
+  padding: 20px 0;
+}
+
+.Scale-wrapper p {
+  margin: 0;
+  font-family: var(--font-family);
+}
+
+.Scale-step {
+  font-size: 12px;
+  color: white;
+}
+
+.Scale-stepLabel {
+  font-size: 12px;
+  color: white;
+  opacity: 0.6;
+}
+
+.Scale {
+  width: 24px;
+  height: 216px;
+  border-radius: 24px 24px 100% 100%;
+}
