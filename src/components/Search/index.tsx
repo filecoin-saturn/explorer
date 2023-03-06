@@ -23,23 +23,25 @@ export const Search = () => {
     setSearchTerm(event.currentTarget.value);
   };
 
-  const className = `Search ${isSearchActive ? "active" : ""}`;
+  const className = `Search-box ${isSearchActive ? "active" : ""}`;
 
   return (
-    <div
-      className={className}
-      onClick={() => setIsSearchActive(true)}
-      onBlur={() => setIsSearchActive(false)}
-    >
-      <input
-        ref={inputRef}
-        className="Search-input"
-        type="text"
-        placeholder="Search"
-        value={searchTerm}
-        onChange={handleSearchInput}
-      />
-      <Icon name="search" className="Search-icon" />
+    <div>
+      <div
+        className={className}
+        onClick={() => setIsSearchActive(true)}
+        onBlur={() => setIsSearchActive(false)}
+      >
+        <input
+          ref={inputRef}
+          className="Search-input"
+          type="text"
+          placeholder="Search"
+          value={searchTerm}
+          onChange={handleSearchInput}
+        />
+        <Icon name="search" className="Search-icon" />
+      </div>
     </div>
   );
 };

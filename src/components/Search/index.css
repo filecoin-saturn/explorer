@@ -1,4 +1,4 @@
-.Search {
+.Search-box {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -21,7 +21,7 @@
     1;
 }
 
-.Search:focus-within {
+.Search-box:focus-within {
   background: linear-gradient(
     296.29deg,
     rgba(0, 102, 255, 0.576) 2.96%,
@@ -49,20 +49,21 @@
   width: calc(100% - 3 * var(--size-lg));
 }
 
-.Search:not(.active) .Search-input {
+.Search-box:not(.active) .Search-input {
   display: none;
 }
 
 @media screen and (min-width: 1024px) {
-  .Search {
+  .Search-box {
     min-width: 167px;
   }
 
-  .Search:focus-within {
-    width: 370px;
+  .Search-box:focus-within {
+    min-width: 370px;
+    max-width: 370px;
   }
 
-  .Search:not(.active) .Search-input {
+  .Search-box:not(.active) .Search-input {
     display: inherit;
   }
 
@@ -72,7 +73,7 @@
     padding: var(--size-sm);
     background: transparent;
     font-weight: 400;
-    width: 119px;
+    width: calc(100% - 3 * var(--size-base));
     font-family: var(--font-family);
     font-size: var(--size-base);
     color: var(--color-white);
