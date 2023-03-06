@@ -14,14 +14,14 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  MAPBOX_PUBLIC_TOKEN: ${{ vars.MAPBOX_PUBLIC_TOKEN }}
+  REACT_APP_MAP_BOX_ACCESS_TOKEN: ${{ vars.REACT_APP_MAP_BOX_ACCESS_TOKEN }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
     environment:
-        name: github-pages
-        url: ${{ steps.deployment.outputs.page_url }}
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     strategy:
       matrix:
@@ -37,7 +37,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Setup environment
         run: npm ci
-      - name: Run linters 
+      - name: Run linters
         run: npm run lint
       - name: Run tests
         run: npm run test
@@ -54,8 +54,8 @@ jobs:
 
   deploy:
     environment:
-        name: github-pages
-        url: ${{ steps.deployment.outputs.page_url }}
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     needs: build
     runs-on: ubuntu-latest
     steps:

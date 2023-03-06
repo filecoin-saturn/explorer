@@ -1,7 +1,11 @@
 import "mapbox-gl/dist/mapbox-gl.css";
 
-import mapboxgl from "mapbox-gl";
 import { Map } from "react-map-gl";
+//@ts-ignore
+import mapboxgl from "mapbox-gl/dist/mapbox-gl";
+//@ts-ignore
+import MapboxWorker from "mapbox-gl/dist/mapbox-gl-csp-worker";
+mapboxgl.workerClass = MapboxWorker;
 
 const viewState = {
   zoom: 1,
