@@ -1,15 +1,12 @@
 .SearchResult {
   padding: 12px;
   cursor: pointer;
-  width: 100%;
-
   background: linear-gradient(
     296.29deg,
     rgba(0, 102, 255, 0.216) 2.96%,
     rgba(0, 133, 255, 0.1896) 50.03%,
     rgba(0, 163, 255, 0.2064) 93.31%
   );
-
   border-width: 1px;
   border-style: solid;
   border-image: linear-gradient(
@@ -49,10 +46,10 @@
 
 @media screen and (min-width: 1024px) {
   .SearchResult-name {
-    font-family: var(--size-base);
+    font-size: var(--size-base);
   }
   .SearchResult-parent {
-    font-family: var(--size-base);
+    font-size: var(--size-base);
   }
 
   .SearchResult:hover .SearchResult-parent {

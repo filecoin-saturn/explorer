@@ -2,18 +2,19 @@ import "./index.css";
 import "./../../styles/globals.css";
 import Icon from "../Icon";
 import { useEffect, useRef, useState } from "react";
+import SearchResult from "./SearchResult";
 
 export const Search = () => {
   const [searchTerm, setSearchTerm] = useState<string | undefined>();
   const [isSearchActive, setIsSearchActive] = useState<boolean>(false);
-  
+
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if(isSearchActive) {
+    if (isSearchActive) {
       inputRef.current?.focus();
     }
-  })
+  });
 
   useEffect(() => {
     // todo: perform querying
@@ -23,12 +24,12 @@ export const Search = () => {
     setSearchTerm(event.currentTarget.value);
   };
 
-  const className = `Search-box ${isSearchActive ? "active" : ""}`;
+  const className = `Search ${isSearchActive ? "active" : ""}`;
 
   return (
-    <div>
+    <div className={className}>
       <div
-        className={className}
+        className="Search-box"
         onClick={() => setIsSearchActive(true)}
         onBlur={() => setIsSearchActive(false)}
       >
@@ -41,6 +42,12 @@ export const Search = () => {
           onChange={handleSearchInput}
         />
         <Icon name="search" className="Search-icon" />
+      </div>
+      <div className="Search-results">
+        <SearchResult
+          result={{ title: "Portugal", parent: "Europe" }}
+          onClick={() => {}}
+        />
       </div>
     </div>
   );
