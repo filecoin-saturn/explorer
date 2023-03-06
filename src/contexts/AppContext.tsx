@@ -37,7 +37,7 @@ export const AppContextProvider = ({ children }: { children: ReactNode }): React
 
   const [currentNavbarEntity, setCurrentNavbarEntity] = useState<NavBarEntity>(undefined)
   const [currentHoverEntity, setCurrentHoverEntity] = useState<HoverEntity>(undefined)
-  const [currentViewMode, setCurrentViewMode] = useState<ViewMode | undefined>(undefined)
+  const [currentViewMode, setCurrentViewMode] = useState<ViewMode | undefined>(ViewMode.Density)
   
   const value = {
     navbarEntity: currentNavbarEntity,

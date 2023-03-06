@@ -20,8 +20,9 @@ const ViewModeButtonsMobile = ({
   viewMode,
   setViewMode,
 }: ViewModeButtonsProps) => {
+  
   const [isCollapsed, setIsCollapsed] = useState<boolean>(true);
-
+  
   const enabledViewMode = toolbarOptions.find((e) => e.viewMode === viewMode);
   const disabledViewModes = toolbarOptions.filter(
     (opt) => opt !== enabledViewMode
@@ -36,7 +37,7 @@ const ViewModeButtonsMobile = ({
     setIsCollapsed(true);
   };
 
-  const groupClassName = `Toolbar-buttonsGroup ${isCollapsed && "collapsed"}`;
+  const groupClassName = `Toolbar-buttonsGroup mobile ${isCollapsed && "collapsed"}`;
   return (
     <div className={groupClassName}>
       {enabledViewMode && (
@@ -80,7 +81,7 @@ const ViewModeButtonsWeb = ({
   };
 
   return (
-    <div className="Toolbar-buttonsGroup">
+    <div className="Toolbar-buttonsGroup web">
       {toolbarOptions.map((option) => {
         if (option.viewMode !== ViewMode.Density) {
           return (
@@ -103,32 +104,18 @@ const ViewModeButtonsWeb = ({
 
 export const Toolbar = () => {
   const { viewMode, setViewMode } = useContext(AppContext);
-  const [isMobile, setIsMobile] = useState<boolean>(false);
-
-  const handleWindowSize = () => {
-    const width = window.innerWidth;
-    setIsMobile(width <= 768);
-  };
-
+  
   useEffect(() => {
-    window.addEventListener("resize", handleWindowSize);
-    return () => window.removeEventListener("resize", handleWindowSize);
-  }, []);
-
-  const renderButtons = () => {
-    return isMobile ? (
-      <ViewModeButtonsMobile viewMode={viewMode} setViewMode={setViewMode} />
-    ) : (
-      <ViewModeButtonsWeb viewMode={viewMode} setViewMode={setViewMode} />
-    );
-  };
+    console.log(viewMode)
+  })
 
   return (
     <nav className="Toolbar">
       <div className="Toolbar-search">
         <Search />
       </div>
-      {renderButtons()}
+      <ViewModeButtonsMobile viewMode={viewMode} setViewMode={setViewMode} />
+      <ViewModeButtonsWeb viewMode={viewMode} setViewMode={setViewMode} />
     </nav>
   );
 };
