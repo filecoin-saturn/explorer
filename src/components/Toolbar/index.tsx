@@ -6,9 +6,9 @@ import ToolbarButton from "../ToolbarButton";
 import AppContext, { ViewMode } from "../../contexts/AppContext";
 
 const toolbarOptions = [
-  { viewMode: ViewMode.Density, iconName: "Nodes", title: "Density" },
-  { viewMode: ViewMode.Cluster, iconName: "Nodes", title: "Cluster" },
-  { viewMode: ViewMode.Heatmap, iconName: "Load", title: "Load" },
+  { viewMode: ViewMode.Density, iconName: "nodes", title: "Density" },
+  { viewMode: ViewMode.Cluster, iconName: "nodes", title: "Cluster" },
+  { viewMode: ViewMode.Heatmap, iconName: "load", title: "Load" },
 ];
 
 type ViewModeButtonsProps = {
