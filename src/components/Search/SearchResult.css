@@ -1,5 +1,5 @@
 .SearchResult {
-  padding: 12px;
+  padding: var(--size-sm);
   cursor: pointer;
   background: linear-gradient(
     296.29deg,
