@@ -1,7 +1,7 @@
 import "./index.css";
 import { useContext, useEffect, useState } from "react";
 
-import Search from "./Search";
+import Search from "../Search";
 import ToolbarButton from "../ToolbarButton";
 import AppContext, { ViewMode } from "../../contexts/AppContext";
 
@@ -95,7 +95,7 @@ const ViewModeButtonsWeb = ({
             </div>
           );
         }
-        return <></>
+        return <></>;
       })}
     </div>
   );
@@ -125,7 +125,9 @@ export const Toolbar = () => {
 
   return (
     <nav className="Toolbar">
-      <Search />
+      <div className="Toolbar-search">
+        <Search />
+      </div>
       {renderButtons()}
     </nav>
   );
