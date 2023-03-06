@@ -2,8 +2,9 @@
   position: absolute;
   top: var(--size-xxs);
   right: var(--size-xxs);
+  padding-left: var(--size-xxs);
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   z-index: 1;
   gap: 2px;
 }

@@ -4,4 +4,4 @@ export default {
   component: SearchComponent,
 };
 
-export const Search = () => <SearchComponent>Portugal</SearchComponent>;
+export const Search = () => <SearchComponent />;
