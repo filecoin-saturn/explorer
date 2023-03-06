@@ -7,11 +7,11 @@ export const Search = () => {
   const [searchTerm, setSearchTerm] = useState<string | undefined>();
   const [isSearchActive, setIsSearchActive] = useState<boolean>(false);
   
-  const inputRef = useRef();
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if(isSearchActive) {
-      inputRef.current.focus();
+      inputRef.current?.focus();
     }
   })
 
