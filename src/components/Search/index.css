@@ -46,9 +46,12 @@
   color: var(--color-white);
   font-size: var(--size-lg);
   padding: var(--size-base);
+  width: calc(100% - 3 * var(--size-lg));
 }
 
-
+.Search:not(.active) .Search-input {
+  display: none;
+}
 
 @media screen and (min-width: 1024px) {
   .Search {

@@ -1,22 +1,19 @@
 import "./index.css";
 import "./../../styles/globals.css";
 import Icon from "../Icon";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export const Search = () => {
   const [searchTerm, setSearchTerm] = useState<string | undefined>();
-  const [isMobile, setIsMobile] = useState<boolean>(false);
   const [isSearchActive, setIsSearchActive] = useState<boolean>(false);
-
-  const handleWindowSize = () => {
-    const width = window.innerWidth;
-    setIsMobile(width <= 768);
-  };
+  
+  const inputRef = useRef();
 
   useEffect(() => {
-    window.addEventListener("resize", handleWindowSize);
-    return () => window.removeEventListener("resize", handleWindowSize);
-  }, []);
+    if(isSearchActive) {
+      inputRef.current.focus();
+    }
+  })
 
   useEffect(() => {
     // todo: perform querying
@@ -29,10 +26,13 @@ export const Search = () => {
   const className = `Search ${isSearchActive ? "active" : ""}`;
 
   return (
-    <div className={className} 
+    <div
+      className={className}
       onClick={() => setIsSearchActive(true)}
-      onBlur={() => setIsSearchActive(false)}>
+      onBlur={() => setIsSearchActive(false)}
+    >
       <input
+        ref={inputRef}
         className="Search-input"
         type="text"
         placeholder="Search"
@@ -46,8 +46,10 @@ export const Search = () => {
 
 export default Search;
 
-/* <div>
-      <h3 className="Search">{children}</h3>
-      <h4 className="Search-result">{children}</h4>
-      <p className="Search-resultLabel">{children}</p>
-    </div> */
+/* 
+<div>
+  <h3 className="Search">{children}</h3>
+  <h4 className="Search-result">{children}</h4>
+  <p className="Search-resultLabel">{children}</p>
+</div> 
+*/
