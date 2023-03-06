@@ -1,0 +1,36 @@
+.Toolbar {
+  position: absolute;
+  top: var(--size-xxs);
+  right: var(--size-xxs);
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  gap: 2px;
+}
+
+.Toolbar-buttonsGroup {
+  gap: 1px;
+}
+
+.Toolbar-button.active {
+  display: block;
+}
+
+.Toolbar-buttonsGroup.collapsed .Toolbar-button:not(.active) {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .Toolbar {
+    flex-direction: row;
+    top: 32px;
+    right: var(--size-md);
+    gap: var(--size-md);
+  }
+
+  .Toolbar-buttonsGroup {
+    display: flex;
+    flex-direction: row;
+    gap: var(--size-md)
+  }
+}
