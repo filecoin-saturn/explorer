@@ -7,7 +7,7 @@ export default {
 
 export const Default = () => (
   <ScaleComponent
-    higher={{ name: "High", label: "100", color: "#00FFD1" }}
-    lower={{ name: "Very Low", label: "5", color: "#113CA9" }}
+    higher={{ step: "High", label: "100" }}
+    lower={{ step: "Very Low", label: "5" }}
   />
 );
