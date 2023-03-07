@@ -1,4 +1,4 @@
-.Scale-wrapper {
+.Scale {
   position: absolute;
   z-index: 1;
   top: 50%;
@@ -32,12 +32,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  margin: 0;
   padding: var(--size-md) 0;
 }
 
-.Scale-wrapper p {
+.Scale-step,
+.Scale-stepLabel {
   margin: 0;
   font-family: var(--font-family);
   font-size: var(--size-sm);
@@ -45,11 +44,10 @@
 }
 
 .Scale-stepLabel {
-  font-size: var(--size-sm);
   opacity: 0.6;
 }
 
-.Scale {
+.Scale-graphic {
   width: 24px;
   height: 216px;
 }
