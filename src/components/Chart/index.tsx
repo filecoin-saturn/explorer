@@ -43,6 +43,7 @@ export const Chart = ( {} : ChartProps) => {
     { day: "04/02/2023", earns: 3 },
     { day: "05/02/2023", earns: 22 },
     { day: "06/02/2023", earns: 11 },
+    { day: "07/02/2023", earns: 9 },
   ];
 
 
@@ -58,7 +59,9 @@ export const Chart = ( {} : ChartProps) => {
         {
           label: "earns",
           data: dataset.map((o) => o.earns),
-          backgroundColor: gradient(chart.ctx, chart.chartArea),
+          backgroundColor: gradient(chart.ctx, chart.chartArea), 
+          barPercentage: 1,
+          categoryPercentage: 0.9,
         },
       ],
     };
@@ -73,12 +76,7 @@ export const Chart = ( {} : ChartProps) => {
       },
     },
     scales: {
-      xAxes: [{
-          barThickness: 6,  // number (pixels) or 'flex'
-          maxBarThickness: 8 // number (pixels)
-      }],
       x: {
-        barThickness: 0.4,
         display: false,
       },
       y: {
