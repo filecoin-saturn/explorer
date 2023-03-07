@@ -1,9 +1,7 @@
 import "./index.css";
 import Icon from "../Icon";
 
-type LogoProps = { className: string };
-
-export const Logo = ({ className }: LogoProps) => {
+export const Logo = (className: string) => {
   return <Icon name="saturn" className={className} />;
 };
 
