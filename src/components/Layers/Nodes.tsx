@@ -1,4 +1,4 @@
-import { Layer } from "react-map-gl";
+import { Layer, LayerProps } from "react-map-gl";
 
 export const Nodes = ({ srcId }: { srcId: string }) => {
   const circleLayer = {
@@ -30,7 +30,7 @@ export const Nodes = ({ srcId }: { srcId: string }) => {
         "#10FFD4",
       ],
     },
-  };
+  } as LayerProps;
 
   const circleUnclustered = {
     id: "circle-background-unclustered",
@@ -41,7 +41,7 @@ export const Nodes = ({ srcId }: { srcId: string }) => {
       "circle-radius": 10,
       "circle-color": "#011157",
     },
-  };
+  } as LayerProps;
 
   const count = {
     id: "cluster-count",
@@ -55,7 +55,7 @@ export const Nodes = ({ srcId }: { srcId: string }) => {
     paint: {
       "text-color": "white",
     },
-  };
+  } as LayerProps;
 
   const countUnclustered = {
     id: "cluster-count-unclustered",
@@ -69,7 +69,7 @@ export const Nodes = ({ srcId }: { srcId: string }) => {
     paint: {
       "text-color": "white",
     },
-  };
+  } as LayerProps;
 
   return (
     <>

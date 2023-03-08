@@ -1,4 +1,4 @@
-import { Layer } from "react-map-gl";
+import { Layer, LayerProps } from "react-map-gl";
 
 export const Heatmap = ({ srcId }: { srcId: string }) => {
   const config = {
@@ -27,7 +27,7 @@ export const Heatmap = ({ srcId }: { srcId: string }) => {
       ],
       "heatmap-radius": ["interpolate", ["linear"], ["zoom"], 1, 15, 10, 5],
     },
-  };
+  } as LayerProps;
 
   return <Layer {...config} />;
 };
