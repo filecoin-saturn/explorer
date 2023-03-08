@@ -1,7 +1,6 @@
 import { Layer } from "react-map-gl";
 
 export const Nodes = ({ srcId }: { srcId: string }) => {
-  
   const circleLayer = {
     id: "circle-background",
     source: srcId,
@@ -33,7 +32,7 @@ export const Nodes = ({ srcId }: { srcId: string }) => {
     },
   };
 
-  const circleUnclusteder = {
+  const circleUnclustered = {
     id: "circle-background-unclustered",
     source: srcId,
     type: "circle",
@@ -75,7 +74,7 @@ export const Nodes = ({ srcId }: { srcId: string }) => {
   return (
     <>
       <Layer {...circleLayer} />
-      <Layer {...circleUnclusteder} />
+      <Layer {...circleUnclustered} />
       <Layer {...count} />
       <Layer {...countUnclustered} />
     </>
