@@ -32,7 +32,7 @@ export const Density = ({ srcId }: { srcId: string }) => {
     },
   } as LayerProps;
 
-  const circleUnclusteder = {
+  const circleUnclustered = {
     id: "circle-background-unclustered",
     source: srcId,
     type: "circle",
@@ -74,7 +74,7 @@ export const Density = ({ srcId }: { srcId: string }) => {
   return (
     <>
       <Layer {...circleLayer} />
-      <Layer {...circleUnclusteder} />
+      <Layer {...circleUnclustered} />
       <Layer {...count} />
       <Layer {...countUnclustered} />
     </>
