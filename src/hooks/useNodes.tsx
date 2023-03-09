@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { EntityType } from "../contexts/AppContext";
 
 export enum NodeState {
   Active = "active",
@@ -46,6 +47,7 @@ export type Node = {
     "1d": number;
     "7d": number;
   };
+  type: EntityType.node;
 };
 
 export type Nodes = Node[];
@@ -110,7 +112,7 @@ export const useNodes = () => {
   }, [getResults]);
 
   const getByID = (queryNodeId: string) => {
-    return Array.from(nodes.values()).filter((node) => node.id === queryNodeId);
+    return nodes.get(queryNodeId);
   };
 
   const getByLocationId = (queryLocationId: string) => {

@@ -1,16 +1,25 @@
-.List {
-}
+.Navbar {
+  position: absolute;
+  z-index: 1;
+  right: var(--size-xxs);
+  bottom: var(--size-xxs);
+  left: var(--size-xxs);
 
-.List-heading {
   display: flex;
-  align-items: center;
-  font-family: var(--font-family);
-  font-size: var(--size-lg);
-  font-weight: 500;
-  color: var(--color-white);
+
+  min-height: 80px;
 }
 
-.List-header {
+.Navbar.active {
+  top: 132px;
+}
+
+.Navbar-breadcrumbs {
+  flex: 1;
+
+  max-width: 80px;
+  margin-right: 1px;
+
   background: linear-gradient(
     296.29deg,
     rgba(0, 102, 255, 0.216) 2.96%,
@@ -28,7 +37,15 @@
     1;
 }
 
-.List-content {
+.Navbar-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.Navbar-header {
+  height: 277px;
+
   background: linear-gradient(
     296.29deg,
     rgba(0, 102, 255, 0.216) 2.96%,
@@ -46,29 +63,7 @@
     1;
 }
 
-.List-icon {
-  width: 38px;
-  height: 38px;
-  margin-right: var(--size-md);
-}
-
-.List-icon path {
-  fill: rgba(255, 255, 255, 0.4);
-}
-
-.List-itemName {
-  font-family: var(--font-family);
-  font-size: var(--size-base);
-  font-weight: 400;
-  color: var(--color-white);
-}
-
-.List-stats {
+.Navbar-content {
   display: flex;
-}
-
-@media screen and (min-width: 1024px) {
-  .List-itemName {
-    font-size: var(--size-md);
-  }
+  flex-direction: column;
 }
