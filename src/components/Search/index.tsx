@@ -3,11 +3,14 @@ import "./../../styles/globals.css";
 import Icon from "../Icon";
 import { useEffect, useRef, useState } from "react";
 import SearchResult from "./SearchResult";
+import useSearch from "../../hooks/useSearch";
 
 export const Search = () => {
   const [searchTerm, setSearchTerm] = useState<string | undefined>();
   const [isSearchActive, setIsSearchActive] = useState<boolean>(false);
-  
+  const [searchResults, setSearchResults] = useState<any[]>([]);
+  const { search } = useSearch();
+
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -17,8 +20,10 @@ export const Search = () => {
   });
 
   useEffect(() => {
-    // todo: perform querying
-  }, [searchTerm]);
+    if (!searchTerm) { setSearchResults([]); return; }
+      const searchResults = search(searchTerm);
+      setSearchResults(searchResults);
+  }, [search, searchTerm]);
 
   const handleSearchInput = (event: React.FormEvent<HTMLInputElement>) => {
     setSearchTerm(event.currentTarget.value);
@@ -43,15 +48,20 @@ export const Search = () => {
         />
         <Icon name="search" className="Search-icon" />
       </div>
-      <div className="Search-results">
-        <SearchResult
-          result={{ title: "Portugal", parent: "Europe" }}
-          onClick={() => {}}
-        />
-      </div>
+      {searchResults && (
+        <div className="Search-results">
+          {searchResults.map((result) => {
+            return (
+              <SearchResult key={result.name}
+                result={{ title: result.name, parent: result.name }}
+                onClick={() => {}}
+              />
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 };
 
 export default Search;
-
