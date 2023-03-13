@@ -1,8 +1,8 @@
 import "./index.css";
 import Icon from "../Icon";
 
-export const Logo = ({ className }: { className: string }) => {
-  return <Icon name="saturn" className={className} />;
+export const Logo = () => {
+  return <Icon name="saturn" className={"Logo"} />;
 };
 
 export default Logo;

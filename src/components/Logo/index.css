@@ -1,9 +1,21 @@
 .Logo {
+  position: absolute;
+  z-index: 1;
+  top: 30px;
+  left: 12px;
+
   max-width: 141px;
 }
 
 @media screen and (min-width: 1024px) {
   .Logo {
+    position: absolute;
+    z-index: 1;
+    top: initial;
+    right: 32px;
+    bottom: 48px;
+    left: initial;
+
     max-width: 212px;
   }
 }
