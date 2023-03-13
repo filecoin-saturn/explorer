@@ -5,5 +5,13 @@ export default {
 };
 
 export const List = () => (
-  <ListComponent name="Spain" list={[]} stats={[]}></ListComponent>
+  <ListComponent
+    entity={{ name: "Spain" }}
+    list={[]}
+    stats={[]}
+    toggleNavbar={() => {}}
+    hoverEnd={() => {}}
+    hoverStart={() => () => {}}
+    onSelect={() => () => {}}
+  ></ListComponent>
 );
