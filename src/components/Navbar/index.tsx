@@ -1,6 +1,6 @@
 import "./index.css";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import classNames from "classnames";
 import {
   NavBarEntity,
@@ -39,6 +39,10 @@ export const Navbar = () => {
     setBreadcrumbs([...breadcrumbs, item]);
   };
 
+  useEffect(() => {
+    appState.setNavbarEntity(breadcrumbs[0] as NavBarEntity);
+  }, []);
+
   const clearSelectedEntity = (breadcrumb: any, index: number) => () => {
     if (breadcrumb.name === appState.navbarEntity?.name) {
       return;
@@ -72,7 +76,7 @@ export const Navbar = () => {
       break;
   }
 
-  console.log(appState.navbarEntity);
+  if (!appState.navbarEntity) return null;
 
   return (
     <nav className={className}>
