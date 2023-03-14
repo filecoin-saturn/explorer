@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { EntityType } from "../contexts/AppContext";
 
 export enum NodeState {
   Active = "active",
@@ -149,6 +150,7 @@ export type Node = {
   locationId: string;
   continentId: string;
   data: NodeData;
+  type: EntityType.node;
 };
 
 export type Nodes = Node[];
@@ -157,33 +159,33 @@ export const useNodes = () => {
   const [nodes, setNodes] = useState<Nodes>([]);
 
   const getByID = (queryNodeId: string) => {
-    return nodes.filter((node) => node.id === queryNodeId)
-  }
+    return nodes.filter((node) => node.id === queryNodeId);
+  };
 
   const getByLocationId = (queryLocationId: string) => {
-    return nodes.filter((node) => node.locationId === queryLocationId)
-  }
-  
+    return nodes.filter((node) => node.locationId === queryLocationId);
+  };
+
   const getByCountryId = (queryCountryId: string) => {
-    return nodes.filter((node) => node.countryId === queryCountryId)
-  }
+    return nodes.filter((node) => node.countryId === queryCountryId);
+  };
 
   const getByContinentId = (queryContinentId: string) => {
-    return nodes.filter((node) => node.continentId === queryContinentId)
-  }
+    return nodes.filter((node) => node.continentId === queryContinentId);
+  };
 
   const getByActivityState = (activityState: NodeState) => {
-    return nodes.filter((node) => node.data.state === activityState)
-  }
+    return nodes.filter((node) => node.data.state === activityState);
+  };
 
-  return { 
+  return {
     nodes,
     setNodes,
     getByID,
     getByLocationId,
     getByCountryId,
     getByContinentId,
-    getByActivityState
+    getByActivityState,
   };
 };
 

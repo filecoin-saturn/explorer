@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { EntityType } from "../contexts/AppContext";
 
 import countriesList from "./countries.json";
 
@@ -8,6 +9,7 @@ export type Country = {
   name: string;
   shape: any;
   center: any;
+  type: EntityType.country;
 };
 
 type Countries = Country[];

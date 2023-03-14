@@ -1,8 +1,9 @@
 import "./SearchResult.css";
-import { Continent } from "../../hooks/useContinents";
-import { Country } from "../../hooks/useCountries";
-import { Location } from "../../hooks/useLocations";
+import { Continent, useContinents } from "../../hooks/useContinents";
+import { Country, useCountries } from "../../hooks/useCountries";
+import { Location, useLocations } from "../../hooks/useLocations";
 import { Node } from "../../hooks/useNodes";
+import { EntityType } from "../../contexts/AppContext";
 
 export type SearchResultProps = {
   result: Continent | Country | Location | Node;
@@ -10,14 +11,43 @@ export type SearchResultProps = {
 };
 
 export const SearchResult = ({ result, onClick }: SearchResultProps) => {
-  // todo: title and subtitle
-  const name = result.hasOwnProperty("name") ? result.name : result.id;
-  const parent = name;
+  const { getContinentById } = useContinents();
+  const { getCountryById } = useCountries();
+  const { getLocationById } = useLocations();
+
+  let title = "";
+  let subtitle = "";
+
+  switch (result.type) {
+    case EntityType.continent:
+      title = result.name;
+      break;
+    case EntityType.country:
+      const countryContinents = result.continentId.map((e) =>
+        getContinentById(e)
+      );
+      title = result.name;
+      subtitle = countryContinents.map((e) => e?.name).join(" \\ ");
+      break;
+    case EntityType.location:
+      const locationCountry = getCountryById(result.countryId);
+      title = result.name;
+      subtitle = locationCountry ? locationCountry.name : "";
+      break;
+    case EntityType.node:
+      const nodeLocation = getLocationById(result.locationId);
+      title = result.id.substring(0, 8);
+      subtitle = nodeLocation ? nodeLocation.name : "";
+      break;
+    default:
+      title = "N/A";
+      subtitle = "N/A";
+  }
 
   return (
     <div className="SearchResult" onClick={() => onClick(result.id)}>
-      <div className="SearchResult-title">{name}</div>
-      <div className="SearchResult-subtitle">{parent}</div>
+      <div className="SearchResult-title">{title}</div>
+      <div className="SearchResult-subtitle">{subtitle}</div>
     </div>
   );
 };
