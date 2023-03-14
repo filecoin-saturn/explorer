@@ -6,11 +6,11 @@ import useNodes from "./useNodes";
 
 const useSearch = () => {
   const { continents } = useContinents();
-  // const { countries } = useCountries();
+  const { countries } = useCountries();
   const { locations } = useLocations();
   const { nodes } = useNodes();
 
-  const documents = [...continents] //, ...countries, ...locations, ...nodes]
+  const documents = [...continents, ...countries, ...locations, ...nodes]
   
   const searchEngine = new MiniSearch({
     fields: ["name"],
