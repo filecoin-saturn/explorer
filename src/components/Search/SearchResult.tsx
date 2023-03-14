@@ -27,7 +27,7 @@ export const SearchResult = ({ result, onClick }: SearchResultProps) => {
         getContinentById(e)
       );
       title = result.name;
-      subtitle = countryContinents.map((e) => e?.name).join(" \\ ");
+      subtitle = countryContinents.map((e) => e?.name).join(", ");
       break;
     case EntityType.location:
       const locationCountry = getCountryById(result.countryId);
