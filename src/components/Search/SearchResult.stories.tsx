@@ -6,7 +6,7 @@ export default {
 
 export const SearchResult = () => (
   <SearchResultComponent
-    result={{ title: "Portugal", parent: "Europe" }}
+    result={{ id: 'PT', title: "Portugal", parent: "Europe" }}
     onClick={() => {}}
   />
 );
