@@ -10,13 +10,13 @@ export type Continent = {
 type Continents = Continent[];
 
 const continentsList: Continents = [
-  { id: "CAF", name: "Africa", shape: [], center: [] },
-  { id: "CAS", name: "Asia", shape: [], center: [] },
-  { id: "CEU", name: "Europe", shape: [], center: [] },
-  { id: "CNA", name: "North America", shape: [], center: [] },
-  { id: "CSA", name: "South America", shape: [], center: [] },
-  { id: "COC", name: "Oceania", shape: [], center: [] },
-  { id: "CAN", name: "Antarctica", shape: [], center: [] },
+  { id: "AF", name: "Africa", shape: [], center: [] },
+  { id: "AS", name: "Asia", shape: [], center: [] },
+  { id: "EU", name: "Europe", shape: [], center: [] },
+  { id: "NA", name: "North America", shape: [], center: [] },
+  { id: "SA", name: "South America", shape: [], center: [] },
+  { id: "OC", name: "Oceania", shape: [], center: [] },
+  { id: "AN", name: "Antarctica", shape: [], center: [] },
 ];
 
 export const useContinents = () => {

@@ -8,6 +8,7 @@ import { Continent } from "../../hooks/useContinents";
 import { Country } from "../../hooks/useCountries";
 import { Location } from "../../hooks/useLocations";
 import { Node } from "../../hooks/useNodes";
+import classnames from "classnames";
 
 export const Search = () => {
   const [searchTerm, setSearchTerm] = useState<string | undefined>();
@@ -40,6 +41,7 @@ export const Search = () => {
 
   const handleResultClick = (id: string) => {
     // todo
+    setIsSearchActive(false);
     console.log("Go to ", id);
   };
 
@@ -54,14 +56,18 @@ export const Search = () => {
     };
   };
 
-  const className = `Search ${isSearchActive ? "active" : ""}`;
+  const className = classnames("Search", { active: isSearchActive });
+
   return (
     <div
       className={className}
-      onClick={() => setIsSearchActive(true)}
-      onBlur={() => setIsSearchActive(false)}
+      onBlur={() => {
+        if (!searchResults.length) {
+          setIsSearchActive(false);
+        }
+      }}
     >
-      <div className="Search-box">
+      <div className="Search-box" onClick={() => setIsSearchActive(true)}>
         <input
           ref={inputRef}
           className="Search-input"
@@ -71,7 +77,7 @@ export const Search = () => {
         />
         <Icon name="search" className="Search-icon" />
       </div>
-      {searchResults && (
+      {isSearchActive && searchResults.length && (
         <div className="Search-results">
           {searchResults.map((result) => {
             return (
