@@ -39,7 +39,7 @@ export const Search = () => {
   };
 
   const handleResultClick = (id: string) => {
-    // todo
+    // todo: set entity on app context
     setIsSearchActive(false);
   };
 
