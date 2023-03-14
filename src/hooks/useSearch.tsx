@@ -10,11 +10,11 @@ const useSearch = () => {
   const { locations } = useLocations();
   const { nodes } = useNodes();
 
-  const documents = [...continents, ...countries, ...locations, ...nodes]
-  
+  const documents = [...continents, ...countries, ...locations, ...nodes];
+
   const searchEngine = new MiniSearch({
     fields: ["name"],
-    storeFields: ["id"],
+    storeFields: ["id", "name"],
   });
   searchEngine.addAll(documents);
 
@@ -23,10 +23,10 @@ const useSearch = () => {
       prefix: true,
       fuzzy: 0.2,
     });
-    
-    const resultsIds = searchResults.map((e) => e.id)
-    const results = documents.filter((doc) => resultsIds.includes(doc.id)) 
-    return results?.slice(0,3);
+
+    const resultsIds = searchResults.map((e) => e.id);
+    const results = documents.filter((doc) => resultsIds.includes(doc.id));
+    return results?.slice(0, 3);
   };
 
   return { search };

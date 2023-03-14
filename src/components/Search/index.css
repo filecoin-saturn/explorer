@@ -7,6 +7,7 @@
   justify-items: flex-start;
 
   max-width: 100%;
+  height: fit-content;
 }
 
 .Search-box {
@@ -34,7 +35,7 @@
     1;
 }
 
-.Search-box:focus-within {
+.Search.active .Search-box {
   background: linear-gradient(
     296.29deg,
     rgba(0, 102, 255, 0.576) 2.96%,
@@ -84,13 +85,11 @@
   }
 
   .Search-box {
-    min-width: 167px;
-    max-width: 167px;
+    width: 167px;
   }
 
-  .Search-box:focus-within {
-    min-width: 370px;
-    max-width: 370px;
+  .Search.active .Search-box {
+    width: 370px;
   }
 
   .Search:not(.active) .Search-input {
