@@ -28,7 +28,6 @@ export const Search = () => {
 
   useEffect(() => {
     if (!searchTerm) {
-      setSearchResults([]);
       return;
     }
     const searchResults = search(searchTerm);
@@ -42,18 +41,6 @@ export const Search = () => {
   const handleResultClick = (id: string) => {
     // todo
     setIsSearchActive(false);
-    console.log("Go to ", id);
-  };
-
-  const computeSearchResultProps = (
-    result: Continent | Country | Location | Node
-  ) => {
-    // todo
-    return {
-      id: result.id,
-      title: result.id,
-      parent: result.id,
-    };
   };
 
   const className = classnames("Search", { active: isSearchActive });
@@ -77,13 +64,13 @@ export const Search = () => {
         />
         <Icon name="search" className="Search-icon" />
       </div>
-      {isSearchActive && searchResults.length && (
+      {isSearchActive && searchResults.length > 0 && (
         <div className="Search-results">
           {searchResults.map((result) => {
             return (
               <SearchResult
                 key={result.id}
-                result={computeSearchResultProps(result)}
+                result={result}
                 onClick={handleResultClick}
               />
             );
