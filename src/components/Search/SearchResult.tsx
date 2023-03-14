@@ -10,13 +10,14 @@ export type SearchResultProps = {
 };
 
 export const SearchResult = ({ result, onClick }: SearchResultProps) => {
+  // todo: title and subtitle
   const name = result.hasOwnProperty("name") ? result.name : result.id;
   const parent = name;
 
   return (
     <div className="SearchResult" onClick={() => onClick(result.id)}>
-      <div className="SearchResult-name">{name}</div>
-      <div className="SearchResult-parent">{parent}</div>
+      <div className="SearchResult-title">{name}</div>
+      <div className="SearchResult-subtitle">{parent}</div>
     </div>
   );
 };

@@ -27,7 +27,7 @@
   backdrop-filter: blur(16px);
 }
 
-.SearchResult-name {
+.SearchResult-title {
   font-family: var(--font-family);
   font-weight: 300;
   color: var(--color-white);
@@ -35,7 +35,7 @@
   text-transform: capitalize;
 }
 
-.SearchResult-parent {
+.SearchResult-subtitle {
   font-family: var(--font-family);
   font-weight: 300;
   color: var(--color-white);
@@ -45,14 +45,14 @@
 }
 
 @media screen and (min-width: 1024px) {
-  .SearchResult-name {
+  .SearchResult-title {
     font-size: var(--size-base);
   }
-  .SearchResult-parent {
+  .SearchResult-subtitle {
     font-size: var(--size-base);
   }
 
-  .SearchResult:hover .SearchResult-parent {
+  .SearchResult:hover .SearchResult-subtitle {
     color: var(--color-green);
     opacity: 1;
   }

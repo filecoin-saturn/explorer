@@ -10,6 +10,7 @@ const useSearch = () => {
   const { locations } = useLocations();
   const { nodes } = useNodes();
 
+  // todo: fixup conflictin ids
   const documents = [...countries, ...locations, ...nodes]; //...continents
 
   const searchEngine = new MiniSearch({
