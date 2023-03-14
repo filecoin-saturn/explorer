@@ -9,8 +9,10 @@ import { Country } from "../../hooks/useCountries";
 import { Location } from "../../hooks/useLocations";
 import { Node } from "../../hooks/useNodes";
 import classnames from "classnames";
+import useAppContext from "../../hooks/useAppContext";
 
 export const Search = () => {
+  const appState = useAppContext();
   const [searchTerm, setSearchTerm] = useState<string | undefined>();
   const [isSearchActive, setIsSearchActive] = useState<boolean>(false);
   const [searchResults, setSearchResults] = useState<
@@ -40,6 +42,7 @@ export const Search = () => {
 
   const handleResultClick = (id: string) => {
     // todo: set entity on app context
+    // appState.setNavbarEntity(entity);
     setIsSearchActive(false);
   };
 
