@@ -26,13 +26,7 @@ export const Search = () => {
     if (isSearchActive) {
       inputRef.current?.focus();
     }
-  }, []);
-
-  useEffect(() => {
-    if (document.activeElement === inputRef.current) {
-      setIsSearchActive(true);
-    }
-  });
+  }, [isSearchActive]);
 
   useEffect(() => {
     if (searchTerm) {
@@ -80,7 +74,7 @@ export const Search = () => {
       className={className}
       onBlur={() => setTimeout(() => setIsSearchActive(false), 200)}
     >
-      <div className="Search-box" onClick={() => setIsSearchActive(true)}>
+      <div className="Search-box" onFocus={() => setIsSearchActive(true)}>
         <input
           ref={inputRef}
           className="Search-input"
