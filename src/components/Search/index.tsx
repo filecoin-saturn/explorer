@@ -15,11 +15,9 @@ export const Search = () => {
   const appState = useAppContext();
   const [searchTerm, setSearchTerm] = useState<string | undefined>();
   const [isSearchActive, setIsSearchActive] = useState<boolean>(false);
-  const [searchResults, setSearchResults] = useState<
-    (Continent | Country | Location | Node)[]
-  >([]);
+  const [searchResults, setSearchResults] = useState<(Continent | Country | Location | Node)[]>([]);
   const { search } = useSearch();
-
+  const className = classnames("Search", { active: isSearchActive });
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -29,57 +27,53 @@ export const Search = () => {
   }, []);
 
   useEffect(() => {
-    if (!searchTerm) {
+    if (document.activeElement === inputRef.current) {
+      setIsSearchActive(true);
+    }
+  });
+
+  useEffect(() => {
+    if (searchTerm) {
+      const searchResults = search(searchTerm);
+      if (searchResults.length) {
+        setSearchResults(searchResults);
+      } else {
+        setSearchResults([]);
+      }
       return;
     }
-    const searchResults = search(searchTerm);
-    setSearchResults(searchResults);
+    setSearchResults([]);
   }, [searchTerm]);
 
   const handleSearchInput = (event: React.FormEvent<HTMLInputElement>) => {
     setSearchTerm(event.currentTarget.value);
   };
 
-  const handleResultClick = (entity: Continent | Country | Location | Node) => {
+  const handleResultClick = (result: Continent | Country | Location | Node) => {
     // question: is this enough for navigation?
-    appState.setNavbarEntity(entity);
+    appState.setNavbarEntity(result);
     setIsSearchActive(false);
   };
 
-  const className = classnames("Search", { active: isSearchActive });
-
-  return (
-    <div
-      className={className}
-      onBlur={() => {
-        if (!searchResults.length) {
-          setIsSearchActive(false);
-        }
-      }}
-    >
-      <div className="Search-box" onClick={() => setIsSearchActive(true)}>
-        <input
-          ref={inputRef}
-          className="Search-input"
-          type="text"
-          placeholder="Search"
-          onChange={handleSearchInput}
-        />
-        <Icon name="search" className="Search-icon" />
-      </div>
-      {isSearchActive && searchResults.length > 0 && (
+  const renderSearchResults = () => {
+    if (isSearchActive && searchResults.length > 0) {
+      return (
         <div className="Search-results">
           {searchResults.map((result) => {
-            return (
-              <SearchResult
-                key={result.id}
-                result={result}
-                onClick={handleResultClick}
-              />
-            );
+            return <SearchResult key={`${result.id}${result.type}`} result={result} onClick={handleResultClick} />;
           })}
         </div>
-      )}
+      );
+    }
+  };
+  //
+  return (
+    <div className={className} onBlur={() => setTimeout(() => setIsSearchActive(false), 200)}>
+      <div className="Search-box" onClick={() => setIsSearchActive(true)}>
+        <input ref={inputRef} className="Search-input" type="text" placeholder="Search" onChange={handleSearchInput} />
+        <Icon name="search" className="Search-icon" />
+      </div>
+      {renderSearchResults()}
     </div>
   );
 };

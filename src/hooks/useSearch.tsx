@@ -1,4 +1,5 @@
 import MiniSearch from "minisearch";
+import { EntityType } from "../contexts/AppContext";
 import useContinents from "./useContinents";
 import useCountries from "./useCountries";
 import useLocations from "./useLocations";
@@ -11,11 +12,17 @@ const useSearch = () => {
   const { nodes } = useNodes();
 
   // todo: fixup conflictin ids
-  const documents = [...countries, ...locations, ...nodes]; //...continents
+  const customContinents = continents.map((c) => ({
+    ...c,
+    iso: c.id,
+    id: `c${c.id}`,
+  }));
+
+  const documents = [...customContinents, ...countries, ...locations, ...nodes]; //...continents
 
   const searchEngine = new MiniSearch({
     fields: ["name"],
-    storeFields: ["id", "name"],
+    storeFields: ["id"],
   });
   searchEngine.addAll(documents);
 
@@ -27,7 +34,17 @@ const useSearch = () => {
 
     const resultsIds = searchResults.map((e) => e.id);
     const results = documents.filter((doc) => resultsIds.includes(doc.id));
-    return results?.slice(0, 3);
+    const relevantResults_ = results?.slice(0, 3);
+
+    const relevantResults = relevantResults_.map((r) => {
+      if (r.type === EntityType.continent) {
+        const { iso: remove, ...rollback } = r;
+        return { ...rollback, id: r.iso };
+      }
+      return r;
+    });
+
+    return relevantResults;
   };
 
   return { search };
