@@ -45,10 +45,14 @@ export const SearchResult = ({ result, onClick }: SearchResultProps) => {
   }
 
   return (
-    <div className="SearchResult" onClick={() => onClick(result)}>
+    <button
+      className="SearchResult"
+      onClick={() => onClick(result)}
+      tabIndex={0}
+    >
       <div className="SearchResult-title">{title}</div>
       <div className="SearchResult-subtitle">{subtitle}</div>
-    </div>
+    </button>
   );
 };
 

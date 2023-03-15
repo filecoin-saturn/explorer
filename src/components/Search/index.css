@@ -70,6 +70,8 @@
 }
 
 .Search-results {
+  display: flex;
+  flex-direction: column;
   min-width: 100%;
   visibility: hidden;
 }
