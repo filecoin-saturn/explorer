@@ -72,7 +72,7 @@ export const Search = () => {
   };
 
   const handleBlur = (e: { currentTarget: any }) => {
-    // prevents onBlur effect if child elements are being navigated through TAB key
+    // Prevents onBlur effect if child elements are being navigated through TAB key
     const currentTarget = e.currentTarget;
     setTimeout(() => {
       if (!currentTarget.contains(document.activeElement)) {
