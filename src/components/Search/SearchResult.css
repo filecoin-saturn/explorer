@@ -1,6 +1,10 @@
 .SearchResult {
   cursor: pointer;
 
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+
   padding: var(--size-sm);
 
   background: linear-gradient(
@@ -19,7 +23,8 @@
     1;
 }
 
-.SearchResult:hover {
+.SearchResult:hover,
+.SearchResult:focus {
   background: linear-gradient(
     296.29deg,
     rgba(0, 102, 255, 0.576) 2.96%,
@@ -27,6 +32,7 @@
     rgba(0, 163, 255, 0.5504) 93.31%
   );
   backdrop-filter: blur(16px);
+  outline: none;
 }
 
 .SearchResult-title {
