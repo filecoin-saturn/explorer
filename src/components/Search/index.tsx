@@ -40,9 +40,9 @@ export const Search = () => {
     setSearchTerm(event.currentTarget.value);
   };
 
-  const handleResultClick = (id: string) => {
-    // todo: set entity on app context
-    // appState.setNavbarEntity(entity);
+  const handleResultClick = (entity: Continent | Country | Location | Node) => {
+    // question: is this enough for navigation?
+    appState.setNavbarEntity(entity);
     setIsSearchActive(false);
   };
 

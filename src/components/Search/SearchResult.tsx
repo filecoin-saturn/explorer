@@ -7,7 +7,7 @@ import { EntityType } from "../../contexts/AppContext";
 
 export type SearchResultProps = {
   result: Continent | Country | Location | Node;
-  onClick: (id: string) => void;
+  onClick: (result: Continent | Country | Location | Node) => void;
 };
 
 export const SearchResult = ({ result, onClick }: SearchResultProps) => {
@@ -45,7 +45,7 @@ export const SearchResult = ({ result, onClick }: SearchResultProps) => {
   }
 
   return (
-    <div className="SearchResult" onClick={() => onClick(result.id)}>
+    <div className="SearchResult" onClick={() => onClick(result)}>
       <div className="SearchResult-title">{title}</div>
       <div className="SearchResult-subtitle">{subtitle}</div>
     </div>
