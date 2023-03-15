@@ -2,6 +2,7 @@ import { createContext, ReactElement, ReactNode, useState } from "react";
 import { Continent } from "../hooks/useContinents";
 import { Country } from "../hooks/useCountries";
 import { Location } from "../hooks/useLocations";
+import { Node } from "../hooks/useNodes";
 
 export enum EntityType {
   "continent",
@@ -10,7 +11,7 @@ export enum EntityType {
   "node",
 }
 
-export type NavBarEntity = Continent | Country | Location | undefined;
+export type NavBarEntity = Continent | Country | Location | Node | undefined;
 export type HoverEntity = Continent | Country | undefined;
 
 export enum ViewMode {
