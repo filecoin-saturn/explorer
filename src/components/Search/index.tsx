@@ -70,9 +70,12 @@ export const Search = () => {
       );
     }
   };
-  // onBlur={() => setTimeout(() => setIsSearchActive(false), 200)}
+
   return (
-    <div className={className}>
+    <div
+      className={className}
+      onBlur={() => setTimeout(() => setIsSearchActive(false), 200)}
+    >
       <div className="Search-box" onFocus={() => setIsSearchActive(true)}>
         <input
           ref={inputRef}
