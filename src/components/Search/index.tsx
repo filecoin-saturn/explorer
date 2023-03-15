@@ -71,11 +71,18 @@ export const Search = () => {
     }
   };
 
+  const handleBlur = (e: { currentTarget: any }) => {
+    // prevents onBlur effect if child elements are being navigated through TAB key
+    const currentTarget = e.currentTarget;
+    setTimeout(() => {
+      if (!currentTarget.contains(document.activeElement)) {
+        setIsSearchActive(false);
+      }
+    }, 0);
+  };
+
   return (
-    <div
-      className={className}
-      onBlur={() => setTimeout(() => setIsSearchActive(false), 200)}
-    >
+    <div className={className} onBlur={handleBlur}>
       <div className="Search-box" onFocus={() => setIsSearchActive(true)}>
         <input
           ref={inputRef}
