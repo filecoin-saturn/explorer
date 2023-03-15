@@ -15,7 +15,9 @@ export const Search = () => {
   const appState = useAppContext();
   const [searchTerm, setSearchTerm] = useState<string | undefined>();
   const [isSearchActive, setIsSearchActive] = useState<boolean>(false);
-  const [searchResults, setSearchResults] = useState<(Continent | Country | Location | Node)[]>([]);
+  const [searchResults, setSearchResults] = useState<
+    (Continent | Country | Location | Node)[]
+  >([]);
   const { search } = useSearch();
   const className = classnames("Search", { active: isSearchActive });
   const inputRef = useRef<HTMLInputElement>(null);
@@ -60,7 +62,13 @@ export const Search = () => {
       return (
         <div className="Search-results">
           {searchResults.map((result) => {
-            return <SearchResult key={`${result.id}${result.type}`} result={result} onClick={handleResultClick} />;
+            return (
+              <SearchResult
+                key={`${result.id}${result.type}`}
+                result={result}
+                onClick={handleResultClick}
+              />
+            );
           })}
         </div>
       );
@@ -68,9 +76,18 @@ export const Search = () => {
   };
   //
   return (
-    <div className={className} onBlur={() => setTimeout(() => setIsSearchActive(false), 200)}>
+    <div
+      className={className}
+      onBlur={() => setTimeout(() => setIsSearchActive(false), 200)}
+    >
       <div className="Search-box" onClick={() => setIsSearchActive(true)}>
-        <input ref={inputRef} className="Search-input" type="text" placeholder="Search" onChange={handleSearchInput} />
+        <input
+          ref={inputRef}
+          className="Search-input"
+          type="text"
+          placeholder="Search"
+          onChange={handleSearchInput}
+        />
         <Icon name="search" className="Search-icon" />
       </div>
       {renderSearchResults()}
