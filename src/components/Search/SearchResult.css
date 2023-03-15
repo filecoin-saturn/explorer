@@ -1,14 +1,16 @@
 .SearchResult {
-  padding: var(--size-sm);
   cursor: pointer;
+
+  padding: var(--size-sm);
+
   background: linear-gradient(
     296.29deg,
     rgba(0, 102, 255, 0.216) 2.96%,
     rgba(0, 133, 255, 0.1896) 50.03%,
     rgba(0, 163, 255, 0.2064) 93.31%
   );
-  border-width: 1px;
   border-style: solid;
+  border-width: 1px;
   border-image: linear-gradient(
       to right,
       rgba(157, 226, 255, 0.64),
@@ -29,19 +31,20 @@
 
 .SearchResult-title {
   font-family: var(--font-family);
+  font-size: var(--size-md);
   font-weight: 300;
   color: var(--color-white);
-  font-size: var(--size-md);
   text-transform: capitalize;
 }
 
 .SearchResult-subtitle {
   font-family: var(--font-family);
+  font-size: var(--size-sm);
   font-weight: 300;
   color: var(--color-white);
-  font-size: var(--size-sm);
-  opacity: 0.6;
   text-transform: capitalize;
+
+  opacity: 0.6;
 }
 
 @media screen and (min-width: 1024px) {

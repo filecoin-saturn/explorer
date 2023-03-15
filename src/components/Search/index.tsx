@@ -39,6 +39,8 @@ export const Search = () => {
       return;
     }
     setSearchResults([]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchTerm]);
 
   const handleSearchInput = (event: React.FormEvent<HTMLInputElement>) => {

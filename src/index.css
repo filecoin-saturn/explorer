@@ -66,11 +66,14 @@ input,
 input:active,
 input:focus,
 input::placeholder {
-  background: none;
-	color: inherit;
-	border: none;
-	padding: 0;
-	font: inherit;
 	cursor: pointer;
+
+	padding: 0;
+
+	font: inherit;
+	color: inherit;
+
+  background: none;
+	border: none;
   outline: none;
 }
