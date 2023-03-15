@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <Toolbar />
-      <Globe />
+      {/* <Globe /> */}
     </div>
   );
 }
