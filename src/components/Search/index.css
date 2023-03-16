@@ -1,9 +1,11 @@
 .Search {
   position: relative;
+
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   justify-items: flex-start;
+
   max-width: 100%;
 }
 
@@ -12,7 +14,9 @@
   flex-direction: row;
   align-items: center;
   justify-items: flex-start;
+
   width: fit-content;
+
   background: linear-gradient(
     296.29deg,
     rgba(0, 102, 255, 0.216) 2.96%,
@@ -20,8 +24,8 @@
     rgba(0, 163, 255, 0.2064) 93.31%
   );
   backdrop-filter: blur(16px);
-  border-width: 1px;
   border-style: solid;
+  border-width: 1px;
   border-image: linear-gradient(
       to right,
       rgba(157, 226, 255, 0.64),
@@ -49,13 +53,16 @@
 .Search-input,
 .Search-input:focus {
   cursor: text;
+
+  width: calc(100% - 3 * var(--size-lg));
+  padding: var(--size-base);
+
   font-family: var(--font-family);
-  background: transparent;
+  font-size: var(--size-lg);
   font-weight: 400;
   color: var(--color-white);
-  font-size: var(--size-lg);
-  padding: var(--size-base);
-  width: calc(100% - 3 * var(--size-lg));
+
+  background: transparent;
 }
 
 .Search:not(.active) .Search-input {
@@ -63,8 +70,8 @@
 }
 
 .Search-results {
-  visibility: hidden;
   min-width: 100%;
+  visibility: hidden;
 }
 
 .Search.active .Search-results {
@@ -93,13 +100,16 @@
   .Search-input,
   .Search-input:focus {
     cursor: text;
-    padding: var(--size-sm);
-    background: transparent;
-    font-weight: 400;
+
     width: calc(100% - 3 * var(--size-base));
+    padding: var(--size-sm);
+
     font-family: var(--font-family);
     font-size: var(--size-base);
+    font-weight: 400;
     color: var(--color-white);
+
+    background: transparent;
   }
 
   .Search-input:focus {

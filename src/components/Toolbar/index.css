@@ -1,12 +1,14 @@
 .Toolbar {
   position: absolute;
+  z-index: 1;
   top: var(--size-xxs);
   right: var(--size-xxs);
-  padding-left: var(--size-xxs);
+
   display: flex;
   flex-direction: row;
-  z-index: 1;
   gap: 2px;
+
+  padding-left: var(--size-xxs);
 }
 
 .Toolbar-buttonsGroup {
@@ -27,9 +29,9 @@
 
 @media (min-width: 1024px) {
   .Toolbar {
-    flex-direction: row;
     top: 32px;
     right: var(--size-md);
+    flex-direction: row;
     gap: var(--size-md);
   }
 

@@ -20,9 +20,8 @@ const ViewModeButtonsMobile = ({
   viewMode,
   setViewMode,
 }: ViewModeButtonsProps) => {
-  
   const [isCollapsed, setIsCollapsed] = useState<boolean>(true);
-  
+
   const enabledViewMode = toolbarOptions.find((e) => e.viewMode === viewMode);
   const disabledViewModes = toolbarOptions.filter(
     (opt) => opt !== enabledViewMode
@@ -37,7 +36,9 @@ const ViewModeButtonsMobile = ({
     setIsCollapsed(true);
   };
 
-  const groupClassName = `Toolbar-buttonsGroup mobile ${isCollapsed && "collapsed"}`;
+  const groupClassName = `Toolbar-buttonsGroup mobile ${
+    isCollapsed && "collapsed"
+  }`;
   return (
     <div className={groupClassName}>
       {enabledViewMode && (
@@ -104,10 +105,6 @@ const ViewModeButtonsWeb = ({
 
 export const Toolbar = () => {
   const { viewMode, setViewMode } = useContext(AppContext);
-  
-  useEffect(() => {
-    console.log(viewMode)
-  })
 
   return (
     <nav className="Toolbar">
