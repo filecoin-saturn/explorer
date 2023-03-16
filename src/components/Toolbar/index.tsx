@@ -1,5 +1,5 @@
 import "./index.css";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 
 import Search from "../Search";
 import ToolbarButton from "../ToolbarButton";
