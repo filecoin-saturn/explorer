@@ -1,11 +1,14 @@
 .ToolbarButton {
   cursor: pointer;
+
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
   width: fit-content;
   height: fit-content;
+
   background: linear-gradient(
     296.29deg,
     rgba(0, 102, 255, 0.216) 2.96%,
@@ -13,9 +16,8 @@
     rgba(0, 163, 255, 0.2064) 93.31%
   );
   backdrop-filter: blur(16px);
-
-  border-width: 1px;
   border-style: solid;
+  border-width: 1px;
   border-image: linear-gradient(
       to right,
       rgba(157, 226, 255, 0.64),
@@ -26,10 +28,12 @@
 
 .ToolbarButton-icon {
   display: flex;
+
   width: 24px;
   height: 24px;
   margin: var(--size-sm) var(--size-lg);
   margin-bottom: var(--size-xs);
+
   opacity: 0.5;
 }
 
@@ -38,25 +42,26 @@
   flex-direction: column;
   align-items: center;
   justify-items: center;
+
   padding: var(--size-xxs);
 }
 
 .ToolbarButton-title {
   font-family: var(--font-family);
   font-size: var(--size-sm);
-  font-weight: 400;
-  color: var(--color-white);
-  text-transform: capitalize;  
+  font-weight: 400;  
   line-height: var(--size-base);
+  color: var(--color-white);
+  text-transform: capitalize;
 }
 
 .ToolbarButton-subtitle {
   font-family: var(--font-family);
   font-size: var(--size-xs);
   font-weight: 400;
+  line-height: var(--size-sm);
   color: var(--color-green);
   text-transform: uppercase;
-  line-height: var(--size-sm);
 }
 
 .ToolbarButton.active {
@@ -75,8 +80,8 @@
 @media screen and (min-width: 1024px) {
   .ToolbarButton {
     flex-direction: row;
-    justify-content: flex-start;
     align-items: center;
+    justify-content: flex-start;
     min-width: 167px;
   }
 
@@ -86,9 +91,9 @@
     opacity: 0.5;
   }
 
-  .ToolbarButton-description {    
+  .ToolbarButton-description {
+    align-items: flex-start;    
     justify-items: flex-start;
-    align-items: flex-start;
     padding: 
   }
 
@@ -99,8 +104,8 @@
   .ToolbarButton-subtitle {
     font-size: var(--size-sm);
     color: var(--color-white);
-    opacity: 0.5;
     text-transform: capitalize;
+    opacity: 0.5;
   }
 
   .ToolbarButton.active .ToolbarButton-subtitle {
