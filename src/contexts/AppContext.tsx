@@ -8,9 +8,15 @@ export enum EntityType {
   "country",
   "location",
   "node",
+  "world",
 }
 
-export type NavBarEntity = Continent | Country | Location | undefined;
+export type World = {
+  name: string;
+  type: EntityType.world;
+};
+
+export type NavBarEntity = Continent | Country | Location | World | undefined;
 export type HoverEntity = Continent | Country | undefined;
 
 export enum ViewMode {

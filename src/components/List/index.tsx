@@ -1,12 +1,10 @@
 import "./index.css";
 
-import { ReactNode } from "react";
-
 import Stat from "../Stat";
 import Icon from "../Icon";
 import BarChart from "../BarChart/BarChart";
 import { EntityType } from "../../contexts/AppContext";
-import { Continent } from "../../hooks/useContinents";
+// import { Continent } from "../../hooks/useContinents";
 
 type ListProps = {
   list: any;
@@ -30,15 +28,13 @@ export const List = ({
   const iconNameForItem = (item: any) => {
     switch (item.type) {
       case EntityType.continent:
-        return `../regions/${item.name}/${item.name.toLowerCase()}`;
+        return `../regions/${item.name.toLowerCase()}`;
       case EntityType.country:
-        return `../regions/${entity.name}/${item.id.toLowerCase()}`;
+        return `../regions/${item.id.toLowerCase()}`;
       case EntityType.location:
-        return `../regions/${item.name}/${item.name.toLowerCase()}`;
-      case EntityType.node:
-        return "nodes";
+        return `../regions/city`;
       default:
-        return `../regions/world`;
+        return "nodes";
     }
   };
 
@@ -98,9 +94,7 @@ export const List = ({
                 name={iconNameForItem(listItem)}
               />
               <p className="List-itemName">
-                {listItem.type === EntityType.node
-                  ? listItem.id
-                  : listItem.name}
+                {listItem.name ? listItem.name : listItem.id.substring(0, 8)}
               </p>
             </div>
             <div className="List-itemStats">

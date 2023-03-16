@@ -9,10 +9,8 @@ export type Location = {
   type: EntityType.location;
 };
 
-type Locations = Location[];
-
 export const useLocations = () => {
-  const [locations, setLocations] = useState<Locations>([]);
+  const [locations, setLocations] = useState<Location[]>([]);
 
   const getLocationById = (queryLocationId: string) => {
     return locations.filter((location) => location.id === queryLocationId);

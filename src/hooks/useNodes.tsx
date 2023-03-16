@@ -10,9 +10,6 @@ export enum NodeState {
 
 export type Node = {
   id: string;
-  countryId: string;
-  locationId: string;
-  continentId: string;
   createdAt: Date;
   bandwidthServed: {
     "1d": string;
@@ -117,19 +114,19 @@ export const useNodes = () => {
 
   const getByLocationId = (queryLocationId: string) => {
     return Array.from(nodes.values()).filter(
-      (node) => node.locationId === queryLocationId
+      (node) => node.geoloc.city === queryLocationId
     );
   };
 
   const getByCountryId = (queryCountryId: string) => {
     return Array.from(nodes.values()).filter(
-      (node) => node.countryId === queryCountryId
+      (node) => node.geoloc.countryCode === queryCountryId
     );
   };
 
   const getByContinentId = (queryContinentId: string) => {
     return Array.from(nodes.values()).filter(
-      (node) => node.continentId === queryContinentId
+      (node) => node.geoloc.continent.code === queryContinentId
     );
   };
 

@@ -42,6 +42,10 @@
   margin-bottom: var(--size-xs);
 }
 
+.Breadcrumb-icon path {
+  fill: var(--color-white);
+}
+
 .Breadcrumb.active .Breadcrumb-icon path {
   fill: var(--color-green);
 }

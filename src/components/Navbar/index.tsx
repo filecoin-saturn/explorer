@@ -6,26 +6,41 @@ import {
   NavBarEntity,
   HoverEntity,
   EntityType,
+  World,
 } from "../../contexts/AppContext";
 import useContinents from "../../hooks/useContinents";
 import useAppContext from "../../hooks/useAppContext";
 
 import Breadcrumb from "../Breadcrumb";
 import useCountries from "../../hooks/useCountries";
-import useLocations from "../../hooks/useLocations";
-import useNodes from "../../hooks/useNodes";
 import List from "../List";
 import Stat from "../Stat";
 import BarChart from "../BarChart/BarChart";
+import { Node } from "../../hooks/useNodes";
+import { Location } from "../../hooks/useLocations";
 
-export const Navbar = () => {
+type NavbarProps = {
+  nodes: Map<string, Node>;
+  locations: Location[];
+  getByCountryId: (query: string) => Node[];
+  getByLocationId: (query: string) => Node[];
+  getLocationByCountryId: (query: string) => Location[];
+};
+
+export const Navbar = ({
+  nodes,
+  locations,
+  getByCountryId,
+  getByLocationId,
+  getLocationByCountryId,
+}: NavbarProps) => {
   const { continents } = useContinents();
   const { getCountriesByContinentId } = useCountries();
-  const { getLocationByCountryId } = useLocations();
-  const { getByCountryId } = useNodes();
 
   const appState = useAppContext();
-  const [breadcrumbs, setBreadcrumbs] = useState([{ name: "World" }]);
+  const [breadcrumbs, setBreadcrumbs] = useState<NavBarEntity[]>([
+    { name: "World", type: EntityType.world } as World,
+  ]);
   const [active, setActive] = useState(false);
   const className = classNames({ Navbar: true, active });
 
@@ -35,12 +50,12 @@ export const Navbar = () => {
 
   const selectEntity = (item: NavBarEntity) => () => {
     appState.setNavbarEntity(item);
-    //@ts-ignore
     setBreadcrumbs([...breadcrumbs, item]);
   };
 
   useEffect(() => {
-    appState.setNavbarEntity(breadcrumbs[0] as NavBarEntity);
+    appState.setNavbarEntity(breadcrumbs[0]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const clearSelectedEntity = (breadcrumb: any, index: number) => () => {
@@ -69,7 +84,7 @@ export const Navbar = () => {
       list = getLocationByCountryId(appState.navbarEntity.id);
       break;
     case EntityType.location:
-      list = getByCountryId(appState.navbarEntity.id);
+      list = getByLocationId(appState.navbarEntity.id);
       break;
     default:
       list = continents;
@@ -85,7 +100,7 @@ export const Navbar = () => {
           const active = index === breadcrumbs.length - 1;
           return (
             <Breadcrumb
-              name={breadcrumb.name}
+              entity={breadcrumb}
               onClick={clearSelectedEntity(breadcrumb, index)}
               active={active}
             />
@@ -105,7 +120,7 @@ export const Navbar = () => {
       </div>
       <div className="Navbar-overview">
         <div className="Navbar-breadcrumb">
-          <Breadcrumb name={breadcrumbs[breadcrumbs.length - 1].name} active />
+          <Breadcrumb entity={breadcrumbs[breadcrumbs.length - 1]} active />
         </div>
         <div className="Navbar-regionStats" onClick={toggleNavbar}>
           <Stat icon="nodes-green" value={2324} label="NODES" />

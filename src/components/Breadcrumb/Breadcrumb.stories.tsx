@@ -6,15 +6,9 @@ export default {
 };
 
 export const Default = () => (
-  <BreadcrumbComponent continent="" code="" city="" name="World" />
+  <BreadcrumbComponent entity={{ name: "World", type: 4 }} />
 );
 
 export const Active = () => (
-  <BreadcrumbComponent
-    continent="Europe"
-    code="PT"
-    city=""
-    name="Portugal"
-    active
-  />
+  <BreadcrumbComponent entity={{ name: "Europe", type: 0 }} active />
 );
