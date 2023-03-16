@@ -1,6 +1,6 @@
 import "mapbox-gl/dist/mapbox-gl.css";
 
-import { Map } from "react-map-gl";
+import { Map, useMap } from "react-map-gl";
 import { MapRef } from "react-map-gl";
 //@ts-ignore
 import mapboxgl from "mapbox-gl/dist/mapbox-gl";
@@ -20,7 +20,8 @@ const projection = "globe";
 const mapStyle = "mapbox://styles/joaoferreira18/cleedx6a6003x01qg41yehikx";
 
 export const Globe = () => {
-  const [map, setMap] = useState<MapRef | null>(null);
+  // const [map, setMap] = useState<MapRef | null>(null);
+  const { current: map } = useMap();
   const mapRef = useRef(null);
 
   const [spinEnabled, setSpinEnabled] = useState<boolean>(true);
@@ -45,8 +46,8 @@ export const Globe = () => {
   };
 
   useEffect(() => {
-    setMap(mapRef.current);
-  }, [mapRef]);
+    console.log(mapRef);
+  }, []);
 
   useEffect(() => {
     setTimeout(() => spinGlobe(), 2000);
@@ -56,7 +57,6 @@ export const Globe = () => {
     <Map
       ref={mapRef}
       id="map"
-      onLoad={() => spinGlobe()}
       mapLib={mapboxgl}
       mapStyle={mapStyle}
       projection={projection}
