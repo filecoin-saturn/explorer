@@ -22,6 +22,7 @@ const ViewModeButtonsMobile = ({
 }: ViewModeButtonsProps) => {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(true);
 
+
   const enabledViewMode = toolbarOptions.find((e) => e.viewMode === viewMode);
   const disabledViewModes = toolbarOptions.filter(
     (opt) => opt !== enabledViewMode
@@ -97,7 +98,6 @@ const ViewModeButtonsWeb = ({
             </div>
           );
         }
-        return null;
       })}
     </div>
   );
