@@ -1,11 +1,12 @@
 import "mapbox-gl/dist/mapbox-gl.css";
 
-import { Map, useMap } from "react-map-gl";
+import { Map } from "react-map-gl";
+import { MapRef } from "react-map-gl";
 //@ts-ignore
 import mapboxgl from "mapbox-gl/dist/mapbox-gl";
 //@ts-ignore
 import MapboxWorker from "mapbox-gl/dist/mapbox-gl-csp-worker";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 mapboxgl.workerClass = MapboxWorker;
 
 const viewState = {
@@ -19,10 +20,11 @@ const projection = "globe";
 const mapStyle = "mapbox://styles/joaoferreira18/cleedx6a6003x01qg41yehikx";
 
 export const Globe = () => {
-  const { map } = useMap();
+  const [map, setMap] = useState<MapRef | null>(null);
+  const mapRef = useRef(null);
 
   const [spinEnabled, setSpinEnabled] = useState<boolean>(true);
-  const maxSpinZoom = 3;
+  const maxSpinZoom = 1;
   const secondsPerRevolution = 10;
   const slowSpinZoom = 3;
 
@@ -37,19 +39,24 @@ export const Globe = () => {
         }
         const center = map.getCenter();
         center.lng -= distancePerSecond;
-        map.easeTo({ center, duration: 1000, easing: (n) => n });
+        map.easeTo({ center, duration: 10000, easing: (n) => n });
       }
     }
   };
-  const onMapLoad = useCallback(() => {
-    if (!map) return;
-    spinGlobe();
+
+  useEffect(() => {
+    setMap(mapRef.current);
+  }, [mapRef]);
+
+  useEffect(() => {
+    setTimeout(() => spinGlobe(), 2000);
   }, [map]);
 
   return (
     <Map
+      ref={mapRef}
       id="map"
-      onLoad={onMapLoad}
+      onLoad={() => spinGlobe()}
       mapLib={mapboxgl}
       mapStyle={mapStyle}
       projection={projection}
