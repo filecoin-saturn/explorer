@@ -103,7 +103,10 @@ export const useNodes = () => {
 
   useEffect(() => {
     getResults();
-    setInterval(getResults, 10000);
+    const interval = setInterval(getResults, 10000);
+    return () => {
+      clearInterval(interval);
+    };
   }, [getResults]);
 
   const getByID = (queryNodeId: string) => {
