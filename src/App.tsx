@@ -22,9 +22,11 @@ function App() {
   const {
     setNodes: setStatsNodes,
     setLocations: setStatsLocations,
-    getContinentStats,
-    getCountryStats,
-    getLocationStats,
+    globalStats,
+    getStatsByContinentId,
+    getStatsByCountryId,
+    getStatsByLocationId,
+    getStatsByNodeId,
   } = useStats({
     getNodesByContinentId,
     getNodesByCountryId,
@@ -61,6 +63,11 @@ function App() {
         getNodesByCountryId={getNodesByCountryId}
         getNodesByLocationId={getNodesByLocationId}
         getLocationByCountryId={getLocationByCountryId}
+        globalStats={globalStats}
+        getStatsByContinentId={getStatsByContinentId}
+        getStatsByCountryId={getStatsByCountryId}
+        getStatsByLocationId={getStatsByLocationId}
+        getStatsByNodeId={getStatsByNodeId}
       />
       <Toolbar />
       <Globe />

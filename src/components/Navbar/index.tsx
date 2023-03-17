@@ -18,10 +18,16 @@ import Stat from "../Stat";
 import BarChart from "../BarChart/BarChart";
 import { Node } from "../../hooks/useNodes";
 import { Location } from "../../hooks/useLocations";
+import { LocationStat } from "../../hooks/useStats";
 
 type NavbarProps = {
   nodes: Map<string, Node>;
   locations: Location[];
+  globalStats: LocationStat | undefined;
+  getStatsByContinentId: (query: string) => LocationStat | undefined;
+  getStatsByCountryId: (query: string) => LocationStat | undefined;
+  getStatsByLocationId: (query: string) => LocationStat | undefined;
+  getStatsByNodeId: (query: string) => LocationStat | undefined;
   getNodesByCountryId: (query: string) => Node[];
   getNodesByLocationId: (query: string) => Node[];
   getLocationByCountryId: (query: string) => Location[];
@@ -30,6 +36,11 @@ type NavbarProps = {
 export const Navbar = ({
   nodes,
   locations,
+  globalStats,
+  getStatsByContinentId,
+  getStatsByCountryId,
+  getStatsByLocationId,
+  getStatsByNodeId,
   getNodesByCountryId,
   getNodesByLocationId,
   getLocationByCountryId,
@@ -77,21 +88,27 @@ export const Navbar = ({
   };
 
   let list;
+  let entityStats;
   switch (appState.navbarEntity?.type) {
     case EntityType.continent:
       list = getCountriesByContinentId(appState.navbarEntity.id);
+      entityStats = getStatsByContinentId(appState.navbarEntity.id);
       break;
     case EntityType.country:
       list = getLocationByCountryId(appState.navbarEntity.id);
+      entityStats = getStatsByCountryId(appState.navbarEntity.id);
       break;
     case EntityType.location:
       list = getNodesByLocationId(appState.navbarEntity.id);
+      entityStats = getStatsByLocationId(appState.navbarEntity.id);
       break;
     case EntityType.node:
       list = getNodesByLocationId(appState.navbarEntity.geoloc.city);
+      // entityStats = getStatsByLocationId(appState.navbarEntity.id);
       break;
     default:
       list = continents;
+      entityStats = globalStats;
       break;
   }
 
@@ -115,11 +132,15 @@ export const Navbar = ({
         <List
           list={list}
           entity={appState.navbarEntity}
-          stats={[]}
+          stats={entityStats}
           toggleNavbar={toggleNavbar}
           onSelect={selectEntity}
           hoverEnd={hoverEnd}
           hoverStart={hoverStart}
+          getStatsByContinentId={getStatsByContinentId}
+          getStatsByCountryId={getStatsByCountryId}
+          getStatsByLocationId={getStatsByLocationId}
+          getStatsByNodeId={getStatsByNodeId}
         />
       </div>
       <div className="Navbar-overview">
@@ -127,12 +148,35 @@ export const Navbar = ({
           <Breadcrumb entity={breadcrumbs[breadcrumbs.length - 1]} active />
         </div>
         <div className="Navbar-regionStats" onClick={toggleNavbar}>
-          <Stat icon="nodes-green" value={2324} label="NODES" />
-          <Stat icon="ttfb" value={194} units="ms" label="Avg TTFB" />
-          <Stat icon="fil" value={124.35} label="$87.08" />
-          <Stat icon="space" value={1450} units="GB" label="Bandwidth" />
-          <Stat icon="retrievals" value={1244} label="Retrievals" />
-          <div className="Navbar-chart">
+          <Stat
+            icon="nodes-green"
+            value={entityStats?.numberOfNodes}
+            label="NODES"
+          />
+          <Stat
+            icon="ttfb"
+            value={entityStats?.avgTTFB}
+            units="ms"
+            label="Avg TTFB"
+          />
+          <Stat
+            icon="fil"
+            units="FIL"
+            value={entityStats?.estimatedEarnings["7d"]}
+            label="Earnings"
+          />
+          <Stat
+            icon="space"
+            value={entityStats?.bandwidthServed["7d"]}
+            units="GB"
+            label="Bandwidth"
+          />
+          <Stat
+            icon="retrievals"
+            value={entityStats?.retrievals["7d"]}
+            label="Retrievals"
+          />
+          {/* <div className="Navbar-chart">
             <BarChart
               dataset={[
                 { date: "01/02/2023", earnings: 1 },
@@ -150,7 +194,7 @@ export const Navbar = ({
                 { date: "13/02/2023", earnings: 40 },
               ]}
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </nav>

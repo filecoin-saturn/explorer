@@ -20,7 +20,7 @@ import { Node } from "./useNodes";
 
 // export type Stats = Stat[];
 
-type LocationStat = {
+export type LocationStat = {
   entityId: string;
   numberOfNodes: number; //todo convert to stat
   diskSpace: number; //todo convert to stat
@@ -33,7 +33,7 @@ type LocationStat = {
 
 const computeStats = (
   nodes: Node[],
-  entity: Location | Country | Continent | undefined
+  entity: Location | Country | Continent | Node | undefined
 ) => {
   const numberOfNodes = nodes.length;
   const diskSpace = nodes.reduce((acc, el) => {
@@ -44,8 +44,12 @@ const computeStats = (
     (acc, el) => {
       if (Object.keys(el.retrievalsStats).length) {
         return {
-          "1d": acc["1d"] + el.retrievalsStats["1d"],
-          "7d": acc["7d"] + el.retrievalsStats["7d"],
+          "1d": +(acc["1d"] + (el.retrievalsStats["1d"] || 0) * 1e-6).toFixed(
+            0
+          ),
+          "7d": +(acc["7d"] + (el.retrievalsStats["7d"] || 0) * 1e-6).toFixed(
+            0
+          ),
         };
       } else {
         return acc;
@@ -58,8 +62,14 @@ const computeStats = (
     (acc, el) => {
       if (Object.keys(el.bandwidthServed).length) {
         return {
-          "1d": acc["1d"] + parseInt(el.bandwidthServed["1d"]) * 1e-9,
-          "7d": acc["7d"] + parseInt(el.bandwidthServed["7d"]) * 1e-9,
+          "1d": +(
+            acc["1d"] +
+            (parseInt(el.bandwidthServed["1d"]) || 0) * 1e-9
+          ).toFixed(0),
+          "7d": +(
+            acc["7d"] +
+            (parseInt(el.bandwidthServed["7d"]) || 0) * 1e-9
+          ).toFixed(0),
         };
       } else {
         return acc;
@@ -72,8 +82,8 @@ const computeStats = (
     (acc, el) => {
       if (Object.keys(el.estimatedEarnings).length) {
         return {
-          "1d": acc["1d"] + +el.estimatedEarnings["1d"]?.toFixed(4),
-          "7d": acc["7d"] + +el.estimatedEarnings["7d"]?.toFixed(4),
+          "1d": +(acc["1d"] + (el.estimatedEarnings["1d"] || 0))?.toFixed(4),
+          "7d": +(acc["7d"] + (el.estimatedEarnings["7d"] || 0))?.toFixed(4),
         };
       } else {
         return acc;
@@ -85,7 +95,7 @@ const computeStats = (
   const avgTTFB = nodes.reduce((acc, el) => {
     if (el.ttfbStats["p95_24h"]) {
       const contrib = el.ttfbStats["p95_24h"] / numberOfNodes;
-      return contrib ? acc + contrib : acc;
+      return contrib ? +(acc + contrib).toFixed(0) : acc;
     } else {
       return acc;
     }
@@ -143,6 +153,7 @@ export const useStats = ({
   const computeGlobalStats = () => {
     if (!nodes) return;
     const globalStats_ = computeStats(nodes, undefined);
+    console.log("globalStats_", globalStats_);
     setGlobalStats(globalStats_);
   };
 
@@ -173,6 +184,7 @@ export const useStats = ({
     setLocationsStats(locationsStats_);
   };
 
+  // todo: compute when it0s needed instead of everything at the begining
   useEffect(() => {
     computeGlobalStats();
     computeContinentsStats();
@@ -181,19 +193,27 @@ export const useStats = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nodes]);
 
-  const getContinentStats = (continentId: string) => {
+  const getStatsByContinentId = (continentId: string) => {
     if (!continentsStats) return;
     return continentsStats.find((stat) => stat.entityId === continentId);
   };
 
-  const getCountryStats = (countryId: string) => {
+  const getStatsByCountryId = (countryId: string) => {
     if (!countriesStats) return;
     return countriesStats.find((stat) => stat.entityId === countryId);
   };
 
-  const getLocationStats = (locationId: string) => {
+  const getStatsByLocationId = (locationId: string) => {
     if (!locationsStats) return;
     return locationsStats.find((stat) => stat.entityId === locationId);
+  };
+
+  const getStatsByNodeId = (nodeId: string) => {
+    // todo: compute node stats
+    if (!nodes) return;
+    const node = nodes.find((node) => node.id === nodeId);
+    if (!node) return;
+    return computeStats([node], node);
   };
 
   return {
@@ -203,9 +223,9 @@ export const useStats = ({
     locationsStats,
     setNodes,
     setLocations,
-    getContinentStats,
-    getCountryStats,
-    getLocationStats,
-    // getNodeStats,
+    getStatsByContinentId,
+    getStatsByCountryId,
+    getStatsByLocationId,
+    getStatsByNodeId,
   };
 };
