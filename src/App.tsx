@@ -8,10 +8,28 @@ import useNodes from "./hooks/useNodes";
 import useLocations, { Location } from "./hooks/useLocations";
 import { useEffect } from "react";
 import { EntityType } from "./contexts/AppContext";
+import { useStats } from "./hooks/useStats";
 
 function App() {
-  const { nodes, getByCountryId, getByLocationId } = useNodes();
+  const {
+    nodes,
+    getByCountryId: getNodesByCountryId,
+    getByLocationId: getNodesByLocationId,
+    getByContinentId: getNodesByContinentId,
+  } = useNodes();
   const { locations, setLocations, getLocationByCountryId } = useLocations();
+
+  const {
+    setNodes: setStatsNodes,
+    setLocations: setStatsLocations,
+    getContinentStats,
+    getCountryStats,
+    getLocationStats,
+  } = useStats({
+    getNodesByContinentId,
+    getNodesByCountryId,
+    getNodesByLocationId,
+  });
 
   useEffect(() => {
     const locationsMap = new Map<string, Location>();
@@ -28,6 +46,11 @@ function App() {
 
     setLocations(Array.from(locationsMap.values()));
   }, [nodes, setLocations]);
+
+  useEffect(() => {
+    setStatsNodes(Array.from(nodes.values()));
+    setStatsLocations(locations);
+  }, [locations]);
 
   return (
     <div className="App">

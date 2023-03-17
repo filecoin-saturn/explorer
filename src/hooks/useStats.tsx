@@ -2,23 +2,23 @@ import { useEffect, useState } from "react";
 import useContinents, { Continent } from "./useContinents";
 import useCountries, { Country } from "./useCountries";
 import { Location } from "./useLocations";
-import useNodes, { Node } from "./useNodes";
+import { Node } from "./useNodes";
 
-enum StatType {
-  "Location",
-  "Node",
-}
+// enum StatType {
+//   "Location",
+//   "Node",
+// }
 
-type StatValue = string | number;
+// type StatValue = string | number;
 
-export type Stat = {
-  type: StatType;
-  value: StatValue;
-  label: string;
-  icon: string;
-};
+// export type Stat = {
+//   type: StatType;
+//   value: StatValue;
+//   label: string;
+//   icon: string;
+// };
 
-export type Stats = Stat[];
+// export type Stats = Stat[];
 
 type LocationStat = {
   entityId: string;
@@ -27,11 +27,14 @@ type LocationStat = {
   retrievals: { "1d": number; "7d": number }; //todo convert to stat
   bandwidthServed: { "1d": number; "7d": number }; //todo convert to stat
   estimatedEarnings: { "1d": number; "7d": number }; //todo convert to stat
-  cacheHitRate: { "1h": number; "24h": number }; //todo convert to stat
+  cacheHitRate: number; //todo convert to stat
   avgTTFB: { "1h": number; "24h": number }; //todo convert to stat
 };
 
-const computeStats = (nodes: Node[], entity: Location | Country | Continent) => {
+const computeStats = (
+  nodes: Node[],
+  entity: Location | Country | Continent | undefined
+) => {
   const numberOfNodes = nodes.length;
   const diskSpace = nodes.reduce((acc, el) => {
     return acc + el.diskSizeGB;
@@ -55,8 +58,8 @@ const computeStats = (nodes: Node[], entity: Location | Country | Continent) => 
     (acc, el) => {
       if (Object.keys(el.bandwidthServed).length) {
         return {
-          "1d": acc["1d"] + parseInt(el.bandwidthServed["1d"]),
-          "7d": acc["7d"] + parseInt(el.bandwidthServed["7d"]),
+          "1d": acc["1d"] + parseInt(el.bandwidthServed["1d"]) * 1e-9,
+          "7d": acc["7d"] + parseInt(el.bandwidthServed["7d"]) * 1e-9,
         };
       } else {
         return acc;
@@ -69,8 +72,8 @@ const computeStats = (nodes: Node[], entity: Location | Country | Continent) => 
     (acc, el) => {
       if (Object.keys(el.estimatedEarnings).length) {
         return {
-          "1d": acc["1d"] + el.estimatedEarnings["1d"],
-          "7d": acc["7d"] + el.estimatedEarnings["7d"],
+          "1d": acc["1d"] + +el.estimatedEarnings["1d"].toFixed(4),
+          "7d": acc["7d"] + +el.estimatedEarnings["7d"].toFixed(4),
         };
       } else {
         return acc;
@@ -79,38 +82,26 @@ const computeStats = (nodes: Node[], entity: Location | Country | Continent) => 
     { "1d": 0, "7d": 0 }
   );
 
-  const avgTTFB = nodes.reduce(
-    (acc, el) => {
-      if (Object.keys(el.ttfbStats).length) {
-        const p95_1h = el.ttfbStats["p95_1h"] > 0 ? el.ttfbStats["p95_1h"] / numberOfNodes : 0;
-        const p95_24h = el.ttfbStats["p95_24h"] > 0 ? el.ttfbStats["p95_24h"] / numberOfNodes : 0;
-        return {
-          "1h": acc["1h"] + p95_1h,
-          "24h": acc["24h"] + p95_24h,
-        };
-      } else {
-        return acc;
-      }
-    },
-    { "1h": 0, "24h": 0 }
-  );
+  const avgTTFB = nodes.reduce((acc, el) => {
+    if (el.ttfbStats["p95_24h"]) {
+      const contrib = el.ttfbStats["p95_24h"] / numberOfNodes;
+      return contrib ? acc + contrib : acc;
+    } else {
+      return acc;
+    }
+  }, 0);
 
-  const cacheHitRate = nodes.reduce(
-    (acc, el) => {
-      if (Object.keys(el.cacheHitRate).length) {
-        return {
-          "1h": acc["1h"] + el.cacheHitRate["1h"],
-          "24h": acc["24h"] + el.cacheHitRate["24h"],
-        };
-      } else {
-        return acc;
-      }
-    },
-    { "1h": 0, "24h": 0 }
-  );
+  const cacheHitRate = nodes.reduce((acc, el) => {
+    if (el.cacheHitRate["24h"]) {
+      const contrib = el.cacheHitRate["24h"] / numberOfNodes;
+      return contrib ? acc + contrib : acc;
+    } else {
+      return acc;
+    }
+  }, 0);
 
   return {
-    entityId: entity.id,
+    entityId: entity ? entity.id : "",
     numberOfNodes,
     diskSpace,
     retrievals,
@@ -121,41 +112,73 @@ const computeStats = (nodes: Node[], entity: Location | Country | Continent) => 
   };
 };
 
-export const useStats = () => {
-  const { nodes, getByContinentId, getByCountryId, getByLocationId } = useNodes();
+type useStatsProps = {
+  getNodesByContinentId: (queryContinentId: string) => Node[];
+  getNodesByCountryId: (queryCountryId: string) => Node[];
+  getNodesByLocationId: (queryLocationId: string) => Node[];
+};
+
+export const useStats = ({
+  getNodesByContinentId,
+  getNodesByCountryId,
+  getNodesByLocationId,
+}: useStatsProps) => {
+  const [nodes, setNodes] = useState<Node[]>();
+
+  const [locations, setLocations] = useState<Location[]>();
   const { continents } = useContinents();
   const { countries } = useCountries();
 
-  const [continentsStats, setContinentsStats] = useState<LocationStat[] | undefined>();
-  const [countriesStats, setCountriesStats] = useState<LocationStat[] | undefined>();
-  // const [locationsStats, setLocationsStats] = useState<LocationStat[] | undefined>();
+  const [globalStats, setGlobalStats] = useState<LocationStat>();
+  const [continentsStats, setContinentsStats] = useState<
+    LocationStat[] | undefined
+  >();
+  const [countriesStats, setCountriesStats] = useState<
+    LocationStat[] | undefined
+  >();
+  const [locationsStats, setLocationsStats] = useState<
+    LocationStat[] | undefined
+  >();
+
+  const computeGlobalStats = () => {
+    if (!nodes) return;
+    const globalStats_ = computeStats(nodes, undefined);
+    setGlobalStats(globalStats_);
+  };
 
   const computeContinentsStats = () => {
+    if (!nodes) return;
     const continentsStats_ = continents.map((continent) => {
-      const continentNodes = getByContinentId(continent.id);
+      const continentNodes = getNodesByContinentId(continent.id);
       return computeStats(continentNodes, continent);
     });
-
     setContinentsStats(continentsStats_);
   };
 
   const computeCountriesStats = () => {
+    if (!nodes) return;
     const countriesStats_ = countries.map((country) => {
-      const countryNodes = getByCountryId(country.id);
+      const countryNodes = getNodesByCountryId(country.id);
       return computeStats(countryNodes, country);
     });
-
     setCountriesStats(countriesStats_);
   };
 
   const computeLocationStats = () => {
-    // todo
+    if (!locations) return;
+    const locationsStats_ = locations.map((city) => {
+      const locationNodes = getNodesByLocationId(city.id);
+      return computeStats(locationNodes, city);
+    });
+    setLocationsStats(locationsStats_);
   };
 
   useEffect(() => {
-    computeLocationStats();
-    computeCountriesStats();
+    computeGlobalStats();
     computeContinentsStats();
+    computeCountriesStats();
+    computeLocationStats();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nodes]);
 
   const getContinentStats = (continentId: string) => {
@@ -163,15 +186,23 @@ export const useStats = () => {
     return continentsStats.find((stat) => stat.entityId === continentId);
   };
 
-  const getCountryStats = (countryId: string) => {};
+  const getCountryStats = (countryId: string) => {
+    if (!countriesStats) return;
+    return countriesStats.find((stat) => stat.entityId === countryId);
+  };
 
-  const getLocationStats = (locationId: string) => {};
-
-  const getNodeStats = (nodeId: string) => {};
+  const getLocationStats = (locationId: string) => {
+    if (!locationsStats) return;
+    return locationsStats.find((stat) => stat.entityId === locationId);
+  };
 
   return {
+    globalStats,
     continentsStats,
     countriesStats,
+    locationsStats,
+    setNodes,
+    setLocations,
     getContinentStats,
     getCountryStats,
     getLocationStats,
