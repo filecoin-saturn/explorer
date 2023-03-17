@@ -22,16 +22,16 @@ import { Location } from "../../hooks/useLocations";
 type NavbarProps = {
   nodes: Map<string, Node>;
   locations: Location[];
-  getByCountryId: (query: string) => Node[];
-  getByLocationId: (query: string) => Node[];
+  getNodesByCountryId: (query: string) => Node[];
+  getNodesByLocationId: (query: string) => Node[];
   getLocationByCountryId: (query: string) => Location[];
 };
 
 export const Navbar = ({
   nodes,
   locations,
-  getByCountryId,
-  getByLocationId,
+  getNodesByCountryId,
+  getNodesByLocationId,
   getLocationByCountryId,
 }: NavbarProps) => {
   const { continents } = useContinents();
@@ -85,10 +85,10 @@ export const Navbar = ({
       list = getLocationByCountryId(appState.navbarEntity.id);
       break;
     case EntityType.location:
-      list = getByLocationId(appState.navbarEntity.id);
+      list = getNodesByLocationId(appState.navbarEntity.id);
       break;
     case EntityType.node:
-      list = getByLocationId(appState.navbarEntity.geoloc.city);
+      list = getNodesByLocationId(appState.navbarEntity.geoloc.city);
       break;
     default:
       list = continents;

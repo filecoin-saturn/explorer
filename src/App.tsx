@@ -13,9 +13,9 @@ import { useStats } from "./hooks/useStats";
 function App() {
   const {
     nodes,
-    getByCountryId: getNodesByCountryId,
-    getByLocationId: getNodesByLocationId,
-    getByContinentId: getNodesByContinentId,
+    getNodesByCountryId,
+    getNodesByLocationId,
+    getNodesByContinentId,
   } = useNodes();
   const { locations, setLocations, getLocationByCountryId } = useLocations();
 
@@ -58,8 +58,8 @@ function App() {
       <Navbar
         nodes={nodes}
         locations={locations}
-        getByCountryId={getByCountryId}
-        getByLocationId={getByLocationId}
+        getNodesByCountryId={getNodesByCountryId}
+        getNodesByLocationId={getNodesByLocationId}
         getLocationByCountryId={getLocationByCountryId}
       />
       <Toolbar />

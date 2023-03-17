@@ -65,7 +65,10 @@ export const useNodes = () => {
       const decoder = new TextDecoder();
       const reader = response.body?.getReader();
 
-      const onChunck = ({ done, value }: ReadableStreamReadResult<Uint8Array>): void => {
+      const onChunck = ({
+        done,
+        value,
+      }: ReadableStreamReadResult<Uint8Array>): void => {
         let data;
 
         if (buffer.length) {
@@ -79,17 +82,17 @@ export const useNodes = () => {
         data.forEach((line) => {
           if (!line.length) return;
 
-        try {
-          const node = JSON.parse(line);
-          nodesMap.set(node.id, {
-            ...node,
-            name: node.id.substring(0, 8),
-            type: EntityType.node,
-          });
-        } catch (error) {
-          buffer = line;
-        }
-      });
+          try {
+            const node = JSON.parse(line);
+            nodesMap.set(node.id, {
+              ...node,
+              name: node.id.substring(0, 8),
+              type: EntityType.node,
+            });
+          } catch (error) {
+            buffer = line;
+          }
+        });
 
         setNodes(new Map(nodesMap));
         if (!done) {
@@ -111,38 +114,42 @@ export const useNodes = () => {
     };
   }, []);
 
-  const getByID = (queryNodeId: string) => {
+  const getNodeByID = (queryNodeId: string) => {
     return nodes.get(queryNodeId);
   };
 
-  const getByLocationId = (queryLocationId: string) => {
+  const getNodesByLocationId = (queryLocationId: string) => {
     return Array.from(nodes.values()).filter(
       (node) => node.geoloc.city === queryLocationId
     );
   };
 
-  const getByCountryId = (queryCountryId: string) => {
+  const getNodesByCountryId = (queryCountryId: string) => {
     return Array.from(nodes.values()).filter(
       (node) => node.geoloc.countryCode === queryCountryId
     );
   };
 
-  const getByContinentId = (queryContinentId: string) => {
-    return Array.from(nodes.values()).filter((node) => node.geoloc.continent.code === queryContinentId);
+  const getNodesByContinentId = (queryContinentId: string) => {
+    return Array.from(nodes.values()).filter(
+      (node) => node.geoloc.continent.code === queryContinentId
+    );
   };
 
-  const getByActivityState = (activityState: NodeState) => {
-    return Array.from(nodes.values()).filter((node) => node.state === activityState);
+  const getNodesByActivityState = (activityState: NodeState) => {
+    return Array.from(nodes.values()).filter(
+      (node) => node.state === activityState
+    );
   };
 
   return {
     nodes,
     setNodes,
-    getByID,
-    getByLocationId,
-    getByCountryId,
-    getByContinentId,
-    getByActivityState,
+    getNodeByID,
+    getNodesByLocationId,
+    getNodesByCountryId,
+    getNodesByContinentId,
+    getNodesByActivityState,
   };
 };
 
