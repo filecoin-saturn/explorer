@@ -104,6 +104,7 @@ export const Navbar = ({
           const active = index === breadcrumbs.length - 1;
           return (
             <Breadcrumb
+              key={breadcrumb?.name}
               entity={breadcrumb}
               onClick={clearSelectedEntity(breadcrumb, index)}
               active={active}
