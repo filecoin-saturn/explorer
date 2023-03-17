@@ -58,14 +58,15 @@ export const Navbar = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const clearSelectedEntity = (breadcrumb: any, index: number) => () => {
-    if (breadcrumb.name === appState.navbarEntity?.name) {
-      return;
-    }
+  const clearSelectedEntity =
+    (breadcrumb: NavBarEntity, index: number) => () => {
+      if (breadcrumb?.name === appState.navbarEntity?.name) {
+        return;
+      }
 
-    setBreadcrumbs(breadcrumbs.slice(0, index + 1));
-    appState.setNavbarEntity(breadcrumb as NavBarEntity);
-  };
+      setBreadcrumbs(breadcrumbs.slice(0, index + 1));
+      appState.setNavbarEntity(breadcrumb);
+    };
 
   const hoverStart = (item: HoverEntity) => () => {
     appState.setHoverEntity(item);
@@ -85,6 +86,9 @@ export const Navbar = ({
       break;
     case EntityType.location:
       list = getByLocationId(appState.navbarEntity.id);
+      break;
+    case EntityType.node:
+      list = getByLocationId(appState.navbarEntity.geoloc.city);
       break;
     default:
       list = continents;

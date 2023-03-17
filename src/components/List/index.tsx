@@ -3,13 +3,16 @@ import "./index.css";
 import Stat from "../Stat";
 import Icon from "../Icon";
 import BarChart from "../BarChart/BarChart";
-import { EntityType } from "../../contexts/AppContext";
-// import { Continent } from "../../hooks/useContinents";
+import { EntityType, NavBarEntity } from "../../contexts/AppContext";
+import { Nodes } from "../../hooks/useNodes";
+import { Continent } from "../../hooks/useContinents";
+import { Location } from "../../hooks/useLocations";
+import { Country } from "../../hooks/useCountries";
 
 type ListProps = {
-  list: any;
-  entity: any;
   stats: any;
+  list: Nodes | Location[] | Country[] | Continent[];
+  entity: NavBarEntity;
   toggleNavbar?: () => void;
   onSelect: (item: any) => () => void;
   hoverEnd: () => void;
@@ -27,6 +30,8 @@ export const List = ({
 }: ListProps) => {
   const iconNameForItem = (item: any) => {
     switch (item.type) {
+      case EntityType.world:
+        return "../regions/world";
       case EntityType.continent:
         return `../regions/${item.name.toLowerCase()}`;
       case EntityType.country:
@@ -43,7 +48,7 @@ export const List = ({
       <div className="List-header">
         <div className="List-title" onClick={toggleNavbar}>
           <Icon className="List-icon" name={iconNameForItem(entity)} />
-          <p className="List-heading">{entity.name}</p>
+          <p className="List-heading">{entity?.name}</p>
           <div className="List-mainStat">
             <Stat icon="nodes-green" value={2324} label="Nodes" />
           </div>
@@ -93,9 +98,7 @@ export const List = ({
                 className="List-itemIcon"
                 name={iconNameForItem(listItem)}
               />
-              <p className="List-itemName">
-                {listItem.name ? listItem.name : listItem.id.substring(0, 8)}
-              </p>
+              <p className="List-itemName">{listItem.name}</p>
             </div>
             <div className="List-itemStats">
               <Stat small icon="nodes-green" value={2324} label="Nodes" />

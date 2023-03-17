@@ -10,6 +10,7 @@ export enum NodeState {
 
 export type Node = {
   id: string;
+  name: string;
   createdAt: Date;
   bandwidthServed: {
     "1d": string;
@@ -81,7 +82,11 @@ export const useNodes = () => {
 
         try {
           const node = JSON.parse(line);
-          nodesMap.set(node.id, node);
+          nodesMap.set(node.id, {
+            ...node,
+            name: node.id.substring(0, 8),
+            type: EntityType.node,
+          });
         } catch (error) {
           buffer = line;
         }

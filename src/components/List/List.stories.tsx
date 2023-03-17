@@ -6,7 +6,7 @@ export default {
 
 export const List = () => (
   <ListComponent
-    entity={{ name: "Spain" }}
+    entity={{ id: "es", name: "Spain", type: 3 }}
     list={[]}
     stats={[]}
     toggleNavbar={() => {}}

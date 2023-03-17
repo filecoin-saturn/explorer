@@ -1,4 +1,5 @@
 import { createContext, ReactElement, ReactNode, useState } from "react";
+import { Node } from "../hooks/useNodes";
 import { Continent } from "../hooks/useContinents";
 import { Country } from "../hooks/useCountries";
 import { Location } from "../hooks/useLocations";
@@ -12,11 +13,18 @@ export enum EntityType {
 }
 
 export type World = {
+  id: string;
   name: string;
   type: EntityType.world;
 };
 
-export type NavBarEntity = Continent | Country | Location | World | undefined;
+export type NavBarEntity =
+  | Continent
+  | Country
+  | Location
+  | World
+  | Node
+  | undefined;
 export type HoverEntity = Continent | Country | undefined;
 
 export enum ViewMode {

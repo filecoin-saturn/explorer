@@ -66,26 +66,6 @@
   max-height: 100%;
 }
 
-.Navbar-header {
-  height: 277px;
-
-  background: linear-gradient(
-    296.29deg,
-    rgba(0, 102, 255, 0.216) 2.96%,
-    rgba(0, 133, 255, 0.1896) 50.03%,
-    rgba(0, 163, 255, 0.2064) 93.31%
-  );
-  backdrop-filter: blur(16px);
-  border-style: solid;
-  border-width: 1px;
-  border-image: linear-gradient(
-      to right,
-      rgba(157, 226, 255, 0.64),
-      rgba(217, 255, 248, 0)
-    )
-    1;
-}
-
 .Navbar-content {
   display: flex;
   flex-direction: column;
@@ -161,14 +141,16 @@
 @media screen and (min-width: 1024px) {
   .Navbar {
     pointer-events: all;
+
     top: var(--size-lg);
+    right: initial;
     bottom: var(--size-lg);
     left: var(--size-lg);
   }
 
   .Navbar .Navbar-content {
     transform: translateY(0);
-    max-width: 302px;
+    width: 302px;
   }
 
   .Navbar .Navbar-breadcrumbs {

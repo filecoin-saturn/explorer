@@ -6,9 +6,9 @@ export default {
 };
 
 export const Default = () => (
-  <BreadcrumbComponent entity={{ name: "World", type: 4 }} />
+  <BreadcrumbComponent entity={{ id: "World", name: "World", type: 4 }} />
 );
 
 export const Active = () => (
-  <BreadcrumbComponent entity={{ name: "Europe", type: 0 }} active />
+  <BreadcrumbComponent entity={{ id: "eu", name: "Europe", type: 0 }} active />
 );
