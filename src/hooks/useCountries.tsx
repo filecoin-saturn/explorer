@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { EntityType } from "../contexts/AppContext";
-
 import countriesList from "./countries.json";
 import { EntityType } from "../contexts/AppContext";
 

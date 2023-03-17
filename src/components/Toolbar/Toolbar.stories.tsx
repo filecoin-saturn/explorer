@@ -1,7 +1,7 @@
-import {Toolbar as ToolbarComponent} from ".";
+import { Toolbar as ToolbarComponent } from ".";
 
 export default {
   component: ToolbarComponent,
 };
 
-export const Toolbar = () => <ToolbarComponent />;
+export const Toolbar = () => <ToolbarComponent nodes={[]} />;

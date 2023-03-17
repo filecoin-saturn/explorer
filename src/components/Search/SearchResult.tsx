@@ -1,7 +1,7 @@
 import "./SearchResult.css";
 import { Continent, useContinents } from "../../hooks/useContinents";
 import { Country, useCountries } from "../../hooks/useCountries";
-import { Location, useLocations } from "../../hooks/useLocations";
+import { Location } from "../../hooks/useLocations";
 import { Node } from "../../hooks/useNodes";
 import { EntityType } from "../../contexts/AppContext";
 
@@ -13,7 +13,6 @@ export type SearchResultProps = {
 export const SearchResult = ({ result, onClick }: SearchResultProps) => {
   const { getContinentById } = useContinents();
   const { getCountryById } = useCountries();
-  const { getLocationById } = useLocations();
 
   let title = "";
   let subtitle = "";
@@ -35,9 +34,9 @@ export const SearchResult = ({ result, onClick }: SearchResultProps) => {
       subtitle = locationCountry ? locationCountry.name : "";
       break;
     case EntityType.node:
-      const nodeLocation = getLocationById(result.locationId);
+      const nodeLocation = result.geoloc.city;
       title = result.id.substring(0, 8);
-      subtitle = nodeLocation ? nodeLocation.name : "";
+      subtitle = nodeLocation;
       break;
     default:
       title = "N/A";

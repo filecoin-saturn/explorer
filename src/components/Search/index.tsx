@@ -11,14 +11,14 @@ import { Node } from "../../hooks/useNodes";
 import classnames from "classnames";
 import useAppContext from "../../hooks/useAppContext";
 
-export const Search = () => {
+export const Search = ({ nodes }: { nodes: Node[] }) => {
   const appState = useAppContext();
   const [searchTerm, setSearchTerm] = useState<string | undefined>();
   const [isSearchActive, setIsSearchActive] = useState<boolean>(false);
   const [searchResults, setSearchResults] = useState<
     (Continent | Country | Location | Node)[]
   >([]);
-  const { search } = useSearch();
+  const { search } = useSearch(nodes);
   const className = classnames("Search", { active: isSearchActive });
   const inputRef = useRef<HTMLInputElement>(null);
 

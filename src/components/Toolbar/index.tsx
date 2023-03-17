@@ -1,5 +1,6 @@
 import "./index.css";
 import { useContext, useState } from "react";
+import { Node } from "../../hooks/useNodes";
 
 import Search from "../Search";
 import ToolbarButton from "../ToolbarButton";
@@ -21,7 +22,6 @@ const ViewModeButtonsMobile = ({
   setViewMode,
 }: ViewModeButtonsProps) => {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(true);
-
 
   const enabledViewMode = toolbarOptions.find((e) => e.viewMode === viewMode);
   const disabledViewModes = toolbarOptions.filter(
@@ -103,13 +103,13 @@ const ViewModeButtonsWeb = ({
   );
 };
 
-export const Toolbar = () => {
+export const Toolbar = ({ nodes }: { nodes: Node[] }) => {
   const { viewMode, setViewMode } = useContext(AppContext);
 
   return (
     <nav className="Toolbar">
       <div className="Toolbar-search">
-        <Search />
+        <Search nodes={nodes} />
       </div>
       <ViewModeButtonsMobile viewMode={viewMode} setViewMode={setViewMode} />
       <ViewModeButtonsWeb viewMode={viewMode} setViewMode={setViewMode} />

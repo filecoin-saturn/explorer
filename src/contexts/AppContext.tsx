@@ -1,5 +1,4 @@
 import { createContext, ReactElement, ReactNode, useState } from "react";
-import { Node } from "../hooks/useNodes";
 import { Continent } from "../hooks/useContinents";
 import { Country } from "../hooks/useCountries";
 import { Location } from "../hooks/useLocations";

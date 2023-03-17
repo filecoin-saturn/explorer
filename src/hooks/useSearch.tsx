@@ -3,15 +3,14 @@ import { EntityType } from "../contexts/AppContext";
 import useContinents from "./useContinents";
 import useCountries from "./useCountries";
 import useLocations from "./useLocations";
-import useNodes from "./useNodes";
+import { Node } from "./useNodes";
 
-const useSearch = () => {
+const useSearch = (nodes: Node[]) => {
   const { continents } = useContinents();
   const { countries } = useCountries();
   const { locations } = useLocations();
-  const { nodes } = useNodes();
 
-  // todo: fixup conflictin ids
+  // todo: fixup conflicting ids
   const customContinents = continents.map((c) => ({
     ...c,
     iso: c.id,
@@ -32,7 +31,7 @@ const useSearch = () => {
       fuzzy: 0.2,
     });
 
-    const resultsIds = searchResults.map((e) => e.id);
+    const resultsIds = searchResults.map((e: any) => e.id);
     const results = documents.filter((doc) => resultsIds.includes(doc.id));
     const relevantResults_ = results?.slice(0, 3);
 
