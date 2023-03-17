@@ -28,7 +28,7 @@ type LocationStat = {
   bandwidthServed: { "1d": number; "7d": number }; //todo convert to stat
   estimatedEarnings: { "1d": number; "7d": number }; //todo convert to stat
   cacheHitRate: number; //todo convert to stat
-  avgTTFB: { "1h": number; "24h": number }; //todo convert to stat
+  avgTTFB: number; //todo convert to stat
 };
 
 const computeStats = (
@@ -72,8 +72,8 @@ const computeStats = (
     (acc, el) => {
       if (Object.keys(el.estimatedEarnings).length) {
         return {
-          "1d": acc["1d"] + +el.estimatedEarnings["1d"].toFixed(4),
-          "7d": acc["7d"] + +el.estimatedEarnings["7d"].toFixed(4),
+          "1d": acc["1d"] + +el.estimatedEarnings["1d"]?.toFixed(4),
+          "7d": acc["7d"] + +el.estimatedEarnings["7d"]?.toFixed(4),
         };
       } else {
         return acc;
@@ -206,6 +206,6 @@ export const useStats = ({
     getContinentStats,
     getCountryStats,
     getLocationStats,
-    getNodeStats,
+    // getNodeStats,
   };
 };
