@@ -5,8 +5,10 @@ export default {
   component: BreadcrumbComponent,
 };
 
-export const Default = () => <BreadcrumbComponent>World</BreadcrumbComponent>;
+export const Default = () => (
+  <BreadcrumbComponent entity={{ id: "World", name: "World", type: 4 }} />
+);
 
 export const Active = () => (
-  <BreadcrumbComponent active>World</BreadcrumbComponent>
+  <BreadcrumbComponent entity={{ id: "eu", name: "Europe", type: 0 }} active />
 );

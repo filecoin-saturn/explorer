@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { EntityType } from "../contexts/AppContext";
 
 export enum NodeState {
   Active = "active",
@@ -9,9 +10,7 @@ export enum NodeState {
 
 export type Node = {
   id: string;
-  countryId: string;
-  locationId: string;
-  continentId: string;
+  name: string;
   createdAt: Date;
   bandwidthServed: {
     "1d": string;
@@ -46,6 +45,7 @@ export type Node = {
     "1d": number;
     "7d": number;
   };
+  type: EntityType.node;
 };
 
 export type Nodes = Node[];
@@ -82,7 +82,11 @@ export const useNodes = () => {
 
         try {
           const node = JSON.parse(line);
-          nodesMap.set(node.id, node);
+          nodesMap.set(node.id, {
+            ...node,
+            name: node.id.substring(0, 8),
+            type: EntityType.node,
+          });
         } catch (error) {
           buffer = line;
         }
@@ -110,24 +114,24 @@ export const useNodes = () => {
   }, [getResults]);
 
   const getByID = (queryNodeId: string) => {
-    return Array.from(nodes.values()).filter((node) => node.id === queryNodeId);
+    return nodes.get(queryNodeId);
   };
 
   const getByLocationId = (queryLocationId: string) => {
     return Array.from(nodes.values()).filter(
-      (node) => node.locationId === queryLocationId
+      (node) => node.geoloc.city === queryLocationId
     );
   };
 
   const getByCountryId = (queryCountryId: string) => {
     return Array.from(nodes.values()).filter(
-      (node) => node.countryId === queryCountryId
+      (node) => node.geoloc.countryCode === queryCountryId
     );
   };
 
   const getByContinentId = (queryContinentId: string) => {
     return Array.from(nodes.values()).filter(
-      (node) => node.continentId === queryContinentId
+      (node) => node.geoloc.continent.code === queryContinentId
     );
   };
 

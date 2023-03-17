@@ -1,22 +1,60 @@
 import { useState } from "react";
+import { EntityType } from "../contexts/AppContext";
 
 export type Continent = {
   id: string;
   name: string;
   shape: any;
   center: any;
+  type: EntityType.continent;
 };
 
 type Continents = Continent[];
 
 const continentsList: Continents = [
-  { id: "AF", name: "Africa", shape: [], center: [] },
-  { id: "AS", name: "Asia", shape: [], center: [] },
-  { id: "EU", name: "Europe", shape: [], center: [] },
-  { id: "NA", name: "North America", shape: [], center: [] },
-  { id: "SA", name: "South America", shape: [], center: [] },
-  { id: "OC", name: "Oceania", shape: [], center: [] },
-  { id: "AN", name: "Antarctica", shape: [], center: [] },
+  {
+    type: EntityType.continent,
+    id: "AF",
+    name: "Africa",
+    shape: [],
+    center: [],
+  },
+  { type: EntityType.continent, id: "AS", name: "Asia", shape: [], center: [] },
+  {
+    type: EntityType.continent,
+    id: "EU",
+    name: "Europe",
+    shape: [],
+    center: [],
+  },
+  {
+    type: EntityType.continent,
+    id: "NA",
+    name: "North America",
+    shape: [],
+    center: [],
+  },
+  {
+    type: EntityType.continent,
+    id: "SA",
+    name: "South America",
+    shape: [],
+    center: [],
+  },
+  {
+    type: EntityType.continent,
+    id: "OC",
+    name: "Oceania",
+    shape: [],
+    center: [],
+  },
+  {
+    type: EntityType.continent,
+    id: "AN",
+    name: "Antarctica",
+    shape: [],
+    center: [],
+  },
 ];
 
 export const useContinents = () => {

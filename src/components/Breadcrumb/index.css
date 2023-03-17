@@ -1,12 +1,63 @@
 .Breadcrumb {
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 80px;
+  padding: var(--size-sm) 0;
+
   font-family: var(--font-family);
   font-size: var(--size-sm);
   font-weight: 400;
   color: var(--color-white);
 
   opacity: 0.6;
+  background: none;
+  border-style: solid;
+  border-width: 1px;
+  border-image: linear-gradient(
+      to right,
+      rgba(157, 226, 255, 0.64),
+      rgba(217, 255, 248, 0)
+    )
+    1;
 }
 
 .Breadcrumb.active {
   opacity: 1;
+  background: linear-gradient(
+    296.29deg,
+    rgba(0, 102, 255, 0.81) 2.96%,
+    rgba(0, 133, 255, 0.711) 50.03%,
+    rgba(0, 163, 255, 0.774) 93.31%
+  );
+  backdrop-filter: blur(var(--size-base));
+}
+
+.Breadcrumb-icon {
+  width: auto;
+  height: 32px;
+  margin-bottom: var(--size-xs);
+}
+
+.Breadcrumb-icon path {
+  fill: var(--color-white);
+}
+
+.Breadcrumb.active .Breadcrumb-icon path {
+  fill: var(--color-green);
+}
+
+@media screen and (min-width: 1024px) {
+  .Breadcrumb {
+    width: 102px;
+  }
+
+  .Breadcrumb-icon {
+    width: auto;
+    height: 48px;
+    margin-bottom: var(--size-sm);
+  }
 }
