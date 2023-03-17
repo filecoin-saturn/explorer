@@ -97,7 +97,7 @@ const ViewModeButtonsWeb = ({
             </div>
           );
         }
-        return <></>;
+        return null;
       })}
     </div>
   );
