@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import LocationsContext from "../contexts/LocationsContext";
 import useContinents, { Continent } from "./useContinents";
 import useCountries, { Country } from "./useCountries";
