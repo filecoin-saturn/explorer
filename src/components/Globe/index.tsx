@@ -1,6 +1,6 @@
 import "mapbox-gl/dist/mapbox-gl.css";
 
-import { Map, Source, ViewState, useMap, Layer } from "react-map-gl";
+import { Map, Source, useMap } from "react-map-gl";
 //@ts-ignore
 import mapboxgl from "mapbox-gl/dist/mapbox-gl";
 //@ts-ignore
@@ -151,8 +151,6 @@ export const Globe = ({ nodes }: { nodes: Node[] }) => {
             node.geoloc.countryCode === feature.properties?.iso_3166_1
         ).length;
 
-        console.log(amountOfNodes, feature.properties?.name);
-
         map.setFeatureState(
           {
             source: "boundaries",
@@ -169,7 +167,6 @@ export const Globe = ({ nodes }: { nodes: Node[] }) => {
       }, {});
 
     let hoveredStateId = null;
-    let hoveredContinentStateId = null;
 
     const countryOptions = {
       id: hoveredStateId,
@@ -178,16 +175,8 @@ export const Globe = ({ nodes }: { nodes: Node[] }) => {
       boundariesLoad,
     };
 
-    const continentOptions = {
-      id: hoveredContinentStateId,
-      source: "continents",
-    };
-
     map.on("mouseleave", "boundaries-fill", onMouseLeave(countryOptions));
-    // map.on("mouseleave", "continents-fill", onMouseLeave(continentOptions));
-
     map.on("mousemove", "boundaries-fill", onMouseMove(countryOptions));
-    // map.on("mousemove", "continents-fill", onMouseMove(continentOptions));
   }, [map, nodes, onMouseLeave, onMouseMove]);
 
   return (
