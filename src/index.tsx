@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { MapProvider } from "react-map-gl";
 import "./index.css";
 import "./styles/globals.css";
 import App from "./App";
@@ -16,7 +17,9 @@ root.render(
     <AppContextProvider>
       <NodesContextProvider>
         <LocationsContextProvider>
-          <App />
+          <MapProvider>
+            <App />
+          </MapProvider>
         </LocationsContextProvider>
       </NodesContextProvider>
     </AppContextProvider>
