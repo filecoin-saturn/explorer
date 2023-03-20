@@ -54,23 +54,18 @@ export const List = ({
     }
   };
 
-  function getStats(listItem: any) {
+  function getItemStats(listItem: any) {
     switch (listItem.type) {
       case EntityType.continent:
         return getStatsByContinentId(listItem.id);
-        break;
       case EntityType.country:
         return getStatsByCountryId(listItem.id);
-        break;
       case EntityType.location:
         return getStatsByLocationId(listItem.id);
-        break;
       case EntityType.node:
         return getStatsByNodeId(listItem.id);
-        break;
       default:
         return undefined;
-        break;
     }
   }
 
@@ -119,7 +114,7 @@ export const List = ({
       </div>
       <ul className="List-content">
         {list.map((listItem: any) => {
-          const listItemStats = getStats(listItem);
+          const listItemStats = getItemStats(listItem);
 
           return (
             <li
