@@ -98,7 +98,7 @@ export const Navbar = () => {
   }
 
   if (!appState.navbarEntity) return null;
-
+  console.log(appState.navbarEntity);
   return (
     <nav className={className}>
       <div className="Navbar-breadcrumbs">
