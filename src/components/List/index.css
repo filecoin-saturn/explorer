@@ -19,8 +19,7 @@
     rgba(0, 163, 255, 0.2064) 93.31%
   );
   backdrop-filter: blur(16px);
-  border-style: solid;
-  border-width: 1px;
+  border-left: 1px solid;
   border-image: linear-gradient(
       to right,
       rgba(157, 226, 255, 0.64),
@@ -76,8 +75,7 @@
     rgba(0, 163, 255, 0.2064) 93.31%
   );
   backdrop-filter: blur(16px);
-  border-style: solid;
-  border-width: 1px;
+  border-left: 1px solid;
   border-image: linear-gradient(
       to right,
       rgba(157, 226, 255, 0.64),
@@ -130,7 +128,7 @@
 
 .List-item {
   padding: var(--size-md) var(--size-sm);
-  border: 1px solid;
+  border-top: 1px solid;
   border-image: linear-gradient(
       to right,
       rgba(157, 226, 255, 0.64),
