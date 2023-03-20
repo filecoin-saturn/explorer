@@ -126,8 +126,8 @@ export const Navbar = () => {
         />
       </div>
       <button className="Navbar-button" onClick={toggleNavbar}>
-        {!active && <Icon name="arrow-up" className="Navbar-arrowUp" />}
-        {active && <Icon name="arrow-down" className="Navbar-arrowDown" />}
+        <Icon name="arrow-up" className="Navbar-arrowUp" />
+        <Icon name="arrow-down" className="Navbar-arrowDown" />
       </button>
       <div className="Navbar-overview">
         <div className="Navbar-breadcrumb">

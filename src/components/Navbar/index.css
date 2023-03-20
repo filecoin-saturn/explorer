@@ -107,6 +107,16 @@
   transform: translateX(-50%);
 }
 
+.Navbar-arrowDown,
+.Navbar.active .Navbar-arrowUp {
+  display: none;
+}
+
+.Navbar-arrowUp,
+.Navbar.active .Navbar-arrowDown {
+  display: block;
+}
+
 .Navbar-breadcrumb {
   flex: 1;
 
