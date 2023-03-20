@@ -4,14 +4,14 @@ import Globe from "./components/Globe";
 import Logo from "./components/Logo";
 import Toolbar from "./components/Toolbar";
 import Navbar from "./components/Navbar";
-import useNodes from "./hooks/useNodes";
 import useLocations, { Location } from "./hooks/useLocations";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { EntityType } from "./contexts/AppContext";
+import NodesContext from "./contexts/NodesContext";
 
 function App() {
-  const { nodes, getByCountryId, getByLocationId } = useNodes();
-  const { locations, setLocations, getLocationByCountryId } = useLocations();
+  const { nodes } = useContext(NodesContext);
+  const { setLocations } = useLocations();
 
   useEffect(() => {
     const locationsMap = new Map<string, Location>();
@@ -32,15 +32,9 @@ function App() {
   return (
     <div className="App">
       <Logo />
-      <Navbar
-        nodes={nodes}
-        locations={locations}
-        getByCountryId={getByCountryId}
-        getByLocationId={getByLocationId}
-        getLocationByCountryId={getLocationByCountryId}
-      />
+      <Navbar />
       <Toolbar />
-      <Globe />
+      <Globe nodes={Array.from(nodes.values())} />
     </div>
   );
 }

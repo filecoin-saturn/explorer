@@ -19,10 +19,10 @@ export type World = {
 };
 
 export type NavBarEntity =
+  | World
   | Continent
   | Country
   | Location
-  | World
   | Node
   | undefined;
 export type HoverEntity = Continent | Country | undefined;

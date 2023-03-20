@@ -7,9 +7,11 @@ import { Nodes } from "../../hooks/useNodes";
 import { Continent } from "../../hooks/useContinents";
 import { Location } from "../../hooks/useLocations";
 import { Country } from "../../hooks/useCountries";
+import { LocationStat, useStats } from "../../hooks/useStats";
+import { useState } from "react";
 
 type ListProps = {
-  stats: any;
+  stats: LocationStat | undefined;
   list: Nodes | Location[] | Country[] | Continent[];
   entity: NavBarEntity;
   toggleNavbar?: () => void;
@@ -17,6 +19,8 @@ type ListProps = {
   hoverEnd: () => void;
   hoverStart: (item: any) => () => void;
 };
+
+type TimeFrame = "1d" | "7d";
 
 export const List = ({
   list,
@@ -27,6 +31,14 @@ export const List = ({
   hoverEnd,
   hoverStart,
 }: ListProps) => {
+  const [timeFrame, setTimeFrame] = useState<TimeFrame>("7d");
+  const {
+    getStatsByContinentId,
+    getStatsByCountryId,
+    getStatsByLocationId,
+    getStatsByNodeId,
+  } = useStats();
+
   const iconNameForItem = (item: any) => {
     switch (item.type) {
       case EntityType.world:
@@ -42,6 +54,21 @@ export const List = ({
     }
   };
 
+  function getItemStats(listItem: any) {
+    switch (listItem.type) {
+      case EntityType.continent:
+        return getStatsByContinentId(listItem.id);
+      case EntityType.country:
+        return getStatsByCountryId(listItem.id);
+      case EntityType.location:
+        return getStatsByLocationId(listItem.id);
+      case EntityType.node:
+        return getStatsByNodeId(listItem.id);
+      default:
+        return undefined;
+    }
+  }
+
   return (
     <div className="List">
       <div className="List-header">
@@ -49,45 +76,85 @@ export const List = ({
           <Icon className="List-icon" name={iconNameForItem(entity)} />
           <p className="List-heading">{entity?.name}</p>
           <div className="List-mainStat">
-            <Stat icon="nodes-green" value={2324} label="Nodes" />
+            <Stat
+              icon="nodes-green"
+              value={stats?.numberOfNodes}
+              label="Nodes"
+            />
           </div>
         </div>
         <div className="List-stats">
-          <Stat icon="retrievals" value={1244} label="Retrievals" />
-          <Stat icon="ttfb" value={194} units="ms" label="Avg TTFB" />
-          <Stat icon="fil" value={124.35} label="$87.08" />
+          <Stat
+            icon="retrievals"
+            units="M"
+            value={stats?.retrievals[timeFrame]}
+            label="Retrievals"
+          />
+          <Stat
+            icon="ttfb"
+            value={stats?.avgTTFB}
+            units="ms"
+            label="Avg TTFB"
+          />
+          <Stat
+            icon="fil"
+            units="FIL"
+            value={stats?.estimatedEarnings[timeFrame]}
+            label="Earnings" // fil -> $
+          />
         </div>
       </div>
       <ul className="List-content">
-        {list.map((listItem: any) => (
-          <li
-            key={listItem.id}
-            className="List-item"
-            onPointerLeave={hoverEnd}
-            onClick={onSelect(listItem)}
-            onPointerEnter={hoverStart(listItem)}
-          >
-            <div className="List-itemHeader">
-              <Icon
-                className="List-itemIcon"
-                name={iconNameForItem(listItem)}
-              />
-              <p className="List-itemName">{listItem.name}</p>
-            </div>
-            <div className="List-itemStats">
-              <Stat small icon="nodes-green" value={2324} label="Nodes" />
-              <Stat small icon="ttfb" value={194} units="ms" label="Avg TTFB" />
-              <Stat
-                small
-                icon="space"
-                value={1450}
-                units="GB"
-                label="Bandwidth"
-              />
-              <Stat small icon="retrievals" value={1244} label="Retrievals" />
-            </div>
-          </li>
-        ))}
+        {list.map((listItem: any) => {
+          const listItemStats = getItemStats(listItem);
+
+          return (
+            <li
+              key={listItem.id}
+              className="List-item"
+              onPointerLeave={hoverEnd}
+              onClick={onSelect(listItem)}
+              onPointerEnter={hoverStart(listItem)}
+            >
+              <div className="List-itemHeader">
+                <Icon
+                  className="List-itemIcon"
+                  name={iconNameForItem(listItem)}
+                />
+                <p className="List-itemName">{listItem.name}</p>
+              </div>
+              <div className="List-itemStats">
+                <Stat
+                  small
+                  icon="nodes-green"
+                  value={listItemStats?.numberOfNodes}
+                  label="Nodes"
+                />
+                <Stat
+                  small
+                  icon="ttfb"
+                  value={listItemStats?.avgTTFB}
+                  units="ms"
+                  label="Avg TTFB"
+                />
+                <Stat
+                  small
+                  icon="space"
+                  value={listItemStats?.bandwidthServed[timeFrame]}
+                  units="GB"
+                  label="Bandwidth"
+                />
+                <Stat
+                  small
+                  icon="retrievals"
+                  units="M"
+                  value={listItemStats?.retrievals[timeFrame]}
+                  label="Retrievals"
+                />
+              </div>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

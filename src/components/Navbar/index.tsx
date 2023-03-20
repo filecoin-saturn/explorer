@@ -8,33 +8,30 @@ import {
   EntityType,
   World,
 } from "../../contexts/AppContext";
-import useContinents from "../../hooks/useContinents";
+import useContinents, { Continent } from "../../hooks/useContinents";
 import useAppContext from "../../hooks/useAppContext";
 
 import Breadcrumb from "../Breadcrumb";
-import useCountries from "../../hooks/useCountries";
+import useCountries, { Country } from "../../hooks/useCountries";
 import List from "../List";
 import Stat from "../Stat";
-import { Node } from "../../hooks/useNodes";
-import { Location } from "../../hooks/useLocations";
+import useNodes, { Node } from "../../hooks/useNodes";
+import useLocations, { Location } from "../../hooks/useLocations";
+import { useStats } from "../../hooks/useStats";
 
-type NavbarProps = {
-  nodes: Map<string, Node>;
-  locations: Location[];
-  getByCountryId: (query: string) => Node[];
-  getByLocationId: (query: string) => Node[];
-  getLocationByCountryId: (query: string) => Location[];
-};
-
-export const Navbar = ({
-  nodes,
-  locations,
-  getByCountryId,
-  getByLocationId,
-  getLocationByCountryId,
-}: NavbarProps) => {
+export const Navbar = () => {
   const { continents } = useContinents();
   const { getCountriesByContinentId } = useCountries();
+  const { getLocationByCountryId } = useLocations();
+  const { getNodesByLocationId } = useNodes();
+
+  const {
+    getGlobalStats,
+    getStatsByContinentId,
+    getStatsByLocationId,
+    getStatsByCountryId,
+    getStatsByNodeId,
+  } = useStats();
 
   const appState = useAppContext();
   const [breadcrumbs, setBreadcrumbs] = useState<NavBarEntity[]>([
@@ -75,27 +72,32 @@ export const Navbar = ({
     appState.setHoverEntity(undefined);
   };
 
-  let list;
+  let list: Continent[] | Country[] | Location[] | Node[] | [];
+  let entityStats;
   switch (appState.navbarEntity?.type) {
     case EntityType.continent:
       list = getCountriesByContinentId(appState.navbarEntity.id);
+      entityStats = getStatsByContinentId(appState.navbarEntity.id);
       break;
     case EntityType.country:
       list = getLocationByCountryId(appState.navbarEntity.id);
+      entityStats = getStatsByCountryId(appState.navbarEntity.id);
       break;
     case EntityType.location:
-      list = getByLocationId(appState.navbarEntity.id);
+      list = getNodesByLocationId(appState.navbarEntity.id);
+      entityStats = getStatsByLocationId(appState.navbarEntity.id);
       break;
     case EntityType.node:
-      list = getByLocationId(appState.navbarEntity.geoloc.city);
+      list = [];
+      entityStats = getStatsByNodeId(appState.navbarEntity.id);
       break;
     default:
       list = continents;
+      entityStats = getGlobalStats();
       break;
   }
 
   if (!appState.navbarEntity) return null;
-
   return (
     <nav className={className}>
       <div className="Navbar-breadcrumbs">
@@ -115,7 +117,7 @@ export const Navbar = ({
         <List
           list={list}
           entity={appState.navbarEntity}
-          stats={[]}
+          stats={entityStats}
           toggleNavbar={toggleNavbar}
           onSelect={selectEntity}
           hoverEnd={hoverEnd}
@@ -267,11 +269,34 @@ export const Navbar = ({
           <Breadcrumb entity={breadcrumbs[breadcrumbs.length - 1]} active />
         </div>
         <div className="Navbar-regionStats" onClick={toggleNavbar}>
-          <Stat icon="nodes-green" value={2324} label="NODES" />
-          <Stat icon="ttfb" value={194} units="ms" label="Avg TTFB" />
-          <Stat icon="fil" value={124.35} label="$87.08" />
-          <Stat icon="space" value={1450} units="GB" label="Bandwidth" />
-          <Stat icon="retrievals" value={1244} label="Retrievals" />
+          <Stat
+            icon="nodes-green"
+            value={entityStats?.numberOfNodes}
+            label="NODES"
+          />
+          <Stat
+            icon="ttfb"
+            value={entityStats?.avgTTFB}
+            units="ms"
+            label="Avg TTFB"
+          />
+          <Stat
+            icon="fil"
+            units="FIL"
+            value={entityStats?.estimatedEarnings["7d"]}
+            label="Earnings"
+          />
+          <Stat
+            icon="space"
+            value={entityStats?.bandwidthServed["7d"]}
+            units="GB"
+            label="Bandwidth"
+          />
+          <Stat
+            icon="retrievals"
+            value={entityStats?.retrievals["7d"]}
+            label="Retrievals"
+          />
         </div>
       </div>
     </nav>
