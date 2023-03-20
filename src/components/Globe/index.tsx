@@ -36,7 +36,7 @@ export const Globe = ({ nodes }: { nodes: Node[] }) => {
         city: node.geoloc.city,
         country: node.geoloc.countryCode,
         continent: node.geoloc.continent.code,
-        ttfb: node.ttfbStats["1d"],
+        ttfb: node.ttfbStats.p95_24h,
       },
       geometry: {
         type: "Point",
