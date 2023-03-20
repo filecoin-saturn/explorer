@@ -12,12 +12,9 @@ export type Location = {
 
 export const useLocations = () => {
   const { locations, setLocations } = useContext(LocationsContext);
-  // const [locations, setLocations] = useState<Location[]>([]);
-
   const getLocationById = (queryLocationId: string) => {
     return locations.filter((location) => location.id === queryLocationId);
   };
-
   const getLocationByCountryId = (queryCountryId: string) => {
     return locations.filter(
       (location) => location.countryId === queryCountryId

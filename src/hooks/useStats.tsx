@@ -5,31 +5,15 @@ import useCountries, { Country } from "./useCountries";
 import { Location } from "./useLocations";
 import useNodes, { Node } from "./useNodes";
 
-// enum StatType {
-//   "Location",
-//   "Node",
-// }
-
-// type StatValue = string | number;
-
-// export type Stat = {
-//   type: StatType;
-//   value: StatValue;
-//   label: string;
-//   icon: string;
-// };
-
-// export type Stats = Stat[];
-
 export type LocationStat = {
   entityId: string;
-  numberOfNodes: number; //todo convert to stat
-  diskSpace: number; //todo convert to stat
-  retrievals: { "1d": number; "7d": number }; //todo convert to stat
-  bandwidthServed: { "1d": number; "7d": number }; //todo convert to stat
-  estimatedEarnings: { "1d": number; "7d": number }; //todo convert to stat
-  cacheHitRate: number; //todo convert to stat
-  avgTTFB: number; //todo convert to stat
+  numberOfNodes: number;
+  diskSpace: number;
+  retrievals: { "1d": number; "7d": number };
+  bandwidthServed: { "1d": number; "7d": number };
+  estimatedEarnings: { "1d": number; "7d": number };
+  cacheHitRate: number;
+  avgTTFB: number;
 };
 
 const computeStats = (
@@ -170,7 +154,6 @@ export const useStats = () => {
   };
 
   const getStatsByNodeId = (nodeId: string) => {
-    // todo: compute node stats
     if (!nodes) return;
     const node = nodes.find((node) => node.id === nodeId);
     if (!node) return;
