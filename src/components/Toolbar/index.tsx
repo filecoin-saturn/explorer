@@ -1,6 +1,5 @@
 import "./index.css";
 import { useContext, useState } from "react";
-import { Node } from "../../hooks/useNodes";
 
 import Search from "../Search";
 import ToolbarButton from "../ToolbarButton";
@@ -98,6 +97,7 @@ const ViewModeButtonsWeb = ({
             </div>
           );
         }
+        return null;
       })}
     </div>
   );
