@@ -16,13 +16,12 @@ export const Icon = ({ name, className }: IconProps) => {
   let src;
   src = `${process.env.PUBLIC_URL}/assets/icons/${name}.svg`;
   if (!checkAssetExists(src)) {
-    console.log(">>>>>");
     src = `${process.env.PUBLIC_URL}/assets/icons/regions/city.svg`;
   }
 
   return (
     <ReactSVG
-      src={`${process.env.PUBLIC_URL}/assets/icons/${name}.svg`}
+      src={src}
       beforeInjection={(svg: any) => {
         svg.classList.add(className);
       }}
