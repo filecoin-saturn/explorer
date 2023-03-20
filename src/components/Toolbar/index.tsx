@@ -103,13 +103,13 @@ const ViewModeButtonsWeb = ({
   );
 };
 
-export const Toolbar = ({ nodes }: { nodes: Node[] }) => {
+export const Toolbar = () => {
   const { viewMode, setViewMode } = useContext(AppContext);
 
   return (
     <nav className="Toolbar">
       <div className="Toolbar-search">
-        <Search nodes={nodes} />
+        <Search />
       </div>
       <ViewModeButtonsMobile viewMode={viewMode} setViewMode={setViewMode} />
       <ViewModeButtonsWeb viewMode={viewMode} setViewMode={setViewMode} />

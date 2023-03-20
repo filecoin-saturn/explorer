@@ -4,4 +4,4 @@ export default {
   component: ToolbarComponent,
 };
 
-export const Toolbar = () => <ToolbarComponent nodes={[]} />;
+export const Toolbar = () => <ToolbarComponent />;

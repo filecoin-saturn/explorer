@@ -4,4 +4,4 @@ export default {
   component: SearchComponent,
 };
 
-export const Search = () => <SearchComponent nodes={[]} />;
+export const Search = () => <SearchComponent />;

@@ -3,14 +3,14 @@ import { EntityType } from "../contexts/AppContext";
 import useContinents from "./useContinents";
 import useCountries from "./useCountries";
 import useLocations from "./useLocations";
-import { Node } from "./useNodes";
+import useNodes from "./useNodes";
 
-const useSearch = (nodes: Node[]) => {
+const useSearch = () => {
   const { continents } = useContinents();
   const { countries } = useCountries();
   const { locations } = useLocations();
+  const { nodes } = useNodes();
 
-  // todo: fixup conflicting ids
   const customContinents = continents.map((c) => ({
     ...c,
     iso: c.id,
