@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { EntityType } from "../contexts/AppContext";
 import LocationsContext from "../contexts/LocationsContext";
 

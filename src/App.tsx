@@ -52,7 +52,7 @@ function App() {
   useEffect(() => {
     setStatsNodes(Array.from(nodes.values()));
     setStatsLocations(locations);
-  }, [locations]);
+  }, [locations, nodes, setStatsLocations, setStatsNodes]);
 
   return (
     <div className="App">
