@@ -15,7 +15,6 @@ import Breadcrumb from "../Breadcrumb";
 import useCountries from "../../hooks/useCountries";
 import List from "../List";
 import Stat from "../Stat";
-import BarChart from "../BarChart/BarChart";
 import { Node } from "../../hooks/useNodes";
 import { Location } from "../../hooks/useLocations";
 
@@ -123,6 +122,146 @@ export const Navbar = ({
           hoverStart={hoverStart}
         />
       </div>
+      <button className="Navbar-button" onClick={toggleNavbar}>
+        {!active && (
+          <svg
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 40 40"
+          >
+            <g filter="url(#a)" transform="matrix(1 0 0 -1 0 40)">
+              <circle
+                cx="20"
+                cy="20"
+                r="20"
+                fill="url(#b)"
+                fill-opacity=".24"
+              />
+              <circle cx="20" cy="20" r="19.5" stroke="url(#c)" />
+            </g>
+            <path
+              d="M12.7 20.7c.183.183.417.28.7.288a.91.91 0 0 0 .7-.263l4.9-4.9V27c0 .283.096.521.288.713A.967.967 0 0 0 20 28a.97.97 0 0 0 .713-.287A.97.97 0 0 0 21 27V15.825l4.9 4.9a.91.91 0 0 0 .7.263.994.994 0 0 0 .7-.288.948.948 0 0 0 .275-.7.948.948 0 0 0-.275-.7l-6.6-6.6a.682.682 0 0 0-.312-.213 1.232 1.232 0 0 0-.388-.062c-.133 0-.258.02-.375.062a.883.883 0 0 0-.325.213l-6.6 6.6a.948.948 0 0 0-.275.7c0 .283.092.517.275.7Z"
+              fill="#10FFD4"
+            />
+            <defs>
+              <linearGradient
+                id="b"
+                x1="39.41"
+                y1="37.611"
+                x2="-3.989"
+                y2="16.172"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="#06F" stop-opacity=".9" />
+                <stop offset=".521" stop-color="#0085FF" stop-opacity=".79" />
+                <stop offset="1" stop-color="#00A3FF" stop-opacity=".86" />
+              </linearGradient>
+              <linearGradient
+                id="c"
+                x1=".197"
+                y1="-.619"
+                x2="33.756"
+                y2="17.455"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="#9DE2FF" stop-opacity=".64" />
+                <stop offset="1" stop-color="#D9FFF8" stop-opacity="0" />
+              </linearGradient>
+              <filter
+                id="a"
+                x="-32"
+                y="-32"
+                width="104"
+                height="104"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feGaussianBlur in="BackgroundImageFix" stdDeviation="16" />
+                <feComposite
+                  in2="SourceAlpha"
+                  operator="in"
+                  result="effect1_backgroundBlur_675_55"
+                />
+                <feBlend
+                  in="SourceGraphic"
+                  in2="effect1_backgroundBlur_675_55"
+                  result="shape"
+                />
+              </filter>
+            </defs>
+          </svg>
+        )}
+        {active && (
+          <svg
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 40 40"
+          >
+            <g filter="url(#a)">
+              <circle
+                cx="20"
+                cy="20"
+                r="20"
+                fill="url(#b)"
+                fill-opacity=".24"
+              />
+              <circle cx="20" cy="20" r="19.5" stroke="url(#c)" />
+            </g>
+            <path
+              d="M12.7 19.3a.994.994 0 0 1 .7-.288.91.91 0 0 1 .7.263l4.9 4.9V13c0-.283.096-.521.288-.713A.967.967 0 0 1 20 12a.97.97 0 0 1 .713.287A.97.97 0 0 1 21 13v11.175l4.9-4.9a.91.91 0 0 1 .7-.263.994.994 0 0 1 .7.288.948.948 0 0 1 .275.7.948.948 0 0 1-.275.7l-6.6 6.6a.682.682 0 0 1-.312.213 1.232 1.232 0 0 1-.388.062c-.133 0-.258-.02-.375-.062a.883.883 0 0 1-.325-.213l-6.6-6.6a.948.948 0 0 1-.275-.7c0-.283.092-.517.275-.7Z"
+              fill="#10FFD4"
+            />
+            <defs>
+              <linearGradient
+                id="b"
+                x1="39.41"
+                y1="37.611"
+                x2="-3.989"
+                y2="16.172"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="#06F" stop-opacity=".9" />
+                <stop offset=".521" stop-color="#0085FF" stop-opacity=".79" />
+                <stop offset="1" stop-color="#00A3FF" stop-opacity=".86" />
+              </linearGradient>
+              <linearGradient
+                id="c"
+                x1=".197"
+                y1="-.619"
+                x2="33.756"
+                y2="17.455"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="#9DE2FF" stop-opacity=".64" />
+                <stop offset="1" stop-color="#D9FFF8" stop-opacity="0" />
+              </linearGradient>
+              <filter
+                id="a"
+                x="-32"
+                y="-32"
+                width="104"
+                height="104"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feGaussianBlur in="BackgroundImageFix" stdDeviation="16" />
+                <feComposite
+                  in2="SourceAlpha"
+                  operator="in"
+                  result="effect1_backgroundBlur_675_64"
+                />
+                <feBlend
+                  in="SourceGraphic"
+                  in2="effect1_backgroundBlur_675_64"
+                  result="shape"
+                />
+              </filter>
+            </defs>
+          </svg>
+        )}
+      </button>
       <div className="Navbar-overview">
         <div className="Navbar-breadcrumb">
           <Breadcrumb entity={breadcrumbs[breadcrumbs.length - 1]} active />
@@ -133,25 +272,6 @@ export const Navbar = ({
           <Stat icon="fil" value={124.35} label="$87.08" />
           <Stat icon="space" value={1450} units="GB" label="Bandwidth" />
           <Stat icon="retrievals" value={1244} label="Retrievals" />
-          <div className="Navbar-chart">
-            <BarChart
-              dataset={[
-                { date: "01/02/2023", earnings: 1 },
-                { date: "02/02/2023", earnings: 31 },
-                { date: "03/02/2023", earnings: 54 },
-                { date: "04/02/2023", earnings: 3 },
-                { date: "05/02/2023", earnings: 22 },
-                { date: "06/02/2023", earnings: 11 },
-                { date: "07/02/2023", earnings: 9 },
-                { date: "08/02/2023", earnings: 9 },
-                { date: "09/02/2023", earnings: 9 },
-                { date: "10/02/2023", earnings: 40 },
-                { date: "11/02/2023", earnings: 40 },
-                { date: "12/02/2023", earnings: 40 },
-                { date: "13/02/2023", earnings: 40 },
-              ]}
-            />
-          </div>
         </div>
       </div>
     </nav>

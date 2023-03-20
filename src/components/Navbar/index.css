@@ -3,7 +3,7 @@
 
   position: absolute;
   z-index: 1;
-  top: 132px;
+  top: 196px;
   right: var(--size-xxs);
   bottom: var(--size-xxs);
   left: var(--size-xxs);
@@ -84,6 +84,29 @@
   height: 80px;
 }
 
+.Navbar-button {
+  pointer-events: all;
+  cursor: pointer;
+
+  position: fixed;
+  bottom: 92px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 40px;
+  height: 40px;
+}
+
+.Navbar-button:focus {
+  outline: none;
+}
+
+.Navbar.active .Navbar-button {
+  top: 145px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .Navbar-breadcrumb {
   flex: 1;
 
@@ -134,10 +157,6 @@
     1;
 }
 
-.Navbar-chart {
-  height: 27px;
-}
-
 @media screen and (min-width: 1024px) {
   .Navbar {
     pointer-events: all;
@@ -163,6 +182,10 @@
   }
 
   .Navbar-overview {
+    display: none;
+  }
+
+  .Navbar-button {
     display: none;
   }
 }
