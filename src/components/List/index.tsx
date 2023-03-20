@@ -102,14 +102,6 @@ export const List = ({
             value={stats?.estimatedEarnings[timeFrame]}
             label="Earnings" // fil -> $
           />
-          <div className="List-buttons">
-            <button className="List-button" onClick={() => setTimeFrame("1d")}>
-              1d
-            </button>
-            <button className="List-button" onClick={() => setTimeFrame("7d")}>
-              7d
-            </button>
-          </div>
         </div>
       </div>
       <ul className="List-content">

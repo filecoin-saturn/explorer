@@ -18,6 +18,7 @@ import Stat from "../Stat";
 import useNodes, { Node } from "../../hooks/useNodes";
 import useLocations, { Location } from "../../hooks/useLocations";
 import { useStats } from "../../hooks/useStats";
+import Icon from "../Icon";
 
 export const Navbar = () => {
   const { continents } = useContinents();
@@ -124,6 +125,10 @@ export const Navbar = () => {
           hoverStart={hoverStart}
         />
       </div>
+      <button className="Navbar-button" onClick={toggleNavbar}>
+        <Icon name="arrow-up" className="Navbar-arrowUp" />
+        <Icon name="arrow-down" className="Navbar-arrowDown" />
+      </button>
       <div className="Navbar-overview">
         <div className="Navbar-breadcrumb">
           <Breadcrumb entity={breadcrumbs[breadcrumbs.length - 1]} active />
