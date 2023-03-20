@@ -8,45 +8,31 @@ import {
   EntityType,
   World,
 } from "../../contexts/AppContext";
-import useContinents from "../../hooks/useContinents";
+import useContinents, { Continent } from "../../hooks/useContinents";
 import useAppContext from "../../hooks/useAppContext";
 
 import Breadcrumb from "../Breadcrumb";
-import useCountries from "../../hooks/useCountries";
+import useCountries, { Country } from "../../hooks/useCountries";
 import List from "../List";
 import Stat from "../Stat";
 import BarChart from "../BarChart/BarChart";
-import { Node } from "../../hooks/useNodes";
-import { Location } from "../../hooks/useLocations";
-import { LocationStat } from "../../hooks/useStats";
+import useNodes, { Node } from "../../hooks/useNodes";
+import useLocations, { Location } from "../../hooks/useLocations";
+import { useStats } from "../../hooks/useStats";
 
-type NavbarProps = {
-  nodes: Map<string, Node>;
-  locations: Location[];
-  globalStats: LocationStat | undefined;
-  getStatsByContinentId: (query: string) => LocationStat | undefined;
-  getStatsByCountryId: (query: string) => LocationStat | undefined;
-  getStatsByLocationId: (query: string) => LocationStat | undefined;
-  getStatsByNodeId: (query: string) => LocationStat | undefined;
-  getNodesByCountryId: (query: string) => Node[];
-  getNodesByLocationId: (query: string) => Node[];
-  getLocationByCountryId: (query: string) => Location[];
-};
-
-export const Navbar = ({
-  nodes,
-  locations,
-  globalStats,
-  getStatsByContinentId,
-  getStatsByCountryId,
-  getStatsByLocationId,
-  getStatsByNodeId,
-  getNodesByCountryId,
-  getNodesByLocationId,
-  getLocationByCountryId,
-}: NavbarProps) => {
+export const Navbar = () => {
   const { continents } = useContinents();
   const { getCountriesByContinentId } = useCountries();
+  const { getLocationByCountryId } = useLocations();
+  const { getNodesByLocationId } = useNodes();
+
+  const {
+    globalStats,
+    getStatsByContinentId,
+    getStatsByLocationId,
+    getStatsByCountryId,
+    getStatsByNodeId,
+  } = useStats();
 
   const appState = useAppContext();
   const [breadcrumbs, setBreadcrumbs] = useState<NavBarEntity[]>([
@@ -87,7 +73,7 @@ export const Navbar = ({
     appState.setHoverEntity(undefined);
   };
 
-  let list;
+  let list: Continent[] | Country[] | Location[] | Node[] | [];
   let entityStats;
   switch (appState.navbarEntity?.type) {
     case EntityType.continent:
@@ -103,8 +89,8 @@ export const Navbar = ({
       entityStats = getStatsByLocationId(appState.navbarEntity.id);
       break;
     case EntityType.node:
-      list = getNodesByLocationId(appState.navbarEntity.geoloc.city);
-      // entityStats = getStatsByLocationId(appState.navbarEntity.id);
+      list = []; //getNodesByLocationId(appState.navbarEntity.geoloc.city);
+      entityStats = getStatsByNodeId(appState.navbarEntity.id);
       break;
     default:
       list = continents;
@@ -137,10 +123,6 @@ export const Navbar = ({
           onSelect={selectEntity}
           hoverEnd={hoverEnd}
           hoverStart={hoverStart}
-          getStatsByContinentId={getStatsByContinentId}
-          getStatsByCountryId={getStatsByCountryId}
-          getStatsByLocationId={getStatsByLocationId}
-          getStatsByNodeId={getStatsByNodeId}
         />
       </div>
       <div className="Navbar-overview">

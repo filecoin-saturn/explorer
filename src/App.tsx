@@ -4,34 +4,14 @@ import Globe from "./components/Globe";
 import Logo from "./components/Logo";
 import Toolbar from "./components/Toolbar";
 import Navbar from "./components/Navbar";
-import useNodes from "./hooks/useNodes";
 import useLocations, { Location } from "./hooks/useLocations";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { EntityType } from "./contexts/AppContext";
-import { useStats } from "./hooks/useStats";
+import NodesContext from "./contexts/NodesContext";
 
 function App() {
-  const {
-    nodes,
-    getNodesByCountryId,
-    getNodesByLocationId,
-    getNodesByContinentId,
-  } = useNodes();
-  const { locations, setLocations, getLocationByCountryId } = useLocations();
-
-  const {
-    setNodes: setStatsNodes,
-    setLocations: setStatsLocations,
-    globalStats,
-    getStatsByContinentId,
-    getStatsByCountryId,
-    getStatsByLocationId,
-    getStatsByNodeId,
-  } = useStats({
-    getNodesByContinentId,
-    getNodesByCountryId,
-    getNodesByLocationId,
-  });
+  const { nodes } = useContext(NodesContext);
+  const { setLocations } = useLocations();
 
   useEffect(() => {
     const locationsMap = new Map<string, Location>();
@@ -49,26 +29,10 @@ function App() {
     setLocations(Array.from(locationsMap.values()));
   }, [nodes, setLocations]);
 
-  useEffect(() => {
-    setStatsNodes(Array.from(nodes.values()));
-    setStatsLocations(locations);
-  }, [locations, nodes, setStatsLocations, setStatsNodes]);
-
   return (
     <div className="App">
       <Logo />
-      <Navbar
-        nodes={nodes}
-        locations={locations}
-        getNodesByCountryId={getNodesByCountryId}
-        getNodesByLocationId={getNodesByLocationId}
-        getLocationByCountryId={getLocationByCountryId}
-        globalStats={globalStats}
-        getStatsByContinentId={getStatsByContinentId}
-        getStatsByCountryId={getStatsByCountryId}
-        getStatsByLocationId={getStatsByLocationId}
-        getStatsByNodeId={getStatsByNodeId}
-      />
+      <Navbar />
       <Toolbar />
       <Globe />
     </div>

@@ -8,7 +8,7 @@ import { Nodes } from "../../hooks/useNodes";
 import { Continent } from "../../hooks/useContinents";
 import { Location } from "../../hooks/useLocations";
 import { Country } from "../../hooks/useCountries";
-import { LocationStat } from "../../hooks/useStats";
+import { LocationStat, useStats } from "../../hooks/useStats";
 import { useState } from "react";
 
 type ListProps = {
@@ -19,10 +19,6 @@ type ListProps = {
   onSelect: (item: any) => () => void;
   hoverEnd: () => void;
   hoverStart: (item: any) => () => void;
-  getStatsByContinentId: (query: string) => LocationStat | undefined;
-  getStatsByCountryId: (query: string) => LocationStat | undefined;
-  getStatsByLocationId: (query: string) => LocationStat | undefined;
-  getStatsByNodeId: (query: string) => LocationStat | undefined;
 };
 
 type TimeFrame = "1d" | "7d";
@@ -35,12 +31,14 @@ export const List = ({
   onSelect,
   hoverEnd,
   hoverStart,
-  getStatsByContinentId,
-  getStatsByCountryId,
-  getStatsByLocationId,
-  getStatsByNodeId,
 }: ListProps) => {
   const [timeFrame, setTimeFrame] = useState<TimeFrame>("7d");
+  const {
+    getStatsByContinentId,
+    getStatsByCountryId,
+    getStatsByLocationId,
+    getStatsByNodeId,
+  } = useStats();
 
   const iconNameForItem = (item: any) => {
     switch (item.type) {

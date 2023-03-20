@@ -51,106 +51,33 @@ export type Node = {
 
 export type Nodes = Node[];
 
-const nodesMap = new Map();
-const refreshInterval = 3600000; // 10000 // in seconds
-
 export const useNodes = () => {
-  const nodesContext = useContext(NodesContext);
-  const [nodes, setNodes] = useState<Map<string, Node>>(new Map());
-
-  useEffect(() => {
-    const getResults = async () => {
-      let buffer = "";
-
-      const response = await fetch("https://orchestrator.strn.pl/explorer");
-
-      const decoder = new TextDecoder();
-      const reader = response.body?.getReader();
-
-      const onChunck = ({
-        done,
-        value,
-      }: ReadableStreamReadResult<Uint8Array>): void => {
-        let data;
-
-        if (buffer.length) {
-          const newData = decoder.decode(value);
-          data = newData.concat(buffer).split("\n");
-          buffer = "";
-        } else {
-          data = decoder.decode(value).split("\n");
-        }
-
-        data.forEach((line) => {
-          if (!line.length) return;
-
-          try {
-            const node = JSON.parse(line);
-            nodesMap.set(node.id, {
-              ...node,
-              name: node.id.substring(0, 8),
-              type: EntityType.node,
-            });
-          } catch (error) {
-            buffer = line;
-          }
-        });
-
-        setNodes(new Map(nodesMap));
-        if (!done) {
-          requestIdleCallback(() => {
-            reader?.read().then(onChunck);
-          });
-        }
-      };
-
-      requestIdleCallback(() => {
-        reader?.read().then(onChunck);
-      });
-    };
-
-    getResults();
-    const interval = setInterval(getResults, refreshInterval);
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
-
-  useEffect(() => {
-    nodesContext.setNodes(Array.from(nodes.values()));
-  }, [nodes]);
+  const { nodes } = useContext(NodesContext);
 
   const getNodeByID = (queryNodeId: string) => {
-    return nodes.get(queryNodeId);
+    return nodes.find((node) => node.id === queryNodeId);
   };
 
   const getNodesByLocationId = (queryLocationId: string) => {
-    return Array.from(nodes.values()).filter(
-      (node) => node.geoloc.city === queryLocationId
-    );
+    return nodes.filter((node) => node.geoloc.city === queryLocationId);
   };
 
   const getNodesByCountryId = (queryCountryId: string) => {
-    return Array.from(nodes.values()).filter(
-      (node) => node.geoloc.countryCode === queryCountryId
-    );
+    return nodes.filter((node) => node.geoloc.countryCode === queryCountryId);
   };
 
   const getNodesByContinentId = (queryContinentId: string) => {
-    return Array.from(nodes.values()).filter(
+    return nodes.filter(
       (node) => node.geoloc.continent.code === queryContinentId
     );
   };
 
   const getNodesByActivityState = (activityState: NodeState) => {
-    return Array.from(nodes.values()).filter(
-      (node) => node.state === activityState
-    );
+    return nodes.filter((node) => node.state === activityState);
   };
 
   return {
     nodes,
-    setNodes,
     getNodeByID,
     getNodesByLocationId,
     getNodesByCountryId,

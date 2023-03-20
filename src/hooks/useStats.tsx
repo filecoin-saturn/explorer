@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import LocationsContext from "../contexts/LocationsContext";
 import useContinents, { Continent } from "./useContinents";
 import useCountries, { Country } from "./useCountries";
 import { Location } from "./useLocations";
-import { Node } from "./useNodes";
+import useNodes, { Node } from "./useNodes";
 
 // enum StatType {
 //   "Location",
@@ -122,20 +123,17 @@ const computeStats = (
   };
 };
 
-type useStatsProps = {
-  getNodesByContinentId: (queryContinentId: string) => Node[];
-  getNodesByCountryId: (queryCountryId: string) => Node[];
-  getNodesByLocationId: (queryLocationId: string) => Node[];
-};
+export const useStats = () => {
+  const {
+    nodes: nodesMap,
+    getNodesByContinentId,
+    getNodesByCountryId,
+    getNodesByLocationId,
+  } = useNodes();
 
-export const useStats = ({
-  getNodesByContinentId,
-  getNodesByCountryId,
-  getNodesByLocationId,
-}: useStatsProps) => {
-  const [nodes, setNodes] = useState<Node[]>();
+  const nodes = Array.from(nodesMap.values());
 
-  const [locations, setLocations] = useState<Location[]>();
+  const { locations } = useContext(LocationsContext);
   const { continents } = useContinents();
   const { countries } = useCountries();
 
@@ -221,8 +219,6 @@ export const useStats = ({
     continentsStats,
     countriesStats,
     locationsStats,
-    setNodes,
-    setLocations,
     getStatsByContinentId,
     getStatsByCountryId,
     getStatsByLocationId,
