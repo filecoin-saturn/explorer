@@ -5,7 +5,8 @@ import "./styles/globals.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { AppContextProvider } from "./contexts/AppContext";
-import { DataContextProvider } from "./contexts/DataContext";
+import { NodesContextProvider } from "./contexts/NodesContext";
+import { LocationsContextProvider } from "./contexts/LocationsContext";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -13,9 +14,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <AppContextProvider>
-      <DataContextProvider>
-        <App />
-      </DataContextProvider>
+      <NodesContextProvider>
+        <LocationsContextProvider>
+          <App />
+        </LocationsContextProvider>
+      </NodesContextProvider>
     </AppContextProvider>
   </React.StrictMode>
 );

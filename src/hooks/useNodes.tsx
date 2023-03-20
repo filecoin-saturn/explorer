@@ -1,5 +1,6 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { EntityType } from "../contexts/AppContext";
+import NodesContext from "../contexts/NodesContext";
 
 export enum NodeState {
   Active = "active",
@@ -54,6 +55,7 @@ const nodesMap = new Map();
 const refreshInterval = 3600000; // 10000 // in seconds
 
 export const useNodes = () => {
+  const nodesContext = useContext(NodesContext);
   const [nodes, setNodes] = useState<Map<string, Node>>(new Map());
 
   useEffect(() => {
@@ -113,6 +115,10 @@ export const useNodes = () => {
       clearInterval(interval);
     };
   }, []);
+
+  useEffect(() => {
+    nodesContext.setNodes(Array.from(nodes.values()));
+  }, [nodes]);
 
   const getNodeByID = (queryNodeId: string) => {
     return nodes.get(queryNodeId);
