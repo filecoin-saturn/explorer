@@ -28,9 +28,7 @@ export const NodesContextProvider = ({
   const [nodes, setNodes] = useState<Node[] | []>([]);
 
   useEffect(() => {
-    console.log(">>> useEffect");
     const getResults = async () => {
-      console.log("Call results triggered");
       let buffer = "";
 
       const response = await fetch("https://orchestrator.strn.pl/explorer");

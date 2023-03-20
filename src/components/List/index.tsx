@@ -2,7 +2,6 @@ import "./index.css";
 
 import Stat from "../Stat";
 import Icon from "../Icon";
-import BarChart from "../BarChart/BarChart";
 import { EntityType, NavBarEntity } from "../../contexts/AppContext";
 import { Nodes } from "../../hooks/useNodes";
 import { Continent } from "../../hooks/useContinents";
@@ -88,25 +87,6 @@ export const List = ({
             value={stats?.estimatedEarnings[timeFrame]}
             label="Earnings" // fil -> $
           />
-          {/* <div className="List-chart">
-            <BarChart
-              dataset={[
-                { date: "01/02/2023", earnings: 1 },
-                { date: "02/02/2023", earnings: 31 },
-                { date: "03/02/2023", earnings: 54 },
-                { date: "04/02/2023", earnings: 3 },
-                { date: "05/02/2023", earnings: 22 },
-                { date: "06/02/2023", earnings: 11 },
-                { date: "07/02/2023", earnings: 9 },
-                { date: "08/02/2023", earnings: 9 },
-                { date: "09/02/2023", earnings: 9 },
-                { date: "10/02/2023", earnings: 40 },
-                { date: "11/02/2023", earnings: 40 },
-                { date: "12/02/2023", earnings: 40 },
-                { date: "13/02/2023", earnings: 40 },
-              ]}
-            />
-          </div> */}
           <div className="List-buttons">
             <button className="List-button" onClick={() => setTimeFrame("1d")}>
               1d

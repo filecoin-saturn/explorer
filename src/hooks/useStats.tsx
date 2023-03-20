@@ -137,73 +137,36 @@ export const useStats = () => {
   const { continents } = useContinents();
   const { countries } = useCountries();
 
-  const [globalStats, setGlobalStats] = useState<LocationStat>();
-  const [continentsStats, setContinentsStats] = useState<
-    LocationStat[] | undefined
-  >();
-  const [countriesStats, setCountriesStats] = useState<
-    LocationStat[] | undefined
-  >();
-  const [locationsStats, setLocationsStats] = useState<
-    LocationStat[] | undefined
-  >();
-
-  const computeGlobalStats = () => {
+  const getGlobalStats = () => {
     if (!nodes) return;
-    const globalStats_ = computeStats(nodes, undefined);
-    console.log("globalStats_", globalStats_);
-    setGlobalStats(globalStats_);
+    const globalStats = computeStats(nodes, undefined);
+    return globalStats;
   };
-
-  const computeContinentsStats = () => {
-    if (!nodes) return;
-    const continentsStats_ = continents.map((continent) => {
-      const continentNodes = getNodesByContinentId(continent.id);
-      return computeStats(continentNodes, continent);
-    });
-    setContinentsStats(continentsStats_);
-  };
-
-  const computeCountriesStats = () => {
-    if (!nodes) return;
-    const countriesStats_ = countries.map((country) => {
-      const countryNodes = getNodesByCountryId(country.id);
-      return computeStats(countryNodes, country);
-    });
-    setCountriesStats(countriesStats_);
-  };
-
-  const computeLocationStats = () => {
-    if (!locations) return;
-    const locationsStats_ = locations.map((city) => {
-      const locationNodes = getNodesByLocationId(city.id);
-      return computeStats(locationNodes, city);
-    });
-    setLocationsStats(locationsStats_);
-  };
-
-  // todo: compute when it0s needed instead of everything at the begining
-  useEffect(() => {
-    computeGlobalStats();
-    computeContinentsStats();
-    computeCountriesStats();
-    computeLocationStats();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [nodes]);
 
   const getStatsByContinentId = (continentId: string) => {
-    if (!continentsStats) return;
-    return continentsStats.find((stat) => stat.entityId === continentId);
+    if (!nodes) return;
+    const continent = continents.find(
+      (continent) => continent.id === continentId
+    );
+    if (!continent) return;
+    const continentNodes = getNodesByContinentId(continent.id);
+    return computeStats(continentNodes, continent);
   };
 
   const getStatsByCountryId = (countryId: string) => {
-    if (!countriesStats) return;
-    return countriesStats.find((stat) => stat.entityId === countryId);
+    if (!nodes) return;
+    const country = countries.find((country) => country.id === countryId);
+    if (!country) return;
+    const countryNodes = getNodesByCountryId(country.id);
+    return computeStats(countryNodes, country);
   };
 
   const getStatsByLocationId = (locationId: string) => {
-    if (!locationsStats) return;
-    return locationsStats.find((stat) => stat.entityId === locationId);
+    if (!nodes) return;
+    const location = locations.find((location) => location.id === locationId);
+    if (!location) return;
+    const locationNodes = getNodesByLocationId(location.id);
+    return computeStats(locationNodes, location);
   };
 
   const getStatsByNodeId = (nodeId: string) => {
@@ -215,10 +178,7 @@ export const useStats = () => {
   };
 
   return {
-    globalStats,
-    continentsStats,
-    countriesStats,
-    locationsStats,
+    getGlobalStats,
     getStatsByContinentId,
     getStatsByCountryId,
     getStatsByLocationId,

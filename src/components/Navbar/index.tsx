@@ -15,7 +15,6 @@ import Breadcrumb from "../Breadcrumb";
 import useCountries, { Country } from "../../hooks/useCountries";
 import List from "../List";
 import Stat from "../Stat";
-import BarChart from "../BarChart/BarChart";
 import useNodes, { Node } from "../../hooks/useNodes";
 import useLocations, { Location } from "../../hooks/useLocations";
 import { useStats } from "../../hooks/useStats";
@@ -27,7 +26,7 @@ export const Navbar = () => {
   const { getNodesByLocationId } = useNodes();
 
   const {
-    globalStats,
+    getGlobalStats,
     getStatsByContinentId,
     getStatsByLocationId,
     getStatsByCountryId,
@@ -89,12 +88,12 @@ export const Navbar = () => {
       entityStats = getStatsByLocationId(appState.navbarEntity.id);
       break;
     case EntityType.node:
-      list = []; //getNodesByLocationId(appState.navbarEntity.geoloc.city);
+      list = [];
       entityStats = getStatsByNodeId(appState.navbarEntity.id);
       break;
     default:
       list = continents;
-      entityStats = globalStats;
+      entityStats = getGlobalStats();
       break;
   }
 
@@ -158,25 +157,6 @@ export const Navbar = () => {
             value={entityStats?.retrievals["7d"]}
             label="Retrievals"
           />
-          {/* <div className="Navbar-chart">
-            <BarChart
-              dataset={[
-                { date: "01/02/2023", earnings: 1 },
-                { date: "02/02/2023", earnings: 31 },
-                { date: "03/02/2023", earnings: 54 },
-                { date: "04/02/2023", earnings: 3 },
-                { date: "05/02/2023", earnings: 22 },
-                { date: "06/02/2023", earnings: 11 },
-                { date: "07/02/2023", earnings: 9 },
-                { date: "08/02/2023", earnings: 9 },
-                { date: "09/02/2023", earnings: 9 },
-                { date: "10/02/2023", earnings: 40 },
-                { date: "11/02/2023", earnings: 40 },
-                { date: "12/02/2023", earnings: 40 },
-                { date: "13/02/2023", earnings: 40 },
-              ]}
-            />
-          </div> */}
         </div>
       </div>
     </nav>
