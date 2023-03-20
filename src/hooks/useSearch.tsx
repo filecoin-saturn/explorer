@@ -17,7 +17,7 @@ const useSearch = () => {
     id: `c${c.id}`,
   }));
 
-  const documents = [...customContinents, ...countries, ...locations, ...nodes]; //...continents
+  const documents = [...customContinents, ...countries, ...locations, ...nodes];
 
   const searchEngine = new MiniSearch({
     fields: ["name"],
