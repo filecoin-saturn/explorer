@@ -11,7 +11,9 @@ import { ViewMode } from "../../contexts/AppContext";
 import Nodes from "../Layers/Nodes";
 import Heatmap from "../Layers/Heatmap";
 import Boundaries from "../Layers/Boundaries";
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
+import useContinents from "../../hooks/useContinents";
+import useCountries from "../../hooks/useCountries";
 mapboxgl.workerClass = MapboxWorker;
 
 const viewState = {
@@ -26,7 +28,9 @@ const mapStyle = "mapbox://styles/joaoferreira18/cleedx6a6003x01qg41yehikx";
 
 export const Globe = ({ nodes }: { nodes: Node[] }) => {
   const { map } = useMap();
-  const { viewMode } = useAppContext();
+  const { countries } = useCountries();
+  const { continents } = useContinents();
+  const { viewMode, hoverEntity, setHoverEntity } = useAppContext();
 
   const geoJson = {
     type: "FeatureCollection",
@@ -78,6 +82,7 @@ export const Globe = ({ nodes }: { nodes: Node[] }) => {
       }
 
       options.id = null;
+      setHoverEntity(undefined);
     },
     [map]
   );
@@ -108,6 +113,12 @@ export const Globe = ({ nodes }: { nodes: Node[] }) => {
               );
             }
           });
+
+        setHoverEntity(
+          countries.find(
+            (country) => country.id === feature.properties.iso_3166_1
+          )
+        );
       }
 
       if (options.id !== null) {

@@ -39,7 +39,10 @@ export const Navbar = () => {
     { name: "World", type: EntityType.world } as World,
   ]);
   const [active, setActive] = useState(false);
-  const className = classNames({ Navbar: true, active });
+  const className = classNames("Navbar", {
+    active,
+    expanded: breadcrumbs.length > 1,
+  });
 
   const toggleNavbar = () => {
     setActive(!active);
@@ -99,11 +102,13 @@ export const Navbar = () => {
   }
 
   if (!appState.navbarEntity) return null;
+
   return (
     <nav className={className}>
       <div className="Navbar-breadcrumbs">
-        {breadcrumbs.reverse().map((breadcrumb, index) => {
+        {breadcrumbs.map((breadcrumb, index) => {
           const active = index === breadcrumbs.length - 1;
+
           return (
             <Breadcrumb
               key={breadcrumb?.name}
