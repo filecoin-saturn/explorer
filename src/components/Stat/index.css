@@ -3,6 +3,11 @@
   align-items: center;
 }
 
+.Stat-content:last-child {
+  display: flex;
+  align-items: flex-end;
+}
+
 .Stat-icon {
   width: var(--size-sm);
   height: var(--size-sm);
@@ -40,6 +45,21 @@
 }
 
 .Stat.small .Stat-label {
+  display: none;
+}
+
+.Stat.highlight .Stat-content {
+  flex-direction: row-reverse;
+  gap: var(--size-xxs);
+}
+.Stat.highlight .Stat-label {
+  margin-left: 0;
+}
+.Stat.highlight .Stat-value {
+  font-size: var(--size-base);
+}
+
+.Stat.highlight .Stat-units {
   display: none;
 }
 

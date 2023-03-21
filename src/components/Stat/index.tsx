@@ -6,11 +6,21 @@ type StatProps = {
   units?: string;
   label?: string;
   small?: boolean;
+  highlight?: boolean;
   icon?: string;
 };
 
-export const Stat = ({ value, units, label, small, icon }: StatProps) => {
-  const className = `Stat ${small ? "small" : ""}`;
+export const Stat = ({
+  value,
+  units,
+  label,
+  small,
+  highlight,
+  icon,
+}: StatProps) => {
+  const className = `Stat ${small ? "small" : ""} ${
+    highlight ? "highlight" : ""
+  }`;
 
   return (
     <div className={className}>
