@@ -12,6 +12,8 @@ import Nodes from "../Layers/Nodes";
 import Heatmap from "../Layers/Heatmap";
 import Boundaries from "../Layers/Boundaries";
 import { useCallback } from "react";
+import useContinents from "../../hooks/useContinents";
+import useCountries from "../../hooks/useCountries";
 mapboxgl.workerClass = MapboxWorker;
 
 const viewState = {
@@ -26,7 +28,10 @@ const mapStyle = "mapbox://styles/joaoferreira18/cleedx6a6003x01qg41yehikx";
 
 export const Globe = ({ nodes }: { nodes: Node[] }) => {
   const { map } = useMap();
-  const { viewMode } = useAppContext();
+  const { countries } = useCountries();
+  const { continents } = useContinents();
+  const appState = useAppContext();
+  const { navbarEntity, viewMode, setHoverEntity } = appState;
 
   const geoJson = {
     type: "FeatureCollection",
@@ -78,8 +83,9 @@ export const Globe = ({ nodes }: { nodes: Node[] }) => {
       }
 
       options.id = null;
+      setHoverEntity(undefined);
     },
-    [map]
+    [map, setHoverEntity]
   );
 
   const onMouseMove = useCallback(
@@ -108,6 +114,19 @@ export const Globe = ({ nodes }: { nodes: Node[] }) => {
               );
             }
           });
+
+        const country = countries.find(
+          (country) => country.id === feature.properties.iso_3166_1
+        );
+
+        if (navbarEntity?.name === "World") {
+          const continent = continents.find((continent) =>
+            country?.continentId.includes(continent.id)
+          );
+          setHoverEntity(continent);
+        } else {
+          setHoverEntity(country);
+        }
       }
 
       if (options.id !== null) {
@@ -135,7 +154,7 @@ export const Globe = ({ nodes }: { nodes: Node[] }) => {
         }
       );
     },
-    [map]
+    [map, countries, navbarEntity, continents, setHoverEntity]
   );
 
   const onMapLoad = useCallback(() => {
@@ -177,6 +196,11 @@ export const Globe = ({ nodes }: { nodes: Node[] }) => {
 
     map.on("mouseleave", "boundaries-fill", onMouseLeave(countryOptions));
     map.on("mousemove", "boundaries-fill", onMouseMove(countryOptions));
+
+    return () => {
+      map.off("mouseleave", onMouseLeave(countryOptions));
+      map.off("mousemove", onMouseMove(countryOptions));
+    };
   }, [map, nodes, onMouseLeave, onMouseMove]);
 
   return (

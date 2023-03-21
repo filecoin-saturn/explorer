@@ -10,6 +10,7 @@ import { Country } from "../../hooks/useCountries";
 import { LocationStat, useStats } from "../../hooks/useStats";
 import { useEffect, useState } from "react";
 import classNames from "classnames";
+import useAppContext from "../../hooks/useAppContext";
 
 type ListProps = {
   stats: LocationStat | undefined;
@@ -41,6 +42,7 @@ export const List = ({
     getStatsByLocationId,
     getStatsByNodeId,
   } = useStats();
+  const { hoverEntity } = useAppContext();
 
   const iconNameForItem = (item: any) => {
     switch (item.type) {
@@ -130,7 +132,10 @@ export const List = ({
         {list.map((listItem: any) => {
           const listItemStats = getItemStats(listItem);
           const isActive = selectedNode === listItem;
-          const className = classNames("List-item", { active: isActive });
+          const className = classNames("List-item", {
+            active: isActive,
+            hover: hoverEntity?.id === listItem.id,
+          });
 
           return (
             <li
