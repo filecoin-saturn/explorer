@@ -46,6 +46,7 @@
   );
   backdrop-filter: blur(16px);
   border-top: 1px solid;
+  border-bottom: 1px solid;
   border-left: 1px solid;
   border-image: linear-gradient(
       to right,
@@ -61,6 +62,7 @@
   transform: translateY(-100%);
 
   overflow: scroll;
+  overflow-x: hidden;
   display: flex;
   flex: 1;
   flex-direction: column;

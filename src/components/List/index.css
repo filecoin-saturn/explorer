@@ -76,6 +76,7 @@
     rgba(0, 163, 255, 0.2064) 93.31%
   );
   backdrop-filter: blur(16px);
+  border-bottom: 1px solid;
   border-left: 1px solid;
   border-image: linear-gradient(
       to right,
