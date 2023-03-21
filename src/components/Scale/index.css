@@ -2,7 +2,7 @@
   position: absolute;
   z-index: 1;
   top: 50%;
-  right: 32px;
+  right: var(--size-xxs);
   transform: translateY(-50%);
 
   display: flex;
@@ -50,4 +50,10 @@
 .Scale-graphic {
   width: 24px;
   height: 216px;
+}
+
+@media screen and (min-width: 1024px) {
+  .Scale {
+    right: var(--size-md);
+  }
 }

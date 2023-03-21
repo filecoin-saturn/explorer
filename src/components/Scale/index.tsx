@@ -17,7 +17,7 @@ export const Scale = ({ higher, lower }: ScaleProps) => {
     <div className="Scale">
       <div className="Scale-label">
         <p className="Scale-step">{higher.step}</p>
-        <p className="Scale-stepLabel">&gt; {higher.label}</p>
+        <p className="Scale-stepLabel">{higher.label}</p>
       </div>
       <svg
         fill="none"
@@ -47,7 +47,7 @@ export const Scale = ({ higher, lower }: ScaleProps) => {
       </svg>
       <div className="Scale-label">
         <p className="Scale-step">{lower.step}</p>
-        <p className="Scale-stepLabel">&lt; {lower.label}</p>
+        <p className="Scale-stepLabel">{lower.label}</p>
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ export const Heatmap = ({ srcId }: { srcId: string }) => {
     type: "heatmap",
     source: srcId,
     paint: {
-      "heatmap-weight": ["interpolate", ["linear"], ["get", "load"], 1, 1],
+      "heatmap-weight": ["interpolate", ["linear"], ["get", "avgTTFB"], 1, 1],
       "heatmap-intensity": ["interpolate", ["linear"], ["zoom"], 1, 1],
       "heatmap-color": [
         "interpolate",

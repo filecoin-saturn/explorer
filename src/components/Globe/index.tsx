@@ -11,8 +11,9 @@ import { ViewMode } from "../../contexts/AppContext";
 import Nodes from "../Layers/Nodes";
 import Heatmap from "../Layers/Heatmap";
 import Boundaries from "../Layers/Boundaries";
-import { useCallback } from "react";
-import useContinents from "../../hooks/useContinents";
+import { useCallback, useEffect, useState } from "react";
+import Scale from "../Scale";
+import { useStats } from "../../hooks/useStats";
 import useCountries from "../../hooks/useCountries";
 mapboxgl.workerClass = MapboxWorker;
 
@@ -28,10 +29,51 @@ const mapStyle = "mapbox://styles/joaoferreira18/cleedx6a6003x01qg41yehikx";
 
 export const Globe = ({ nodes }: { nodes: Node[] }) => {
   const { map } = useMap();
+  const { getStatsByCountryId } = useStats();
+  const { viewMode } = useAppContext();
   const { countries } = useCountries();
-  const { continents } = useContinents();
-  const appState = useAppContext();
-  const { navbarEntity, viewMode, setHoverEntity } = appState;
+  const [scaleLimits, setScaleLimits] = useState<{
+    higher: { step: string; label: string };
+    lower: { step: string; label: string };
+  }>();
+
+  useEffect(() => {
+    const countriesCounters = countries.map((c) => getStatsByCountryId(c.id));
+
+    if (viewMode === ViewMode.Density) {
+      const nodesCounts = countriesCounters.flatMap((o) =>
+        o ? o.numberOfNodes : 0
+      );
+      console.log(Math.max(...nodesCounts));
+      const maxScale =
+        +((Math.max(...nodesCounts) * 0.85) / 100).toFixed(0) * 100;
+      const minScale = +(0.05 * maxScale).toFixed(0);
+
+      setScaleLimits({
+        higher: { label: "> #Nodes", step: `${maxScale}` },
+        lower: { label: "< #Nodes", step: `${minScale}` },
+      });
+    }
+
+    if (viewMode === ViewMode.Heatmap) {
+      const nodesCounts = countriesCounters
+        .flatMap((o) => (o ? o.avgTTFB : 0))
+        .filter((e) => e > 0);
+
+      console.log(nodesCounts);
+      const minScale = nodesCounts
+        ? +((Math.max(...nodesCounts) * 0.85) / 100).toFixed(0) * 100
+        : 3000;
+      // const maxScale = 3000;
+      const maxScale = +(0.25 * minScale).toFixed(0);
+
+      setScaleLimits({
+        higher: { label: "ms", step: `${maxScale}` },
+        lower: { label: "ms", step: `${minScale}` },
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [viewMode, nodes]);
 
   const geoJson = {
     type: "FeatureCollection",
@@ -204,50 +246,57 @@ export const Globe = ({ nodes }: { nodes: Node[] }) => {
   }, [map, nodes, onMouseLeave, onMouseMove]);
 
   return (
-    <Map
-      id="map"
-      mapLib={mapboxgl}
-      onLoad={onMapLoad}
-      mapStyle={mapStyle}
-      projection={projection}
-      initialViewState={viewState}
-      mapboxAccessToken={process.env.REACT_APP_MAP_BOX_ACCESS_TOKEN}
-    >
-      {viewMode === ViewMode.Density && (
-        <Source
-          id="boundaries"
-          type="vector"
-          url="mapbox://mapbox.country-boundaries-v1"
-          name="boundaries"
-        >
-          <Boundaries />
-        </Source>
+    <>
+      {scaleLimits && viewMode !== ViewMode.Cluster && (
+        <Scale higher={scaleLimits.higher} lower={scaleLimits.lower} />
       )}
+      <Map
+        id="map"
+        mapLib={mapboxgl}
+        onLoad={onMapLoad}
+        mapStyle={mapStyle}
+        projection={projection}
+        initialViewState={viewState}
+        mapboxAccessToken={process.env.REACT_APP_MAP_BOX_ACCESS_TOKEN}
+      >
+        {viewMode === ViewMode.Density && (
+          <Source
+            id="boundaries"
+            type="vector"
+            url="mapbox://mapbox.country-boundaries-v1"
+            name="boundaries"
+          >
+            <Boundaries
+              max={scaleLimits ? parseInt(scaleLimits.higher.step) : 0}
+            />
+          </Source>
+        )}
 
-      {viewMode === ViewMode.Heatmap && (
-        <Source
-          id="heat-src"
-          type="geojson"
-          //@ts-ignore
-          data={geoJson}
-        >
-          <Heatmap srcId="heat-src" />
-        </Source>
-      )}
+        {viewMode === ViewMode.Heatmap && (
+          <Source
+            id="heat-src"
+            type="geojson"
+            //@ts-ignore
+            data={geoJson}
+          >
+            <Heatmap srcId="heat-src" />
+          </Source>
+        )}
 
-      {viewMode === ViewMode.Cluster && (
-        <Source
-          id="nodes"
-          type="geojson"
-          //@ts-ignore
-          data={geoJson}
-          cluster={true}
-          clusterRadius={20}
-        >
-          <Nodes srcId="nodes" />
-        </Source>
-      )}
-    </Map>
+        {viewMode === ViewMode.Cluster && (
+          <Source
+            id="nodes"
+            type="geojson"
+            //@ts-ignore
+            data={geoJson}
+            cluster={true}
+            clusterRadius={20}
+          >
+            <Nodes srcId="nodes" />
+          </Source>
+        )}
+      </Map>
+    </>
   );
 };
 

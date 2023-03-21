@@ -1,6 +1,12 @@
 import { Layer } from "react-map-gl";
 
-export const Boundaries = () => {
+export const Boundaries = ({ max }: { max: number | undefined }) => {
+  const steps = [
+    max && max > 100 ? max * 0.01 : 20,
+    max && max > 100 ? max * 0.1 : 50,
+    max ? max * 0.2 : 380,
+  ];
+
   const boundaryLayer = {
     id: "boundaries-fill",
     type: "fill",
@@ -18,11 +24,11 @@ export const Boundaries = () => {
           "#2A1CF7",
           1,
           "#113CA9",
-          20,
+          steps[0],
           "#1E5DFF",
-          50,
+          steps[1],
           "#22AFFF",
-          380,
+          steps[2],
           "#00FFD1",
         ],
         [
@@ -33,11 +39,11 @@ export const Boundaries = () => {
           "transparent",
           1,
           "#113CA9",
-          20,
+          steps[0],
           "#1E5DFF",
-          50,
+          steps[1],
           "#22AFFF",
-          380,
+          steps[2],
           "#00FFD1",
         ],
       ],
@@ -53,11 +59,11 @@ export const Boundaries = () => {
           "#2A1CF7",
           1,
           "#113CA9",
-          20,
+          steps[0],
           "#1E5DFF",
-          50,
+          steps[1],
           "#22AFFF",
-          380,
+          steps[2],
           "#00FFD1",
         ],
         "transparent",
