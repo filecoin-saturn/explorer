@@ -1,7 +1,9 @@
 import "./index.css";
 
 import { useEffect, useState } from "react";
+import { useMap } from "react-map-gl";
 import classNames from "classnames";
+
 import {
   NavBarEntity,
   HoverEntity,
@@ -20,12 +22,14 @@ import useLocations, { Location } from "../../hooks/useLocations";
 import { useStats } from "../../hooks/useStats";
 import Icon from "../Icon";
 
+const worldEntity = { name: "World", type: EntityType.world } as World;
+
 export const Navbar = () => {
+  const { map } = useMap();
   const { continents } = useContinents();
-  const { getCountriesByContinentId } = useCountries();
+  const { countries, getCountriesByContinentId } = useCountries();
   const { getLocationByCountryId } = useLocations();
   const { getNodesByLocationId } = useNodes();
-
   const {
     getGlobalStats,
     getStatsByContinentId,
@@ -35,9 +39,7 @@ export const Navbar = () => {
   } = useStats();
 
   const appState = useAppContext();
-  const [breadcrumbs, setBreadcrumbs] = useState<NavBarEntity[]>([
-    { name: "World", type: EntityType.world } as World,
-  ]);
+  const [breadcrumbs, setBreadcrumbs] = useState<NavBarEntity[]>([worldEntity]);
   const [active, setActive] = useState(false);
   const className = classNames("Navbar", {
     active,
@@ -57,6 +59,36 @@ export const Navbar = () => {
     appState.setNavbarEntity(breadcrumbs[0]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    const onMapClick = (event: any) => {
+      if (!event.features?.length) return;
+
+      const [feature] = event.features;
+      const country = countries.find(
+        (country) => country.id === feature.properties?.iso_3166_1
+      );
+      const continent = continents.find((continent) =>
+        country?.continentId.includes(continent.id)
+      );
+
+      if (appState.navbarEntity?.id === country?.id) return;
+
+      if (appState.navbarEntity?.type === EntityType.world) {
+        setBreadcrumbs([worldEntity, continent]);
+        appState.setNavbarEntity(continent);
+      } else {
+        setBreadcrumbs([worldEntity, continent, country]);
+        appState.setNavbarEntity(country);
+      }
+    };
+
+    map?.on("click", "boundaries-fill", onMapClick);
+
+    return () => {
+      map?.off("click", onMapClick);
+    };
+  }, [map, countries, continents, appState]);
 
   const clearSelectedEntity =
     (breadcrumb: NavBarEntity, index: number) => () => {
