@@ -31,7 +31,7 @@ export const List = ({
   hoverEnd,
   hoverStart,
 }: ListProps) => {
-  const [timeFrame, setTimeFrame] = useState<TimeFrame>("7d");
+  const [timeFrame] = useState<TimeFrame>("7d");
   const {
     getStatsByContinentId,
     getStatsByCountryId,
@@ -84,6 +84,12 @@ export const List = ({
           </div>
         </div>
         <div className="List-stats">
+          <Stat
+            icon="load-green"
+            units="Gb"
+            value={stats?.bandwidthServed[timeFrame]}
+            label="Bandwidth" // fil -> $
+          />
           <Stat
             icon="retrievals"
             units="M"
