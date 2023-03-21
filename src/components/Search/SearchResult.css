@@ -1,6 +1,10 @@
 .SearchResult {
   cursor: pointer;
 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
   padding: var(--size-sm);
 
   background: linear-gradient(
@@ -19,7 +23,8 @@
     1;
 }
 
-.SearchResult:hover {
+.SearchResult:hover,
+.SearchResult:focus {
   background: linear-gradient(
     296.29deg,
     rgba(0, 102, 255, 0.576) 2.96%,
@@ -27,9 +32,10 @@
     rgba(0, 163, 255, 0.5504) 93.31%
   );
   backdrop-filter: blur(16px);
+  outline: none;
 }
 
-.SearchResult-name {
+.SearchResult-title {
   font-family: var(--font-family);
   font-size: var(--size-md);
   font-weight: 300;
@@ -37,7 +43,7 @@
   text-transform: capitalize;
 }
 
-.SearchResult-parent {
+.SearchResult-subtitle {
   font-family: var(--font-family);
   font-size: var(--size-sm);
   font-weight: 300;
@@ -48,14 +54,14 @@
 }
 
 @media screen and (min-width: 1024px) {
-  .SearchResult-name {
+  .SearchResult-title {
     font-size: var(--size-base);
   }
-  .SearchResult-parent {
+  .SearchResult-subtitle {
     font-size: var(--size-base);
   }
 
-  .SearchResult:hover .SearchResult-parent {
+  .SearchResult:hover .SearchResult-subtitle {
     color: var(--color-green);
     opacity: 1;
   }

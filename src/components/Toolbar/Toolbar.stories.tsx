@@ -1,4 +1,4 @@
-import {Toolbar as ToolbarComponent} from ".";
+import { Toolbar as ToolbarComponent } from ".";
 
 export default {
   component: ToolbarComponent,

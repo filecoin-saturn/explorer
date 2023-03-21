@@ -56,11 +56,14 @@ const continentsList: Continents = [
     center: [],
   },
 ];
-
 export const useContinents = () => {
   const [continents, setContinents] = useState<Continents>(continentsList);
 
-  return { continents, setContinents };
+  const getContinentById = (queryContinentId: string) => {
+    return continents.find((continent) => continent.id === queryContinentId);
+  };
+
+  return { continents, setContinents, getContinentById };
 };
 
 export default useContinents;
