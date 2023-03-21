@@ -15,6 +15,7 @@ import { useCallback, useEffect, useState } from "react";
 import Scale from "../Scale";
 import { useStats } from "../../hooks/useStats";
 import useCountries from "../../hooks/useCountries";
+import useContinents from "../../hooks/useContinents";
 mapboxgl.workerClass = MapboxWorker;
 
 const viewState = {
@@ -31,8 +32,10 @@ export const Globe = () => {
   const { nodes } = useNodes();
   const { map } = useMap();
   const { getStatsByCountryId } = useStats();
-  const { viewMode } = useAppContext();
+  const { continents } = useContinents();
   const { countries } = useCountries();
+  const appState = useAppContext();
+  const { navbarEntity, viewMode, setHoverEntity } = appState;
   const [scaleLimits, setScaleLimits] = useState<{
     higher: { step: string; label: string };
     lower: { step: string; label: string };
