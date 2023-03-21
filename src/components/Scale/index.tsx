@@ -38,10 +38,10 @@ export const Scale = ({ higher, lower }: ScaleProps) => {
             y2="216"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color={colors[0]} />
-            <stop offset=".299" stop-color={colors[1]} />
-            <stop offset=".726" stop-color={colors[2]} />
-            <stop offset="1" stop-color={colors[3]} />
+            <stop stopColor={colors[0]} />
+            <stop offset=".299" stopColor={colors[1]} />
+            <stop offset=".726" stopColor={colors[2]} />
+            <stop offset="1" stopColor={colors[3]} />
           </linearGradient>
         </defs>
       </svg>

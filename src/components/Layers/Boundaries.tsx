@@ -2,9 +2,9 @@ import { Layer } from "react-map-gl";
 
 export const Boundaries = ({ max }: { max: number | undefined }) => {
   const steps = [
-    max && max > 100 ? max * 0.01 : 20,
-    max && max > 100 ? max * 0.1 : 50,
-    max ? max * 0.2 : 380,
+    max && max > 200 ? max * 0.01 : 20,
+    max && max > 200 ? max * 0.1 : 50,
+    max && max > 200 ? max * 0.2 : 380,
   ];
 
   const boundaryLayer = {

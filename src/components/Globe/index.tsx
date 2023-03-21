@@ -44,7 +44,7 @@ export const Globe = ({ nodes }: { nodes: Node[] }) => {
       const nodesCounts = countriesCounters.flatMap((o) =>
         o ? o.numberOfNodes : 0
       );
-      console.log(Math.max(...nodesCounts));
+
       const maxScale =
         +((Math.max(...nodesCounts) * 0.85) / 100).toFixed(0) * 100;
       const minScale = +(0.05 * maxScale).toFixed(0);
@@ -60,11 +60,9 @@ export const Globe = ({ nodes }: { nodes: Node[] }) => {
         .flatMap((o) => (o ? o.avgTTFB : 0))
         .filter((e) => e > 0);
 
-      console.log(nodesCounts);
       const minScale = nodesCounts
         ? +((Math.max(...nodesCounts) * 0.85) / 100).toFixed(0) * 100
         : 3000;
-      // const maxScale = 3000;
       const maxScale = +(0.25 * minScale).toFixed(0);
 
       setScaleLimits({
