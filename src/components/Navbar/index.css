@@ -60,6 +60,7 @@
   transform: translateY(-100%);
 
   overflow: scroll;
+  overflow-x: hidden;
   display: flex;
   flex: 1;
   flex-direction: column;
