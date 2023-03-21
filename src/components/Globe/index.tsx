@@ -5,7 +5,7 @@ import { Map, Source, useMap } from "react-map-gl";
 import mapboxgl from "mapbox-gl/dist/mapbox-gl";
 //@ts-ignore
 import MapboxWorker from "mapbox-gl/dist/mapbox-gl-csp-worker";
-import { Node } from "../../hooks/useNodes";
+import useNodes, { Node } from "../../hooks/useNodes";
 import useAppContext from "../../hooks/useAppContext";
 import { ViewMode } from "../../contexts/AppContext";
 import Nodes from "../Layers/Nodes";
@@ -27,7 +27,8 @@ const projection = "globe";
 
 const mapStyle = "mapbox://styles/joaoferreira18/cleedx6a6003x01qg41yehikx";
 
-export const Globe = ({ nodes }: { nodes: Node[] }) => {
+export const Globe = () => {
+  const { nodes } = useNodes();
   const { map } = useMap();
   const { getStatsByCountryId } = useStats();
   const { viewMode } = useAppContext();
@@ -39,7 +40,6 @@ export const Globe = ({ nodes }: { nodes: Node[] }) => {
 
   useEffect(() => {
     const countriesCounters = countries.map((c) => getStatsByCountryId(c.id));
-
     if (viewMode === ViewMode.Density) {
       const nodesCounts = countriesCounters.flatMap((o) =>
         o ? o.numberOfNodes : 0
@@ -53,6 +53,7 @@ export const Globe = ({ nodes }: { nodes: Node[] }) => {
         higher: { label: "> #Nodes", step: `${maxScale}` },
         lower: { label: "< #Nodes", step: `${minScale}` },
       });
+      return;
     }
 
     if (viewMode === ViewMode.Heatmap) {
@@ -69,9 +70,15 @@ export const Globe = ({ nodes }: { nodes: Node[] }) => {
         higher: { label: "ms", step: `${maxScale}` },
         lower: { label: "ms", step: `${minScale}` },
       });
+      return;
     }
+
+    setScaleLimits({
+      higher: { label: "N/A", step: "0" },
+      lower: { label: "N/A", step: "0" },
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [viewMode, nodes]);
+  }, [nodes, viewMode]);
 
   const geoJson = {
     type: "FeatureCollection",

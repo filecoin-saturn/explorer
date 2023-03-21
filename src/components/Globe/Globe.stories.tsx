@@ -5,4 +5,4 @@ export default {
   component: GlobeComponent,
 };
 
-export const Globe = () => <GlobeComponent nodes={[]}></GlobeComponent>;
+export const Globe = () => <GlobeComponent></GlobeComponent>;

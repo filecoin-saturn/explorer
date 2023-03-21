@@ -34,7 +34,7 @@ function App() {
       <Logo />
       <Navbar />
       <Toolbar />
-      <Globe nodes={Array.from(nodes.values())} />
+      <Globe />
     </div>
   );
 }
