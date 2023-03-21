@@ -134,34 +134,39 @@ export const Navbar = () => {
           <Breadcrumb entity={breadcrumbs[breadcrumbs.length - 1]} active />
         </div>
         <div className="Navbar-regionStats" onClick={toggleNavbar}>
-          <Stat
-            icon="nodes-green"
-            value={entityStats?.numberOfNodes}
-            label="NODES"
-          />
-          <Stat
-            icon="ttfb"
-            value={entityStats?.avgTTFB}
-            units="ms"
-            label="Avg TTFB"
-          />
-          <Stat
-            icon="fil"
-            units="FIL"
-            value={entityStats?.estimatedEarnings["7d"]}
-            label="Earnings"
-          />
-          <Stat
-            icon="space"
-            value={entityStats?.bandwidthServed["7d"]}
-            units="GB"
-            label="Bandwidth"
-          />
-          <Stat
-            icon="retrievals"
-            value={entityStats?.retrievals["7d"]}
-            label="Retrievals"
-          />
+          <div className="Navbar-regionStatsGrid">
+            <Stat
+              icon="nodes-green"
+              value={entityStats?.numberOfNodes}
+              label="NODES"
+            />
+            <Stat
+              icon="ttfb"
+              value={entityStats?.avgTTFB}
+              units="ms"
+              label="Avg TTFB"
+            />
+            <Stat
+              icon="space"
+              value={entityStats?.bandwidthServed["7d"]}
+              units="GB"
+              label="Bandwidth"
+            />
+            <Stat
+              icon="retrievals"
+              value={entityStats?.retrievals["7d"]}
+              label="Retrievals"
+            />
+          </div>
+          <div className="Stat-highlight">
+            <Stat
+              highlight
+              icon="fil"
+              units="FIL"
+              value={entityStats?.estimatedEarnings["7d"]}
+              label="Earnings"
+            />
+          </div>
         </div>
       </div>
     </nav>

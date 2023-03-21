@@ -141,12 +141,10 @@
 }
 
 .Navbar-regionStats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  flex: 1;
-  row-gap: var(--size-xxs);
-  column-gap: var(--size-sm);
+  display: flex;
+  gap: var(--size-sm);
 
+  width: 100%;
   margin-left: 1px;
   padding: var(--size-xs) var(--size-sm);
 
@@ -165,6 +163,20 @@
       rgba(217, 255, 248, 0)
     )
     1;
+}
+
+.Navbar-regionStatsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  flex: 1;
+  row-gap: var(--size-xxs);
+  column-gap: var(--size-sm);
+}
+
+.Stat-highlight {
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 
 @media screen and (min-width: 1024px) {

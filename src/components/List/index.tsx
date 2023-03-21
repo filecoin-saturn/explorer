@@ -3,12 +3,13 @@ import "./index.css";
 import Stat from "../Stat";
 import Icon from "../Icon";
 import { EntityType, NavBarEntity } from "../../contexts/AppContext";
-import { Nodes } from "../../hooks/useNodes";
+import { Node, Nodes } from "../../hooks/useNodes";
 import { Continent } from "../../hooks/useContinents";
 import { Location } from "../../hooks/useLocations";
 import { Country } from "../../hooks/useCountries";
 import { LocationStat, useStats } from "../../hooks/useStats";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import classNames from "classnames";
 
 type ListProps = {
   stats: LocationStat | undefined;
@@ -32,6 +33,8 @@ export const List = ({
   hoverStart,
 }: ListProps) => {
   const [timeFrame] = useState<TimeFrame>("7d");
+  const [selectedNode, setSelectedNode] = useState<Node>();
+
   const {
     getStatsByContinentId,
     getStatsByCountryId,
@@ -54,7 +57,7 @@ export const List = ({
     }
   };
 
-  function getItemStats(listItem: any) {
+  const getItemStats = (listItem: any) => {
     switch (listItem.type) {
       case EntityType.continent:
         return getStatsByContinentId(listItem.id);
@@ -67,7 +70,20 @@ export const List = ({
       default:
         return undefined;
     }
-  }
+  };
+
+  useEffect(() => {
+    setSelectedNode(undefined);
+  }, [entity]);
+
+  const handleClick = (e: EventTarget, listItem: NavBarEntity) => {
+    if (!listItem) return;
+    if (listItem.type !== EntityType.node) {
+      onSelect(listItem)();
+    } else {
+      setSelectedNode(listItem);
+    }
+  };
 
   return (
     <div className="List">
@@ -88,7 +104,7 @@ export const List = ({
             icon="load-green"
             units="Gb"
             value={stats?.bandwidthServed[timeFrame]}
-            label="Bandwidth" // fil -> $
+            label="Bandwidth"
           />
           <Stat
             icon="retrievals"
@@ -113,13 +129,15 @@ export const List = ({
       <ul className="List-content">
         {list.map((listItem: any) => {
           const listItemStats = getItemStats(listItem);
+          const isActive = selectedNode === listItem;
+          const className = classNames("List-item", { active: isActive });
 
           return (
             <li
               key={listItem.id}
-              className="List-item"
+              className={className}
               onPointerLeave={hoverEnd}
-              onClick={onSelect(listItem)}
+              onClick={(e) => handleClick(e.target, listItem)}
               onPointerEnter={hoverStart(listItem)}
             >
               <div className="List-itemHeader">
@@ -131,27 +149,27 @@ export const List = ({
               </div>
               <div className="List-itemStats">
                 <Stat
-                  small
+                  small={!isActive}
                   icon="nodes-green"
                   value={listItemStats?.numberOfNodes}
                   label="Nodes"
                 />
                 <Stat
-                  small
+                  small={!isActive}
                   icon="ttfb"
                   value={listItemStats?.avgTTFB}
                   units="ms"
                   label="Avg TTFB"
                 />
                 <Stat
-                  small
+                  small={!isActive}
                   icon="space"
                   value={listItemStats?.bandwidthServed[timeFrame]}
                   units="GB"
                   label="Bandwidth"
                 />
                 <Stat
-                  small
+                  small={!isActive}
                   icon="retrievals"
                   units="M"
                   value={listItemStats?.retrievals[timeFrame]}

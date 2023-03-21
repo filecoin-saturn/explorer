@@ -142,7 +142,51 @@
   margin-top: var(--size-sm);
 }
 
+.List-item.active {
+  background: linear-gradient(
+    296.29deg,
+    rgba(0, 102, 255, 0.216) 2.96%,
+    rgba(0, 133, 255, 0.1896) 50.03%,
+    rgba(0, 163, 255, 0.2064) 93.31%
+  );
+  backdrop-filter: blur(var(--size-base));
+}
+
+.List-item.active .List-itemStats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 40px;
+  row-gap: var(--size-sm);
+  column-gap: var(--size-sm);
+  align-items: center;
+
+  margin-top: var(--size-sm);
+  padding: 0 var(--size-sm);
+}
+
 @media screen and (min-width: 1024px) {
+  .List-item.active {
+    background: linear-gradient(
+      296.29deg,
+      rgba(0, 102, 255, 0.216) 2.96%,
+      rgba(0, 133, 255, 0.1896) 50.03%,
+      rgba(0, 163, 255, 0.2064) 93.31%
+    );
+    backdrop-filter: blur(var(--size-base));
+  }
+
+  .List-item.active .List-itemStats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 40px;
+    row-gap: var(--size-sm);
+    column-gap: var(--size-sm);
+    align-items: center;
+
+    margin-top: var(--size-sm);
+    padding: 0 var(--size-sm);
+  }
+
   .List-itemName {
     font-size: var(--size-md);
   }
