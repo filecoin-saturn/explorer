@@ -26,9 +26,10 @@ const worldEntity = { name: "World", type: EntityType.world } as World;
 
 export const Navbar = () => {
   const { map } = useMap();
-  const { continents } = useContinents();
-  const { countries, getCountriesByContinentId } = useCountries();
-  const { getLocationByCountryId } = useLocations();
+  const { continents, getContinentById } = useContinents();
+  const { countries, getCountriesByContinentId, getCountryById } =
+    useCountries();
+  const { getLocationByCountryId, getLocationById } = useLocations();
   const { getNodesByLocationId } = useNodes();
   const {
     getGlobalStats,
@@ -59,6 +60,50 @@ export const Navbar = () => {
     appState.setNavbarEntity(breadcrumbs[0]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    let country;
+    let location;
+    switch (appState.navbarEntity?.type) {
+      case EntityType.continent:
+        setBreadcrumbs([worldEntity, appState.navbarEntity]);
+        return;
+      case EntityType.country:
+        setBreadcrumbs([
+          worldEntity,
+          getContinentById(appState.navbarEntity.continentId[0]),
+          appState.navbarEntity,
+        ]);
+        return;
+      case EntityType.location:
+        country = getCountryById(appState.navbarEntity.countryId);
+        if (!country) return;
+        setBreadcrumbs([
+          worldEntity,
+          getContinentById(country.continentId[0]),
+          country,
+          appState.navbarEntity,
+        ]);
+        return;
+      case EntityType.node:
+        location = getLocationById(appState.navbarEntity.geoloc.city);
+        if (!location) break;
+        country = getCountryById(location.countryId);
+        if (!country) return;
+
+        setBreadcrumbs([
+          worldEntity,
+          getContinentById(country.continentId[0]),
+          country,
+          location,
+        ]);
+        return;
+      default:
+        setBreadcrumbs([worldEntity]);
+        return;
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [appState]);
 
   useEffect(() => {
     const onMapClick = (event: any) => {
