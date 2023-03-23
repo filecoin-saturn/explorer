@@ -30,8 +30,6 @@ export const List = ({
   stats,
   toggleNavbar,
   onSelect,
-  hoverEnd,
-  hoverStart,
 }: ListProps) => {
   const [timeFrame] = useState<TimeFrame>("7d");
   const [selectedNode, setSelectedNode] = useState<Node>();
@@ -141,9 +139,7 @@ export const List = ({
             <li
               key={listItem.id}
               className={className}
-              onPointerLeave={hoverEnd}
               onClick={(e) => handleClick(e.target, listItem)}
-              onPointerEnter={hoverStart(listItem)}
             >
               <div className="List-itemHeader">
                 <Icon

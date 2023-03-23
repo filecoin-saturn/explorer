@@ -1,7 +1,7 @@
 import "./index.css";
 
 type ScaleValue = {
-  step: string;
+  step: number;
   label: string;
 };
 
