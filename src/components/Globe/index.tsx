@@ -13,8 +13,6 @@ import Heatmap from "../Layers/Heatmap";
 import Boundaries from "../Layers/Boundaries";
 import { useCallback, useEffect, useState } from "react";
 import Scale from "../Scale";
-import { useStats } from "../../hooks/useStats";
-import useCountries from "../../hooks/useCountries";
 import useLocations from "../../hooks/useLocations";
 mapboxgl.workerClass = MapboxWorker;
 
