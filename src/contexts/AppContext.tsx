@@ -63,7 +63,7 @@ export const AppContextProvider = ({
   const [currentHoverEntity, setCurrentHoverEntity] =
     useState<HoverEntity>(undefined);
   const [currentViewMode, setCurrentViewMode] = useState<ViewMode | undefined>(
-    ViewMode.Density
+    ViewMode.Cluster
   );
 
   const value = {
