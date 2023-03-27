@@ -144,7 +144,10 @@ export const Globe = () => {
             url="mapbox://mapbox.country-boundaries-v1"
             name="boundaries"
           >
-            <Boundaries max={scaleLimits.higher.step} />
+            <Boundaries
+              srcId="boundaries"
+              max={scaleLimits ? parseInt(scaleLimits.higher.step) : 0}
+            />
           </Source>
         )}
 
