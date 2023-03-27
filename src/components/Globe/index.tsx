@@ -7,7 +7,7 @@ import mapboxgl from "mapbox-gl/dist/mapbox-gl";
 import MapboxWorker from "mapbox-gl/dist/mapbox-gl-csp-worker";
 import useNodes, { Node } from "../../hooks/useNodes";
 import useAppContext from "../../hooks/useAppContext";
-import { ViewMode } from "../../contexts/AppContext";
+import { EntityType, ViewMode } from "../../contexts/AppContext";
 import Nodes from "../Layers/Nodes";
 import Heatmap from "../Layers/Heatmap";
 import Boundaries from "../Layers/Boundaries";
@@ -77,8 +77,13 @@ export const Globe = () => {
         //@ts-ignore
         const [feature] = event.features;
 
-        if (feature) {
-          map.flyTo({ center: feature.geometry.coordinates, zoom: 7 });
+        if (navbarEntity?.type === EntityType.world) {
+          const continent = continents.find((continent) =>
+            country?.continentId.includes(continent.id)
+          );
+          setHoverEntity(continent);
+        } else {
+          setHoverEntity(country);
         }
       }
     );
@@ -109,6 +114,9 @@ export const Globe = () => {
           .map((node) => node.ttfbStats.p95_24h)
           .filter((number) => !!number)
       );
+    },
+    [map, countries, navbarEntity?.type, continents, setHoverEntity]
+  );
 
       let max = 1;
       let min = 0;

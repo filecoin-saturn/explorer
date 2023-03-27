@@ -135,6 +135,28 @@ export const Navbar = () => {
     };
   }, [map, countries, continents, appState]);
 
+  useEffect(() => {
+    const item = appState.navbarEntity;
+    if (!item) return;
+    const flyOptions = { essential: true, duration: 2000, minZoom: 3.5 };
+
+    if (item?.type === EntityType.world) {
+      map?.flyTo({ center: [0, 0], zoom: 1.5, ...flyOptions });
+    }
+
+    if (item?.type === EntityType.continent) {
+      map?.flyTo({ center: item.center, zoom: 3, ...flyOptions });
+    }
+
+    if (item?.type === EntityType.country) {
+      map?.flyTo({
+        center: item.center,
+        zoom: 4,
+        ...flyOptions,
+      });
+    }
+  }, [appState.navbarEntity]);
+
   const clearSelectedEntity =
     (breadcrumb: NavBarEntity, index: number) => () => {
       if (breadcrumb?.name === appState.navbarEntity?.name) {
