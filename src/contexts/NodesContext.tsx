@@ -26,9 +26,12 @@ export const NodesContextProvider = ({
   children: ReactNode;
 }): ReactElement => {
   const [nodes, setNodes] = useState<Node[] | []>([]);
+  const [tempNodes, setTempNodes] = useState<Node[] | []>([]);
+  const [isLoading, setIsLoading] = useState<boolean>();
 
   useEffect(() => {
     const getResults = async () => {
+      setIsLoading(true);
       let buffer = "";
 
       const response = await fetch("https://orchestrator.strn.pl/explorer");
@@ -37,7 +40,7 @@ export const NodesContextProvider = ({
       const reader = response.body?.getReader();
       const nodesMap = new Map<string, Node>();
 
-      const onChunck = ({
+      const onChunk = ({
         done,
         value,
       }: ReadableStreamReadResult<Uint8Array>): void => {
@@ -65,21 +68,31 @@ export const NodesContextProvider = ({
           }
         });
 
-        setNodes(Array.from(nodesMap.values()));
+        setTempNodes(Array.from(nodesMap.values()));
         if (!done) {
           requestIdleCallback(() => {
-            reader?.read().then(onChunck);
+            reader?.read().then(onChunk);
           });
+        } else {
+          setIsLoading(false);
         }
       };
 
       requestIdleCallback(() => {
-        reader?.read().then(onChunck);
+        reader?.read().then(onChunk);
       });
     };
 
     getResults();
   }, []);
+
+  useEffect(() => {
+    if (isLoading === false) {
+      setNodes(tempNodes);
+      setTempNodes([]);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoading]);
 
   const value = {
     nodes,

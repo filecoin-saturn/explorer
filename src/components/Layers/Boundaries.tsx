@@ -1,16 +1,22 @@
 import { Layer } from "react-map-gl";
 
-export const Boundaries = ({ max }: { max: number | undefined }) => {
+export const Boundaries = ({
+  max,
+  srcId,
+}: {
+  max: number | undefined;
+  srcId: string;
+}) => {
   const steps = [
-    max && max > 200 ? max * 0.01 : 20,
-    max && max > 200 ? max * 0.1 : 50,
-    max && max > 200 ? max * 0.2 : 380,
+    max && max > 200 ? max * 0.1 : 20,
+    max && max > 200 ? max * 0.4 : 50,
+    max && max > 200 ? max * 0.6 : 380,
   ];
 
   const boundaryLayer = {
     id: "boundaries-fill",
     type: "fill",
-    source: "boundaries",
+    source: srcId,
     "source-layer": "country_boundaries",
     paint: {
       "fill-color": [
@@ -21,7 +27,7 @@ export const Boundaries = ({ max }: { max: number | undefined }) => {
           ["linear"],
           ["feature-state", "nodes"],
           0,
-          "#2A1CF7",
+          "#275cc4",
           1,
           "#113CA9",
           steps[0],
@@ -47,7 +53,12 @@ export const Boundaries = ({ max }: { max: number | undefined }) => {
           "#00FFD1",
         ],
       ],
-      "fill-opacity": 0.6,
+      "fill-opacity": [
+        "case",
+        ["boolean", ["feature-state", "hover"], false],
+        0.4,
+        0.3,
+      ],
       "fill-outline-color": [
         "case",
         ["boolean", ["feature-state", "hover"], false],

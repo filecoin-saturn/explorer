@@ -6,19 +6,18 @@ import ToolbarButton from "../ToolbarButton";
 import AppContext, { ViewMode } from "../../contexts/AppContext";
 
 const toolbarOptions = [
-  // { viewMode: ViewMode.Density, iconName: "tb-density", title: "Density" },
-  { viewMode: ViewMode.Cluster, iconName: "tb-nodes", title: "Nodes" },
-  { viewMode: ViewMode.Heatmap, iconName: "tb-load", title: "TTFB" },
+  { viewMode: ViewMode.Cluster, iconName: "tb-nodes", title: "Cluster" },
+  { viewMode: ViewMode.Heatmap, iconName: "tb-load", title: "Load" },
 ];
 
 type ViewModeButtonsProps = {
   viewMode: ViewMode | undefined;
-  setViewMode: (viewMode: ViewMode | undefined) => void;
+  toggleViewMode: () => void;
 };
 
 const ViewModeButtonsMobile = ({
   viewMode,
-  setViewMode,
+  toggleViewMode,
 }: ViewModeButtonsProps) => {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(true);
 
@@ -32,7 +31,9 @@ const ViewModeButtonsMobile = ({
       setIsCollapsed(false);
       return;
     }
-    setViewMode(mode);
+    if (viewMode !== mode) {
+      toggleViewMode();
+    }
     setIsCollapsed(true);
   };
 
@@ -71,14 +72,13 @@ const ViewModeButtonsMobile = ({
 
 const ViewModeButtonsWeb = ({
   viewMode,
-  setViewMode,
+  toggleViewMode,
 }: ViewModeButtonsProps) => {
   const handleClick = (mode: ViewMode) => {
-    if (mode === viewMode) {
-      setViewMode(ViewMode.Density);
+    if (mode !== viewMode) {
+      toggleViewMode();
       return;
     }
-    setViewMode(mode);
   };
 
   return (
@@ -104,15 +104,18 @@ const ViewModeButtonsWeb = ({
 };
 
 export const Toolbar = () => {
-  const { viewMode, setViewMode } = useContext(AppContext);
+  const { viewMode, toggleViewMode } = useContext(AppContext);
 
   return (
     <nav className="Toolbar">
       <div className="Toolbar-search">
         <Search />
       </div>
-      <ViewModeButtonsMobile viewMode={viewMode} setViewMode={setViewMode} />
-      <ViewModeButtonsWeb viewMode={viewMode} setViewMode={setViewMode} />
+      <ViewModeButtonsMobile
+        viewMode={viewMode}
+        toggleViewMode={toggleViewMode}
+      />
+      <ViewModeButtonsWeb viewMode={viewMode} toggleViewMode={toggleViewMode} />
     </nav>
   );
 };

@@ -1,6 +1,6 @@
 import { Layer, LayerProps } from "react-map-gl";
 
-export const Nodes = ({ srcId, max }: { srcId: string; max: number }) => {
+export const Nodes = ({ srcId }: { srcId: string }) => {
   const circleLayer = {
     id: "circle-background",
     source: srcId,
@@ -11,22 +11,22 @@ export const Nodes = ({ srcId, max }: { srcId: string; max: number }) => {
         "interpolate",
         ["linear"],
         ["get", "point_count"],
-        0,
-        14,
-        300,
+        1,
+        10,
+        200,
         30,
       ],
       "circle-color": [
         "interpolate",
         ["linear"],
         ["get", "point_count"],
-        0,
+        1,
         "#011157",
-        max / 3,
+        50,
         "#054D8E",
-        max / 2,
+        100,
         "#00ABD0",
-        max,
+        200,
         "#10FFD4",
       ],
     },
@@ -53,17 +53,7 @@ export const Nodes = ({ srcId, max }: { srcId: string; max: number }) => {
       "text-size": 14,
     },
     paint: {
-      "text-color": [
-        "interpolate",
-        ["linear"],
-        ["get", "point_count"],
-        0,
-        "white",
-        max / 2,
-        "white",
-        max,
-        "#011157",
-      ],
+      "text-color": "white",
     },
   } as LayerProps;
 

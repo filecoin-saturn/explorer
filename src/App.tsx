@@ -22,6 +22,7 @@ function App() {
         name: node.geoloc.city,
         countryId: node.geoloc.countryCode,
         continentId: node.geoloc.continent.code,
+        center: node.geoloc.coordinates.split(",").reverse(),
         type: EntityType.location,
       })
     );
@@ -34,7 +35,7 @@ function App() {
       <Logo />
       <Navbar />
       <Toolbar />
-      <Globe />
+      <Globe />;
     </div>
   );
 }

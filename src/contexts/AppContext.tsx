@@ -39,7 +39,7 @@ type AppContextType = {
   viewMode: ViewMode | undefined;
   setNavbarEntity: (entity: NavBarEntity) => void;
   setHoverEntity: (entity: HoverEntity) => void;
-  setViewMode: (mode: ViewMode | undefined) => void;
+  toggleViewMode: () => void;
 };
 
 const initialValues = {
@@ -48,7 +48,7 @@ const initialValues = {
   viewMode: ViewMode.Density,
   setNavbarEntity: () => {},
   setHoverEntity: () => {},
-  setViewMode: () => {},
+  toggleViewMode: () => {},
 };
 
 const AppContext = createContext<AppContextType>(initialValues);
@@ -62,9 +62,17 @@ export const AppContextProvider = ({
     useState<NavBarEntity>(undefined);
   const [currentHoverEntity, setCurrentHoverEntity] =
     useState<HoverEntity>(undefined);
-  const [currentViewMode, setCurrentViewMode] = useState<ViewMode | undefined>(
+  const [currentViewMode, setCurrentViewMode] = useState<ViewMode>(
     ViewMode.Cluster
   );
+
+  const toggleViewMode = () => {
+    if (currentViewMode === ViewMode.Cluster) {
+      setCurrentViewMode(ViewMode.Heatmap);
+    } else if (currentViewMode === ViewMode.Heatmap) {
+      setCurrentViewMode(ViewMode.Cluster);
+    }
+  };
 
   const value = {
     navbarEntity: currentNavbarEntity,
@@ -72,7 +80,7 @@ export const AppContextProvider = ({
     viewMode: currentViewMode,
     setNavbarEntity: setCurrentNavbarEntity,
     setHoverEntity: setCurrentHoverEntity,
-    setViewMode: setCurrentViewMode,
+    toggleViewMode: toggleViewMode,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

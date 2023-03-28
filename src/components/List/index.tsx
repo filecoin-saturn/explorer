@@ -30,6 +30,8 @@ export const List = ({
   stats,
   toggleNavbar,
   onSelect,
+  hoverEnd,
+  hoverStart,
 }: ListProps) => {
   const [timeFrame] = useState<TimeFrame>("7d");
   const [selectedNode, setSelectedNode] = useState<Node>();
@@ -101,6 +103,12 @@ export const List = ({
         </div>
         <div className="List-stats">
           <Stat
+            icon="ttfb"
+            value={stats?.avgTTFB}
+            units="ms"
+            label="Avg TTFB"
+          />
+          <Stat
             icon="load-green"
             units="Gb"
             value={stats?.bandwidthServed[timeFrame]}
@@ -111,12 +119,6 @@ export const List = ({
             units="M"
             value={stats?.retrievals[timeFrame]}
             label="Retrievals"
-          />
-          <Stat
-            icon="ttfb"
-            value={stats?.avgTTFB}
-            units="ms"
-            label="Avg TTFB"
           />
           <Stat
             icon="fil"
@@ -139,7 +141,9 @@ export const List = ({
             <li
               key={listItem.id}
               className={className}
+              onPointerLeave={hoverEnd}
               onClick={(e) => handleClick(e.target, listItem)}
+              onPointerEnter={hoverStart(listItem)}
             >
               <div className="List-itemHeader">
                 <Icon

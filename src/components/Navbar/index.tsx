@@ -26,6 +26,7 @@ const worldEntity = { name: "World", type: EntityType.world } as World;
 
 export const Navbar = () => {
   const { map } = useMap();
+  const { nodes } = useNodes();
   const { continents, getContinentById } = useContinents();
   const { countries, getCountriesByContinentId, getCountryById } =
     useCountries();
@@ -134,6 +135,39 @@ export const Navbar = () => {
       map?.off("click", onMapClick);
     };
   }, [map, countries, continents, appState]);
+
+  useEffect(() => {
+    const item = appState.navbarEntity;
+    if (!item) return;
+    const flyOptions = { essential: true, duration: 2000, minZoom: 3 };
+
+    if (item?.type === EntityType.world && nodes.length > 0) {
+      map?.flyTo({ center: [0, 0], zoom: 1.5, ...flyOptions });
+    }
+
+    if (item?.type === EntityType.continent) {
+      map?.flyTo({ center: item.center, zoom: 3.5, ...flyOptions });
+    }
+
+    if (item?.type === EntityType.country) {
+      map?.flyTo({
+        center: item.center,
+        zoom: 6,
+        ...flyOptions,
+        minZoom: 4,
+      });
+    }
+
+    if (item?.type === EntityType.location) {
+      console.log(item);
+      map?.flyTo({
+        center: item.center,
+        zoom: 8,
+        ...flyOptions,
+        minZoom: 6,
+      });
+    }
+  }, [appState.navbarEntity, map, nodes]);
 
   const clearSelectedEntity =
     (breadcrumb: NavBarEntity, index: number) => () => {
