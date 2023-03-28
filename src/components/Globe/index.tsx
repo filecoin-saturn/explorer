@@ -245,12 +245,6 @@ export const Globe = () => {
 
       map.on("mouseleave", "boundaries-fill", onMouseLeave(countryOptions));
       map.on("mousemove", "boundaries-fill", onMouseMove(countryOptions));
-      map.on("zoomend", () => {
-        const currentZoom = map.getZoom();
-        if (currentZoom > 3.4 && viewMode === ViewMode.Density) {
-          setViewMode(ViewMode.Cluster);
-        }
-      });
 
       return () => {
         map.off("mouseleave", onMouseLeave(countryOptions));
