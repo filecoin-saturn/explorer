@@ -267,53 +267,55 @@ export const Globe = () => {
         <Scale higher={scaleLimits.higher} lower={scaleLimits.lower} />
       )}
       <div className="Map">
-        <Map
-          id="map"
-          mapLib={mapboxgl}
-          onLoad={onMapLoad(nodes)}
-          mapStyle={mapStyle}
-          projection={projection}
-          initialViewState={viewState}
-          mapboxAccessToken={process.env.REACT_APP_MAP_BOX_ACCESS_TOKEN}
-          maxZoom={6.5}
-          minZoom={0}
-        >
-          {viewMode === ViewMode.Heatmap && (
-            <Source
-              id="heat-src"
-              type="geojson"
-              //@ts-ignore
-              data={geoJson}
-            >
-              <Heatmap srcId="heat-src" />
-            </Source>
-          )}
-
-          {viewMode === ViewMode.Cluster && (
-            <Source
-              id="nodes"
-              type="geojson"
-              //@ts-ignore
-              data={geoJson}
-              cluster={true}
-              clusterRadius={20}
-            >
-              <Nodes srcId="nodes" />
-            </Source>
-          )}
-
-          <Source
-            id="boundaries"
-            type="vector"
-            url="mapbox://mapbox.country-boundaries-v1"
-            name="boundaries"
+        {nodes.length > 0 && (
+          <Map
+            id="map"
+            mapLib={mapboxgl}
+            onLoad={onMapLoad(nodes)}
+            mapStyle={mapStyle}
+            projection={projection}
+            initialViewState={viewState}
+            mapboxAccessToken={process.env.REACT_APP_MAP_BOX_ACCESS_TOKEN}
+            maxZoom={6.5}
+            minZoom={0}
           >
-            <Boundaries
-              srcId="boundaries"
-              max={scaleLimits ? parseInt(scaleLimits.higher.step) : 0}
-            />
-          </Source>
-        </Map>
+            {viewMode === ViewMode.Heatmap && (
+              <Source
+                id="heat-src"
+                type="geojson"
+                //@ts-ignore
+                data={geoJson}
+              >
+                <Heatmap srcId="heat-src" />
+              </Source>
+            )}
+
+            {viewMode === ViewMode.Cluster && (
+              <Source
+                id="nodes"
+                type="geojson"
+                //@ts-ignore
+                data={geoJson}
+                cluster={true}
+                clusterRadius={20}
+              >
+                <Nodes srcId="nodes" />
+              </Source>
+            )}
+
+            <Source
+              id="boundaries"
+              type="vector"
+              url="mapbox://mapbox.country-boundaries-v1"
+              name="boundaries"
+            >
+              <Boundaries
+                srcId="boundaries"
+                max={scaleLimits ? parseInt(scaleLimits.higher.step) : 0}
+              />
+            </Source>
+          </Map>
+        )}
       </div>
     </>
   );
