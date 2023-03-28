@@ -57,6 +57,42 @@ export const List = ({
     }
   };
 
+  useEffect(() => {
+    setSelectedNode(undefined);
+  }, [entity]);
+
+  let sortedList = list;
+
+  switch (list[0].type) {
+    case EntityType.continent:
+      sortedList = list.sort((a, b) => {
+        const statsA: any = getStatsByContinentId(a.id)?.numberOfNodes;
+        const statsB: any = getStatsByContinentId(b.id)?.numberOfNodes;
+
+        return statsA && statsB && statsA < statsB;
+      });
+      break;
+    case EntityType.country:
+      sortedList = list.sort((a, b) => {
+        const statsA: any = getStatsByCountryId(a.id)?.numberOfNodes;
+        const statsB: any = getStatsByCountryId(b.id)?.numberOfNodes;
+
+        return statsA && statsB && statsA < statsB;
+      });
+      break;
+
+    case EntityType.location:
+      sortedList = list.sort((a, b) => {
+        const statsA: any = getStatsByLocationId(a.id)?.numberOfNodes;
+        const statsB: any = getStatsByLocationId(b.id)?.numberOfNodes;
+
+        return statsA && statsB && statsA < statsB;
+      });
+      break;
+    default:
+      return undefined;
+  }
+
   const getItemStats = (listItem: any) => {
     switch (listItem.type) {
       case EntityType.continent:
@@ -71,10 +107,6 @@ export const List = ({
         return undefined;
     }
   };
-
-  useEffect(() => {
-    setSelectedNode(undefined);
-  }, [entity]);
 
   const handleClick = (e: EventTarget, listItem: NavBarEntity) => {
     if (!listItem) return;
@@ -127,7 +159,7 @@ export const List = ({
         </div>
       </div>
       <ul className="List-content">
-        {list.map((listItem: any) => {
+        {sortedList.map((listItem: any) => {
           const listItemStats = getItemStats(listItem);
           const isActive = selectedNode === listItem;
           const className = classNames("List-item", {

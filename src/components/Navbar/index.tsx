@@ -157,14 +157,7 @@ export const Navbar = () => {
   let entityStats;
   switch (appState.navbarEntity?.type) {
     case EntityType.continent:
-      list = getCountriesByContinentId(appState.navbarEntity.id).sort(
-        (a, b) => {
-          const statsA = getStatsByCountryId(a.id)?.numberOfNodes;
-          const statsB = getStatsByCountryId(b.id)?.numberOfNodes;
-
-          return statsA && statsB && statsA > statsB ? 1 : -1;
-        }
-      );
+      list = getCountriesByContinentId(appState.navbarEntity.id);
       entityStats = getStatsByContinentId(appState.navbarEntity.id);
       break;
     case EntityType.country:
