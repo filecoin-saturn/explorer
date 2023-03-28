@@ -649,6 +649,15 @@
   },
   {
     "shape": [],
+    "center": ["38.6521203", "10.2116702"],
+    "continentId": ["AF"],
+    "id": "ET",
+    "type": 1,
+    "idAlpha3": "ETH",
+    "name": "Ethiopia"
+  },
+  {
+    "shape": [],
     "center": ["-59.523613", "-51.796253"],
     "continentId": ["SA"],
     "id": "FK",
