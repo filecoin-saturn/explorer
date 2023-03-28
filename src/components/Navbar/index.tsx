@@ -152,8 +152,9 @@ export const Navbar = () => {
     if (item?.type === EntityType.country) {
       map?.flyTo({
         center: item.center,
-        zoom: 4,
+        zoom: 6,
         ...flyOptions,
+        minZoom: 4,
       });
     }
 
@@ -163,6 +164,7 @@ export const Navbar = () => {
         center: item.center,
         zoom: 8,
         ...flyOptions,
+        minZoom: 6,
       });
     }
   }, [appState.navbarEntity, map, nodes]);
