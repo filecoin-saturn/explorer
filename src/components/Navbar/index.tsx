@@ -156,6 +156,15 @@ export const Navbar = () => {
         ...flyOptions,
       });
     }
+
+    if (item?.type === EntityType.location) {
+      console.log(item);
+      map?.flyTo({
+        center: item.center,
+        zoom: 8,
+        ...flyOptions,
+      });
+    }
   }, [appState.navbarEntity, map, nodes]);
 
   const clearSelectedEntity =

@@ -36,7 +36,7 @@ export const Globe = () => {
   const { continents } = useContinents();
   const { countries } = useCountries();
   const appState = useAppContext();
-  const { navbarEntity, viewMode, setViewMode, setHoverEntity } = appState;
+  const { navbarEntity, viewMode, setHoverEntity } = appState;
   const [scaleLimits, setScaleLimits] = useState<{
     higher: { step: string; label: string };
     lower: { step: string; label: string };
@@ -44,38 +44,19 @@ export const Globe = () => {
 
   useEffect(() => {
     const countriesCounters = countries.map((c) => getStatsByCountryId(c.id));
-    if (viewMode === ViewMode.Density) {
-      const nodesCounts = countriesCounters.flatMap((o) =>
-        o ? o.numberOfNodes : 0
-      );
 
-      const maxScale =
-        +((Math.max(...nodesCounts) * 0.85) / 100).toFixed(0) * 100;
-      const minScale = +(0.05 * maxScale).toFixed(0);
+    const nodesCounts = countriesCounters.flatMap((o) =>
+      o ? o.numberOfNodes : 0
+    );
 
-      setScaleLimits({
-        higher: { label: "> #Nodes", step: `${maxScale}` },
-        lower: { label: "< #Nodes", step: `${minScale}` },
-      });
-      return;
-    }
+    const maxScale =
+      +((Math.max(...nodesCounts) * 0.85) / 100).toFixed(0) * 100;
+    const minScale = +(0.05 * maxScale).toFixed(0);
 
-    if (viewMode === ViewMode.Heatmap) {
-      const nodesCounts = countriesCounters
-        .flatMap((o) => (o ? o.avgTTFB : 0))
-        .filter((e) => e > 0);
-
-      const minScale = nodesCounts
-        ? +((Math.max(...nodesCounts) * 0.85) / 100).toFixed(0) * 100
-        : 3000;
-      const maxScale = +(0.25 * minScale).toFixed(0);
-
-      setScaleLimits({
-        higher: { label: "ms", step: `${maxScale}` },
-        lower: { label: "ms", step: `${minScale}` },
-      });
-      return;
-    }
+    setScaleLimits({
+      higher: { label: "> #Nodes", step: `${maxScale}` },
+      lower: { label: "< #Nodes", step: `${minScale}` },
+    });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nodes, viewMode]);
@@ -257,7 +238,7 @@ export const Globe = () => {
 
   return (
     <>
-      {scaleLimits && viewMode !== ViewMode.Cluster && (
+      {scaleLimits && (
         <Scale higher={scaleLimits.higher} lower={scaleLimits.lower} />
       )}
       <div className="Map">

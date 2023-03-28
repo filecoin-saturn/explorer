@@ -7,6 +7,7 @@ export type Location = {
   countryId: string;
   continentId: string;
   name: string;
+  center: any;
   type: EntityType.location;
 };
 
