@@ -144,8 +144,9 @@ export const Globe = () => {
         projection={projection}
         initialViewState={viewState}
         mapboxAccessToken={process.env.REACT_APP_MAP_BOX_ACCESS_TOKEN}
+        maxZoom={6}
       >
-        {viewMode === ViewMode.Density && (
+        {/* {viewMode === ViewMode.Density && (
           <Source
             id="boundaries"
             type="vector"
@@ -157,7 +158,7 @@ export const Globe = () => {
               max={scaleLimits ? parseInt(scaleLimits.higher.step) : 0}
             />
           </Source>
-        )}
+        )} */}
 
         {viewMode === ViewMode.Heatmap && (
           <Source
@@ -186,6 +187,18 @@ export const Globe = () => {
             <Nodes srcId="nodes" max={scaleLimits.higher.step} />
           </Source>
         )}
+
+        <Source
+          id="boundaries"
+          type="vector"
+          url="mapbox://mapbox.country-boundaries-v1"
+          name="boundaries"
+        >
+          <Boundaries
+            srcId="boundaries"
+            max={scaleLimits ? parseInt(scaleLimits.higher.step) : 0}
+          />
+        </Source>
       </Map>
     </>
   );

@@ -138,14 +138,14 @@ export const Navbar = () => {
   useEffect(() => {
     const item = appState.navbarEntity;
     if (!item) return;
-    const flyOptions = { essential: true, duration: 2000, minZoom: 3.5 };
+    const flyOptions = { essential: true, duration: 2000, minZoom: 3 };
 
     if (item?.type === EntityType.world) {
       map?.flyTo({ center: [0, 0], zoom: 1.5, ...flyOptions });
     }
 
     if (item?.type === EntityType.continent) {
-      map?.flyTo({ center: item.center, zoom: 3, ...flyOptions });
+      map?.flyTo({ center: item.center, zoom: 3.5, ...flyOptions });
     }
 
     if (item?.type === EntityType.country) {
@@ -155,7 +155,7 @@ export const Navbar = () => {
         ...flyOptions,
       });
     }
-  }, [appState.navbarEntity]);
+  }, [appState.navbarEntity, map]);
 
   const clearSelectedEntity =
     (breadcrumb: NavBarEntity, index: number) => () => {
