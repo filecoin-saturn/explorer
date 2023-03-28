@@ -10,7 +10,7 @@
   },
   {
     "shape": [],
-    "center": [],
+    "center": ["19.9438638", "60.2166218"],
     "continentId": ["EU"],
     "id": "AX",
     "type": 1,
@@ -244,7 +244,7 @@
   },
   {
     "shape": [],
-    "center": [],
+    "center": ["12.167", "-68.2876439"],
     "continentId": ["NA"],
     "id": "BQ",
     "type": 1,
@@ -523,7 +523,7 @@
   },
   {
     "shape": [],
-    "center": [],
+    "center": ["12.1176488", "-68.9309263"],
     "continentId": ["NA"],
     "id": "CW",
     "type": 1,
@@ -1684,7 +1684,7 @@
   },
   {
     "shape": [],
-    "center": [],
+    "center": ["17.9036287", "-62.8115292"],
     "continentId": ["NA"],
     "id": "BL",
     "type": 1,
@@ -1720,7 +1720,7 @@
   },
   {
     "shape": [],
-    "center": [],
+    "center": ["18.0814066", "-63.0467131"],
     "continentId": ["NA"],
     "id": "MF",
     "type": 1,
@@ -1828,7 +1828,7 @@
   },
   {
     "shape": [],
-    "center": [],
+    "center": ["18.0423736", "-63.0549948"],
     "continentId": ["NA"],
     "id": "SX",
     "type": 1,
@@ -1891,7 +1891,7 @@
   },
   {
     "shape": [],
-    "center": [],
+    "center": ["7.8626845", "29.6949232"],
     "continentId": ["AF"],
     "id": "SS",
     "type": 1,
@@ -1909,7 +1909,7 @@
   },
   {
     "shape": [],
-    "center": [],
+    "center": ["8.6451072", "111.9203207"],
     "continentId": ["AS"],
     "id": "XS",
     "type": 1,
@@ -2143,8 +2143,8 @@
   },
   {
     "shape": [],
-    "center": ["", ""],
-    "continentId": ["NA", "OC"],
+    "center": ["16.7288207", "-169.5333824"],
+    "continentId": ["NA"],
     "id": "UM",
     "type": 1,
     "idAlpha3": "UMI",

@@ -26,6 +26,7 @@ const worldEntity = { name: "World", type: EntityType.world } as World;
 
 export const Navbar = () => {
   const { map } = useMap();
+  const { nodes } = useNodes();
   const { continents, getContinentById } = useContinents();
   const { countries, getCountriesByContinentId, getCountryById } =
     useCountries();
@@ -140,7 +141,7 @@ export const Navbar = () => {
     if (!item) return;
     const flyOptions = { essential: true, duration: 2000, minZoom: 3 };
 
-    if (item?.type === EntityType.world) {
+    if (item?.type === EntityType.world && nodes.length > 0) {
       map?.flyTo({ center: [0, 0], zoom: 1.5, ...flyOptions });
     }
 
@@ -155,7 +156,7 @@ export const Navbar = () => {
         ...flyOptions,
       });
     }
-  }, [appState.navbarEntity, map]);
+  }, [appState.navbarEntity, map, nodes]);
 
   const clearSelectedEntity =
     (breadcrumb: NavBarEntity, index: number) => () => {

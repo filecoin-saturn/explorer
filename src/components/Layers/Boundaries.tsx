@@ -7,13 +7,11 @@ export const Boundaries = ({
   max: number | undefined;
   srcId: string;
 }) => {
-  // const steps = [
-  //   max && max > 200 ? max * 0.1 : 20,
-  //   max && max > 200 ? max * 0.2 : 50,
-  //   max && max > 200 ? max * 0.8 : 380,
-  // ];
-  const steps = [20, 200, 1000];
-  // const steps = [20, 50, 400];
+  const steps = [
+    max && max > 200 ? max * 0.1 : 20,
+    max && max > 200 ? max * 0.4 : 50,
+    max && max > 200 ? max * 0.6 : 380,
+  ];
 
   const boundaryLayer = {
     id: "boundaries-fill",
@@ -29,7 +27,7 @@ export const Boundaries = ({
           ["linear"],
           ["feature-state", "nodes"],
           0,
-          "#2A1CF7",
+          "#275cc4",
           1,
           "#113CA9",
           steps[0],
@@ -55,7 +53,12 @@ export const Boundaries = ({
           "#00FFD1",
         ],
       ],
-      "fill-opacity": 0.4,
+      "fill-opacity": [
+        "case",
+        ["boolean", ["feature-state", "hover"], false],
+        0.4,
+        0.3,
+      ],
       "fill-outline-color": [
         "case",
         ["boolean", ["feature-state", "hover"], false],
