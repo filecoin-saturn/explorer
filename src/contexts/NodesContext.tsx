@@ -30,10 +30,10 @@ export const NodesContextProvider = ({
   const [isLoading, setIsLoading] = useState<boolean>();
 
   useEffect(() => {
+    let animationFrameId: number;
     const getResults = async () => {
       setIsLoading(true);
       let buffer = "";
-
       const response = await fetch("https://orchestrator.strn.pl/explorer");
 
       const decoder = new TextDecoder();
@@ -70,7 +70,7 @@ export const NodesContextProvider = ({
 
         setTempNodes(Array.from(nodesMap.values()));
         if (!done) {
-          requestIdleCallback(() => {
+          animationFrameId = requestAnimationFrame(() => {
             reader?.read().then(onChunk);
           });
         } else {
@@ -78,12 +78,16 @@ export const NodesContextProvider = ({
         }
       };
 
-      requestIdleCallback(() => {
+      animationFrameId = requestAnimationFrame(() => {
         reader?.read().then(onChunk);
       });
     };
 
     getResults();
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+    };
   }, []);
 
   useEffect(() => {

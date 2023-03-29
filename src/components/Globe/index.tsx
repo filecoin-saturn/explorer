@@ -69,7 +69,7 @@ export const Globe = () => {
         city: node.geoloc.city,
         country: node.geoloc.countryCode,
         continent: node.geoloc.continent.code,
-        ttfb: node.ttfbStats.p95_24h,
+        ttfb: node.ttfbStats.p95_24h | 2000,
       },
       geometry: {
         type: "Point",
@@ -254,6 +254,17 @@ export const Globe = () => {
             maxZoom={6.5}
             minZoom={0}
           >
+            <Source
+              id="boundaries"
+              type="vector"
+              url="mapbox://mapbox.country-boundaries-v1"
+              name="boundaries"
+            >
+              <Boundaries
+                srcId="boundaries"
+                max={scaleLimits ? parseInt(scaleLimits.higher.step) : 0}
+              />
+            </Source>
             {viewMode === ViewMode.Heatmap && (
               <Source
                 id="heat-src"
@@ -277,18 +288,6 @@ export const Globe = () => {
                 <Nodes srcId="nodes" />
               </Source>
             )}
-
-            <Source
-              id="boundaries"
-              type="vector"
-              url="mapbox://mapbox.country-boundaries-v1"
-              name="boundaries"
-            >
-              <Boundaries
-                srcId="boundaries"
-                max={scaleLimits ? parseInt(scaleLimits.higher.step) : 0}
-              />
-            </Source>
           </Map>
         )}
       </div>
