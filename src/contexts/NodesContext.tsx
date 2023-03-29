@@ -30,6 +30,7 @@ export const NodesContextProvider = ({
   const [isLoading, setIsLoading] = useState<boolean>();
 
   useEffect(() => {
+    let animationFrameId: number;
     const getResults = async () => {
       setIsLoading(true);
       let buffer = "";
@@ -69,7 +70,7 @@ export const NodesContextProvider = ({
 
         setTempNodes(Array.from(nodesMap.values()));
         if (!done) {
-          requestIdleCallback(() => {
+          animationFrameId = requestAnimationFrame(() => {
             reader?.read().then(onChunk);
           });
         } else {
@@ -77,12 +78,16 @@ export const NodesContextProvider = ({
         }
       };
 
-      requestIdleCallback(() => {
+      animationFrameId = requestAnimationFrame(() => {
         reader?.read().then(onChunk);
       });
     };
 
     getResults();
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+    };
   }, []);
 
   useEffect(() => {
