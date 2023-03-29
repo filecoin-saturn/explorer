@@ -107,7 +107,7 @@ export const Navbar = () => {
   }, [appState]);
 
   useEffect(() => {
-    const onMapClick = (event: any) => {
+    const onBoundariesClick = (event: any) => {
       if (!event.features?.length) return;
 
       const [feature] = event.features;
@@ -129,42 +129,85 @@ export const Navbar = () => {
       }
     };
 
-    map?.on("click", "boundaries-fill", onMapClick);
+    map?.on("click", "boundaries-fill", onBoundariesClick);
 
     return () => {
-      map?.off("click", onMapClick);
+      map?.off("click", onBoundariesClick);
     };
   }, [map, countries, continents, appState]);
 
   useEffect(() => {
+    const onClusterClick = (event: any) => {
+      // @ts-ignore
+      if (!event.features?.length) return;
+      if (event.target.getZoom() < 3.5) return;
+
+      const [feature] = event.features;
+
+      const clusterId = feature.id;
+      const pointCount = feature.properties.point_count;
+      const clusterSource = event.target.getSource("nodes");
+
+      if (feature.layer.id === "circle-background-unclustered") {
+        const targetLocation = getLocationById(feature.properties.city);
+        if (targetLocation) appState.setNavbarEntity(targetLocation);
+        return;
+      }
+      clusterSource.getClusterLeaves(
+        clusterId,
+        pointCount,
+        0,
+        (error: any, features: any) => {
+          const targetLocation = getLocationById(features[0].properties.city);
+          if (targetLocation) appState.setNavbarEntity(targetLocation);
+        }
+      );
+    };
+    map?.on(
+      "click",
+      ["circle-background", "circle-background-unclustered"],
+      onClusterClick
+    );
+    return () => {
+      map?.off("click", onClusterClick);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [appState, map]);
+
+  useEffect(() => {
     const item = appState.navbarEntity;
     if (!item) return;
-    const flyOptions = { essential: true, duration: 2000, minZoom: 3 };
+    const flyOptions = { essential: true, duration: 1000 };
 
     if (item?.type === EntityType.world && nodes.length > 0) {
-      map?.flyTo({ center: [0, 0], zoom: 1.5, ...flyOptions });
+      map?.flyTo({
+        center: [0, 0],
+        zoom: 1.5,
+        ...flyOptions,
+      });
     }
 
     if (item?.type === EntityType.continent) {
-      map?.flyTo({ center: item.center, zoom: 3.5, ...flyOptions });
+      map?.flyTo({
+        center: item.center,
+        zoom: 3.5,
+        ...flyOptions,
+      });
     }
 
     if (item?.type === EntityType.country) {
       map?.flyTo({
         center: item.center,
-        zoom: 6,
+        zoom: 6.5,
         ...flyOptions,
-        minZoom: 4,
       });
     }
 
     if (item?.type === EntityType.location) {
-      console.log(item);
       map?.flyTo({
         center: item.center,
         zoom: 8,
         ...flyOptions,
-        minZoom: 6,
       });
     }
   }, [appState.navbarEntity, map, nodes]);
