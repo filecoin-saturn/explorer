@@ -59,6 +59,10 @@ export const List = ({
     }
   };
 
+  useEffect(() => {
+    setSelectedNode(undefined);
+  }, [entity]);
+
   const getItemStats = (listItem: any) => {
     switch (listItem.type) {
       case EntityType.continent:
@@ -74,10 +78,6 @@ export const List = ({
     }
   };
 
-  useEffect(() => {
-    setSelectedNode(undefined);
-  }, [entity]);
-
   const handleClick = (e: EventTarget, listItem: NavBarEntity) => {
     if (!listItem) return;
     if (listItem.type !== EntityType.node) {
@@ -86,6 +86,27 @@ export const List = ({
       setSelectedNode(listItem);
     }
   };
+
+  const sortedList = list.sort((a, b) => {
+    let statsA: any;
+    let statsB: any;
+    switch (a.type) {
+      case EntityType.continent:
+        statsA = getStatsByContinentId(a.id)?.numberOfNodes || 0;
+        statsB = getStatsByContinentId(b.id)?.numberOfNodes || 0;
+        return statsB - statsA;
+      case EntityType.country:
+        statsA = getStatsByCountryId(a.id)?.numberOfNodes || 0;
+        statsB = getStatsByCountryId(b.id)?.numberOfNodes || 0;
+        return statsB - statsA;
+      case EntityType.location:
+        statsB = getStatsByLocationId(b.id)?.numberOfNodes || 0;
+        statsA = getStatsByLocationId(a.id)?.numberOfNodes || 0;
+        return statsB - statsA;
+      default:
+        return 0;
+    }
+  });
 
   return (
     <div className="List">
@@ -129,7 +150,7 @@ export const List = ({
         </div>
       </div>
       <ul className="List-content">
-        {list.map((listItem: any) => {
+        {sortedList.map((listItem: any) => {
           const listItemStats = getItemStats(listItem);
           const isActive = selectedNode === listItem;
           const className = classNames("List-item", {
