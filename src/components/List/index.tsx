@@ -61,38 +61,6 @@ export const List = ({
     setSelectedNode(undefined);
   }, [entity]);
 
-  let sortedList = list;
-
-  switch (list[0].type) {
-    case EntityType.continent:
-      sortedList = list.sort((a, b) => {
-        const statsA: any = getStatsByContinentId(a.id)?.numberOfNodes;
-        const statsB: any = getStatsByContinentId(b.id)?.numberOfNodes;
-
-        return statsA && statsB && statsA < statsB;
-      });
-      break;
-    case EntityType.country:
-      sortedList = list.sort((a, b) => {
-        const statsA: any = getStatsByCountryId(a.id)?.numberOfNodes;
-        const statsB: any = getStatsByCountryId(b.id)?.numberOfNodes;
-
-        return statsA && statsB && statsA < statsB;
-      });
-      break;
-
-    case EntityType.location:
-      sortedList = list.sort((a, b) => {
-        const statsA: any = getStatsByLocationId(a.id)?.numberOfNodes;
-        const statsB: any = getStatsByLocationId(b.id)?.numberOfNodes;
-
-        return statsA && statsB && statsA < statsB;
-      });
-      break;
-    default:
-      return undefined;
-  }
-
   const getItemStats = (listItem: any) => {
     switch (listItem.type) {
       case EntityType.continent:
@@ -116,6 +84,27 @@ export const List = ({
       setSelectedNode(listItem);
     }
   };
+
+  const sortedList = list.sort((a, b) => {
+    let statsA: any;
+    let statsB: any;
+    switch (a.type) {
+      case EntityType.continent:
+        statsA = getStatsByContinentId(a.id)?.numberOfNodes || 0;
+        statsB = getStatsByContinentId(b.id)?.numberOfNodes || 0;
+        return statsB - statsA;
+      case EntityType.country:
+        statsA = getStatsByCountryId(a.id)?.numberOfNodes || 0;
+        statsB = getStatsByCountryId(b.id)?.numberOfNodes || 0;
+        return statsB - statsA;
+      case EntityType.location:
+        statsB = getStatsByLocationId(b.id)?.numberOfNodes || 0;
+        statsA = getStatsByLocationId(a.id)?.numberOfNodes || 0;
+        return statsB - statsA;
+      default:
+        return 0;
+    }
+  });
 
   return (
     <div className="List">
