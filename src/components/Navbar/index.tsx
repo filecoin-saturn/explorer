@@ -131,6 +131,22 @@ export const Navbar = () => {
 
     map?.on("click", "boundaries-fill", onBoundariesClick);
 
+    map?.on(
+      "mouseenter",
+      ["boundaries-fill", "circle-background", "circle-background-unclustered"],
+      () => {
+        map.getCanvas().style.cursor = "pointer";
+      }
+    );
+
+    map?.on(
+      "mouseleave",
+      ["boundaries-fill", "circle-background", "circle-background-unclustered"],
+      () => {
+        map.getCanvas().style.cursor = "grab";
+      }
+    );
+
     return () => {
       map?.off("click", onBoundariesClick);
     };
