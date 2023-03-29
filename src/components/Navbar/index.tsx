@@ -147,7 +147,10 @@ export const Navbar = () => {
       const pointCount = feature.properties.point_count;
       const clusterSource = event.target.getSource("nodes");
 
-      if (feature.layer.id === "circle-background-unclustered") {
+      if (
+        feature.layer.id === "cluster-count-unclustered" ||
+        feature.layer.id === "circle-background-unclustered"
+      ) {
         const targetLocation = getLocationById(feature.properties.city);
         if (targetLocation) appState.setNavbarEntity(targetLocation);
         return;
@@ -164,7 +167,12 @@ export const Navbar = () => {
     };
     map?.on(
       "click",
-      ["circle-background", "circle-background-unclustered"],
+      [
+        "cluster-count",
+        "cluster-count-unclustered",
+        "circle-background",
+        "circle-background-unclustered",
+      ],
       onClusterClick
     );
     return () => {
@@ -176,7 +184,7 @@ export const Navbar = () => {
   useEffect(() => {
     const item = appState.navbarEntity;
     if (!item) return;
-    const flyOptions = { essential: true, duration: 1000 };
+    const flyOptions = { essential: true, duration: 2000 };
 
     if (item?.type === EntityType.world && nodes.length > 0) {
       map?.flyTo({
