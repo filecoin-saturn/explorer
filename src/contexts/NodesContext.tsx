@@ -33,7 +33,6 @@ export const NodesContextProvider = ({
     const getResults = async () => {
       setIsLoading(true);
       let buffer = "";
-
       const response = await fetch("https://orchestrator.strn.pl/explorer");
 
       const decoder = new TextDecoder();

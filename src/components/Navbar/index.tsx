@@ -138,7 +138,6 @@ export const Navbar = () => {
 
   useEffect(() => {
     const onClusterClick = (event: any) => {
-      // @ts-ignore
       if (!event.features?.length) return;
       if (event.target.getZoom() < 3.5) return;
 
@@ -172,7 +171,7 @@ export const Navbar = () => {
       map?.off("click", onClusterClick);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [appState, map]);
+  }, [map, appState]);
 
   useEffect(() => {
     const item = appState.navbarEntity;
@@ -198,8 +197,9 @@ export const Navbar = () => {
     if (item?.type === EntityType.country) {
       map?.flyTo({
         center: item.center,
-        zoom: 6.5,
+        zoom: 6,
         ...flyOptions,
+        minZoom: 5.5,
       });
     }
 
@@ -208,6 +208,7 @@ export const Navbar = () => {
         center: item.center,
         zoom: 8,
         ...flyOptions,
+        minZoom: 7,
       });
     }
   }, [appState.navbarEntity, map, nodes]);
