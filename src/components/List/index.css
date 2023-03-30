@@ -104,7 +104,10 @@
 
 .List-item {
   cursor: pointer;
+
+  width: 100%;
   padding: var(--size-md) var(--size-sm);
+
   border-top: 1px solid;
   border-image: linear-gradient(
       to right,
@@ -113,9 +116,13 @@
     )
     1;
 }
+.List-item:focus {
+  outline: none;
+}
 
 .List-item.hover,
-.List-item:hover {
+.List-item:hover,
+.List-item:focus {
   background: linear-gradient(
     296.29deg,
     rgba(0, 102, 255, 0.576) 2.96%,
@@ -127,6 +134,7 @@
 .List-itemHeader {
   display: flex;
   align-items: center;
+  text-align: start;
 }
 
 .List-itemIcon {
@@ -138,9 +146,8 @@
   fill: rgba(255, 255, 255, 0.4);
 }
 
-.List-item.hover path,
-.List-item:hover path {
-  fill: #10ffd4;
+.List-item.active .List-itemIcon path {
+  fill: var(--color-green);
 }
 
 .List-itemName {

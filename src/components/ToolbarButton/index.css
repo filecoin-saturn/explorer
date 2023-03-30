@@ -65,6 +65,7 @@
 }
 
 .ToolbarButton.active,
+.ToolbarButton:hover,
 .ToolbarButton:focus {
   background: linear-gradient(
     296.29deg,
@@ -75,8 +76,9 @@
   outline: none;
 }
 
-.ToolbarButton.active .ToolbarButton-icon {
+.ToolbarButton.active .ToolbarButton-icon path {
   opacity: 1;
+  fill: var(--color-green);
 }
 
 @media screen and (min-width: 1024px) {
@@ -96,7 +98,6 @@
   .ToolbarButton-description {
     align-items: flex-start;
     justify-items: flex-start;
-    padding: ;
   }
 
   .ToolbarButton-title {
@@ -112,10 +113,6 @@
 
   .ToolbarButton.active .ToolbarButton-subtitle {
     color: var(--color-green);
-    opacity: 1;
-  }
-
-  .ToolbarButton.active .ToolbarButton-icon {
     opacity: 1;
   }
 }
