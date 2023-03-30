@@ -275,7 +275,7 @@ export const Globe = () => {
             projection={projection}
             initialViewState={viewState}
             mapboxAccessToken={process.env.REACT_APP_MAP_BOX_ACCESS_TOKEN}
-            maxZoom={6.5}
+            maxZoom={8.1}
             minZoom={0}
           >
             <Source
