@@ -159,9 +159,8 @@ export const List = ({
           });
 
           return (
-            <li>
+            <li key={listItem.id}>
               <button
-                key={listItem.id}
                 className={className}
                 onPointerLeave={hoverEnd}
                 onClick={(e) => handleClick(e.target, listItem)}
