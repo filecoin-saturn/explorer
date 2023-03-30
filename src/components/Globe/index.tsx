@@ -224,8 +224,30 @@ export const Globe = () => {
         boundariesLoad,
       };
 
-      map.on("mouseleave", "boundaries-fill", onMouseLeave(countryOptions));
       map.on("mousemove", "boundaries-fill", onMouseMove(countryOptions));
+      map.on("mouseleave", "boundaries-fill", onMouseLeave(countryOptions));
+
+      map?.on(
+        "mouseenter",
+        [
+          "boundaries-fill",
+          "circle-background",
+          "circle-background-unclustered",
+        ],
+        () => {}
+      );
+
+      map?.on(
+        "mouseleave",
+        [
+          "boundaries-fill",
+          "circle-background",
+          "circle-background-unclustered",
+        ],
+        () => {
+          map.getCanvas().style.cursor = "grab";
+        }
+      );
 
       return () => {
         map.off("mouseleave", onMouseLeave(countryOptions));
