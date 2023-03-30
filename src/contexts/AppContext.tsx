@@ -58,10 +58,8 @@ export const AppContextProvider = ({
 }: {
   children: ReactNode;
 }): ReactElement => {
-  const [currentNavbarEntity, setCurrentNavbarEntity] =
-    useState<NavBarEntity>(undefined);
-  const [currentHoverEntity, setCurrentHoverEntity] =
-    useState<HoverEntity>(undefined);
+  const [navbarEntity, setNavbarEntity] = useState<NavBarEntity>(undefined);
+  const [hoverEntity, setHoverEntity] = useState<HoverEntity>(undefined);
   const [currentViewMode, setCurrentViewMode] = useState<ViewMode>(
     ViewMode.Cluster
   );
@@ -73,14 +71,24 @@ export const AppContextProvider = ({
       setCurrentViewMode(ViewMode.Cluster);
     }
   };
+  const setCurrentHoverEntity = (entity: HoverEntity) => {
+    if (entity !== hoverEntity) {
+      setHoverEntity(entity);
+    }
+  };
+  const setCurrentNavbarEntity = (entity: NavBarEntity) => {
+    if (entity !== navbarEntity) {
+      setNavbarEntity(entity);
+    }
+  };
 
   const value = {
-    navbarEntity: currentNavbarEntity,
-    hoverEntity: currentHoverEntity,
+    navbarEntity,
+    hoverEntity,
     viewMode: currentViewMode,
     setNavbarEntity: setCurrentNavbarEntity,
     setHoverEntity: setCurrentHoverEntity,
-    toggleViewMode: toggleViewMode,
+    toggleViewMode,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
