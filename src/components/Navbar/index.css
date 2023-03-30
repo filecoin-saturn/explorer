@@ -72,6 +72,10 @@
   transition: transform 0.3s ease-in-out;
 }
 
+.Navbar-content:focus {
+  outline: none;
+}
+
 .Navbar-overview {
   pointer-events: all;
 

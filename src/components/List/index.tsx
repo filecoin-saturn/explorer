@@ -159,49 +159,51 @@ export const List = ({
           });
 
           return (
-            <li
-              key={listItem.id}
-              className={className}
-              onPointerLeave={hoverEnd}
-              onClick={(e) => handleClick(e.target, listItem)}
-              onPointerEnter={hoverStart(listItem)}
-            >
-              <div className="List-itemHeader">
-                <Icon
-                  className="List-itemIcon"
-                  name={iconNameForItem(listItem)}
-                />
-                <p className="List-itemName">{listItem.name}</p>
-              </div>
-              <div className="List-itemStats">
-                <Stat
-                  small={!isActive}
-                  icon="nodes-green"
-                  value={listItemStats?.numberOfNodes}
-                  label="Nodes"
-                />
-                <Stat
-                  small={!isActive}
-                  icon="ttfb"
-                  value={listItemStats?.avgTTFB}
-                  units="ms"
-                  label="Avg TTFB"
-                />
-                <Stat
-                  small={!isActive}
-                  icon="space"
-                  value={listItemStats?.bandwidthServed[timeFrame]}
-                  units="GB"
-                  label="Bandwidth"
-                />
-                <Stat
-                  small={!isActive}
-                  icon="retrievals"
-                  units="M"
-                  value={listItemStats?.retrievals[timeFrame]}
-                  label="Retrievals"
-                />
-              </div>
+            <li>
+              <button
+                key={listItem.id}
+                className={className}
+                onPointerLeave={hoverEnd}
+                onClick={(e) => handleClick(e.target, listItem)}
+                onPointerEnter={hoverStart(listItem)}
+              >
+                <div className="List-itemHeader">
+                  <Icon
+                    className="List-itemIcon"
+                    name={iconNameForItem(listItem)}
+                  />
+                  <p className="List-itemName">{listItem.name}</p>
+                </div>
+                <div className="List-itemStats">
+                  <Stat
+                    small={!isActive}
+                    icon="nodes-green"
+                    value={listItemStats?.numberOfNodes}
+                    label="Nodes"
+                  />
+                  <Stat
+                    small={!isActive}
+                    icon="ttfb"
+                    value={listItemStats?.avgTTFB}
+                    units="ms"
+                    label="Avg TTFB"
+                  />
+                  <Stat
+                    small={!isActive}
+                    icon="space"
+                    value={listItemStats?.bandwidthServed[timeFrame]}
+                    units="GB"
+                    label="Bandwidth"
+                  />
+                  <Stat
+                    small={!isActive}
+                    icon="retrievals"
+                    units="M"
+                    value={listItemStats?.retrievals[timeFrame]}
+                    label="Retrievals"
+                  />
+                </div>
+              </button>
             </li>
           );
         })}
