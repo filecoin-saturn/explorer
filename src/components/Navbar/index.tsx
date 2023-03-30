@@ -217,9 +217,9 @@ export const Navbar = () => {
     if (item?.type === EntityType.location) {
       map?.flyTo({
         center: item.center,
-        zoom: 8.5,
+        zoom: 8,
         ...flyOptions,
-        minZoom: 7,
+        minZoom: 7.7,
       });
     }
   }, [appState.navbarEntity, map, nodes]);

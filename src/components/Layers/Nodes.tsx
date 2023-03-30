@@ -13,8 +13,8 @@ export const Nodes = ({ srcId }: { srcId: string }) => {
         ["get", "point_count"],
         1,
         10,
-        200,
-        30,
+        100,
+        20,
       ],
       "circle-color": [
         "interpolate",
