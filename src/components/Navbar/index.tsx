@@ -187,13 +187,14 @@ export const Navbar = () => {
   useEffect(() => {
     const item = appState.navbarEntity;
     if (!item) return;
-    const flyOptions = { essential: true, duration: 2000 };
+    const flyOptions = { essential: true, duration: 1500 };
 
     if (item?.type === EntityType.world && nodes.length > 0) {
       map?.flyTo({
         center: [0, 0],
         zoom: 1.5,
         ...flyOptions,
+        duration: 3000,
       });
     }
 
@@ -277,7 +278,7 @@ export const Navbar = () => {
 
           return (
             <Breadcrumb
-              key={breadcrumb?.name}
+              key={breadcrumb?.id || 0}
               entity={breadcrumb}
               onClick={clearSelectedEntity(breadcrumb, index)}
               active={active}
