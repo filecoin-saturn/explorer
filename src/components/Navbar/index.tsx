@@ -107,10 +107,7 @@ export const Navbar = () => {
   }, [appState]);
 
   useEffect(() => {
-    const onBoundariesClick = (event: any) => {
-      if (!event.features?.length) return;
-
-      const [feature] = event.features;
+    const onBoundariesClick = (feature: any) => {
       const country = countries.find(
         (country) => country.id === feature.properties?.iso_3166_1
       );
@@ -129,39 +126,9 @@ export const Navbar = () => {
       }
     };
 
-    map?.on("click", "boundaries-fill", onBoundariesClick);
-
-    map?.on(
-      "mouseenter",
-      ["boundaries-fill", "circle-background", "circle-background-unclustered"],
-      () => {
-        map.getCanvas().style.cursor = "pointer";
-      }
-    );
-
-    map?.on(
-      "mouseleave",
-      ["boundaries-fill", "circle-background", "circle-background-unclustered"],
-      () => {
-        map.getCanvas().style.cursor = "grab";
-      }
-    );
-
-    return () => {
-      map?.off("click", onBoundariesClick);
-    };
-  }, [map, countries, continents, appState]);
-
-  useEffect(() => {
-    const onClusterClick = (event: any) => {
-      if (!event.features?.length) return;
-      if (event.target.getZoom() < 3.5) return;
-
-      const [feature] = event.features;
-
+    const onClusterClick = (feature: any, clusterSource: any) => {
       const clusterId = feature.id;
       const pointCount = feature.properties.point_count;
-      const clusterSource = event.target.getSource("nodes");
 
       if (
         feature.layer.id === "cluster-count-unclustered" ||
@@ -181,21 +148,41 @@ export const Navbar = () => {
         }
       );
     };
+
+    const onMapClick = (event: any) => {
+      event.originalEvent.preventDefault();
+      if (!event.features?.length) return;
+      const zoomLevel = event.target.getZoom();
+      const nodeFeature = event.features.find(
+        (feature: any) => feature.source === "nodes"
+      );
+      const boundaryFeature = event.features.find(
+        (feature: any) => feature.source === "boundaries"
+      );
+
+      if (nodeFeature && zoomLevel > 3.4) {
+        onClusterClick(nodeFeature, event.target.getSource("nodes"));
+      } else {
+        onBoundariesClick(boundaryFeature);
+      }
+    };
+
     map?.on(
       "click",
       [
+        "boundaries-fill",
         "cluster-count",
         "cluster-count-unclustered",
         "circle-background",
         "circle-background-unclustered",
       ],
-      onClusterClick
+      onMapClick
     );
+
     return () => {
-      map?.off("click", onClusterClick);
+      map?.off("click", onMapClick);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [map, appState]);
+  }, [map, countries, continents, appState, getLocationById]);
 
   useEffect(() => {
     const item = appState.navbarEntity;
@@ -230,7 +217,7 @@ export const Navbar = () => {
     if (item?.type === EntityType.location) {
       map?.flyTo({
         center: item.center,
-        zoom: 8,
+        zoom: 8.5,
         ...flyOptions,
         minZoom: 7,
       });
