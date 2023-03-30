@@ -234,7 +234,9 @@ export const Globe = () => {
           "circle-background",
           "circle-background-unclustered",
         ],
-        () => {}
+        () => {
+          map.getCanvas().style.cursor = "pointer";
+        }
       );
 
       map?.on(
