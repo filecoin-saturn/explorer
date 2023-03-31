@@ -1,12 +1,13 @@
 .SearchResult {
   cursor: pointer;
-  text-align: start;
 
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 
   padding: var(--size-sm);
+
+  text-align: start;
 
   background: linear-gradient(
     296.29deg,
