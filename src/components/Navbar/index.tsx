@@ -226,7 +226,7 @@ export const Navbar = () => {
         minZoom: 7.7,
       });
     }
-  }, [appState.navbarEntity, map, nodes]);
+  }, [appState.navbarEntity, getLocationById, map, nodes]);
 
   const clearSelectedEntity =
     (breadcrumb: NavBarEntity, index: number) => () => {
