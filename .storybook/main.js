@@ -9,4 +9,9 @@ module.exports = {
   core: {
     builder: "@storybook/builder-webpack5",
   },
+  staticDirs: ["../public"],
+  env: (config) => ({
+    ...config,
+    PUBLIC_URL: "",
+  }),
 };
