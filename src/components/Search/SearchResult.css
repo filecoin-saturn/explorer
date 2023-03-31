@@ -7,6 +7,8 @@
 
   padding: var(--size-sm);
 
+  text-align: start;
+
   background: linear-gradient(
     296.29deg,
     rgba(0, 102, 255, 0.216) 2.96%,

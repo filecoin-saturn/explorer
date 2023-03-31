@@ -31,7 +31,7 @@
 }
 
 .Navbar-breadcrumbs {
-  transform: translateY(-100%);
+  transform: translateY(100%);
 
   flex: 1;
 
@@ -59,7 +59,7 @@
 }
 
 .Navbar-content {
-  transform: translateY(-100%);
+  transform: translateY(100%);
 
   overflow: scroll;
   overflow-x: hidden;
