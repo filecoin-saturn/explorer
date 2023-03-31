@@ -15,6 +15,7 @@ import useAppContext from "../../hooks/useAppContext";
 type ListProps = {
   stats: LocationStat | undefined;
   list: Nodes | Location[] | Country[] | Continent[];
+  defaultSelectedNode: Node | undefined;
   entity: NavBarEntity;
   toggleNavbar?: () => void;
   onSelect: (item: any) => () => void;
@@ -32,9 +33,12 @@ export const List = ({
   onSelect,
   hoverEnd,
   hoverStart,
+  defaultSelectedNode,
 }: ListProps) => {
   const [timeFrame] = useState<TimeFrame>("7d");
-  const [selectedNode, setSelectedNode] = useState<Node>();
+  const [selectedNode, setSelectedNode] = useState<Node | undefined>(
+    defaultSelectedNode
+  );
 
   const {
     getStatsByContinentId,
@@ -62,6 +66,10 @@ export const List = ({
   useEffect(() => {
     setSelectedNode(undefined);
   }, [entity]);
+
+  useEffect(() => {
+    setSelectedNode(defaultSelectedNode);
+  }, [defaultSelectedNode]);
 
   const getItemStats = (listItem: any) => {
     switch (listItem.type) {

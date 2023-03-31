@@ -82,6 +82,7 @@ const assetStats = {
 
 export const List = () => (
   <ListComponent
+    defaultSelectedNode={undefined}
     entity={assetEntity}
     list={assetList}
     stats={assetStats}
