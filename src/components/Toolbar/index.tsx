@@ -108,9 +108,7 @@ export const Toolbar = () => {
 
   return (
     <nav className="Toolbar">
-      <div className="Toolbar-search">
-        <Search />
-      </div>
+      <Search />
       <ViewModeButtonsMobile
         viewMode={viewMode}
         toggleViewMode={toggleViewMode}

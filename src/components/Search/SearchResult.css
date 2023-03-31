@@ -1,5 +1,6 @@
 .SearchResult {
   cursor: pointer;
+  text-align: start;
 
   display: flex;
   flex-direction: column;
