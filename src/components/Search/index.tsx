@@ -48,7 +48,6 @@ export const Search = () => {
   };
 
   const handleResultClick = (result: Continent | Country | Location | Node) => {
-    // question: is this enough for navigation?
     appState.setNavbarEntity(result);
     setIsSearchActive(false);
   };

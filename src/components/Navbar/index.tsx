@@ -185,9 +185,13 @@ export const Navbar = () => {
   }, [map, countries, continents, appState, getLocationById]);
 
   useEffect(() => {
-    const item = appState.navbarEntity;
-    if (!item) return;
+    const navbarEntity = appState.navbarEntity;
+    if (!navbarEntity) return;
     const flyOptions = { essential: true, duration: 2000 };
+    const item =
+      navbarEntity?.type !== EntityType.node
+        ? navbarEntity
+        : getLocationById(navbarEntity.geoloc.city);
 
     if (item?.type === EntityType.world && nodes.length > 0) {
       map?.flyTo({
@@ -222,7 +226,7 @@ export const Navbar = () => {
         minZoom: 7.7,
       });
     }
-  }, [appState.navbarEntity, map, nodes]);
+  }, [appState.navbarEntity, getLocationById, map, nodes]);
 
   const clearSelectedEntity =
     (breadcrumb: NavBarEntity, index: number) => () => {
@@ -258,7 +262,7 @@ export const Navbar = () => {
       entityStats = getStatsByLocationId(appState.navbarEntity.id);
       break;
     case EntityType.node:
-      list = [];
+      list = getNodesByLocationId(appState.navbarEntity.geoloc.city);
       entityStats = getStatsByNodeId(appState.navbarEntity.id);
       break;
     default:
@@ -268,6 +272,21 @@ export const Navbar = () => {
   }
 
   if (!appState.navbarEntity) return null;
+
+  const computeHeadEntity = () => {
+    const navbarEntity = appState.navbarEntity;
+    const item =
+      navbarEntity?.type !== EntityType.node
+        ? navbarEntity
+        : getLocationById(navbarEntity.geoloc.city);
+    return item;
+  };
+
+  const computeSelectedNode = () => {
+    return appState.navbarEntity?.type === EntityType.node
+      ? appState.navbarEntity
+      : undefined;
+  };
 
   return (
     <nav className={className}>
@@ -288,7 +307,8 @@ export const Navbar = () => {
       <div className="Navbar-content">
         <List
           list={list}
-          entity={appState.navbarEntity}
+          defaultSelectedNode={computeSelectedNode()}
+          entity={computeHeadEntity()}
           stats={entityStats}
           toggleNavbar={toggleNavbar}
           onSelect={selectEntity}
