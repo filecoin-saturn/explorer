@@ -195,7 +195,6 @@ export const Navbar = () => {
 
     if (item?.type === EntityType.world && nodes.length > 0) {
       map?.flyTo({
-        center: [0, 0],
         zoom: 1.5,
         ...flyOptions,
       });
