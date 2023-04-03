@@ -4,8 +4,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 
-  width: 80px;
+  width: 78px;
+  min-height: 80px;
+
   padding: var(--size-sm) 0;
 
   font-family: var(--font-family);
@@ -43,12 +46,17 @@
 
 .Breadcrumb-icon {
   width: auto;
-  height: 32px;
-  margin-bottom: var(--size-xs);
+  height: 28px;
+  margin-bottom: var(--size-xxs);
 }
 
 .Breadcrumb-icon path {
   fill: var(--color-white);
+}
+
+.Breadcrumb-name {
+  font-size: var(--size-sm);
+  word-wrap: nowrap;
 }
 
 .Breadcrumb.active .Breadcrumb-icon path {
