@@ -125,7 +125,6 @@
 .Navbar-breadcrumb {
   flex: 1;
 
-  max-width: 80px;
   height: 80px;
   margin-right: 1px;
 
@@ -144,10 +143,6 @@
       rgba(217, 255, 248, 0)
     )
     1;
-}
-
-.Navbar-breadcrumb .Breadcrumb-name {
-  font-size: 0.75em;
 }
 
 .Navbar-regionStats {

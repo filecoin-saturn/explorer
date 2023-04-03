@@ -321,7 +321,11 @@ export const Navbar = () => {
       </button>
       <div className="Navbar-overview">
         <div className="Navbar-breadcrumb">
-          <Breadcrumb entity={breadcrumbs[breadcrumbs.length - 1]} active />
+          <Breadcrumb
+            entity={breadcrumbs[breadcrumbs.length - 1]}
+            active
+            trim
+          />
         </div>
         <div className="Navbar-regionStats" onClick={toggleNavbar}>
           <div className="Navbar-regionStatsGrid">

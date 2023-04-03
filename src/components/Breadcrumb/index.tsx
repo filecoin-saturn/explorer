@@ -5,6 +5,7 @@ import "./index.css";
 type BreadcrumbProps = {
   name?: string;
   active?: boolean;
+  trim?: boolean;
   onClick?: () => void;
   entity: NavBarEntity;
 };
@@ -14,9 +15,10 @@ export const Breadcrumb = ({
   active,
   onClick,
   entity,
+  trim,
 }: BreadcrumbProps) => {
   let icon = "";
-  const className = `Breadcrumb ${active ? "active" : ""}`;
+  const breadcrumbClassName = `Breadcrumb ${active ? "active" : ""}`;
 
   switch (entity?.type) {
     case EntityType.world:
@@ -33,10 +35,17 @@ export const Breadcrumb = ({
       break;
   }
 
+  const computeDisplayName = () => {
+    if (!entity) return "";
+    const name = entity.name;
+    if (name.length < 14 || !trim) return name;
+    return name.substring(0, 15) + "...";
+  };
+
   return (
-    <button onClick={onClick} className={className}>
+    <button onClick={onClick} className={breadcrumbClassName}>
       <Icon name={icon} className="Breadcrumb-icon" />
-      <div className="Breadcrumb-name">{entity?.name}</div>
+      <div className="Breadcrumb-name">{computeDisplayName()}</div>
     </button>
   );
 };
