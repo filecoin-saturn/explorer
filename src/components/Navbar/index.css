@@ -2,7 +2,7 @@
   pointer-events: none;
 
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   top: 196px;
   right: var(--size-xxs);
   bottom: var(--size-xxs);
@@ -125,7 +125,7 @@
 .Navbar-breadcrumb {
   flex: 1;
 
-  max-width: 80px;
+  height: 80px;
   margin-right: 1px;
 
   background: linear-gradient(
@@ -150,7 +150,6 @@
   gap: var(--size-sm);
 
   width: 100%;
-  margin-left: 1px;
   padding: var(--size-xs) var(--size-sm);
 
   background: linear-gradient(
@@ -195,13 +194,13 @@
   }
 
   .Navbar .Navbar-content {
-    transform: translateY(0) translateX(-102px);
+    transform: translateY(0) translateX(-104px);
     width: 305px;
   }
 
   .Navbar .Navbar-breadcrumbs {
-    transform: translateX(-103px);
-    max-width: 102px;
+    transform: translateX(-105px);
+    max-width: 104px;
   }
 
   .Navbar.active .Navbar-overview {
@@ -209,7 +208,7 @@
   }
 
   .Navbar.expanded .Navbar-content {
-    transform: translateY(0) translateX(1px);
+    transform: translateY(0);
   }
 
   .Navbar.expanded .Navbar-breadcrumbs {

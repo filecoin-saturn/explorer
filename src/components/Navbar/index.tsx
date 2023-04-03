@@ -225,7 +225,8 @@ export const Navbar = () => {
         minZoom: 7.7,
       });
     }
-  }, [appState.navbarEntity, getLocationById, map, nodes]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [appState.navbarEntity]);
 
   const clearSelectedEntity =
     (breadcrumb: NavBarEntity, index: number) => () => {
@@ -321,7 +322,11 @@ export const Navbar = () => {
       </button>
       <div className="Navbar-overview">
         <div className="Navbar-breadcrumb">
-          <Breadcrumb entity={breadcrumbs[breadcrumbs.length - 1]} active />
+          <Breadcrumb
+            entity={breadcrumbs[breadcrumbs.length - 1]}
+            active
+            trim
+          />
         </div>
         <div className="Navbar-regionStats" onClick={toggleNavbar}>
           <div className="Navbar-regionStatsGrid">
