@@ -209,7 +209,7 @@
   }
 
   .Navbar.expanded .Navbar-content {
-    transform: translateY(0) translateX(1px);
+    transform: translateY(0);
   }
 
   .Navbar.expanded .Navbar-breadcrumbs {
