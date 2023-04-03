@@ -195,13 +195,13 @@
   }
 
   .Navbar .Navbar-content {
-    transform: translateY(0) translateX(-102px);
+    transform: translateY(0) translateX(-104px);
     width: 305px;
   }
 
   .Navbar .Navbar-breadcrumbs {
-    transform: translateX(-103px);
-    max-width: 102px;
+    transform: translateX(-105px);
+    max-width: 104px;
   }
 
   .Navbar.active .Navbar-overview {
