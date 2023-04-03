@@ -8,7 +8,7 @@ import mapboxgl from "mapbox-gl/dist/mapbox-gl";
 import MapboxWorker from "mapbox-gl/dist/mapbox-gl-csp-worker";
 import useNodes, { Node } from "../../hooks/useNodes";
 import useAppContext from "../../hooks/useAppContext";
-import { EntityType, ViewMode } from "../../contexts/AppContext";
+import { ViewMode } from "../../contexts/AppContext";
 import Nodes from "../Layers/Nodes";
 import Heatmap from "../Layers/Heatmap";
 import Boundaries from "../Layers/Boundaries";
@@ -16,7 +16,6 @@ import { useCallback, useEffect, useState } from "react";
 import Scale from "../Scale";
 import { useStats } from "../../hooks/useStats";
 import useCountries from "../../hooks/useCountries";
-import useContinents from "../../hooks/useContinents";
 mapboxgl.workerClass = MapboxWorker;
 
 const viewState = {
@@ -33,10 +32,9 @@ export const Globe = () => {
   const { nodes } = useNodes();
   const { map } = useMap();
   const { getStatsByCountryId } = useStats();
-  const { continents } = useContinents();
   const { countries } = useCountries();
   const appState = useAppContext();
-  const { navbarEntity, viewMode, setHoverEntity } = appState;
+  const { viewMode } = appState;
   const [scaleLimits, setScaleLimits] = useState<{
     higher: { step: string; label: string };
     lower: { step: string; label: string };
@@ -79,41 +77,19 @@ export const Globe = () => {
   };
 
   const onMouseLeave = useCallback(
-    (options: any) => () => {
+    (options: any) => (event: any) => {
       if (options.id !== null) {
-        map?.setFeatureState(
-          {
-            source: options.source,
-            sourceLayer: options.sourceLayer,
-            id: options.id,
-          },
-          { hover: false }
-        );
-
-        if (options.source === "boundaries") {
-          map
-            ?.querySourceFeatures("boundaries", {
-              sourceLayer: "country_boundaries",
-            })
-            .forEach((feature) => {
-              map.setFeatureState(
-                {
-                  source: options.source,
-                  sourceLayer: options.sourceLayer,
-                  id: feature.id,
-                },
-                {
-                  nodes: options.boundariesLoad[feature.id as string],
-                }
-              );
-            });
-        }
+        map?.removeFeatureState({
+          source: options.source,
+          sourceLayer: options.sourceLayer,
+          id: options.id,
+        });
       }
 
       options.id = null;
-      setHoverEntity(undefined);
     },
-    [map, setHoverEntity]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [map]
   );
 
   const onMouseMove = useCallback(
@@ -123,49 +99,12 @@ export const Globe = () => {
       const [feature] = event.features;
       const { id: nextId } = feature;
 
-      if (options.source === "boundaries") {
-        map
-          ?.querySourceFeatures("boundaries", {
-            sourceLayer: "country_boundaries",
-          })
-          .forEach((mapFeature) => {
-            if (mapFeature.id !== nextId) {
-              map.setFeatureState(
-                {
-                  source: options.source,
-                  sourceLayer: options.sourceLayer,
-                  id: mapFeature.id,
-                },
-                {
-                  nodes: 0,
-                }
-              );
-            }
-          });
-
-        const country = countries.find(
-          (country) => country.id === feature.properties.iso_3166_1
-        );
-
-        if (navbarEntity?.type === EntityType.world) {
-          const continent = continents.find((continent) =>
-            country?.continentId.includes(continent.id)
-          );
-          setHoverEntity(continent);
-        } else {
-          setHoverEntity(country);
-        }
-      }
-
       if (options.id !== null) {
-        map.setFeatureState(
-          {
-            source: options.source,
-            sourceLayer: options.sourceLayer,
-            id: options.id,
-          },
-          { hover: false }
-        );
+        map.removeFeatureState({
+          source: options.source,
+          sourceLayer: options.sourceLayer,
+          id: options.id,
+        });
       }
 
       options.id = nextId;
@@ -178,11 +117,11 @@ export const Globe = () => {
         },
         {
           hover: true,
-          nodes: options.boundariesLoad && options.boundariesLoad[options.id],
         }
       );
     },
-    [map, countries, navbarEntity?.type, continents, setHoverEntity]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [map]
   );
 
   const onMapLoad = useCallback(
@@ -224,8 +163,8 @@ export const Globe = () => {
         boundariesLoad,
       };
 
-      map.on("mousemove", "boundaries-fill", onMouseMove(countryOptions));
-      map.on("mouseleave", "boundaries-fill", onMouseLeave(countryOptions));
+      // map.on("mousemove", "boundaries-fill", onMouseMove(countryOptions));
+      // map.on("mouseleave", "boundaries-fill", onMouseLeave(countryOptions));
 
       map?.on(
         "mouseenter",
@@ -257,7 +196,7 @@ export const Globe = () => {
       };
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [map, onMouseLeave, onMouseMove]
+    [map, nodes]
   );
 
   return (

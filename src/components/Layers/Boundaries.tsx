@@ -7,12 +7,6 @@ export const Boundaries = ({
   max: number | undefined;
   srcId: string;
 }) => {
-  const steps = [
-    max && max > 200 ? max * 0.1 : 20,
-    max && max > 200 ? max * 0.4 : 50,
-    max && max > 200 ? max * 0.6 : 380,
-  ];
-
   const boundaryLayer = {
     id: "boundaries-fill",
     type: "fill",
@@ -22,36 +16,8 @@ export const Boundaries = ({
       "fill-color": [
         "case",
         ["boolean", ["feature-state", "hover"], false],
-        [
-          "interpolate",
-          ["linear"],
-          ["feature-state", "nodes"],
-          0,
-          "#275cc4",
-          1,
-          "#113CA9",
-          steps[0],
-          "#1E5DFF",
-          steps[1],
-          "#22AFFF",
-          steps[2],
-          "#00FFD1",
-        ],
-        [
-          "interpolate",
-          ["linear"],
-          ["feature-state", "nodes"],
-          0,
-          "transparent",
-          1,
-          "#113CA9",
-          steps[0],
-          "#1E5DFF",
-          steps[1],
-          "#22AFFF",
-          steps[2],
-          "#00FFD1",
-        ],
+        "#275cc4",
+        "#113CA9",
       ],
       "fill-opacity": [
         "case",
@@ -62,22 +28,8 @@ export const Boundaries = ({
       "fill-outline-color": [
         "case",
         ["boolean", ["feature-state", "hover"], false],
-        [
-          "interpolate",
-          ["linear"],
-          ["feature-state", "nodes"],
-          0,
-          "#2A1CF7",
-          1,
-          "#113CA9",
-          steps[0],
-          "#1E5DFF",
-          steps[1],
-          "#22AFFF",
-          steps[2],
-          "#00FFD1",
-        ],
-        "transparent",
+        "#2A1CF7",
+        "#113CA9",
       ],
     },
   };
