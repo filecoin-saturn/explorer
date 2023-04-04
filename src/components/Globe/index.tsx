@@ -96,9 +96,10 @@ export const Globe = () => {
   const onMouseMove = useCallback(
     (options: any) => (event: any) => {
       if (!event.features?.length || !map) return;
-
       const [feature] = event.features;
       const { id: nextId } = feature;
+
+      if (options.id === nextId) return;
 
       if (options.id !== null) {
         map.setFeatureState(
