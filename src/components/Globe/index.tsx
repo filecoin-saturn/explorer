@@ -26,6 +26,7 @@ const viewState = {
 
 const projection = "globe";
 
+// const mapStyle = "mapbox://styles/joaoferreira18/clg287ff4004m01p0izt5pymm";
 const mapStyle = "mapbox://styles/joaoferreira18/cleedx6a6003x01qg41yehikx";
 
 export const Globe = () => {
@@ -194,6 +195,8 @@ export const Globe = () => {
           map.getCanvas().style.cursor = "grab";
         }
       );
+
+      map.flyTo({ zoom: 2.5, duration: 1000 });
 
       return () => {
         map.off("mouseleave", onMouseLeave(countryOptions));
