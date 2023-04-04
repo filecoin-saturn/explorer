@@ -77,18 +77,19 @@ export const Globe = () => {
   };
 
   const onMouseLeave = useCallback(
-    (options: any) => (event: any) => {
+    (options: any) => () => {
       if (options.id !== null) {
-        map?.removeFeatureState({
-          source: options.source,
-          sourceLayer: options.sourceLayer,
-          id: options.id,
-        });
+        map?.setFeatureState(
+          {
+            source: options.source,
+            sourceLayer: options.sourceLayer,
+            id: options.id,
+          },
+          { hover: false }
+        );
       }
-
       options.id = null;
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [map]
   );
 
@@ -100,11 +101,14 @@ export const Globe = () => {
       const { id: nextId } = feature;
 
       if (options.id !== null) {
-        map.removeFeatureState({
-          source: options.source,
-          sourceLayer: options.sourceLayer,
-          id: options.id,
-        });
+        map.setFeatureState(
+          {
+            source: options.source,
+            sourceLayer: options.sourceLayer,
+            id: options.id,
+          },
+          { hover: false }
+        );
       }
 
       options.id = nextId;
@@ -117,10 +121,10 @@ export const Globe = () => {
         },
         {
           hover: true,
+          nodes: options.boundariesLoad && options.boundariesLoad[options.id],
         }
       );
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [map]
   );
 
@@ -163,10 +167,10 @@ export const Globe = () => {
         boundariesLoad,
       };
 
-      // map.on("mousemove", "boundaries-fill", onMouseMove(countryOptions));
-      // map.on("mouseleave", "boundaries-fill", onMouseLeave(countryOptions));
+      map.on("mousemove", "boundaries-fill", onMouseMove(countryOptions));
+      map.on("mouseleave", "boundaries-fill", onMouseLeave(countryOptions));
 
-      map?.on(
+      map.on(
         "mouseenter",
         [
           "boundaries-fill",
@@ -178,7 +182,7 @@ export const Globe = () => {
         }
       );
 
-      map?.on(
+      map.on(
         "mouseleave",
         [
           "boundaries-fill",
@@ -216,6 +220,7 @@ export const Globe = () => {
             mapboxAccessToken={process.env.REACT_APP_MAP_BOX_ACCESS_TOKEN}
             maxZoom={8.1}
             minZoom={0}
+            doubleClickZoom={false}
           >
             <Source
               id="boundaries"

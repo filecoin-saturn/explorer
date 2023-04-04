@@ -13,28 +13,18 @@ export const Boundaries = ({
     source: srcId,
     "source-layer": "country_boundaries",
     paint: {
-      "fill-color": [
-        "case",
-        ["boolean", ["feature-state", "hover"], false],
-        "#275cc4",
-        "#113CA9",
-      ],
-      "fill-opacity": [
-        "case",
-        ["boolean", ["feature-state", "hover"], false],
-        0.4,
-        0.3,
-      ],
+      "fill-color": "transparent",
       "fill-outline-color": [
         "case",
         ["boolean", ["feature-state", "hover"], false],
-        "#2A1CF7",
-        "#113CA9",
+        "#fff",
+        "transparent",
       ],
     },
   };
 
   //@ts-ignore
+  // return <Layer />;
   return <Layer {...boundaryLayer}></Layer>;
 };
 
