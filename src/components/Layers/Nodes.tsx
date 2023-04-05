@@ -7,26 +7,18 @@ export const Nodes = ({ srcId }: { srcId: string }) => {
     type: "circle",
     filter: ["has", "point_count"],
     paint: {
-      "circle-radius": [
-        "interpolate",
-        ["linear"],
-        ["get", "point_count"],
-        1,
-        10,
-        100,
-        20,
-      ],
+      "circle-radius": ["interpolate", ["linear"], ["zoom"], 1, 15, 10, 20],
       "circle-color": [
         "interpolate",
         ["linear"],
         ["get", "point_count"],
         1,
         "#011157",
-        50,
+        5,
         "#054D8E",
-        100,
+        15,
         "#00ABD0",
-        200,
+        30,
         "#10FFD4",
       ],
     },
@@ -38,7 +30,7 @@ export const Nodes = ({ srcId }: { srcId: string }) => {
     type: "circle",
     filter: ["!", ["has", "point_count"]],
     paint: {
-      "circle-radius": 10,
+      "circle-radius": ["interpolate", ["linear"], ["zoom"], 1, 10, 10, 20],
       "circle-color": "#011157",
     },
   } as LayerProps;
@@ -53,7 +45,19 @@ export const Nodes = ({ srcId }: { srcId: string }) => {
       "text-size": 14,
     },
     paint: {
-      "text-color": "white",
+      "text-color": [
+        "interpolate",
+        ["exponential", 2],
+        ["get", "point_count"],
+        2,
+        "white",
+        14,
+        "white",
+        15,
+        "#011157",
+        30,
+        "#011157",
+      ],
     },
   } as LayerProps;
 
@@ -64,7 +68,7 @@ export const Nodes = ({ srcId }: { srcId: string }) => {
     filter: ["!", ["has", "point_count"]],
     layout: {
       "text-field": "1",
-      "text-size": 14,
+      "text-size": 16,
     },
     paint: {
       "text-color": "white",
