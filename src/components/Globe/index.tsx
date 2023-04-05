@@ -20,8 +20,8 @@ mapboxgl.workerClass = MapboxWorker;
 
 const viewState = {
   zoom: 1,
-  longitude: -8.629105,
-  latitude: 4.157944,
+  longitude: 8.227512,
+  latitude: 46.818188,
 };
 
 const projection = "globe";
