@@ -1,4 +1,4 @@
-import { Layer } from "react-map-gl";
+import { Layer, LayerProps } from "react-map-gl";
 
 export const Boundaries = ({
   max,
@@ -14,18 +14,31 @@ export const Boundaries = ({
     "source-layer": "country_boundaries",
     paint: {
       "fill-color": "transparent",
-      "fill-outline-color": [
+    },
+  } as LayerProps;
+
+  const boundaryLayer2 = {
+    id: "boundaries-outline",
+    type: "line",
+    source: srcId,
+    "source-layer": "country_boundaries",
+    paint: {
+      "line-width": 2,
+      "line-color": [
         "case",
         ["boolean", ["feature-state", "hover"], false],
-        "#fff",
+        "rgba(255,255,255,0.8)",
         "transparent",
       ],
     },
-  };
+  } as LayerProps;
 
-  //@ts-ignore
-  // return <Layer />;
-  return <Layer {...boundaryLayer}></Layer>;
+  return (
+    <>
+      <Layer {...boundaryLayer} />
+      <Layer {...boundaryLayer2} />
+    </>
+  );
 };
 
 export default Boundaries;
