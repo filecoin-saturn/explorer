@@ -76,25 +76,6 @@ export const Globe = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [viewMode]);
 
-  useEffect(() => {
-    if (viewMode !== ViewMode.Heatmap) return;
-    if (!map) return;
-
-    const sr = animate();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [viewMode]);
-
-  const animate = (it = 100) => {
-    setTimeout(() => {
-      // const a = map?.getLayer("load-heat");
-      // @ts-ignore
-      (map?.getLayer("load-heat")).paint._values["heatmap-opacity"] = it / 100;
-
-      animate(it--);
-    }, 200);
-  };
-
   const geoJson = {
     type: "FeatureCollection",
     features: nodes.map((node: Node) => ({
