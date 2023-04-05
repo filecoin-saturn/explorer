@@ -27,6 +27,7 @@ const viewState = {
 const projection = "globe";
 
 const mapStyle = "mapbox://styles/joaoferreira18/cleedx6a6003x01qg41yehikx";
+// const mapStyle = "mapbox://styles/joaoferreira18/clg287ff4004m01p0izt5pymm";
 
 export const Globe = () => {
   const { nodes } = useNodes();
@@ -41,23 +42,57 @@ export const Globe = () => {
   }>();
 
   useEffect(() => {
-    const countriesCounters = countries.map((c) => getStatsByCountryId(c.id));
+    if (viewMode === ViewMode.Density) {
+      const countriesCounters = countries.map((c) => getStatsByCountryId(c.id));
 
-    const nodesCounts = countriesCounters.flatMap((o) =>
-      o ? o.numberOfNodes : 0
-    );
+      const nodesCounts = countriesCounters.flatMap((o) =>
+        o ? o.numberOfNodes : 0
+      );
 
-    const maxScale =
-      +((Math.max(...nodesCounts) * 0.85) / 100).toFixed(0) * 100;
-    const minScale = +(0.05 * maxScale).toFixed(0);
+      const maxScale =
+        +((Math.max(...nodesCounts) * 0.85) / 100).toFixed(0) * 100;
+      const minScale = +(0.05 * maxScale).toFixed(0);
 
-    setScaleLimits({
-      higher: { label: "> #Nodes", step: `${maxScale}` },
-      lower: { label: "< #Nodes", step: `${minScale}` },
-    });
+      setScaleLimits({
+        higher: { label: "> #Nodes", step: `${maxScale}` },
+        lower: { label: "< #Nodes", step: `${minScale}` },
+      });
+    }
+
+    if (viewMode === ViewMode.Heatmap) {
+      const sortedNodes = nodes.sort(
+        (a, b) => a.ttfbStats.p95_24h - b.ttfbStats.p95_24h
+      );
+      const maxScale = sortedNodes[0].ttfbStats.p95_24h || 1000;
+      const minScale = 3000;
+
+      setScaleLimits({
+        higher: { label: "ms", step: `${maxScale}` },
+        lower: { label: "ms", step: `${minScale}` },
+      });
+    }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [nodes, viewMode]);
+  }, [viewMode]);
+
+  useEffect(() => {
+    if (viewMode !== ViewMode.Heatmap) return;
+    if (!map) return;
+
+    const sr = animate();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [viewMode]);
+
+  const animate = (it = 100) => {
+    setTimeout(() => {
+      // const a = map?.getLayer("load-heat");
+      // @ts-ignore
+      (map?.getLayer("load-heat")).paint._values["heatmap-opacity"] = it / 100;
+
+      animate(it--);
+    }, 200);
+  };
 
   const geoJson = {
     type: "FeatureCollection",
@@ -195,6 +230,8 @@ export const Globe = () => {
         }
       );
 
+      map.on("load", () => map.flyTo({ zoom: 2.5, duration: 1000 }));
+
       return () => {
         map.off("mouseleave", onMouseLeave(countryOptions));
         map.off("mousemove", onMouseMove(countryOptions));
@@ -204,11 +241,21 @@ export const Globe = () => {
     [map, nodes]
   );
 
+  const renderScale = () => {
+    if (!scaleLimits) return;
+    const colorScale = viewMode === ViewMode.Heatmap ? "secondary" : "primary";
+    return (
+      <Scale
+        higher={scaleLimits.higher}
+        lower={scaleLimits.lower}
+        colorSchema={colorScale}
+      />
+    );
+  };
+
   return (
     <>
-      {scaleLimits && (
-        <Scale higher={scaleLimits.higher} lower={scaleLimits.lower} />
-      )}
+      {renderScale()}
       <div className="Map">
         {nodes.length > 0 && (
           <Map

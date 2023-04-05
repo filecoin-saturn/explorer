@@ -9,5 +9,6 @@ export const Default = () => (
   <ScaleComponent
     higher={{ step: "High", label: "100" }}
     lower={{ step: "Very Low", label: "5" }}
+    colorSchema="primary"
   />
 );

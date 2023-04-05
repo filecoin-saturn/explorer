@@ -8,11 +8,23 @@ type ScaleValue = {
 type ScaleProps = {
   higher: ScaleValue;
   lower: ScaleValue;
+  colorSchema: "primary" | "secondary";
 };
 
-const colors = [`#00FFD1`, `#00C0EA`, `#003F9E`, `#00164F`];
+const colorsSchemaPrimary = [`#00FFD1`, `#00C0EA`, `#003F9E`, `#00164F`];
+const colorSchemaSecondary = [
+  `#00FFD1`,
+  `rgba(0, 255, 209, 0.6)`,
+  `rgba(0, 255, 209, 0.05)`,
+];
 
-export const Scale = ({ higher, lower }: ScaleProps) => {
+export const Scale = ({
+  higher,
+  lower,
+  colorSchema = "primary",
+}: ScaleProps) => {
+  const colors =
+    colorSchema === "primary" ? colorsSchemaPrimary : colorSchemaSecondary;
   return (
     <div className="Scale">
       <div className="Scale-label">
@@ -41,7 +53,7 @@ export const Scale = ({ higher, lower }: ScaleProps) => {
             <stop stopColor={colors[0]} />
             <stop offset=".299" stopColor={colors[1]} />
             <stop offset=".726" stopColor={colors[2]} />
-            <stop offset="1" stopColor={colors[3]} />
+            <stop offset="1" stopColor={colors[2]} />
           </linearGradient>
         </defs>
       </svg>
