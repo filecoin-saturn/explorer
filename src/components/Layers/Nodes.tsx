@@ -51,6 +51,8 @@ export const Nodes = ({ srcId }: { srcId: string }) => {
         ["get", "point_count"],
         2,
         "white",
+        14,
+        "white",
         15,
         "#011157",
         30,
