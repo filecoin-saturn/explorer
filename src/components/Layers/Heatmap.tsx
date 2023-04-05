@@ -34,9 +34,9 @@ export const Heatmap = ({ srcId }: { srcId: string }) => {
         0,
         5,
         2,
-        30,
+        20,
         9,
-        3500,
+        1500,
       ],
     },
   } as LayerProps;

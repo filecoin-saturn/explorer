@@ -27,6 +27,7 @@ const viewState = {
 const projection = "globe";
 
 const mapStyle = "mapbox://styles/joaoferreira18/cleedx6a6003x01qg41yehikx";
+// const mapStyle = "mapbox://styles/joaoferreira18/clg287ff4004m01p0izt5pymm";
 
 export const Globe = () => {
   const { nodes } = useNodes();
@@ -62,7 +63,7 @@ export const Globe = () => {
       const sortedNodes = nodes.sort(
         (a, b) => a.ttfbStats.p95_24h - b.ttfbStats.p95_24h
       );
-      const maxScale = sortedNodes[0].ttfbStats.p95_24h;
+      const maxScale = sortedNodes[0].ttfbStats.p95_24h || 1000;
       const minScale = 3000;
 
       setScaleLimits({
@@ -73,6 +74,25 @@ export const Globe = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [viewMode]);
+
+  useEffect(() => {
+    if (viewMode !== ViewMode.Heatmap) return;
+    if (!map) return;
+
+    const sr = animate();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [viewMode]);
+
+  const animate = (it = 100) => {
+    setTimeout(() => {
+      // const a = map?.getLayer("load-heat");
+      // @ts-ignore
+      (map?.getLayer("load-heat")).paint._values["heatmap-opacity"] = it / 100;
+
+      animate(it--);
+    }, 200);
+  };
 
   const geoJson = {
     type: "FeatureCollection",
