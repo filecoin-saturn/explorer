@@ -16,7 +16,6 @@ export const Heatmap = ({ srcId }: { srcId: string }) => {
         0.2,
       ],
       "heatmap-intensity": ["interpolate", ["linear"], ["zoom"], 1, 1],
-      // "heatmap-opacity": 0.8, // ["interpolate", ["linear"], ["zoom"], 1, 0.8, 5, 0.3],
       "heatmap-color": [
         "interpolate",
         ["linear"],
