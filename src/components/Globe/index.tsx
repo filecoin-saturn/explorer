@@ -26,8 +26,9 @@ const viewState = {
 
 const projection = "globe";
 
-const mapStyle = "mapbox://styles/joaoferreira18/cleedx6a6003x01qg41yehikx";
-// const mapStyle = "mapbox://styles/joaoferreira18/clg287ff4004m01p0izt5pymm";
+// const mapStyle = "mapbox://styles/joaoferreira18/cleedx6a6003x01qg41yehikx";
+const mapStyle =
+  "mapbox://styles/joaoferreira18/clg287ff4004m01p0izt5pymm?optimize=true";
 
 export const Globe = () => {
   const { nodes } = useNodes();
@@ -170,7 +171,7 @@ export const Globe = () => {
       if (nodes.length === 0) return;
 
       const boundariesLoad = map
-        ?.querySourceFeatures("boundaries", {
+        ?.querySourceFeatures("boundaries-outline", {
           sourceLayer: "country_boundaries",
         })
         .reduce((acc, feature) => {
@@ -181,7 +182,7 @@ export const Globe = () => {
 
           map.setFeatureState(
             {
-              source: "boundaries",
+              source: "boundaries-outline",
               sourceLayer: "country_boundaries",
               id: feature.id,
             },
