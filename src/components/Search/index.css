@@ -8,8 +8,7 @@
 
   max-width: 100%;
 
-  transition: 800ms;
-  transition-timing-function: ease-in-out;
+  transition: 0.8 ease-in-out;
 }
 
 .Search-box {
@@ -36,8 +35,7 @@
     )
     1;
 
-  transition: width 300ms;
-  transition-timing-function: ease-in-out;
+  transition: width 0.3s ease-in-out;
 }
 
 .Search.active .Search-box {
@@ -80,7 +78,7 @@
   flex-direction: column;
   min-width: 100%;
   width: 167px;
-  transition: 300ms;
+  transition: 0.3s;
 }
 
 .Search.active .Search-results {

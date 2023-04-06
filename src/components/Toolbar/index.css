@@ -10,8 +10,7 @@
 
   padding-left: var(--size-xxs);
 
-  transition: 800ms;
-  transition-timing-function: ease-in-out;
+  transition: transform 0.8s ease-in-out;
   transition-delay: 1s;
   -webkit-transition-delay: 1s;
 }

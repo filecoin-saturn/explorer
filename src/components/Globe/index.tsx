@@ -20,8 +20,6 @@ mapboxgl.workerClass = MapboxWorker;
 
 const viewState = {
   zoom: 1,
-  longitude: -43.733608,
-  latitude: 42.875964,
 };
 
 const projection = "globe";
@@ -216,7 +214,8 @@ export const Globe = () => {
         map.easeTo({
           padding: { ...map.getPadding(), left: isMobile ? 0 : 250 },
           duration: 3000,
-          zoom: isMobile ? 1 : 2.5,
+          zoom: !isMobile ? 2.5 : 1,
+          center: [-43.733608, 42.875964],
           essential: true,
         });
       });
