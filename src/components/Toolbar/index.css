@@ -9,6 +9,13 @@
   gap: 2px;
 
   padding-left: var(--size-xxs);
+
+  transition: 800ms;
+  transition-timing-function: ease-in-out;
+}
+
+.Toolbar:not(.isReady) {
+  transform: translateY(-100px);
 }
 
 .Toolbar-buttonsGroup {
@@ -38,7 +45,7 @@
   .Toolbar-buttonsGroup {
     display: flex;
     flex-direction: row;
-    gap: var(--size-md)
+    gap: var(--size-md);
   }
 
   .Toolbar-buttonsGroup.web {

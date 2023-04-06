@@ -83,8 +83,14 @@ export const Search = () => {
     <div
       className={className}
       onBlur={handleBlur}
-      onClick={() => setIsSearchActive(true)}
-      onFocus={() => setIsSearchActive(true)}
+      onClick={() => (isSearchActive ? "" : setIsSearchActive(true))}
+      onFocus={() =>
+        isSearchActive
+          ? ""
+          : () => {
+              setIsSearchActive(true);
+            }
+      }
     >
       <div className="Search-box">
         <input
@@ -93,6 +99,11 @@ export const Search = () => {
           type="text"
           placeholder="Search"
           onChange={handleSearchInput}
+          defaultValue=""
+          onFocus={(e) => {
+            setSearchResults([]);
+            e.target.value = "";
+          }}
         />
         <Icon name="search" className="Search-icon" />
       </div>

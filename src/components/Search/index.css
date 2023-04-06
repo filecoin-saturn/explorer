@@ -79,11 +79,12 @@
   display: flex;
   flex-direction: column;
   min-width: 100%;
-  visibility: hidden;
+  width: 167px;
+  transition: 300ms;
 }
 
 .Search.active .Search-results {
-  visibility: visible;
+  width: 370px;
 }
 
 @media screen and (min-width: 1024px) {
