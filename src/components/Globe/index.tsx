@@ -27,8 +27,8 @@ const viewState = {
 const projection = "globe";
 
 // const mapStyle = "mapbox://styles/joaoferreira18/cleedx6a6003x01qg41yehikx";
-const mapStyle = "mapbox://styles/joaoferreira18/clg287ff4004m01p0izt5pymm?optimize=true";
-
+const mapStyle =
+  "mapbox://styles/joaoferreira18/clg287ff4004m01p0izt5pymm?optimize=true";
 
 export const Globe = () => {
   const { nodes } = useNodes();
@@ -251,6 +251,7 @@ export const Globe = () => {
             maxZoom={8.1}
             minZoom={0}
             doubleClickZoom={false}
+            fadeDuration={1}
           >
             <Source
               id="boundaries"
