@@ -191,6 +191,12 @@
     right: initial;
     bottom: var(--size-lg);
     left: var(--size-lg);
+    transition: 800ms;
+    transition-timing-function: ease-in-out;
+  }
+
+  .Navbar:not(.isReady) {
+    transform: translateX(-400px);
   }
 
   .Navbar .Navbar-content {

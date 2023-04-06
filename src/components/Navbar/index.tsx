@@ -43,8 +43,10 @@ export const Navbar = () => {
   const appState = useAppContext();
   const [breadcrumbs, setBreadcrumbs] = useState<NavBarEntity[]>([worldEntity]);
   const [active, setActive] = useState(false);
+  const [isReady, setIsReady] = useState<boolean>(false);
   const className = classNames("Navbar", {
     active,
+    isReady,
     expanded: breadcrumbs.length > 1,
   });
 
@@ -56,6 +58,12 @@ export const Navbar = () => {
     appState.setNavbarEntity(item);
     setBreadcrumbs([...breadcrumbs, item]);
   };
+
+  useEffect(() => {
+    if (nodes === undefined) return;
+    setTimeout(() => setIsReady(true), 2000);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [nodes]);
 
   useEffect(() => {
     appState.setNavbarEntity(breadcrumbs[0]);

@@ -7,6 +7,9 @@
   justify-items: flex-start;
 
   max-width: 100%;
+
+  transition: 800ms;
+  transition-timing-function: ease-in-out;
 }
 
 .Search-box {
@@ -32,6 +35,9 @@
       rgba(217, 255, 248, 0)
     )
     1;
+
+  transition: width 300ms;
+  transition-timing-function: ease-in-out;
 }
 
 .Search.active .Search-box {
