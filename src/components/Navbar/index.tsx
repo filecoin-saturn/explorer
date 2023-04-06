@@ -60,8 +60,8 @@ export const Navbar = () => {
   };
 
   useEffect(() => {
-    if (nodes === undefined) return;
-    setTimeout(() => setIsReady(true), 2000);
+    if (nodes.length === 0 || isReady) return;
+    setIsReady(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nodes]);
 

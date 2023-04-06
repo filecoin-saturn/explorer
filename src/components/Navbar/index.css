@@ -12,6 +12,10 @@
   display: flex;
 
   min-height: 80px;
+  transition: 800ms;
+  transition-timing-function: ease-in-out;
+  transition-delay: 1s;
+  -webkit-transition-delay: 1s;
 }
 
 .Navbar.active {
@@ -191,8 +195,6 @@
     right: initial;
     bottom: var(--size-lg);
     left: var(--size-lg);
-    transition: 800ms;
-    transition-timing-function: ease-in-out;
   }
 
   .Navbar:not(.isReady) {

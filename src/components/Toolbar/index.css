@@ -12,6 +12,8 @@
 
   transition: 800ms;
   transition-timing-function: ease-in-out;
+  transition-delay: 1s;
+  -webkit-transition-delay: 1s;
 }
 
 .Toolbar:not(.isReady) {

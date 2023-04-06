@@ -111,10 +111,11 @@ export const Toolbar = () => {
   const [isReady, setIsReady] = useState<boolean>(false);
 
   useEffect(() => {
-    if (nodes === undefined) return;
-    setTimeout(() => setIsReady(true), 2000);
+    if (nodes.length === 0 || isReady) return;
+    setIsReady(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nodes]);
+
   const classname = classnames("Toolbar", { isReady });
   return (
     <nav className={classname}>

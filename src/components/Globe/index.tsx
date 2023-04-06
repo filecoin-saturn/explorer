@@ -1,6 +1,6 @@
 import "mapbox-gl/dist/mapbox-gl.css";
 import "./index.css";
-
+import { isMobile } from "react-device-detect";
 import { Map, Source, useMap } from "react-map-gl";
 //@ts-ignore
 import mapboxgl from "mapbox-gl/dist/mapbox-gl";
@@ -20,15 +20,15 @@ mapboxgl.workerClass = MapboxWorker;
 
 const viewState = {
   zoom: 1,
-  longitude: -8.629105,
-  latitude: 4.157944,
+  longitude: -43.733608,
+  latitude: 42.875964,
 };
 
 const projection = "globe";
 
 // const mapStyle = "mapbox://styles/joaoferreira18/cleedx6a6003x01qg41yehikx";
-const mapStyle = "mapbox://styles/joaoferreira18/clg287ff4004m01p0izt5pymm?optimize=true";
-
+const mapStyle =
+  "mapbox://styles/joaoferreira18/clg287ff4004m01p0izt5pymm?optimize=true";
 
 export const Globe = () => {
   const { nodes } = useNodes();
@@ -212,7 +212,14 @@ export const Globe = () => {
         }
       );
 
-      map.on("load", () => map.flyTo({ zoom: 2.5, duration: 1000 }));
+      map.on("load", () => {
+        map.easeTo({
+          padding: { ...map.getPadding(), left: isMobile ? 0 : 250 },
+          duration: 3000,
+          zoom: isMobile ? 1 : 2.5,
+          essential: true,
+        });
+      });
 
       return () => {
         map.off("mouseleave", onMouseLeave(countryOptions));

@@ -51,6 +51,7 @@
     "react-app-polyfill": "^3.0.0",
     "react-chartjs-2": "^5.2.0",
     "react-dev-utils": "^12.0.1",
+    "react-device-detect": "^2.2.3",
     "react-dom": "^18.2.0",
     "react-map-gl": "^7.0.21",
     "react-refresh": "^0.11.0",
