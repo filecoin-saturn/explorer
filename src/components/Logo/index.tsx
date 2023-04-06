@@ -8,6 +8,7 @@ export const Logo = () => {
   useEffect(() => {
     if (isReady) return;
     setTimeout(() => setIsReady(true), 3000);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const classname = isReady ? "Logo" : "Logo-load";
   return <Icon name="saturn" className={classname} />;
