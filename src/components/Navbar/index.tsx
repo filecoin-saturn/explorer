@@ -203,7 +203,7 @@ export const Navbar = () => {
 
     if (item?.type === EntityType.world && nodes.length > 0) {
       map?.flyTo({
-        zoom: 1.5,
+        zoom: 2,
         ...flyOptions,
       });
     }
