@@ -12,9 +12,10 @@
   display: flex;
 
   min-height: 80px;
+
   transition: transform 0.8s ease-in-out;
-  transition-delay: 1s;
   -webkit-transition-delay: 1s;
+  transition-delay: 1s;
 }
 
 .Navbar:not(.isReady) {
@@ -94,6 +95,7 @@
   display: flex;
 
   height: 80px;
+
   transition: transform 0.3s ease-in-out;
 }
 

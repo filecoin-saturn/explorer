@@ -11,8 +11,8 @@
   padding-left: var(--size-xxs);
 
   transition: transform 0.8s ease-in-out;
-  transition-delay: 1s;
   -webkit-transition-delay: 1s;
+  transition-delay: 1s;
 }
 
 .Toolbar:not(.isReady) {
