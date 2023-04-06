@@ -20,8 +20,8 @@ mapboxgl.workerClass = MapboxWorker;
 
 const viewState = {
   zoom: 1,
-  longitude: 8.227512,
-  latitude: 46.818188,
+  longitude: -43.733608,
+  latitude: 42.875964,
 };
 
 const projection = "globe";
@@ -230,7 +230,7 @@ export const Globe = () => {
         }
       );
 
-      map.on("load", () => map.flyTo({ zoom: 2.5, duration: 1000 }));
+      map.on("load", () => map.flyTo({ zoom: 2.2, duration: 1000 }));
 
       return () => {
         map.off("mouseleave", onMouseLeave(countryOptions));
