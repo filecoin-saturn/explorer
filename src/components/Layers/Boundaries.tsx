@@ -11,7 +11,7 @@ export const Boundaries = ({
     id: "boundaries-fill",
     type: "fill",
     source: srcId,
-    "source-layer": "country_boundaries",
+    "source-layer": "countries",
     paint: {
       "fill-color": "transparent",
     },
@@ -21,13 +21,13 @@ export const Boundaries = ({
     id: "boundaries-outline",
     type: "line",
     source: srcId,
-    "source-layer": "country_boundaries",
+    "source-layer": "countries",
     paint: {
       "line-width": 2,
       "line-color": [
         "case",
         ["boolean", ["feature-state", "hover"], false],
-        "rgba(255,255,255,0.8)",
+        "rgba(255,0,0,1)",
         "transparent",
       ],
     },

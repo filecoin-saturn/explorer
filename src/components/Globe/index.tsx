@@ -27,8 +27,9 @@ const viewState = {
 const projection = "globe";
 
 // const mapStyle = "mapbox://styles/joaoferreira18/cleedx6a6003x01qg41yehikx";
-const mapStyle = "mapbox://styles/joaoferreira18/clg287ff4004m01p0izt5pymm?optimize=true";
-
+const mapStyle =
+  "mapbox://styles/joaoferreira18/clg287ff4004m01p0izt5pymm?optimize=true";
+// const mapStyle = "mapbox://styles/mapbox/light-v10";
 
 export const Globe = () => {
   const { nodes } = useNodes();
@@ -153,7 +154,7 @@ export const Globe = () => {
 
       const boundariesLoad = map
         ?.querySourceFeatures("boundaries-outline", {
-          sourceLayer: "country_boundaries",
+          sourceLayer: "countries",
         })
         .reduce((acc, feature) => {
           const amountOfNodes = nodes.filter(
@@ -164,7 +165,7 @@ export const Globe = () => {
           map.setFeatureState(
             {
               source: "boundaries-outline",
-              sourceLayer: "country_boundaries",
+              sourceLayer: "countries",
               id: feature.id,
             },
             { hover: false, nodes: amountOfNodes }
@@ -180,8 +181,8 @@ export const Globe = () => {
 
       const countryOptions = {
         id: hoveredStateId,
-        source: "boundaries",
-        sourceLayer: "country_boundaries",
+        source: "countries-simplification-data",
+        sourceLayer: "countries",
         boundariesLoad,
       };
 
@@ -253,13 +254,14 @@ export const Globe = () => {
             doubleClickZoom={false}
           >
             <Source
-              id="boundaries"
+              id="countries-simplification-data"
               type="vector"
-              url="mapbox://mapbox.country-boundaries-v1"
-              name="boundaries"
+              // url="mapbox://mapbox.country-boundaries-v1"
+              url="mapbox://poliveiraatsubvisualco.countries-simplification"
+              name="countries-simplification-data"
             >
               <Boundaries
-                srcId="boundaries"
+                srcId="countries-simplification-data"
                 max={scaleLimits ? parseInt(scaleLimits.higher.step) : 0}
               />
             </Source>
