@@ -43,6 +43,7 @@ export const Nodes = ({ srcId }: { srcId: string }) => {
     layout: {
       "text-field": ["get", "point_count_abbreviated"],
       "text-size": 14,
+      "text-allow-overlap": true,
     },
     paint: {
       "text-color": [
@@ -69,6 +70,7 @@ export const Nodes = ({ srcId }: { srcId: string }) => {
     layout: {
       "text-field": "1",
       "text-size": 16,
+      "text-allow-overlap": true,
     },
     paint: {
       "text-color": "white",
