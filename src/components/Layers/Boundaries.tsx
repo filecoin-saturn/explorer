@@ -27,7 +27,7 @@ export const Boundaries = ({
       "line-color": [
         "case",
         ["boolean", ["feature-state", "hover"], false],
-        "rgba(255,0,0,1)",
+        "#fff",
         "transparent",
       ],
     },
