@@ -160,7 +160,7 @@ export const Globe = () => {
         .reduce((acc, feature) => {
           const amountOfNodes = nodes.filter(
             (node: Node) =>
-              node.geoloc.countryCode === feature.properties?.iso_3166_1
+              node.geoloc.countryCode === feature.properties?.ISO_A2
           ).length;
 
           map.setFeatureState(
