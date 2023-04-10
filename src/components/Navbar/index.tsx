@@ -333,6 +333,7 @@ export const Navbar = () => {
             <Stat
               icon="nodes-green"
               value={entityStats?.numberOfNodes}
+              units="units"
               label="NODES"
             />
             <Stat
@@ -357,7 +358,7 @@ export const Navbar = () => {
             <Stat
               highlight
               icon="fil"
-              units="FIL"
+              units="Fil"
               value={entityStats?.estimatedEarnings["7d"]}
               label="Earnings"
             />

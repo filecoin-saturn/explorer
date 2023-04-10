@@ -29,12 +29,8 @@ const computeStats = (
     (acc, el) => {
       if (Object.keys(el.retrievalsStats).length) {
         return {
-          "1d": +(acc["1d"] + (el.retrievalsStats["1d"] || 0) * 1e-6).toFixed(
-            0
-          ),
-          "7d": +(acc["7d"] + (el.retrievalsStats["7d"] || 0) * 1e-6).toFixed(
-            0
-          ),
+          "1d": acc["1d"] + (el.retrievalsStats["1d"] || 0),
+          "7d": acc["7d"] + (el.retrievalsStats["7d"] || 0),
         };
       } else {
         return acc;
@@ -47,14 +43,8 @@ const computeStats = (
     (acc, el) => {
       if (Object.keys(el.bandwidthServed).length) {
         return {
-          "1d": +(
-            acc["1d"] +
-            (parseInt(el.bandwidthServed["1d"]) || 0) * 1e-9
-          ).toFixed(0),
-          "7d": +(
-            acc["7d"] +
-            (parseInt(el.bandwidthServed["7d"]) || 0) * 1e-9
-          ).toFixed(0),
+          "1d": acc["1d"] + (parseInt(el.bandwidthServed["1d"]) || 0),
+          "7d": acc["7d"] + (parseInt(el.bandwidthServed["7d"]) || 0),
         };
       } else {
         return acc;
@@ -67,8 +57,8 @@ const computeStats = (
     (acc, el) => {
       if (Object.keys(el.estimatedEarnings).length) {
         return {
-          "1d": +(acc["1d"] + (el.estimatedEarnings["1d"] || 0))?.toFixed(4),
-          "7d": +(acc["7d"] + (el.estimatedEarnings["7d"] || 0))?.toFixed(4),
+          "1d": acc["1d"] + (el.estimatedEarnings["1d"] || 0),
+          "7d": acc["7d"] + (el.estimatedEarnings["7d"] || 0),
         };
       } else {
         return acc;
@@ -80,7 +70,7 @@ const computeStats = (
   const avgTTFB = nodes.reduce((acc, el) => {
     if (el.ttfbStats["p95_24h"]) {
       const contrib = el.ttfbStats["p95_24h"] / numberOfNodes;
-      return contrib ? +(acc + contrib).toFixed(0) : acc;
+      return contrib ? acc + contrib : acc;
     } else {
       return acc;
     }
