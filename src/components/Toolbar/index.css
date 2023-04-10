@@ -37,7 +37,7 @@
 
 @media (min-width: 1024px) {
   .Toolbar {
-    top: 32px;
+    top: var(--size-lg);
     right: var(--size-md);
     flex-direction: row;
     gap: var(--size-md);
