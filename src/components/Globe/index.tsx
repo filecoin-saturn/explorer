@@ -253,6 +253,7 @@ export const Globe = () => {
             maxZoom={8.1}
             minZoom={0}
             doubleClickZoom={false}
+            fadeDuration={1}
           >
             <Source
               id="countries-simplification-data"

@@ -28,7 +28,7 @@
 
 .Stat-label {
   margin-left: var(--size-md);
-
+  text-align: start;
   font-family: var(--font-family);
   font-size: var(--size-xs);
   color: var(--color-white);
