@@ -117,7 +117,7 @@ export const Navbar = () => {
   useEffect(() => {
     const onBoundariesClick = (feature: any) => {
       const country = countries.find(
-        (country) => country.id === feature.properties?.iso_3166_1
+        (country) => country.id === feature.properties?.ISO_A2
       );
       const continent = continents.find((continent) =>
         country?.continentId.includes(continent.id)
@@ -165,7 +165,7 @@ export const Navbar = () => {
         (feature: any) => feature.source === "nodes"
       );
       const boundaryFeature = event.features.find(
-        (feature: any) => feature.source === "boundaries"
+        (feature: any) => feature.source === "countries-simplification-data"
       );
 
       if (nodeFeature && zoomLevel > 3.4) {

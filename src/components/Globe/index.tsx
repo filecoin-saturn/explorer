@@ -27,6 +27,8 @@ const projection = "globe";
 // const mapStyle = "mapbox://styles/joaoferreira18/cleedx6a6003x01qg41yehikx";
 const mapStyle =
   "mapbox://styles/joaoferreira18/clg287ff4004m01p0izt5pymm?optimize=true";
+const mapBoundariesLayerURL =
+  "mapbox://poliveiraatsubvisualco.countries-simplification";
 
 export const Globe = () => {
   const { nodes } = useNodes();
@@ -151,18 +153,18 @@ export const Globe = () => {
 
       const boundariesLoad = map
         ?.querySourceFeatures("boundaries-outline", {
-          sourceLayer: "country_boundaries",
+          sourceLayer: "countries",
         })
         .reduce((acc, feature) => {
           const amountOfNodes = nodes.filter(
             (node: Node) =>
-              node.geoloc.countryCode === feature.properties?.iso_3166_1
+              node.geoloc.countryCode === feature.properties?.ISO_A2
           ).length;
 
           map.setFeatureState(
             {
               source: "boundaries-outline",
-              sourceLayer: "country_boundaries",
+              sourceLayer: "countries",
               id: feature.id,
             },
             { hover: false, nodes: amountOfNodes }
@@ -178,8 +180,8 @@ export const Globe = () => {
 
       const countryOptions = {
         id: hoveredStateId,
-        source: "boundaries",
-        sourceLayer: "country_boundaries",
+        source: "countries-simplification-data",
+        sourceLayer: "countries",
         boundariesLoad,
       };
 
@@ -260,13 +262,13 @@ export const Globe = () => {
             fadeDuration={1}
           >
             <Source
-              id="boundaries"
+              id="countries-simplification-data"
               type="vector"
-              url="mapbox://mapbox.country-boundaries-v1"
-              name="boundaries"
+              url={mapBoundariesLayerURL}
+              name="countries-simplification-data"
             >
               <Boundaries
-                srcId="boundaries"
+                srcId="countries-simplification-data"
                 max={scaleLimits ? parseInt(scaleLimits.higher.step) : 0}
               />
             </Source>
