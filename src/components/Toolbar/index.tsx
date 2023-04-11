@@ -1,9 +1,11 @@
 import "./index.css";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import Search from "../Search";
 import ToolbarButton from "../ToolbarButton";
 import AppContext, { ViewMode } from "../../contexts/AppContext";
+import useNodes from "../../hooks/useNodes";
+import classnames from "classnames";
 
 const toolbarOptions = [
   { viewMode: ViewMode.Cluster, iconName: "tb-nodes", title: "Cluster" },
@@ -105,9 +107,18 @@ const ViewModeButtonsWeb = ({
 
 export const Toolbar = () => {
   const { viewMode, toggleViewMode } = useContext(AppContext);
+  const { nodes } = useNodes();
+  const [isReady, setIsReady] = useState<boolean>(false);
 
+  useEffect(() => {
+    if (nodes.length === 0 || isReady) return;
+    setIsReady(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [nodes]);
+
+  const classname = classnames("Toolbar", { isReady });
   return (
-    <nav className="Toolbar">
+    <nav className={classname}>
       <Search />
       <ViewModeButtonsMobile
         viewMode={viewMode}

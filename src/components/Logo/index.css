@@ -1,4 +1,5 @@
-.Logo {
+.Logo,
+.Logo-load {
   position: absolute;
   z-index: 1;
   top: 30px;
@@ -7,8 +8,13 @@
   max-width: 141px;
 }
 
+.Logo-load {
+  animation: blinker 1s linear infinite;
+}
+
 @media screen and (min-width: 1024px) {
-  .Logo {
+  .Logo,
+  .Logo-load {
     position: absolute;
     z-index: 1;
     top: initial;
@@ -17,5 +23,11 @@
     left: initial;
 
     max-width: 212px;
+  }
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
   }
 }

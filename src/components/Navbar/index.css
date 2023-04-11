@@ -12,6 +12,14 @@
   display: flex;
 
   min-height: 80px;
+
+  transition: transform 0.8s ease-in-out;
+  -webkit-transition-delay: 1s;
+  transition-delay: 1s;
+}
+
+.Navbar:not(.isReady) {
+  transform: translateY(200px);
 }
 
 .Navbar.active {
@@ -27,7 +35,7 @@
 }
 
 .Navbar.active .Navbar-overview {
-  transform: translateY(100%);
+  transform: translateY(105%);
 }
 
 .Navbar-breadcrumbs {
@@ -59,7 +67,7 @@
 }
 
 .Navbar-content {
-  transform: translateY(100%);
+  transform: translateY(105%);
 
   overflow: scroll;
   overflow-x: hidden;
@@ -87,6 +95,8 @@
   display: flex;
 
   height: 80px;
+
+  transition: transform 0.3s ease-in-out;
 }
 
 .Navbar-button {
@@ -191,6 +201,10 @@
     right: initial;
     bottom: var(--size-lg);
     left: var(--size-lg);
+  }
+
+  .Navbar:not(.isReady) {
+    transform: translateX(-400px);
   }
 
   .Navbar .Navbar-content {

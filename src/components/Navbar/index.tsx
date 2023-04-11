@@ -43,8 +43,10 @@ export const Navbar = () => {
   const appState = useAppContext();
   const [breadcrumbs, setBreadcrumbs] = useState<NavBarEntity[]>([worldEntity]);
   const [active, setActive] = useState(false);
+  const [isReady, setIsReady] = useState<boolean>(false);
   const className = classNames("Navbar", {
     active,
+    isReady,
     expanded: breadcrumbs.length > 1,
   });
 
@@ -56,6 +58,12 @@ export const Navbar = () => {
     appState.setNavbarEntity(item);
     setBreadcrumbs([...breadcrumbs, item]);
   };
+
+  useEffect(() => {
+    if (nodes.length === 0 || isReady) return;
+    setIsReady(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [nodes]);
 
   useEffect(() => {
     appState.setNavbarEntity(breadcrumbs[0]);
@@ -195,7 +203,7 @@ export const Navbar = () => {
 
     if (item?.type === EntityType.world && nodes.length > 0) {
       map?.flyTo({
-        zoom: 1.5,
+        zoom: 2,
         ...flyOptions,
       });
     }
