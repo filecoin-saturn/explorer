@@ -157,7 +157,7 @@
 
 .Navbar-regionStats {
   display: flex;
-  gap: var(--size-sm);
+  gap: var(--size-xs);
 
   width: 100%;
   padding: var(--size-xs) var(--size-sm);

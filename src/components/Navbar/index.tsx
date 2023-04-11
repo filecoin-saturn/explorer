@@ -353,7 +353,7 @@ export const Navbar = () => {
             <Stat
               icon="space"
               value={entityStats?.bandwidthServed["7d"]}
-              units="GB"
+              units="bytes"
               label="Bandwidth"
             />
             <Stat
