@@ -96,7 +96,6 @@
   .Search:not(.active) .Search-input {
     display: inherit;
     width: 100%;
-    padding: var(--size-base);
   }
 
   .Search-input,
