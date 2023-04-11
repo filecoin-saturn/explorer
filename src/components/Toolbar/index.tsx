@@ -8,7 +8,7 @@ import useNodes from "../../hooks/useNodes";
 import classnames from "classnames";
 
 const toolbarOptions = [
-  { viewMode: ViewMode.Cluster, iconName: "tb-nodes", title: "Cluster" },
+  { viewMode: ViewMode.Cluster, iconName: "tb-nodes", title: "Nodes" },
   { viewMode: ViewMode.Heatmap, iconName: "tb-load", title: "TTFB" },
 ];
 
