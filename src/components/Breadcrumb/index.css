@@ -43,9 +43,9 @@
   opacity: 1;
   backdrop-filter: blur(var(--size-base));
   border-top: 1.5px solid;
+  border-right: 1.5px solid;
   border-bottom: 1.5px solid;
   border-left: 1.5px solid;
-  border-right: 1.5px solid;
   border-image: linear-gradient(
       to right,
       rgba(16, 255, 212, 1),
