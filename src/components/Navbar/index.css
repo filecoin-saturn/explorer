@@ -160,7 +160,7 @@
   gap: var(--size-xs);
 
   width: 100%;
-  padding: var(--size-xs) var(--size-sm);
+  padding: var(--size-xs) var(--size-xs);
 
   background: linear-gradient(
     296.29deg,
