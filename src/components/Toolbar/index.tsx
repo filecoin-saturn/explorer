@@ -9,7 +9,7 @@ import classnames from "classnames";
 
 const toolbarOptions = [
   { viewMode: ViewMode.Cluster, iconName: "tb-nodes", title: "Cluster" },
-  { viewMode: ViewMode.Heatmap, iconName: "tb-load", title: "Load" },
+  { viewMode: ViewMode.Heatmap, iconName: "tb-load", title: "TTFB" },
 ];
 
 type ViewModeButtonsProps = {
