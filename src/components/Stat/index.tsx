@@ -11,7 +11,7 @@ type StatProps = {
 };
 
 const byteUnits = ["b", "Kb", "Mb", "Gb", "Tb", "Pb"];
-const units = ["", "K", "M", "G", "T", "P"];
+const units = ["", "T", "M", "B", "T", "Q"];
 const time = ["ms", "s"];
 
 const roundValue = (value: number, unit: string) => {
