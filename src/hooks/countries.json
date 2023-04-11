@@ -73,6 +73,15 @@
   },
   {
     "shape": [],
+    "center": ["-0.071490", "-75.250974"],
+    "continentId": ["AN"],
+    "id": "AQ",
+    "type": 1,
+    "idAlpha3": "ATA",
+    "name": "Antarctica"
+  },
+  {
+    "shape": [],
     "center": ["-61.796428", "17.060816"],
     "continentId": ["NA"],
     "id": "AG",

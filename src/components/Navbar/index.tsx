@@ -238,7 +238,7 @@ export const Navbar = () => {
 
   const clearSelectedEntity =
     (breadcrumb: NavBarEntity, index: number) => () => {
-      if (breadcrumb?.name === appState.navbarEntity?.name) {
+      if (breadcrumb?.id === appState.navbarEntity?.id) {
         return;
       }
 
@@ -304,7 +304,7 @@ export const Navbar = () => {
 
           return (
             <Breadcrumb
-              key={breadcrumb?.name}
+              key={`${breadcrumb?.id} + ${breadcrumb?.name}`}
               entity={breadcrumb}
               onClick={clearSelectedEntity(breadcrumb, index)}
               active={active}
