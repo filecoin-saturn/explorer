@@ -17,6 +17,7 @@
 
   opacity: 0.6;
   background: none;
+  border: 1px solid transparent;
   border-bottom: 1px solid;
   border-image: linear-gradient(
       to right,
@@ -41,15 +42,17 @@
 .Breadcrumb.active {
   opacity: 1;
   backdrop-filter: blur(var(--size-base));
-  border-top: 1px solid;
-  border-left: 1px solid;
+  border-top: 1.5px solid;
+  border-bottom: 1.5px solid;
+  border-left: 1.5px solid;
+  border-right: 1.5px solid;
   border-image: linear-gradient(
       to right,
       rgba(16, 255, 212, 1),
       rgba(16, 255, 212, 0.12)
     )
     1;
-  border-image-outset: 0.5px 0 0 0.5px;
+  border-image-outset: 1px 0 0 1px;
 }
 
 .Breadcrumb-icon {

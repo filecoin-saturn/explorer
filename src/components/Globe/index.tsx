@@ -56,9 +56,7 @@ export const Globe = () => {
         higher: { label: "> #Nodes", step: `${maxScale}` },
         lower: { label: "< #Nodes", step: `${minScale}` },
       });
-    }
-
-    if (viewMode === ViewMode.Heatmap) {
+    } else if (viewMode === ViewMode.Heatmap) {
       const sortedNodes = nodes.sort(
         (a, b) => a.ttfbStats.p95_24h - b.ttfbStats.p95_24h
       );
@@ -69,6 +67,8 @@ export const Globe = () => {
         higher: { label: "ms", step: `${maxScale}` },
         lower: { label: "ms", step: `${minScale}` },
       });
+    } else {
+      setScaleLimits(undefined);
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
