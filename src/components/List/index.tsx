@@ -139,19 +139,19 @@ export const List = ({
           />
           <Stat
             icon="load-green"
-            units="Gb"
+            units="bytes"
             value={stats?.bandwidthServed[timeFrame]}
             label="Bandwidth"
           />
           <Stat
             icon="retrievals"
-            units="M"
+            units="units"
             value={stats?.retrievals[timeFrame]}
             label="Retrievals"
           />
           <Stat
             icon="fil"
-            units="FIL"
+            units="Fil"
             value={stats?.estimatedEarnings[timeFrame]}
             label="Earnings" // fil -> $
           />
@@ -199,13 +199,13 @@ export const List = ({
                     small={!isActive}
                     icon="space"
                     value={listItemStats?.bandwidthServed[timeFrame]}
-                    units="GB"
+                    units="bytes"
                     label="Bandwidth"
                   />
                   <Stat
                     small={!isActive}
                     icon="retrievals"
-                    units="M"
+                    units="units"
                     value={listItemStats?.retrievals[timeFrame]}
                     label="Retrievals"
                   />
