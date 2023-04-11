@@ -109,8 +109,7 @@
   margin-left: -1px;
   padding: var(--size-md) var(--size-sm);
 
-  border: 0.5px solid;
-  border-top: 0.5px solid;
+  border: 1px solid;
   border-image: linear-gradient(
       to right,
       rgba(157, 226, 255, 0.64),
@@ -118,6 +117,14 @@
     )
     1;
 }
+
+.List-content li {
+  margin-top: -1px;
+}
+.List-content li:first-of-type {
+  margin-top: 1px;
+}
+
 .List-item:focus {
   outline: none;
 }
