@@ -52,7 +52,6 @@ const roundValue = (value: number, unit: string) => {
   const scaleValue = shortNumber ? scale[power] : "";
   const scaleValueDisplay =
     unit === "Fil" ? scaleValue + "Fil" : unit === "ms" ? "ms" : scaleValue;
-
   return [displayValue, scaleValueDisplay];
 };
 
@@ -72,12 +71,19 @@ export const Stat = ({
     ? roundValue(parseFloat("" + value), units || "units")
     : [value, units];
 
+  const roundedValueCommaSeparated = Number(roundedValue).toLocaleString(
+    "en-US",
+    {
+      maximumFractionDigits: 1,
+    }
+  );
+
   return (
     <div className={className}>
       <div className="Stat-content">
         <Icon name={`${icon}`} className="Stat-icon" />
         <p className="Stat-value">
-          {roundedValue}
+          {roundedValueCommaSeparated}
           {roundedUnits && (
             <span className="Stat-units">{" " + roundedUnits}</span>
           )}
