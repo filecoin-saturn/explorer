@@ -1,5 +1,6 @@
 import "mapbox-gl/dist/mapbox-gl.css";
 import "./index.css";
+import customStyle from "./style.json";
 import { isMobile } from "react-device-detect";
 import { Map, Source, useMap } from "react-map-gl";
 //@ts-ignore
@@ -22,9 +23,6 @@ const viewState = {
 
 const projection = "globe";
 
-// const mapStyle = "mapbox://styles/joaoferreira18/cleedx6a6003x01qg41yehikx";
-const mapStyle =
-  "mapbox://styles/joaoferreira18/clg287ff4004m01p0izt5pymm?optimize=true";
 const mapBoundariesLayerURL =
   "mapbox://poliveiraatsubvisualco.countries-simplification";
 
@@ -204,7 +202,7 @@ export const Globe = () => {
             id="map"
             mapLib={mapboxgl}
             onLoad={onMapLoad(nodes)}
-            mapStyle={mapStyle}
+            mapStyle={customStyle as mapboxgl.Style}
             projection={projection}
             initialViewState={viewState}
             mapboxAccessToken={process.env.REACT_APP_MAP_BOX_ACCESS_TOKEN}
