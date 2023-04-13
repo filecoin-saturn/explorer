@@ -24,7 +24,7 @@ const viewState = {
 const projection = "globe";
 
 const mapBoundariesLayerURL =
-  "mapbox://poliveiraatsubvisualco.countries-simplification";
+  "mapbox://saturnwordmapexplorer.countries-simplification";
 
 export const Globe = () => {
   const { nodes } = useNodes();
