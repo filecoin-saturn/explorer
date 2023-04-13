@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import "./index.css";
 import { useContext, useEffect, useState } from "react";
 
@@ -117,11 +118,6 @@ export const Toolbar = () => {
   return (
     <nav className={classname}>
       <Search />
-      <ViewModeButtonsMobile
-        viewMode={viewMode}
-        toggleViewMode={toggleViewMode}
-      />
-      <ViewModeButtonsWeb viewMode={viewMode} toggleViewMode={toggleViewMode} />
     </nav>
   );
 };
