@@ -118,10 +118,7 @@ export const Globe = () => {
           sourceLayer: options.sourceLayer,
           id: nextId,
         },
-        {
-          hover: true,
-          nodes: options.boundariesLoad && options.boundariesLoad[options.id],
-        }
+        { hover: true }
       );
     },
     [map]
@@ -132,38 +129,12 @@ export const Globe = () => {
       if (!map) return;
       if (nodes.length === 0) return;
 
-      const boundariesLoad = map
-        ?.querySourceFeatures("boundaries-outline", {
-          sourceLayer: "countries",
-        })
-        .reduce((acc, feature) => {
-          const amountOfNodes = nodes.filter(
-            (node: Node) =>
-              node.geoloc.countryCode === feature.properties?.ISO_A2
-          ).length;
-
-          map.setFeatureState(
-            {
-              source: "boundaries-outline",
-              sourceLayer: "countries",
-              id: feature.id,
-            },
-            { hover: false, nodes: amountOfNodes }
-          );
-
-          return {
-            ...acc,
-            [feature.id as string]: amountOfNodes,
-          };
-        }, {});
-
       let hoveredStateId = null;
 
       const countryOptions = {
         id: hoveredStateId,
         source: "countries-simplification-data",
         sourceLayer: "countries",
-        boundariesLoad,
       };
 
       map.on("mousemove", "boundaries-fill", onMouseMove(countryOptions));
