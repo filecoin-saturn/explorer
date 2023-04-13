@@ -86,20 +86,17 @@ const ViewModeButtonsWeb = ({
   return (
     <div className="Toolbar-buttonsGroup web">
       {toolbarOptions.map((option) => {
-        if (option.viewMode !== ViewMode.Density) {
-          return (
-            <div key={option.viewMode} className={"Toolbar-button"}>
-              <ToolbarButton
-                isActive={viewMode === option.viewMode}
-                onClick={() => handleClick(option.viewMode)}
-                iconName={option.iconName}
-                title={option.title}
-                subtitle={option.viewMode}
-              />
-            </div>
-          );
-        }
-        return null;
+        return (
+          <div key={option.viewMode} className={"Toolbar-button"}>
+            <ToolbarButton
+              isActive={viewMode === option.viewMode}
+              onClick={() => handleClick(option.viewMode)}
+              iconName={option.iconName}
+              title={option.title}
+              subtitle={option.viewMode}
+            />
+          </div>
+        );
       })}
     </div>
   );
