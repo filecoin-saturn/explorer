@@ -14,8 +14,6 @@ import Heatmap from "../Layers/Heatmap";
 import Boundaries from "../Layers/Boundaries";
 import { useCallback, useEffect, useState } from "react";
 import Scale from "../Scale";
-import { useStats } from "../../hooks/useStats";
-import useCountries from "../../hooks/useCountries";
 mapboxgl.workerClass = MapboxWorker;
 
 const viewState = {
@@ -33,8 +31,6 @@ const mapBoundariesLayerURL =
 export const Globe = () => {
   const { nodes } = useNodes();
   const { map } = useMap();
-  const { getStatsByCountryId } = useStats();
-  const { countries } = useCountries();
   const appState = useAppContext();
   const { viewMode } = appState;
   const [scaleLimits, setScaleLimits] = useState<{
@@ -43,22 +39,7 @@ export const Globe = () => {
   }>();
 
   useEffect(() => {
-    if (viewMode === ViewMode.Density) {
-      const countriesCounters = countries.map((c) => getStatsByCountryId(c.id));
-
-      const nodesCounts = countriesCounters.flatMap((o) =>
-        o ? o.numberOfNodes : 0
-      );
-
-      const maxScale =
-        +((Math.max(...nodesCounts) * 0.85) / 100).toFixed(0) * 100;
-      const minScale = +(0.05 * maxScale).toFixed(0);
-
-      setScaleLimits({
-        higher: { label: "> #Nodes", step: `${maxScale}` },
-        lower: { label: "< #Nodes", step: `${minScale}` },
-      });
-    } else if (viewMode === ViewMode.Heatmap) {
+    if (viewMode === ViewMode.Heatmap) {
       const sortedNodes = nodes.sort(
         (a, b) => a.ttfbStats.p95_24h - b.ttfbStats.p95_24h
       );

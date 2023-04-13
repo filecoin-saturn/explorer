@@ -30,7 +30,6 @@ export type HoverEntity = Continent | Country | undefined;
 export enum ViewMode {
   Cluster = "cluster",
   Heatmap = "heatmap",
-  Density = "density",
 }
 
 type AppContextType = {
@@ -45,7 +44,7 @@ type AppContextType = {
 const initialValues = {
   navbarEntity: undefined,
   hoverEntity: undefined,
-  viewMode: ViewMode.Density,
+  viewMode: ViewMode.Cluster,
   setNavbarEntity: () => {},
   setHoverEntity: () => {},
   toggleViewMode: () => {},
