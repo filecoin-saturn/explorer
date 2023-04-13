@@ -41,20 +41,7 @@ export const Heatmap = ({ srcId }: { srcId: string }) => {
     },
   } as LayerProps;
 
-  const overlay = {
-    id: "bg",
-    type: "background",
-    paint: {
-      "background-color": "rgb(0,  255, 209)",
-      "background-opacity": 0.2,
-    },
-  } as LayerProps;
-  return (
-    <>
-      <Layer {...overlay} />
-      <Layer {...config} />;
-    </>
-  );
+  return <Layer {...config} />;
 };
 
 export default Heatmap;
