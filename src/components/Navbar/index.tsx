@@ -50,6 +50,8 @@ export const Navbar = () => {
     expanded: breadcrumbs.length > 1,
   });
 
+  const navbarBtnClassName = classNames("Navbar-button", { isReady, active });
+
   const toggleNavbar = () => {
     setActive(!active);
   };
@@ -348,83 +350,85 @@ export const Navbar = () => {
   };
 
   return (
-    <nav className={className}>
-      <div className="Navbar-breadcrumbs">
-        {breadcrumbs.map((breadcrumb, index) => {
-          const active = index === breadcrumbs.length - 1;
-
-          return (
-            <Breadcrumb
-              key={`${breadcrumb?.id} + ${breadcrumb?.name}`}
-              entity={breadcrumb}
-              onClick={clearSelectedEntity(breadcrumb, index)}
-              active={active}
-            />
-          );
-        })}
-      </div>
-      <div className="Navbar-content">
-        <List
-          list={list}
-          defaultSelectedNode={computeSelectedNode()}
-          entity={computeHeadEntity()}
-          stats={entityStats}
-          toggleNavbar={toggleNavbar}
-          onSelect={selectEntity}
-          hoverEnd={hoverEnd}
-          hoverStart={hoverStart}
-        />
-      </div>
-      <button className="Navbar-button" onClick={toggleNavbar}>
+    <>
+      <button className={navbarBtnClassName} onClick={toggleNavbar}>
         <Icon name="arrow-up" className="Navbar-arrowUp" />
         <Icon name="arrow-down" className="Navbar-arrowDown" />
       </button>
-      <div className="Navbar-overview">
-        <div className="Navbar-breadcrumb">
-          <Breadcrumb
-            entity={breadcrumbs[breadcrumbs.length - 1]}
-            active
-            trim
+      <nav className={className}>
+        <div className="Navbar-breadcrumbs">
+          {breadcrumbs.map((breadcrumb, index) => {
+            const active = index === breadcrumbs.length - 1;
+
+            return (
+              <Breadcrumb
+                key={`${breadcrumb?.id} + ${breadcrumb?.name}`}
+                entity={breadcrumb}
+                onClick={clearSelectedEntity(breadcrumb, index)}
+                active={active}
+              />
+            );
+          })}
+        </div>
+        <div className="Navbar-content">
+          <List
+            list={list}
+            defaultSelectedNode={computeSelectedNode()}
+            entity={computeHeadEntity()}
+            stats={entityStats}
+            toggleNavbar={toggleNavbar}
+            onSelect={selectEntity}
+            hoverEnd={hoverEnd}
+            hoverStart={hoverStart}
           />
         </div>
-        <div className="Navbar-regionStats" onClick={toggleNavbar}>
-          <div className="Navbar-regionStatsGrid">
-            <Stat
-              icon="nodes-green"
-              value={entityStats?.numberOfNodes}
-              units="units"
-              label="NODES"
-            />
-            <Stat
-              icon="ttfb"
-              value={entityStats?.avgTTFB}
-              units="ms"
-              label="Avg TTFB"
-            />
-            <Stat
-              icon="space"
-              value={entityStats?.bandwidthServed["7d"]}
-              units="bytes"
-              label="Bandwidth"
-            />
-            <Stat
-              icon="retrievals"
-              value={entityStats?.retrievals["7d"]}
-              label="Retrievals"
+        <div className="Navbar-overview">
+          <div className="Navbar-breadcrumb">
+            <Breadcrumb
+              entity={breadcrumbs[breadcrumbs.length - 1]}
+              active
+              trim
             />
           </div>
-          <div className="Stat-highlight">
-            <Stat
-              highlight
-              icon="fil"
-              units="Fil"
-              value={entityStats?.estimatedEarnings["7d"]}
-              label="Earnings"
-            />
+          <div className="Navbar-regionStats" onClick={toggleNavbar}>
+            <div className="Navbar-regionStatsGrid">
+              <Stat
+                icon="nodes-green"
+                value={entityStats?.numberOfNodes}
+                units="units"
+                label="NODES"
+              />
+              <Stat
+                icon="ttfb"
+                value={entityStats?.avgTTFB}
+                units="ms"
+                label="Avg TTFB"
+              />
+              <Stat
+                icon="space"
+                value={entityStats?.bandwidthServed["7d"]}
+                units="bytes"
+                label="Bandwidth"
+              />
+              <Stat
+                icon="retrievals"
+                value={entityStats?.retrievals["7d"]}
+                label="Retrievals"
+              />
+            </div>
+            <div className="Stat-highlight">
+              <Stat
+                highlight
+                icon="fil"
+                units="Fil"
+                value={entityStats?.estimatedEarnings["7d"]}
+                label="Earnings"
+              />
+            </div>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </>
   );
 };
 
