@@ -115,13 +115,14 @@
   z-index: 1;
   width: 40px;
   height: 40px;
-  transition: 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+  transition: opacity 0.8s 2s ease-in-out;
 }
 
 .Navbar-button.isReady {
   bottom: 92px;
-  -webkit-transition-delay: 2s;
-  transition-delay: 2s;
+  opacity: 1;
 }
 
 .Navbar-button:focus {
