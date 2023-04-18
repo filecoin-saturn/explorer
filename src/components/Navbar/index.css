@@ -108,32 +108,40 @@
   pointer-events: all;
   cursor: pointer;
 
-  position: fixed;
-  bottom: 92px;
+  position: absolute;
+  bottom: -50px;
   left: 50%;
   transform: translateX(-50%);
-
+  z-index: 1;
   width: 40px;
   height: 40px;
+  transition: 0.3s ease-in-out;
+}
+
+.Navbar-button.isReady {
+  bottom: 92px;
+  -webkit-transition-delay: 2s;
+  transition-delay: 2s;
 }
 
 .Navbar-button:focus {
   outline: none;
 }
 
-.Navbar.active .Navbar-button {
+.Navbar-button.active {
   top: 145px;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 1;
 }
 
 .Navbar-arrowDown,
-.Navbar.active .Navbar-arrowUp {
+.Navbar-button.active .Navbar-arrowUp {
   display: none;
 }
 
 .Navbar-arrowUp,
-.Navbar.active .Navbar-arrowDown {
+.Navbar-button.active .Navbar-arrowDown {
   display: block;
 }
 
