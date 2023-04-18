@@ -182,12 +182,14 @@ export const List = ({
                   <p className="List-itemName">{listItem.name}</p>
                 </div>
                 <div className="List-itemStats">
-                  <Stat
-                    small={!isActive}
-                    icon="nodes-green"
-                    value={listItemStats?.numberOfNodes}
-                    label="Nodes"
-                  />
+                  {listItem.type !== EntityType.node && (
+                    <Stat
+                      small={!isActive}
+                      icon="nodes-green"
+                      value={listItemStats?.numberOfNodes}
+                      label="Nodes"
+                    />
+                  )}
                   <Stat
                     small={!isActive}
                     icon="ttfb"
@@ -209,6 +211,15 @@ export const List = ({
                     value={listItemStats?.retrievals[timeFrame]}
                     label="Retrievals"
                   />
+                  {listItem.type === EntityType.node && (
+                    <Stat
+                      small={!isActive}
+                      icon="fil"
+                      units="Fil"
+                      value={listItemStats?.estimatedEarnings["7d"] || ""}
+                      label="Earnings"
+                    />
+                  )}
                 </div>
               </button>
             </li>
