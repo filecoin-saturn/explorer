@@ -35,11 +35,11 @@
 }
 
 .Navbar.active .Navbar-overview {
-  transform: translateY(105%);
+  transform: translateY(150%);
 }
 
 .Navbar-breadcrumbs {
-  transform: translateY(100%);
+  transform: translateY(110%);
 
   flex: 1;
 
@@ -67,7 +67,7 @@
 }
 
 .Navbar-content {
-  transform: translateY(105%);
+  transform: translateY(110%);
 
   overflow: scroll;
   overflow-x: hidden;
@@ -215,10 +215,6 @@
   .Navbar .Navbar-breadcrumbs {
     transform: translateX(-105px);
     max-width: 104px;
-  }
-
-  .Navbar.active .Navbar-overview {
-    transform: translateY(100%);
   }
 
   .Navbar.expanded .Navbar-content {
