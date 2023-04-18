@@ -15,6 +15,8 @@ import Heatmap from "../Layers/Heatmap";
 import Boundaries from "../Layers/Boundaries";
 import { useCallback, useEffect, useState } from "react";
 import Scale from "../Scale";
+import NodeLocation from "../Layers/NodeLocation";
+import { Location, useLocations } from "../../hooks/useLocations";
 mapboxgl.workerClass = MapboxWorker;
 
 const viewState = {
@@ -28,6 +30,7 @@ const mapBoundariesLayerURL =
 
 export const Globe = () => {
   const { nodes } = useNodes();
+  const { locations } = useLocations();
   const { map } = useMap();
   const appState = useAppContext();
   const { viewMode } = appState;
@@ -68,6 +71,20 @@ export const Globe = () => {
       geometry: {
         type: "Point",
         coordinates: node.geoloc.coordinates.split(",").reverse(),
+      },
+    })),
+  };
+  const cityGeoJson = {
+    type: "FeatureCollection",
+    features: locations.map((location: Location) => ({
+      type: "Feature",
+      properties: {
+        id: location.id,
+        name: location.name,
+      },
+      geometry: {
+        type: "Point",
+        coordinates: location.center,
       },
     })),
   };
@@ -206,7 +223,7 @@ export const Globe = () => {
             projection={projection}
             initialViewState={viewState}
             mapboxAccessToken={process.env.REACT_APP_MAP_BOX_ACCESS_TOKEN}
-            maxZoom={8.1}
+            maxZoom={8}
             minZoom={0}
             doubleClickZoom={false}
             fadeDuration={1}
@@ -234,16 +251,30 @@ export const Globe = () => {
             )}
 
             {viewMode === ViewMode.Cluster && (
-              <Source
-                id="nodes"
-                type="geojson"
-                //@ts-ignore
-                data={geoJson}
-                cluster={true}
-                clusterRadius={20}
-              >
-                <Nodes srcId="nodes" />
-              </Source>
+              <>
+                <Source
+                  id="node-location"
+                  type="geojson"
+                  //@ts-ignore
+                  data={cityGeoJson}
+                  generateId={true}
+                  maxzoom={8}
+                >
+                  <NodeLocation srcId="node-location" />
+                </Source>
+                <Source
+                  id="nodes"
+                  type="geojson"
+                  //@ts-ignore
+                  data={geoJson}
+                  cluster={true}
+                  clusterRadius={20}
+                  generateId={true}
+                  maxzoom={9}
+                >
+                  <Nodes srcId="nodes" />
+                </Source>
+              </>
             )}
           </Map>
         )}

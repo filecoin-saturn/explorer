@@ -79,10 +79,10 @@ export const Nodes = ({ srcId }: { srcId: string }) => {
 
   return (
     <>
-      <Layer {...circleLayer} />
       <Layer {...circleUnclustered} />
-      <Layer {...count} />
+      <Layer {...circleLayer} />
       <Layer {...countUnclustered} />
+      <Layer {...count} />
     </>
   );
 };

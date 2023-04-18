@@ -114,6 +114,57 @@ export const Navbar = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [appState]);
 
+  const [highlightedNode, setHighlightedNode] = useState<string | undefined>();
+  useEffect(() => {
+    if (!appState.navbarEntity || !map) return;
+    if (appState.navbarEntity?.type !== EntityType.location) {
+      if (highlightedNode) {
+        map?.setFeatureState(
+          {
+            source: "node-location",
+            id: highlightedNode,
+          },
+          { highlight: false }
+        );
+        setHighlightedNode(undefined);
+      }
+      return;
+    }
+
+    const candidates = map
+      .querySourceFeatures("node-location")
+      .filter((e: any) => {
+        return (
+          appState.navbarEntity && appState.navbarEntity.id === e.properties.id
+        );
+      });
+
+    if (candidates) {
+      const nextHighlightedNode = candidates[0].id as string;
+      if (nextHighlightedNode === highlightedNode) return;
+
+      if (highlightedNode !== undefined) {
+        map?.setFeatureState(
+          {
+            source: "node-location",
+            id: highlightedNode,
+          },
+          { highlight: false }
+        );
+      }
+      setHighlightedNode(nextHighlightedNode);
+      map?.setFeatureState(
+        {
+          source: "node-location",
+          id: nextHighlightedNode,
+        },
+        { highlight: true }
+      );
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [appState.navbarEntity, map]);
+
   useEffect(() => {
     const onBoundariesClick = (feature: any) => {
       const country = countries.find(
@@ -230,7 +281,7 @@ export const Navbar = () => {
         center: item.center,
         zoom: 8,
         ...flyOptions,
-        minZoom: 7.7,
+        minZoom: 7.8,
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
