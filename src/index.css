@@ -38,6 +38,7 @@ button {
   padding: 0;
   background: transparent;
   border: 0;
+  margin: 0;
 }
 
 button:focus {
