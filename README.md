@@ -65,16 +65,6 @@ To start Storybook run:
 npm run storybook
 ```
 
-## Testing
-
-To launch the test runner in the interactive watch mode:
-
-```
-npm test
-```
-
-See the create-react-app section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
 ## Deployment
 
 Deployments are automated using Github actions, check the [build page][build-page] for availble actions.
