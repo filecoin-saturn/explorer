@@ -1,3 +1,20 @@
 .App {
   height: 100%;
 }
+
+.mapboxgl-ctrl-bottom-left {
+  opacity: 0.4;
+}
+
+.mapboxgl-ctrl.mapboxgl-ctrl-attrib {
+  opacity: 0.4;
+  background: linear-gradient(
+    296.29deg,
+    rgba(0, 102, 255, 0.216) 2.96%,
+    rgba(0, 133, 255, 0.1896) 50.03%,
+    rgba(0, 163, 255, 0.2064) 93.31%
+  ) !important;
+}
+.mapboxgl-ctrl-attrib a {
+  color: var(--color-white) !important;
+}
