@@ -35,8 +35,8 @@ We're using [asdf](https://asdf-vm.com/guide/introduction.html) to manage `node`
 First, clone & setup the repository:
 
 ```bash
-git clone git@github.com:subvisual/saturn-network-explorer.git
-cd saturn-network-explorer
+git clone git@github.com:filecoin-saturn/explorer.git
+cd explorer
 asdf install
 npm install
 ```
