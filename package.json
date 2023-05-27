@@ -1,6 +1,6 @@
 {
-  "name": "saturn-network-explorer",
-  "homepage": "https://subvisual.github.io/saturn-network-explorer",
+  "name": "Saturn Explorer",
+  "homepage": "https://explorer.saturn.tech",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
