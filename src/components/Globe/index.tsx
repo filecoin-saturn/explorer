@@ -42,9 +42,9 @@ export const Globe = () => {
   useEffect(() => {
     if (viewMode === ViewMode.Heatmap) {
       const sortedNodes = nodes.sort(
-        (a, b) => a.ttfbStats.p95_24h - b.ttfbStats.p95_24h
+        (a, b) => a.ttfbStats.p95_12h - b.ttfbStats.p95_12h
       );
-      const maxScale = sortedNodes[0].ttfbStats.p95_24h || 1000;
+      const maxScale = sortedNodes[0].ttfbStats.p95_12h || 1000;
       const minScale = 3000;
 
       setScaleLimits({
@@ -66,7 +66,7 @@ export const Globe = () => {
         city: node.geoloc.city,
         country: node.geoloc.countryCode,
         continent: node.geoloc.continent.code,
-        ttfb: node.ttfbStats.p95_24h | 2000,
+        ttfb: node.ttfbStats.p95_12h | 2000,
       },
       geometry: {
         type: "Point",

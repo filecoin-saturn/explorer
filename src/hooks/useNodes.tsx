@@ -31,7 +31,7 @@ export type Node = {
   };
   cacheHitRate: {
     "1h": number;
-    "24h": number;
+    "12h": number;
   };
   estimatedEarnings: {
     "1d": number;
@@ -45,7 +45,7 @@ export type Node = {
   state: NodeState;
   ttfbStats: {
     p95_1h: number;
-    p95_24h: number;
+    p95_12h: number;
   };
 };
 

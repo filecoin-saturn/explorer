@@ -68,8 +68,8 @@ const computeStats = (
   );
 
   const avgTTFB = nodes.reduce((acc, el) => {
-    if (el.ttfbStats["p95_24h"]) {
-      const contrib = el.ttfbStats["p95_24h"] / numberOfNodes;
+    if (el.ttfbStats["p95_12h"]) {
+      const contrib = el.ttfbStats["p95_12h"] / numberOfNodes;
       return contrib ? acc + contrib : acc;
     } else {
       return acc;
@@ -77,8 +77,8 @@ const computeStats = (
   }, 0);
 
   const cacheHitRate = nodes.reduce((acc, el) => {
-    if (el.cacheHitRate["24h"]) {
-      const contrib = el.cacheHitRate["24h"] / numberOfNodes;
+    if (el.cacheHitRate["12h"]) {
+      const contrib = el.cacheHitRate["12h"] / numberOfNodes;
       return contrib ? acc + contrib : acc;
     } else {
       return acc;
