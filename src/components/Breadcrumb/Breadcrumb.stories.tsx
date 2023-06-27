@@ -10,5 +10,5 @@ export const Default = () => (
 );
 
 export const Active = () => (
-  <BreadcrumbComponent entity={{ id: "eu", name: "Europe", type: 0 }} active />
+  <BreadcrumbComponent entity={{ id: "eu", name: "Europe", type: 0, center: ["10.451526", "51.165691"], shape: [] }} active />
 );
