@@ -44,7 +44,7 @@ npm install
 After that, open the `.env` file in your editor and fill in the required secret values.
 
 ```
-MAPBOX_PUBLIC_TOKEN=YOUR_SECRET_TOKEN
+REACT_APP_MAP_BOX_ACCESS_TOKEN=YOUR_SECRET_TOKEN
 ```
 
 ## Development
