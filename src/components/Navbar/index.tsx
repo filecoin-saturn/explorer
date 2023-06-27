@@ -400,7 +400,7 @@ export const Navbar = () => {
               />
               <Stat
                 icon="ttfb"
-                value={entityStats?.avgTTFB}
+                value={entityStats?.medianTTFB}
                 units="ms"
                 label="Avg TTFB"
               />

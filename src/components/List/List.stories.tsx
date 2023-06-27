@@ -68,7 +68,7 @@ const assetStats = {
     "1d": 202,
     "7d": 1861,
   },
-  avgTTFB: 4581,
+  medianTTFB: 4581,
   estimatedEarnings: {
     "1d": 966.2733,
     "7d": 6223.664,
