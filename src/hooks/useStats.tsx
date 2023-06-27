@@ -68,8 +68,11 @@ const computeStats = (
   );
 
   const medianTTFBSortedNodes = nodes.sort((a, b) => b.ttfbStats.p95_12h - a.ttfbStats.p95_12h);
-  const medianTTFBLastValidIndex = medianTTFBSortedNodes.findLastIndex(node => node.ttfbStats.p95_12h);
-  const medianTTFB = medianTTFBSortedNodes[Math.floor((nodes.length - (nodes.length - medianTTFBLastValidIndex)) / 2)];
+  let medianTTFBLastValidIndex = medianTTFBSortedNodes.findLastIndex(node => Number.isInteger(node.ttfbStats.p95_12h));
+  if (medianTTFBLastValidIndex === -1) {
+    medianTTFBLastValidIndex = 0;
+  }
+  const medianTTFB = medianTTFBSortedNodes[Math.floor((nodes.length - (nodes.length - medianTTFBLastValidIndex)) / 2)] || 0;
 
   const cacheHitRate = nodes.reduce((acc, el) => {
     if (el.cacheHitRate["12h"]) {
