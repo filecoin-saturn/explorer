@@ -67,7 +67,7 @@ npm run storybook
 
 ## Deployment
 
-Deployments are automated using Github actions, check the [build page][build-page] for availble actions.
+Deployments are automated using Github actions, check the [build page][build-page] for available actions.
 
 You can create a build manually by running
 
