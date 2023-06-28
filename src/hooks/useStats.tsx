@@ -13,7 +13,7 @@ export type LocationStat = {
   bandwidthServed: { "1d": number; "7d": number };
   estimatedEarnings: { "1d": number; "7d": number };
   cacheHitRate: number;
-  avgTTFB: number;
+  medianTTFB: number;
 };
 
 const computeStats = (
@@ -67,14 +67,12 @@ const computeStats = (
     { "1d": 0, "7d": 0 }
   );
 
-  const avgTTFB = nodes.reduce((acc, el) => {
-    if (el.ttfbStats["p95_12h"]) {
-      const contrib = el.ttfbStats["p95_12h"] / numberOfNodes;
-      return contrib ? acc + contrib : acc;
-    } else {
-      return acc;
-    }
-  }, 0);
+  const medianTTFBSortedNodes = nodes.sort((a, b) => b.ttfbStats.p95_12h - a.ttfbStats.p95_12h);
+  let medianTTFBLastValidIndex = medianTTFBSortedNodes.findLastIndex(node => Number.isInteger(node.ttfbStats.p95_12h));
+  if (medianTTFBLastValidIndex === -1) {
+    medianTTFBLastValidIndex = 0;
+  }
+  const medianTTFB = medianTTFBSortedNodes[Math.floor(medianTTFBLastValidIndex / 2)]?.ttfbStats?.p95_12h || 0;
 
   const cacheHitRate = nodes.reduce((acc, el) => {
     if (el.cacheHitRate["12h"]) {
@@ -90,7 +88,7 @@ const computeStats = (
     numberOfNodes,
     diskSpace,
     retrievals,
-    avgTTFB,
+    medianTTFB,
     estimatedEarnings,
     bandwidthServed,
     cacheHitRate,

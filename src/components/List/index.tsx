@@ -133,9 +133,9 @@ export const List = ({
         <div className="List-stats">
           <Stat
             icon="ttfb"
-            value={stats?.avgTTFB}
+            value={stats?.medianTTFB}
             units="ms"
-            label="Avg TTFB"
+            label="Median TTFB"
           />
           <Stat
             icon="load-green"
@@ -193,9 +193,9 @@ export const List = ({
                   <Stat
                     small={!isActive}
                     icon="ttfb"
-                    value={listItemStats?.avgTTFB}
+                    value={listItemStats?.medianTTFB}
                     units="ms"
-                    label="Avg TTFB"
+                    label="Median TTFB"
                   />
                   <Stat
                     small={!isActive}
