@@ -72,7 +72,7 @@ const computeStats = (
   if (medianTTFBLastValidIndex === -1) {
     medianTTFBLastValidIndex = 0;
   }
-  const medianTTFB = medianTTFBSortedNodes[Math.floor((nodes.length - (nodes.length - medianTTFBLastValidIndex)) / 2)]?.ttfbStats?.p95_12h || 0;
+  const medianTTFB = medianTTFBSortedNodes[Math.floor(medianTTFBLastValidIndex / 2)]?.ttfbStats?.p95_12h || 0;
 
   const cacheHitRate = nodes.reduce((acc, el) => {
     if (el.cacheHitRate["12h"]) {
