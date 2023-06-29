@@ -41,10 +41,10 @@ asdf install
 npm install
 ```
 
-After that, open the `.env` file in your editor and fill in the required secret values.
+After that, open or create the `.env` file in your editor and fill in the required secret value for Mapbox.
 
 ```
-REACT_APP_MAP_BOX_ACCESS_TOKEN=YOUR_SECRET_TOKEN
+REACT_APP_MAP_BOX_ACCESS_TOKEN=<your_secret_token>
 ```
 
 ## Development
