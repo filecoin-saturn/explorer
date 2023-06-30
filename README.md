@@ -41,7 +41,7 @@ asdf install
 npm install
 ```
 
-After that, open or create the `.env` file in your editor and fill in the required secret value for Mapbox.
+After that, open or create the `.env` file in your editor and fill in the required secret value for the [Mapbox](https://www.mapbox.com/) API.
 
 ```
 REACT_APP_MAP_BOX_ACCESS_TOKEN=<your_secret_token>
@@ -67,7 +67,7 @@ npm run storybook
 
 ## Deployment
 
-Deployments are automated using Github actions, check the [build page][build-page] for available actions.
+Deployments are currently automated using Github actions. Check the [build page][build-page] for available actions.
 
 You can create a build manually by running
 
@@ -75,15 +75,13 @@ You can create a build manually by running
 npm run build
 ```
 
-Builds the app for production to the `build` folder.
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Builds the app for production to the `build` folder. It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.
-Your app is ready to be deployed!
+The build is minified and the filenames include the hashes. Your app is ready to be deployed!
 
 ## Contribution Guidelines
 
-Contributions must follow [Subvisual's guides](https://github.com/subvisual/guides).
+This codebase was originally written following [Subvisual's guides](https://github.com/subvisual/guides). For consistency, contributions should also follow this guide and its styles.
 
 ## About
 
