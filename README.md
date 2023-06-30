@@ -1,18 +1,6 @@
-[project-management]: https://github.com/orgs/subvisual/projects/2/views/1
-[build-page]: https://github.com/subvisual/saturn-network-explorer/actions/
-[production]: https://subvisual.github.io/saturn-network-explorer/
-[figma]: https://www.figma.com/file/QcysmeYSRsbPTfoxgllQPa/Saturn---World-Map?node-id=0%3A1&t=tEOcvtLOtNx0tkf4-0
-
 # Saturn Network Explorer
 
-![Production build](https://github.com/subvisual/saturn-network-explorer/actions/workflows/deploy.yaml/badge.svg)
-
-A geospatial visualization for Protocol Labs Saturn network stats
-
-- [Project management][project-management]
-- [Build Page][build-page]
-- [Production][production]
-- [Figma][figma]
+A geospatial visualization for [Saturn](https://saturn.tech) network stats. Live at [https://explorer.saturn.tech](https://explorer.saturn.tech).
 
 **Table of Contents**
 
@@ -86,6 +74,8 @@ This codebase was originally written following [Subvisual's guides](https://gith
 
 Saturn Network Explorer was created and is maintained with :heart: by
 [Subvisual][subvisual].
+
+The explorer's design work can be found [here](https://www.figma.com/file/QcysmeYSRsbPTfoxgllQPa/Saturn---World-Map?node-id=0%3A1&t=tEOcvtLOtNx0tkf4-0).
 
 [![Subvisual][subvisual-logo]][subvisual]
 
