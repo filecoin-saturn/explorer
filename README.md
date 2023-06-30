@@ -29,8 +29,7 @@ A geospatial visualization for Protocol Labs Saturn network stats
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Before starting, make sure you have Git and NodeJS installed.
-We're using [asdf](https://asdf-vm.com/guide/introduction.html) to manage `node` verisons, it is recommended but not necessary.
+Before starting, make sure you have Git and NodeJS installed. We're using [asdf](https://asdf-vm.com/guide/introduction.html) to manage `node` verisons, it is recommended but not necessary.
 
 First, clone & setup the repository:
 
@@ -67,17 +66,17 @@ npm run storybook
 
 ## Deployment
 
-Deployments are currently automated using Github actions. Check the [build page][build-page] for available actions.
+Deployments are currently automated by, and deployed to, [Netlify](https://www.netlify.com/).
 
-You can create a build manually by running
+For local, production builds, run
 
 ```
 npm run build
 ```
 
-Builds the app for production to the `build` folder. It correctly bundles React in production mode and optimizes the build for the best performance.
+This builds the app for production to the `build/` directory. It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes. Your app is ready to be deployed!
+The build is minified and the filenames include hashes. The app is ready to be deployed!
 
 ## Contribution Guidelines
 
