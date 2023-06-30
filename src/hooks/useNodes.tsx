@@ -44,8 +44,8 @@ export type Node = {
   type: EntityType.node;
   state: NodeState;
   ttfbStats: {
-    p95_1h: number;
-    p95_12h: number;
+    p50_1h: number;
+    p50_12h: number;
   };
 };
 

@@ -67,12 +67,12 @@ const computeStats = (
     { "1d": 0, "7d": 0 }
   );
 
-  const medianTTFBSortedNodes = nodes.sort((a, b) => b.ttfbStats.p95_12h - a.ttfbStats.p95_12h);
-  let medianTTFBLastValidIndex = medianTTFBSortedNodes.findLastIndex(node => Number.isInteger(node.ttfbStats.p95_12h));
+  const medianTTFBSortedNodes = nodes.sort((a, b) => b.ttfbStats.p50_12h - a.ttfbStats.p50_12h);
+  let medianTTFBLastValidIndex = medianTTFBSortedNodes.findLastIndex(node => Number.isInteger(node.ttfbStats.p50_12h));
   if (medianTTFBLastValidIndex === -1) {
     medianTTFBLastValidIndex = 0;
   }
-  const medianTTFB = medianTTFBSortedNodes[Math.floor(medianTTFBLastValidIndex / 2)]?.ttfbStats?.p95_12h || 0;
+  const medianTTFB = medianTTFBSortedNodes[Math.floor(medianTTFBLastValidIndex / 2)]?.ttfbStats?.p50_12h || 0;
 
   const cacheHitRate = nodes.reduce((acc, el) => {
     if (el.cacheHitRate["12h"]) {
