@@ -67,8 +67,8 @@ const computeStats = (
     { "1d": 0, "7d": 0 }
   );
 
-  const medianTTFBSortedNodes = nodes.sort((a, b) => b.ttfbStats.p50_12h - a.ttfbStats.p50_12h);
-  let medianTTFBLastValidIndex = medianTTFBSortedNodes.findLastIndex(node => Number.isInteger(node.ttfbStats.p50_12h));
+  const medianTTFBSortedNodes = nodes.sort((a, b) => (b.ttfbStats.p50_12h ?? 0) - (a.ttfbStats.p50_12h ?? 0));
+  let medianTTFBLastValidIndex = medianTTFBSortedNodes.findLastIndex(node => Number.isInteger(node.ttfbStats.p50_12h) && node.ttfbStats.p50_12h > 0);
   if (medianTTFBLastValidIndex === -1) {
     medianTTFBLastValidIndex = 0;
   }
