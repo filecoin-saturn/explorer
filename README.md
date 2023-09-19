@@ -17,7 +17,7 @@ A geospatial visualization for [Saturn](https://saturn.tech) network stats. Live
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Before starting, make sure you have Git and NodeJS installed. We're using [asdf](https://asdf-vm.com/guide/introduction.html) to manage `node` verisons, it is recommended but not necessary.
+Before starting, make sure you have Git and NodeJS installed. We're using [asdf](https://asdf-vm.com/guide/introduction.html) to manage `node` versions, it is recommended but not necessary.
 
 First, clone & setup the repository:
 
