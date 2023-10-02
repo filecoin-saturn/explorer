@@ -17,7 +17,7 @@ type NodesContextType = {
 const initialValues = {
   nodes: [],
   setNodes: () => {},
-  globalStats: { medianTTFB: 0 },
+  globalStats: { medianTTFB: 70 },
 };
 
 const NodesContext = createContext<NodesContextType>(initialValues);
@@ -42,7 +42,7 @@ export const NodesContextProvider = ({
       const decoder = new TextDecoder();
       const reader = response.body?.getReader();
       const nodesMap = new Map<string, Node>();
-      const medianTTFB = Number(response.headers.get("x-saturn-median-ttfb")) || 0;
+      const medianTTFB = Number(response.headers.get("x-saturn-median-ttfb")) || 70;
 
       setGlobalStats({ medianTTFB });
 
