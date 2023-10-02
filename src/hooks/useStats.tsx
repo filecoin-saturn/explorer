@@ -98,6 +98,7 @@ const computeStats = (
 export const useStats = () => {
   const {
     nodes: nodesMap,
+    globalStats,
     getNodesByContinentId,
     getNodesByCountryId,
     getNodesByLocationId,
@@ -111,8 +112,8 @@ export const useStats = () => {
 
   const getGlobalStats = () => {
     if (!nodes) return;
-    const globalStats = computeStats(nodes, undefined);
-    return globalStats;
+    const computedGlobalStats = computeStats(nodes, undefined);
+    return { ...computedGlobalStats, ...globalStats };
   };
 
   const getStatsByContinentId = (continentId: string) => {

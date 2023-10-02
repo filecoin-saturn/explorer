@@ -11,11 +11,13 @@ import { EntityType } from "./AppContext";
 type NodesContextType = {
   nodes: Node[] | [];
   setNodes: (nodes: Node[] | []) => void;
+  globalStats: { medianTTFB: number };
 };
 
 const initialValues = {
   nodes: [],
   setNodes: () => {},
+  globalStats: { medianTTFB: 0 },
 };
 
 const NodesContext = createContext<NodesContextType>(initialValues);
@@ -28,6 +30,7 @@ export const NodesContextProvider = ({
   const [nodes, setNodes] = useState<Node[] | []>([]);
   const [tempNodes, setTempNodes] = useState<Node[] | []>([]);
   const [isLoading, setIsLoading] = useState<boolean>();
+  const [globalStats, setGlobalStats] = useState<{ medianTTFB: number }>({ medianTTFB: 0 });
 
   useEffect(() => {
     let animationFrameId: number;
@@ -39,6 +42,9 @@ export const NodesContextProvider = ({
       const decoder = new TextDecoder();
       const reader = response.body?.getReader();
       const nodesMap = new Map<string, Node>();
+      const medianTTFB = Number(response.headers.get("x-saturn-median-ttfb")) || 0;
+
+      setGlobalStats({ medianTTFB });
 
       const onChunk = ({
         done,
@@ -99,6 +105,7 @@ export const NodesContextProvider = ({
   }, [isLoading]);
 
   const value = {
+    globalStats,
     nodes,
     setNodes,
   };
