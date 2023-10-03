@@ -8,14 +8,20 @@ import {
 import { Node } from "../hooks/useNodes";
 import { EntityType } from "./AppContext";
 
+type GlobalStats = {
+  medianTTFB: number;
+}
+
 type NodesContextType = {
   nodes: Node[] | [];
   setNodes: (nodes: Node[] | []) => void;
+  globalStats: GlobalStats;
 };
 
-const initialValues = {
+const initialValues: NodesContextType = {
   nodes: [],
   setNodes: () => {},
+  globalStats: { medianTTFB: 70 },
 };
 
 const NodesContext = createContext<NodesContextType>(initialValues);
@@ -28,6 +34,7 @@ export const NodesContextProvider = ({
   const [nodes, setNodes] = useState<Node[] | []>([]);
   const [tempNodes, setTempNodes] = useState<Node[] | []>([]);
   const [isLoading, setIsLoading] = useState<boolean>();
+  const [globalStats, setGlobalStats] = useState<GlobalStats>(initialValues.globalStats);
 
   useEffect(() => {
     let animationFrameId: number;
@@ -39,6 +46,11 @@ export const NodesContextProvider = ({
       const decoder = new TextDecoder();
       const reader = response.body?.getReader();
       const nodesMap = new Map<string, Node>();
+      const medianTTFB = Number(response.headers.get("x-saturn-median-ttfb"));
+
+      if (medianTTFB) {
+        setGlobalStats({ medianTTFB });
+      }
 
       const onChunk = ({
         done,
@@ -99,6 +111,7 @@ export const NodesContextProvider = ({
   }, [isLoading]);
 
   const value = {
+    globalStats,
     nodes,
     setNodes,
   };

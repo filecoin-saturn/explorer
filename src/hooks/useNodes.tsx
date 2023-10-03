@@ -52,7 +52,7 @@ export type Node = {
 export type Nodes = Node[];
 
 export const useNodes = () => {
-  const { nodes } = useContext(NodesContext);
+  const { nodes, globalStats } = useContext(NodesContext);
 
   const getNodeByID = (queryNodeId: string) => {
     return nodes.find((node) => node.id === queryNodeId);
@@ -78,6 +78,7 @@ export const useNodes = () => {
 
   return {
     nodes,
+    globalStats,
     getNodeByID,
     getNodesByLocationId,
     getNodesByCountryId,
