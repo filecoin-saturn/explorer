@@ -30,7 +30,7 @@ export const NodesContextProvider = ({
   const [nodes, setNodes] = useState<Node[] | []>([]);
   const [tempNodes, setTempNodes] = useState<Node[] | []>([]);
   const [isLoading, setIsLoading] = useState<boolean>();
-  const [globalStats, setGlobalStats] = useState<{ medianTTFB: number }>({ medianTTFB: 0 });
+  const [globalStats, setGlobalStats] = useState<{ medianTTFB: number }>(initialValues.globalStats);
 
   useEffect(() => {
     let animationFrameId: number;
