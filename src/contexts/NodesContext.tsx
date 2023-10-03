@@ -42,7 +42,8 @@ export const NodesContextProvider = ({
       const decoder = new TextDecoder();
       const reader = response.body?.getReader();
       const nodesMap = new Map<string, Node>();
-      const medianTTFB = Number(response.headers.get("X-Saturn-Median-TTFB")) || 71;
+      console.log(response.headers.entries());
+      const medianTTFB = Number(response.headers.get("x-saturn-median-ttfb"));
 
       setGlobalStats({ medianTTFB });
 
