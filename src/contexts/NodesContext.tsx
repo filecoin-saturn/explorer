@@ -48,7 +48,9 @@ export const NodesContextProvider = ({
       const nodesMap = new Map<string, Node>();
       const medianTTFB = Number(response.headers.get("x-saturn-median-ttfb"));
 
-      setGlobalStats({ medianTTFB });
+      if (medianTTFB) {
+        setGlobalStats({ medianTTFB });
+      }
 
       const onChunk = ({
         done,
