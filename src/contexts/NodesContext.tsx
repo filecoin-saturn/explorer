@@ -8,13 +8,17 @@ import {
 import { Node } from "../hooks/useNodes";
 import { EntityType } from "./AppContext";
 
+type GlobalStats = {
+  medianTTFB: number;
+}
+
 type NodesContextType = {
   nodes: Node[] | [];
   setNodes: (nodes: Node[] | []) => void;
-  globalStats: { medianTTFB: number };
+  globalStats: GlobalStats;
 };
 
-const initialValues = {
+const initialValues: NodesContextType = {
   nodes: [],
   setNodes: () => {},
   globalStats: { medianTTFB: 70 },
