@@ -141,7 +141,7 @@ export const Navbar = () => {
         );
       });
 
-    if (candidates) {
+    if (candidates.length) {
       const nextHighlightedNode = candidates[0].id as string;
       if (nextHighlightedNode === highlightedNode) return;
 
