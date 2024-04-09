@@ -4,6 +4,7 @@ on:
   push:
     branches-ignore:
       - "main"
+  workflow_dispatch:
 
 env:
   REACT_APP_MAP_BOX_ACCESS_TOKEN: ${{ vars.REACT_APP_MAP_BOX_ACCESS_TOKEN }}
